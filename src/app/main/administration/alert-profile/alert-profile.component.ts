@@ -32,7 +32,7 @@ export class AlertProfileComponent implements OnInit {
     dataSource: Array<AlertProfile>;
     change: ReplaySubject<any>;
 
-    displayedColumns: string[] = ['name', 'description', 'publicInCompany', 'type', 'active',
+    displayedColumns: string[] = ['name', 'description', /*'publicInCompany',*/ 'type', 'active',
         'speedKph', 'zoneId', 'params1', 'params2', /*'weekDays', 'dayTime', 'alertEmail', 'alertSms',
         'alertApp', 'cannedAction', */'contacts', 'subject', 'text', 'templateId', 'createdBy', 'createdOn', 'updatedBy', 'updatedOn'];
     expandedElement: any;
@@ -109,7 +109,27 @@ export class AlertProfileComponent implements OnInit {
     }
 
     dialogEditAlertProfile(alertProfile: AlertProfile): void {
+        const request = AlertProfileRequest.from(alertProfile);
+        const dialogRef = this.dialog.open(AddEditAlertProfileComponent, {
+            width: '800px',
+            data: request
+        });
 
+        dialogRef.afterClosed().subscribe(
+            result => {
+                if (result) {
+                    this.update(alertProfile.id, request);
+                }
+            }
+        );
+    }
+    update(id: number, request: AlertProfileRequest): void {
+        this.applicationContext.spin(true);
+        this.alertProfileService.update(id, request).subscribe(
+            resp => {
+                this.applicationContext.info('Alert Profile #' + id + ' has beean updated!')
+            }
+        );
     }
 
     dialogDelete(alertProfile: AlertProfile): void {

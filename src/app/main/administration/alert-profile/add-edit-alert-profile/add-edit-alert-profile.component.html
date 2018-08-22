@@ -65,7 +65,7 @@
                         name="List of contacts"
                         placeholder="Contacts to receive Alerts"
                         aria-label="Contacts to receive alerts">
-                <mat-option *ngFor="let contact of contactList | async"
+                <mat-option *ngFor="let contact of contactList"
                             [value]="contact.id">
                     {{contact.name}}
                 </mat-option>
@@ -119,10 +119,10 @@
         </div>
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
-                <weekday type="short"></weekday>
+                <weekday type="short" [editMode]="true" [data]="data.weekDays"></weekday>
             </div>
             <div fxFlex="50">
-                <daytime></daytime>
+                <daytime [editMode]="true" [data]="data.dayTime"></daytime>
             </div>
         </div>
 

@@ -12,6 +12,9 @@ import { DayTime } from 'app/shared/scheduler/daytime/day-time';
 import { AlertProfile } from 'app/models/alert-profile';
 import { AlertProfileRequest } from 'app/models/request/alert-profile.request';
 import { AddEditContactComponent } from 'app/main/administration/contact/add-edit-contact/add-edit-contact.component';
+import { ContactRequest } from 'app/models/request/contact.request';
+import { merge, of, ReplaySubject } from 'rxjs';
+import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 
 @Component({
     selector: 'add-edit-alert-profile',
@@ -21,7 +24,7 @@ import { AddEditContactComponent } from 'app/main/administration/contact/add-edi
 export class AddEditAlertProfileComponent implements OnInit {
 
     isEditing: boolean = false;
-    contactList: Observable<Contact[]>;
+    contactList: Contact[];
     types: Array<AlertType> = [
         AlertType.ALERT_START,
         AlertType.ALERT_STOP,
@@ -39,6 +42,8 @@ export class AddEditAlertProfileComponent implements OnInit {
     @ViewChild(Weekday) weekDays: Weekday;
     @ViewChild(DayTime) dayTime: DayTime;
 
+    contactChanged: ReplaySubject<any>;
+
     constructor(private contactService: ContactService,
                 private applicationContext: ApplicationContext,
                 public matDialog: MatDialog,
@@ -46,8 +51,23 @@ export class AddEditAlertProfileComponent implements OnInit {
                 @Inject(MAT_DIALOG_DATA) public data: AlertProfile | AlertProfileRequest | any) {}
 
     ngOnInit() {
-        this.contactList = this.contactService.getAll();
-
+        this.contactChanged = new ReplaySubject(1);
+        merge(this.contactChanged)
+        .pipe(
+            startWith({}),
+            switchMap(() => {
+                this.applicationContext.spin(true);
+                return this.contactService.getAll();
+            }),
+            map(data => {
+                this.applicationContext.spin(false);
+               return data;
+            }),
+            catchError(() => {
+                this.applicationContext.spin(false);
+                return of([]);
+            })
+        ).subscribe(data => this.contactList = data);
     }
 
     dialogToAddContact(event: Event) {
@@ -61,10 +81,19 @@ export class AddEditAlertProfileComponent implements OnInit {
         contactRef.afterClosed().subscribe(
             result => {
                 if (result) {
-                    //TODO
-                    //this.create(contact);
+                    this.createContact(contact);
                 }
             }
+        );
+    }
+    createContact(contact: Contact): void {
+        this.contactService.create(contact).subscribe(
+            data => {
+                this.applicationContext.info('Contact #' + contact.name + 'has been created!');
+                this.contactChanged.next();
+            },
+            error => {},
+            () => {}
         );
     }
 
