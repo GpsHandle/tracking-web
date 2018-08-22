@@ -12,7 +12,9 @@
             <mat-icon>add</mat-icon>
         </button>
     </div>
-    <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows>
+    <table mat-table
+           [dataSource]="dataSource"
+           matSort multiTemplateDataRows>
 
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
@@ -62,41 +64,6 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Params2</th>
             <td mat-cell *matCellDef="let el">{{el.params2}}</td>
         </ng-container>
-
-        <!--<ng-container matColumnDef="weekDays">-->
-            <!--<th mat-header-cell *matHeaderCellDef mat-sort-header>Week Days</th>-->
-            <!--<td mat-cell *matCellDef="let el">{{el.weekDays}}</td>-->
-        <!--</ng-container>-->
-
-        <!--<ng-container matColumnDef="dayTime">-->
-            <!--<th mat-header-cell *matHeaderCellDef mat-sort-header>Day Time</th>-->
-            <!--<td mat-cell *matCellDef="let el">{{el.dayTime}}</td>-->
-        <!--</ng-container>-->
-
-        <!--ng-container matColumnDef="alertEmail">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Alert Email</th>
-            <td mat-cell *matCellDef="let el">
-                <mat-icon>{{el.alertEmail ? 'check' : 'cancel'}}</mat-icon>
-        </ng-container>
-
-        <ng-container matColumnDef="alertSms">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Alert Sms</th>
-            <td mat-cell *matCellDef="let el">
-                <mat-icon>{{el.alertSms ? 'check' : 'cancel'}}</mat-icon>
-            </td>
-        </ng-container>
-
-        <ng-container matColumnDef="alertApp">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Alert App</th>
-            <td mat-cell *matCellDef="let el">
-                <mat-icon>{{el.alertApp ? 'check' : 'cancel'}}</mat-icon>
-            </td>
-        </ng-container>
-
-        <ng-container matColumnDef="cannedAction">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Canned Action</th>
-            <td mat-cell *matCellDef="let el">{{el.cannedAction}}</td>
-        </ng-container-->
 
         <ng-container matColumnDef="contacts">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Contacts</th>

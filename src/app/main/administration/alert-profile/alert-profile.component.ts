@@ -4,14 +4,11 @@ import { AddEditAlertProfileComponent } from 'app/main/administration/alert-prof
 import { AlertProfileRequest } from 'app/models/request/alert-profile.request';
 import { AlertProfileService } from 'app/services/alert-profile.service';
 import { ApplicationContext } from 'app/application-context';
-import { Contact } from 'app/models/contact';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { AlertProfile } from 'app/models/alert-profile';
 import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Weekday } from 'app/shared/scheduler/weekday/weekday';
-import { DayTime } from 'app/shared/scheduler/daytime/day-time';
 
 @Component({
     selector: 'app-alert-profile',

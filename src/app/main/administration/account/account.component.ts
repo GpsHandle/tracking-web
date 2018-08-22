@@ -21,11 +21,19 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { CompanyLittle } from 'app/models/little/company.little';
 import { HttpErrorResponse } from '@angular/common/http';
 import { DeleteAccountComponent } from 'app/main/administration/account/delete-account/delete-account.component';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
     selector: 'applicationContext-account',
     templateUrl: './account.component.html',
-    styleUrls: ['./account.component.scss']
+    styleUrls: ['./account.component.scss'],
+    animations: [
+        trigger('detailExpand', [
+            state('collapsed', style({height: '0px', minHeight: '0', display: 'none'})),
+            state('expanded', style({height: '*'})),
+            transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+        ]),
+    ],
 })
 
 export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked {
@@ -36,7 +44,7 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     displayedColumns = ['toggle', 'accountId', 'firstName', 'lastName', 'companyName', 'notes', 'createdBy', 'createdOn', 'actions'];
-
+    expandedElement: any;
     columns = {
         toggle:             {selected: false, order: 0},
         id:                 {selected: false, order: 0},
@@ -143,6 +151,19 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
             }
         );
     }
+
+    isExpanded(element: any): boolean {
+        return this.expandedElement === element;
+    }
+
+    toggleExpandCollapse(element): void {
+        if (this.isExpanded(element)) {
+            this.expandedElement = null;
+        } else {
+            this.expandedElement = element;
+        }
+    }
+
 
     openDialogNewObject(): void {
         const data = new Account();
