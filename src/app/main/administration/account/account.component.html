@@ -16,12 +16,12 @@
            [dataSource]="dataSource"
            matSort multiTemplateDataRows>
 
-        <ng-container matColumnDef="toggle">
+        <!--ng-container matColumnDef="toggle">
             <th mat-header-cell *matHeaderCellDef i18n>#</th>
             <td mat-cell *matCellDef="let element">
                 <mat-slide-toggle [checked]="checkStatus(element)" (change)="toggleStatus(element)"></mat-slide-toggle>
             </td>
-        </ng-container>
+        </ng-container-->
 
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> ID </th>
@@ -114,7 +114,7 @@
             <td mat-cell *matCellDef="let element"> {{element.updatedOn | date:'short'}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="actions">
+        <!--ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef i18n> Actions </th>
             <td mat-cell *matCellDef="let element">
                 <button mat-icon-button (click)="openDialogEditing(element)">
@@ -124,13 +124,102 @@
                     <mat-icon color="warn">delete</mat-icon>
                 </button>
             </td>
-        </ng-container>
+        </ng-container-->
 
         <!--Expanded Content Column-->
         <ng-container matColumnDef="expanded-detail">
             <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
-                <div class="element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-                    Tets
+                <div fxLayout="column" class="element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                    <div fxLayout="row" fxLayoutGap="16px" class="full-width">
+                        <div fxFlex="50">
+                            <mat-form-field class="full-width">
+                                <input type="text" matInput
+                                       i18n-placeholder placeholder="Account ID"
+                                       [value]="element.accountId" disabled>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="50">
+                            <mat-form-field class="full-width">
+                                <input type="text" matInput
+                                       i18n-placeholder placeholder="Full Name"
+                                       [value]="element.firstName + ' ' + element.lastName" disabled>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="50">
+                            <mat-form-field class="full-width">
+                                <input type="text" matInput
+                                       i18n-placeholder placeholder="Company"
+                                       [value]="element.company ? element.company.name : ''"
+                                       disabled>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="50">
+                            <mat-form-field class="full-width">
+                                <input type="text" matInput
+                                       i18n-placeholder placeholder="Role"
+                                       [value]="element.privilege"
+                                       disabled>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="50">
+                            <mat-form-field class="full-width">
+                                <input type="text" matInput
+                                       i18n-placeholder placeholder="Status"
+                                       [value]="element.status"
+                                       disabled>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="50">
+                            <mat-form-field class="full-width">
+                                <input type="tel" matInput
+                                       i18n-placeholder placeholder="Phone Number"
+                                       [value]="element.phoneNumber"
+                                       disabled>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="50">
+                            <mat-form-field class="full-width">
+                                <input type="text" matInput
+                                       i18n-placeholder placeholder="Email Adress"
+                                       [value]="element.emailAddress"
+                                       disabled>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="16px" class="full-width">
+                        <div fxFlex="50">
+                            <mat-form-field class="full-width">
+                                <input type="text" matInput
+                                       i18n-placeholder placeholder="Adress Line 1"
+                                       [value]="element.addressLine1"
+                                       disabled>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="50">
+                            <mat-form-field class="full-width">
+                                <input type="text" matInput
+                                       i18n-placeholder placeholder="Adress Line 2"
+                                       [value]="element.addressLine2"
+                                       disabled>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="flex-center">
+                        <div>
+                            <mat-slide-toggle [checked]="checkStatus(element)"
+                                              (change)="toggleStatus(element)">
+                                {{checkStatus(element) ? 'Disable' : 'Enable'}}
+                            </mat-slide-toggle>
+                            <button mat-button (click)="openDialogEditing(element)">
+                                <mat-icon color="accent">edit</mat-icon>
+                                <span>Edit</span>
+                            </button>
+                            <button mat-button (click)="openDialogConfirmDelete(element)">
+                                <mat-icon color="warn">delete</mat-icon>
+                                <span>Delete</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </td>
         </ng-container>

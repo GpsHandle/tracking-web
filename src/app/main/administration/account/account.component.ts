@@ -43,10 +43,9 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
-    displayedColumns = ['toggle', 'accountId', 'firstName', 'lastName', 'companyName', 'notes', 'createdBy', 'createdOn', 'actions'];
+    displayedColumns = ['accountId', 'firstName', 'lastName', 'status', 'companyName', 'notes', 'createdBy', 'createdOn'];
     expandedElement: any;
     columns = {
-        toggle:             {selected: false, order: 0},
         id:                 {selected: false, order: 0},
         accountId:          {selected: false, order: 1},
         firstName:          {selected: false, order: 2},
