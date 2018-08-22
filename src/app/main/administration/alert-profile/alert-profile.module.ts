@@ -8,6 +8,7 @@ import { CustomDirectivesModule } from 'app/directives/custom-directives.module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SchedulerModule } from 'app/shared/scheduler/scheduler.module';
 import { ContactModule } from 'app/main/administration/contact/contact.module';
+import { DeleteAlertProfileComponent } from './delete-alert-profile/delete-alert-profile.component';
 
 @NgModule({
     imports: [
@@ -22,10 +23,12 @@ import { ContactModule } from 'app/main/administration/contact/contact.module';
     ],
     declarations: [
         AlertProfileComponent,
-        AddEditAlertProfileComponent
+        AddEditAlertProfileComponent,
+        DeleteAlertProfileComponent
     ],
     entryComponents: [
-        AddEditAlertProfileComponent
+        AddEditAlertProfileComponent,
+        DeleteAlertProfileComponent
     ]
 })
 export class AlertProfileModule { }

@@ -9,6 +9,7 @@ import { AlertProfile } from 'app/models/alert-profile';
 import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { DeleteAlertProfileComponent } from 'app/main/administration/alert-profile/delete-alert-profile/delete-alert-profile.component';
 
 @Component({
     selector: 'app-alert-profile',
@@ -33,7 +34,7 @@ export class AlertProfileComponent implements OnInit {
 
     displayedColumns: string[] = ['name', 'description', 'publicInCompany', 'type', 'active',
         'speedKph', 'zoneId', 'params1', 'params2', /*'weekDays', 'dayTime', 'alertEmail', 'alertSms',
-        'alertApp', 'cannedAction', */'contacts', 'subject', 'text', 'templateId', 'createdBy', 'createdOn', 'updatedBy', 'updatedOn', 'actions'];
+        'alertApp', 'cannedAction', */'contacts', 'subject', 'text', 'templateId', 'createdBy', 'createdOn', 'updatedBy', 'updatedOn'];
     expandedElement: any;
     resultsLength = 0;
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -111,8 +112,30 @@ export class AlertProfileComponent implements OnInit {
 
     }
 
-    dialogDelete(): void {
+    dialogDelete(alertProfile: AlertProfile): void {
+        const dialogRef = this.dialog.open(DeleteAlertProfileComponent, {
+            minWidth: 400,
+            data: alertProfile
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.delete(alertProfile);
+            }
+        });
+    }
 
+    delete(alertProfile: AlertProfile): void {
+        this.applicationContext.spin(true);
+        this.alertProfileService._delete(alertProfile.id).subscribe(
+            data => {
+                this.applicationContext.spin(false);
+                this.change.next();
+                this.applicationContext.info('AlertProfile #' + alertProfile.id + 'has been deleted!')
+            },
+            error => {
+                this.applicationContext.error(error);
+            },
+            () => {});
     }
 
     applyFilter(value: string) {

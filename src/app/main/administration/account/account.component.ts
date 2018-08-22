@@ -216,8 +216,9 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
                 this.dataChange.next(1);
             },
             (error: HttpErrorResponse) => {
-                this.applicationContext.http_error(error);
-            }
+                this.applicationContext.error(error);
+            },
+            () => {}
         );
     }
 

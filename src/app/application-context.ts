@@ -232,14 +232,14 @@ export class ApplicationContext implements OnInit, OnDestroy {
         this.snackBar.open(message, null, config);
     }
 
-    error(message: string): void {
+    error(message: string | HttpErrorResponse): void {
         const config = this._createConfig(true);
-        this.snackBar.open(message, null, config);
-    }
 
-    http_error(error: HttpErrorResponse): void {
-        const message = error.error.error_description;
-        this.error(message);
+        if (message instanceof HttpErrorResponse) {
+            this.snackBar.open(message.error.error_description || message.message, null, config);
+        } else {
+            this.snackBar.open(message, null, config);
+        }
     }
 
     private _createConfig(isError?: boolean) {

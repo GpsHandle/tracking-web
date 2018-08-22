@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
                 this.router.navigate([redirectUrl]);
             },
             (err: any) => {
-                console.log(err);
                 if (err instanceof HttpErrorResponse) {
                     this.applicationContext.error(err.error.error_description || err.message);
                 } else {
