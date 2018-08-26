@@ -127,7 +127,15 @@ export class AlertProfileComponent implements OnInit {
         this.applicationContext.spin(true);
         this.alertProfileService.update(id, request).subscribe(
             resp => {
-                this.applicationContext.info('Alert Profile #' + id + ' has beean updated!')
+                this.applicationContext.info('Alert Profile #' + id + ' has beean updated!');
+                this.applicationContext.spin(false);
+            },
+            error => {
+                this.applicationContext.spin(false);
+                this.applicationContext.error(error);
+            },
+            () => {
+                this.change.next();
             }
         );
     }
