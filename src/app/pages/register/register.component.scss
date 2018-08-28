@@ -1,0 +1,14 @@
+.page-register {
+  max-width: 1000px;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  margin: auto;
+  border: 1px solid lightgray;
+
+  .form-register {
+    width: 400px;
+    float: right;
+    padding: 16px;
+  }
+}

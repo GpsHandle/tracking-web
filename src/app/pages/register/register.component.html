@@ -1,3 +1,54 @@
-<p>
-  register works!
-</p>
+<div class="page-register">
+    <div>
+        Terms & Agreements & Services
+    </div>
+    <span class="fill-remain-space"></span>
+    <form class="form-register mat-elevation-z3">
+        <section #accountInformtion>
+            <div fxLayout="column">
+                <mat-form-field>
+                    <input type="text" matInput i18n-placeholder placeholder="Account Id" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input type="text" matInput i18n-placeholder placeholder="Password" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input type="text" matInput i18n-placeholder placeholder="Re Password" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input type="text" matInput i18n-placeholder placeholder="First Name">
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="text" matInput i18n-placeholder placeholder="First Name">
+                </mat-form-field>
+
+            </div>
+        </section>
+        <mat-divider></mat-divider>
+        <section #contactInformation>
+            <div fxLayout="column">
+                <mat-form-field>
+                    <input type="text" matInput i18n-placeholder placeholder="Phone Number">
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="text" matInput i18n-placeholder placeholder="Email Address" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input type="text" matInput i18n-placeholder placeholder="Address Line 1">
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="text" matInput i18n-placeholder placeholder="Address Line 2">
+                </mat-form-field>
+
+            </div>
+        </section>
+
+        <button mat-flat-button>Register</button>
+        <button mat-button color="primary" routerLink="/login">Back to login</button>
+    </form>
+
+</div>
