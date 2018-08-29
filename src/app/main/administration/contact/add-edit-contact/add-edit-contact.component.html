@@ -1,6 +1,6 @@
 <div mat-dialog-title>
-    <span i18n>{{isEditing ? 'Modifying Contact' : 'Creating Contact'}}</span>
-    <span>#</span>
+    <span i18n>{{data.id ? 'Modifying Contact ' : 'Creating Contact '}}</span>
+    <span>#{{data.name}}</span>
     <span class="x-dialog-close-btn">
         <button mat-icon-button mat-dialog-close="false">
             <mat-icon>cancel</mat-icon>
