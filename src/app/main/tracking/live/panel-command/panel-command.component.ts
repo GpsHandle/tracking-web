@@ -7,6 +7,7 @@ import { MatBottomSheetRef } from '@angular/material';
   styleUrls: ['./panel-command.component.scss']
 })
 export class PanelCommandComponent implements OnInit {
+    device: any;
 
   constructor(private bottomSheetRef: MatBottomSheetRef<PanelCommandComponent>) { }
 
