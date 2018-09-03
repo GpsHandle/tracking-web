@@ -1,0 +1,21 @@
+<div class="full-height flex-center">
+    <form class="l-form mat-elevation-z2">
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Your Usermame" [(ngModel)]="model.username" name="username">
+            <span matPrefix><mat-icon matPrefix>profile</mat-icon></span>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput type="password" placeholder="Your Password" [(ngModel)]="model.password" name="password">
+            <span matPrefix class=""><mat-icon matPrefix>key</mat-icon></span>
+        </mat-form-field>
+
+        <div class="l-button">
+            <a mat-raised-button color="primary" (click)="login()">Login</a>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="action">
+            <a mat-button [routerLink]="['/register']">Register</a>
+            <a mat-button [routerLink]="['/forgot-password']">Forgot Password ?</a>
+        </div>
+    </form>
+</div>

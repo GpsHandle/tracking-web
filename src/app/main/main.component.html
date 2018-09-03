@@ -51,27 +51,6 @@
             <mat-icon>help</mat-icon>
             <span i18n>Help</span>
         </a>
-        <!--<mat-menu #menuHelp="matMenu" overlapTrigger="false">-->
-            <!--<a mat-menu-item routerLink="help/usage">-->
-                <!--<mat-icon>help</mat-icon>-->
-                <!--<span>Help</span>-->
-            <!--</a>-->
-        <!--</mat-menu>-->
-
-        <button mat-button [matMenuTriggerFor]="menuSys" *showIfRole="'vd5lord,sysadmin'">
-            <mat-icon>setting</mat-icon>
-            <span i18n>SysAdmin</span>
-        </button>
-        <mat-menu #menuSys="matMenu" overlapTrigger="false">
-            <a mat-menu-item routerLink="sys-admin/development">
-                <mat-icon>voicemail</mat-icon>
-                <span>Development Plan</span>
-            </a>
-            <a mat-menu-item routerLink="sys-admin/event-logger">
-                <mat-icon>mail</mat-icon>
-                <span>Event Logger</span>
-            </a>
-        </mat-menu>
 
         <span class="fill-remain-space"></span>
 
