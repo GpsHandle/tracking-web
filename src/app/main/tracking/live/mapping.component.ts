@@ -19,13 +19,14 @@ import 'rxjs/add/operator/takeWhile';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/observable/interval';
-import 'rxjs/add/observable/forkJoin';
+// import 'rxjs/add/observable/forkJoin';
+import { Observable } from 'rxjs/Observable';
+import { forkJoin } from 'rxjs/observable/forkJoin'
 
 import { StatusPieChart } from 'app/models/status-pie-chart';
 import { DeviceLittle } from 'app/models/little/device.little';
 import { PopupService } from 'app/main/tracking/live/popup/popup.service';
 import { MappingUtils } from 'app/main/tracking/live/mapping-utils';
-import { Observable } from 'rxjs/Observable';
 import { CircleMarker } from 'leaflet';
 import { MatBottomSheet } from '@angular/material';
 import { PanelCommandComponent } from 'app/main/tracking/live/panel-command/panel-command.component';
@@ -75,7 +76,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
         this.alive = true;
         this.applicationContext.spin(true);
 
-        Observable.forkJoin(
+        forkJoin(
             this.deviceService.getAllLittle(),
             this.eventService.getLiveEvents()
         ).subscribe(
