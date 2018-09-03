@@ -23,6 +23,10 @@ export class PopupComponent implements OnInit, AfterViewInit {
         return this.data.event ? this.data.event.deviceId : '-';
     }
 
+    get status(): string {
+        return this.data.event ? this.data.event.status : '-';
+    }
+
     get speedKph(): string {
         return this.data.event ? this.data.event.speedKPH : 0;
     }

@@ -14,10 +14,8 @@
     .m-comm {
       display: flex;
       flex-direction: row;
-      height: 20%;
-      overflow-y: auto;
-      min-height: 200px;
-      max-height: 250px;
+      overflow-y: hidden;
+      height: 220px;
       font-size: 14px;
       justify-content: space-between;
 
@@ -26,11 +24,12 @@
         flex: 1 1 auto;
         flex-direction: row;
         justify-content: space-between;
+        padding-top: 16px;
+        padding-left: 16px;
 
         .m-table-details{
           display: flex;
           vertical-align: middle;
-          padding: 16px;
         }
       }
       .t-head {

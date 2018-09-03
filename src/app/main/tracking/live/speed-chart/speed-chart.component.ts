@@ -1,4 +1,13 @@
-import { AfterViewInit, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChange } from '@angular/core';
+import {
+    AfterViewChecked,
+    AfterViewInit, ChangeDetectorRef,
+    Component,
+    Input,
+    OnChanges,
+    OnDestroy,
+    OnInit,
+    SimpleChange
+} from '@angular/core';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { EventService } from 'app/services/event.service';
 import { merge, of as observableOf } from 'rxjs/index';
@@ -14,7 +23,7 @@ import { TimerObservable } from 'rxjs/observable/TimerObservable';
     templateUrl: './speed-chart.component.html',
     styleUrls: ['./speed-chart.component.scss']
 })
-export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterViewInit {
+export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterViewInit, AfterViewChecked {
     get period() {
         return this._period;
     }
@@ -138,11 +147,12 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
 
     dataChange: ReplaySubject<any>;
     private historyEventsOptimizeForChart: EventData[];
-    private update: boolean = false;
+    loading: boolean = false;
+    opac: number = 1;
     private alive: boolean = true;
     private subscription;
     //-------------------------------------------------------------------------
-    constructor(private eventService: EventService) {
+    constructor(private eventService: EventService, private cdRef : ChangeDetectorRef) {
         this.dataChange = new ReplaySubject(1);
     }
 
@@ -166,6 +176,8 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
             .pipe(
                 startWith([]),
                 switchMap(() => {
+                    this.loading = true;
+                    this.opac = 0.5;
                     if (!this.device) {
                         return observableOf([]);
                     }
@@ -195,6 +207,8 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
                 } else {
                     this.historyEventsOptimizeForChart = data;
                 }
+                this.loading = false;
+                this.opac = 1;
                 this.draw();
             });
     }
@@ -252,9 +266,6 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
 
             this.chart = c3.generate({
                 bindto: '#chart1',
-                size: {
-                    height: 196
-                },
                 data: {
                     columns: cols,
                     axes: {
@@ -302,5 +313,9 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
                 }
             });
         }
+    }
+
+    ngAfterViewChecked(): void {
+        this.cdRef.detectChanges();
     }
 }

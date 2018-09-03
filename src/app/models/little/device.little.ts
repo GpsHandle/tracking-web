@@ -3,9 +3,9 @@ export class DeviceLittle {
 
     public name: string;
     public deviceId: string;
-
     //--additional
     public selected: boolean;
+    public status: string;
     public speedKph: number;
     public state: number; //stopped, living, idle
     public address: string;

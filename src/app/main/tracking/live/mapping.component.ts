@@ -176,6 +176,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                 d.longitude = event.longitude;
                 d.lastUpdateTime = event.timestamp;
                 d.speedKph = event.speedKPH;
+                d.status = event.status;
                 d.lastUpdateTimeInWords = distanceInWordsToNow(event.timestamp) + ' ago';
 
                 if (event.latitude && event.longitude) {
