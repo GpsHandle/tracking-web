@@ -56,7 +56,7 @@ export class HistoryComponent implements OnInit, AfterViewInit {
     private iconDefault: L.Icon;
 
     dataSource: MatTableDataSource<EventData> | null;
-    displayedColumns = ['latitude', 'longitude', 'heading', 'speedKPH', 'address', 'timestamp', 'age'];
+    displayedColumns = ['location', 'heading', 'speedKPH', 'address', 'status', 'timestamp', 'age'];
     selection = new SelectionModel<EventData>(true, []);
 
     timeDistance: any;

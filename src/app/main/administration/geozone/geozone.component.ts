@@ -7,10 +7,11 @@ import { MatDialog } from '@angular/material';
 import * as _ from 'lodash';
 import * as L from 'leaflet';
 import 'leaflet-draw';
+
 import { GeozoneRequest } from 'app/models/request/geozone.request';
 import { ApplicationContext } from 'app/application-context';
 import { GeoUtils } from 'app/main/administration/geozone/GeoUtils';
-import { DrawOptions, LatLng, Layer, Point } from 'leaflet';
+import { DrawOptions, latLng, LatLng, Layer, Point } from 'leaflet';
 import { Feature} from 'geojson';
 import { FeatureGroup } from 'leaflet';
 
@@ -34,7 +35,7 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
 
     geofenceList: Array<Geofence>;
 
-    selected: Geofence | any = {};
+    selected: Geofence | any;
     geometry: any;
 
     private _edit: boolean = false;
@@ -56,11 +57,12 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
             shadowUrl: '/assets/images/marker-shadow.png'
         });
 
+        this.selected = {geometry: {}};
+
         this.loadAllGeozone();
     }
 
     ngAfterViewInit(): void {
-        console.log('init map');
         let osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors';
         let osm = L.tileLayer(TILE_OSM_URL, {
             maxZoom: 18,
@@ -102,27 +104,52 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
                 collapsed: true
             }).addTo(this.map);
 
+        this.map.on(L.Draw.Event.EDITMOVE, (event: any) => {
+            console.log('MOVED', event.layer);
+        });
 
+        this.map.on(L.Draw.Event.EDITRESIZE, (event: any) => {
+            console.log('RESIZED', event.layer);
+        });
 
         this.map.on(L.Draw.Event.CREATED, (event: any) => {
-            this.showGeofenceDetails(true);
-            this.edit = true;
+            this.editableLayers.addLayer(event.layer);
 
+            console.log('toGeoJSON', event.layer.toGeoJSON());
 
-            console.log('object', event);
-            console.log('layer', event.layer);
-            let gj = event.layer.toGeoJSON();
-            this.selected = event.layer.toGeoJSON();
-            if (event.layer._mRadius) {
-                this.selected.geometry.radius = event.layer._mRadius;
+            //this.selected = event.layer;
+            if (_.toLower(this.geometry.type) === 'circle') {
+                this.selected.geometry.type = 'Point';
+                if (event.layer._mRadius) {
+                    this.selected.geometry.radius = event.layer._mRadius;
+                }
+                this.selected.geometry.coordinates = [event.layer._latlng.lat, event.layer._latlng.lng];
+            } else if (_.toLower(this.geometry.type) === 'rectangle') {
+                this.selected.geometry.type = 'Polygon';
+
+            } else if (_.toLower(this.geometry.type) === 'polygon') {
+                this.selected.geometry.type = 'Polygon';
             }
 
-            //console.log('layer - geojson', gj);
-            this.editableLayers.addLayer(L.GeoJSON.geometryToLayer(this.selected, {
-                pointToLayer: (feature, latlng) => {
-                    return L.circle(latlng, this.selected.geometry.radius)
-                }
-            }));
+            // this.showGeofenceDetails(true);
+            // this.edit = true;
+            //
+            //
+            //
+            // console.log('object', event);
+            // console.log('layer', event.layer);
+            // let gj = event.layer.toGeoJSON();
+            // this.selected = event.layer.toGeoJSON();
+            // if (event.layer._mRadius) {
+            //     this.selected.geometry.radius = event.layer._mRadius;
+            // }
+            //
+            // //console.log('layer - geojson', gj);
+            // this.editableLayers.addLayer(L.GeoJSON.geometryToLayer(this.selected, {
+            //     pointToLayer: (feature, latlng) => {
+            //         return L.circle(latlng, this.selected.geometry.radius)
+            //     }
+            // }));
             this.pending = true;
 
         })
@@ -145,7 +172,6 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
     private loadAllGeozone(): void {
         this.service.getAll().subscribe(
             data => {
-                console.log('data', data);
                 this.geofenceList = data;
             },
             error => {},
@@ -157,6 +183,7 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
 
     private drawGeofences(): void {
         _.forEach(this.geofenceList, (g) => {
+            console.log('data', g);
             g = GeoUtils.convertGeofence(g);
             let gj: Feature<any>;
             gj = {
@@ -165,17 +192,25 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
                 geometry: g.geometry
             };
 
-            let ly = L.GeoJSON.geometryToLayer(gj, {
+            let ly = L.GeoJSON.geometryToLayer(gj,{
                 pointToLayer: (feature, latlng) => {
-                    return L.circle(latlng, g.geometry.radius)
+                    return L.circle(latlng, g.geometry.radius);
                 }
             });
 
-            ly.on('edit', (event: any) => {
-                console.log('Arguments', event.target.toGeoJSON());
-            });
+            console.log('GeoFence', ly);
+
+            // ly.on('edit', (event: any) => {
+            //     console.log('Arguments', event.target.toGeoJSON());
+            // });
+
+            // {
+                //     pointToLayer: (feature, latlng) => {
+                //         return L.circle(latlng, this.selected.geometry.radius)
+                //     }
 
             this.editableLayers.addLayer(ly);
+
             this.map.fitBounds(this.editableLayers.getBounds());
             g.internalId = this.editableLayers.getLayerId(ly);
         });
@@ -193,7 +228,7 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
     }
 
     public select(geofence: Geofence): void {
-        this.showGeofenceDetails(true)
+        this.showGeofenceDetails(true);
 
         this.selected = GeoUtils.convertGeofence(geofence);
 
@@ -210,11 +245,11 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
     }
 
     public isCircle(): boolean {
-        return (this.selected.geometry && this.selected.geometry.type === 'Point');
+        return (this.selected.geometry && (_.toLower(this.selected.geometry.type) === 'point' || _.toLower(this.selected.geometry.type) === 'circle'));
     }
 
     public isPolygon(): boolean {
-        return (this.selected.geometry && this.selected.geometry.type === 'Polygon');
+        return (this.selected.geometry && (_.toLower(this.selected.geometry.type) === 'polygon' || _.toLower(this.selected.geometry.type) === 'rectangle'));
     }
 
 
@@ -252,6 +287,7 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
                 this.geometry = new L.Draw.Polygon(this.map, opt);
                 break;
         }
+
         this.geometry.enable();
     }
 
@@ -271,12 +307,17 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
 
     disable(): void {
         this.edit = false;
+        if (this._bakLayer) {
+            this.editableLayers.addLayer(this._bakLayer);
+        }
         let layer: Layer | any;
-        this.editableLayers.addLayer(this._bakLayer);
-        layer = this.editableLayers.getLayer(this.selected.internalId);
-        layer.options.editing || (layer.options.editing = {});
-        layer.editing.disable();
+        // layer = this.editableLayers.getLayer(this.selected.internalId);
+        // if (layer) {
+        //     layer.options.editing || (layer.options.editing = {});
+        //     layer.editing.disable();
+        // }
 
+        this.editableLayers.removeLayer(this.selected.internalId);
     }
 
     modify(geofence?: Geofence): void {

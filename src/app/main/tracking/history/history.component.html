@@ -35,14 +35,14 @@
                             <mat-header-cell *matHeaderCellDef i18n> Device Name </mat-header-cell>
                             <mat-cell *matCellDef="let row">{{row.deviceName || row.deviceId}}</mat-cell>
                         </ng-container>
-                        <ng-container matColumnDef="latitude">
-                            <mat-header-cell *matHeaderCellDef i18n> Latitude </mat-header-cell>
-                            <mat-cell *matCellDef="let row">{{row.latitude}}</mat-cell>
+                        <ng-container matColumnDef="location">
+                            <mat-header-cell *matHeaderCellDef i18n> Location </mat-header-cell>
+                            <mat-cell *matCellDef="let row">{{row.latitude}}/{{row.longitude}}</mat-cell>
                         </ng-container>
-                        <ng-container matColumnDef="longitude">
+                        <!--ng-container matColumnDef="longitude">
                             <mat-header-cell *matHeaderCellDef i18n> Longitude </mat-header-cell>
                             <mat-cell *matCellDef="let row">{{row.longitude}}</mat-cell>
-                        </ng-container>
+                        </ng-container-->
                         <ng-container matColumnDef="altitude">
                             <mat-header-cell *matHeaderCellDef i18n> Altitude </mat-header-cell>
                             <mat-cell *matCellDef="let row">{{row.altitude}}</mat-cell>
@@ -59,6 +59,11 @@
                         <ng-container matColumnDef="address">
                             <mat-header-cell *matHeaderCellDef i18n> Address </mat-header-cell>
                             <mat-cell *matCellDef="let row">{{row.address}}</mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="status">
+                            <mat-header-cell *matHeaderCellDef i18n>Status</mat-header-cell>
+                            <mat-cell *matCellDef="let row">{{row.status}}</mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="timestamp">

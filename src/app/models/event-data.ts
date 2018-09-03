@@ -24,4 +24,8 @@ export interface EventData {
     fuelTotal: number;
     fuelRemain: number;
     age: number;
+
+    //--
+    status: string;
+
 }
