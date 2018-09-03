@@ -161,6 +161,8 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
 
     ngOnChanges(changes: {[propKey: string]: SimpleChange}): void {
         this.dataChange.next(100);
+        this.loading = true;
+        this.opac = 0.5;
     }
 
     ngOnDestroy(): void {
@@ -176,8 +178,6 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
             .pipe(
                 startWith([]),
                 switchMap(() => {
-                    this.loading = true;
-                    this.opac = 0.5;
                     if (!this.device) {
                         return observableOf([]);
                     }

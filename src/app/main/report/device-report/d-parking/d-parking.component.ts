@@ -78,7 +78,7 @@ export class DParkingComponent implements OnChanges, OnInit, AfterViewInit {
                     return this.deviceReportService!.getParkingReport(this.device, this.from, this.to);
                 }),
                 map((data: any) => {
-                    console.log('##', data)
+                    console.log('##', data);
                     return data;
                 }),
                 catchError(() => {

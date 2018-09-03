@@ -31,12 +31,12 @@ export class DeviceReportService {
         return this.http.get<PageableCommonResponse<DeviceSpeeedReport>>(url, {params: params});
     }
 
-    getParkingReport(device: number, from: number, to: number): Observable<DeviceParkingReport> {
+    getParkingReport(device: number, from: number, to: number): Observable<DeviceParkingReport[]> {
         let url = API_REPORT_DEVICE_PATH + "/parking/" + device;
 
         let params = new HttpParams();
         params = params.append('from', String(from));
         params = params.append('to', String(to));
-        return this.http.get<DeviceParkingReport>(url, {params: params});
+        return this.http.get<DeviceParkingReport[]>(url, {params: params});
     }
 }
