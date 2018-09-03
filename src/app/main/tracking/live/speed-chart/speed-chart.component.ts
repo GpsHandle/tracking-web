@@ -207,12 +207,17 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
                 } else {
                     this.historyEventsOptimizeForChart = data;
                 }
+
                 this.loading = false;
                 this.opac = 1;
+
                 if (!_.isEmpty(this.historyEventsOptimizeForChart)) {
                     this.draw();
                 } else {
                     this.historyEventsOptimizeForChart = [];
+                    let h: any = {timestamp: this.from, speedKPH: 0};
+                    let l: any = {timestamp: this.to, speedKPH: 0};
+                    this.historyEventsOptimizeForChart.push(h, l);
                     this.draw();
                 }
             });

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UsageComponent } from 'app/main/help/usage/usage.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'usage', pathMatch: 'full' },
+    { path: '', component: UsageComponent, pathMatch: 'full' },
     { path: 'usage', component: UsageComponent }
 ];
 
