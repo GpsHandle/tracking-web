@@ -209,7 +209,12 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
                 }
                 this.loading = false;
                 this.opac = 1;
-                this.draw();
+                if (!_.isEmpty(this.historyEventsOptimizeForChart)) {
+                    this.draw();
+                } else {
+                    this.historyEventsOptimizeForChart = [];
+                    this.draw();
+                }
             });
     }
 
