@@ -6,26 +6,19 @@ export class GeozoneRequest {
     accountIds: Array<number>;
     name: string;
     color: string;
+    address: string;
     maxSpeedKPH: number;
     reverseGeozone: boolean;
     privateArea: boolean;
-    geometry: string;
+    geojson: string;
 
-    // id: number;
-    // companyId: number;
-    // accounts: Array<AccountLittle>;
-    // name: string;
-    // color: string;
-    // maxSpeedKPH: number;
-    // reverseGeozone: boolean;
-    // privateArea: boolean;
-    // geometry: string | any;
     updateFromGeofence(selectedGeofence: Geofence | any) {
         this.name = selectedGeofence.name;
         this.color = selectedGeofence.color;
+        this.address = selectedGeofence.address;
         this.maxSpeedKPH = selectedGeofence.maxSpeedKPH;
         this.privateArea = selectedGeofence.privateArea;
         this.reverseGeozone = selectedGeofence.reverseGeozone;
-        this.geometry = JSON.stringify(selectedGeofence.geometry);
+        this.geojson = JSON.stringify(selectedGeofence.geojson);
     }
 }

@@ -28,7 +28,7 @@
     </div>
     <div fxFlex="80" class="geo-detail">
         <div id="geo-map-id" class="geo-detail-map"></div>
-        <div class="geo-detail-info-container" *ngIf="showDetails">
+        <div class="geo-detail-info-container" *ngIf="showDetails && selected">
             <mat-toolbar>
                 <span>Geofence: {{selected.name}}</span>
                 <span class="fill-remain-space"></span>
@@ -80,10 +80,10 @@
                                 </div>
                                 <div>
                                     <mat-form-field>
-                                        <input matInput placeholder="Center Latitude" [(ngModel)]="coordinates[0]" name="geofence-coor-lat" [disabled]="!edit && !create">
+                                        <input matInput placeholder="Center Latitude" [(ngModel)]="latlng.lat" name="geofence-coor-lat" [disabled]="!edit && !create">
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input matInput placeholder="Center Longitude" [(ngModel)]="coordinates[1]" name="geofence-coor-lon" [disabled]="!edit && !create">
+                                        <input matInput placeholder="Center Longitude" [(ngModel)]="latlng.lng" name="geofence-coor-lon" [disabled]="!edit && !create">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                                         <input type="number" matInput placeholder="Latitude # {{i}}" [(ngModel)]="coor[0]" name="geofence-poly-lat-{{i}}" [disabled]="!edit && !create">
                                     </mat-form-field>
                                     <mat-form-field>
-                                        <input type="number" matInput placeholder="Longitude # {{i}}" [(ngModel)]="coor[1]" name="geofence-poly-lat-{{i}}" [disabled]="!edit && !create">
+                                        <input type="number" matInput placeholder="Longitude # {{i}}" [(ngModel)]="coor[1]" name="geofence-poly-lng-{{i}}" [disabled]="!edit && !create">
                                     </mat-form-field>
                                 </div>
                             </div>

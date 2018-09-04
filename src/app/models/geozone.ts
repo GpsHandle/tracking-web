@@ -6,10 +6,11 @@ export class Geofence {
     private _accounts: Array<AccountLittle>;
     private _name: string;
     private _color: string;
+    private _address: string;
     private _maxSpeedKPH: number;
     private _reverseGeozone: boolean;
     private _privateArea: boolean;
-    private _geometry: string | any;
+    private _geojson: string | any;
 
     //track
     private _internalId: number;
@@ -55,6 +56,14 @@ export class Geofence {
         this._color = value;
     }
 
+    get address(): string {
+        return this._address;
+    }
+
+    set address(value: string) {
+        this._address = value;
+    }
+
     get maxSpeedKPH(): number {
         return this._maxSpeedKPH;
     }
@@ -79,12 +88,12 @@ export class Geofence {
         this._privateArea = value;
     }
 
-    get geometry(): string | any {
-        return this._geometry;
+    get geojson(): string | any {
+        return this._geojson;
     }
 
-    set geometry(value: string | any) {
-        this._geometry = value;
+    set geojson(value: string | any) {
+        this._geojson = value;
     }
 
     get internalId(): number {

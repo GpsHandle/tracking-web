@@ -3,7 +3,7 @@ import { Geofence } from 'app/models/geozone';
 export class GeoUtils {
     public static convertGeofence(data: Geofence): Geofence {
         try {
-            data.geometry = JSON.parse(data.geometry);
+            data.geojson = JSON.parse(data.geojson);
         } catch (e) {
             // not json
         }
