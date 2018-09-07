@@ -1,7 +1,7 @@
-import { Geofence } from 'app/models/geozone';
+import { Geozone } from 'app/models/geozone';
 
 export class GeoUtils {
-    public static convertGeofence(data: Geofence): Geofence {
+    public static convertGeofence(data: Geozone): Geozone {
         try {
             data.geojson = JSON.parse(data.geojson);
         } catch (e) {

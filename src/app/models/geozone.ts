@@ -1,6 +1,17 @@
 import { AccountLittle } from 'app/models/little/account.little';
 
-export class Geofence {
+export class GeoJsonInf {
+    geometry: any;
+    properties: any;
+    type: string;
+
+    constructor() {
+        this.geometry = {};
+        this.properties = {};
+    }
+}
+
+export class Geozone {
     private _id: number;
     private _companyId: number;
     private _accounts: Array<AccountLittle>;
@@ -10,9 +21,13 @@ export class Geofence {
     private _maxSpeedKPH: number;
     private _reverseGeozone: boolean;
     private _privateArea: boolean;
-    private _geojson: string | any;
+    private _geojson: GeoJsonInf;
 
-    //track
+
+    constructor() {
+        this.geojson = new GeoJsonInf();
+    }
+
     private _internalId: number;
 
 

@@ -4,7 +4,7 @@
             <mat-form-field>
                 <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
             </mat-form-field>
-            <button mat-icon-button color="primary" matTooltip="Create New Geofence" (click)="addNewGeofence()" [disabled]="edit">
+            <button mat-icon-button color="primary" matTooltip="Create New Geozone" (click)="addNewGeofence()" [disabled]="edit">
                 <mat-icon>add</mat-icon>
             </button>
         </div>
@@ -28,9 +28,9 @@
     </div>
     <div fxFlex="80" class="geo-detail">
         <div id="geo-map-id" class="geo-detail-map"></div>
-        <div class="geo-detail-info-container" *ngIf="showDetails && selected">
+        <div class="geo-detail-info-container" *ngIf="showDetails">
             <mat-toolbar>
-                <span>Geofence: {{selected.name}}</span>
+                <span>Geozone: {{selected.name}}</span>
                 <span class="fill-remain-space"></span>
 
                 <div *ngIf="create">
@@ -45,11 +45,11 @@
             </mat-toolbar>
             <div class="geo-detail-info">
                 <div fxLayout="row" fxLayoutGap="16px">
-                    <div fxFlex="33" class="geo-detail-info-fields">
+                    <div fxFlex="33">
                         <form class="">
                             <div fxLayout="column">
                                 <mat-form-field fxFlex="100">
-                                    <input matInput placeholder="Geofence Name" [(ngModel)]="selected.name" name="geofence-name" [disabled]="!edit && !create">
+                                    <input matInput placeholder="Geozone Name" [(ngModel)]="selected.name" name="geofence-name" [disabled]="!edit && !create">
                                 </mat-form-field>
                                 <mat-form-field fxFlex="100">
                                     <input matInput placeholder="Address" [(ngModel)]="selected.address" name="geofence-address" [disabled]="!edit && !create">

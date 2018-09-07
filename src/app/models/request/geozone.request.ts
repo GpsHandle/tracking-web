@@ -1,4 +1,4 @@
-import { Geofence } from 'app/models/geozone';
+import { Geozone } from 'app/models/geozone';
 import { AccountLittle } from 'app/models/little/account.little';
 
 export class GeozoneRequest {
@@ -12,7 +12,7 @@ export class GeozoneRequest {
     privateArea: boolean;
     geojson: string;
 
-    updateFromGeofence(selectedGeofence: Geofence | any) {
+    updateFromGeofence(selectedGeofence: Geozone | any) {
         this.name = selectedGeofence.name;
         this.color = selectedGeofence.color;
         this.address = selectedGeofence.address;

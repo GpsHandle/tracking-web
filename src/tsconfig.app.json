@@ -8,6 +8,7 @@
       "d3",
       "lodash",
       "leaflet",
+      "leaflet-editable",
       "leaflet-draw",
       "leaflet-easybutton",
       "leaflet.markercluster",
