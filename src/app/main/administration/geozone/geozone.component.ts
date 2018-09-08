@@ -110,7 +110,7 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
 
     public addNewGeofence(): void {
         this.selected = new Geozone();
-        this.showGeofenceDetails(true);
+        this.showDetail(true);
         this.create = true;
     }
 
@@ -175,12 +175,12 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
 
     public select(geofence: Geozone): void {
         this.selected = geofence;
-        this.showGeofenceDetails(true);
+        this.showDetail(true);
         this.map.panTo(this.center);
     }
 
 
-    public showGeofenceDetails(show: boolean): void {
+    public showDetail(show: boolean): void {
         this.showDetails = show;
         setTimeout(() => {
             this.map.invalidateSize(true);
@@ -202,11 +202,6 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
                 this.editableLayers.removeLayer(geofence.internalId);
             }
         )
-    }
-
-    hide() {
-        this.showDetails = false;
-        //setTimeout(() => {this.map.invalidateSize()}, 1);
     }
 
     draw(type: string): void {
@@ -261,7 +256,7 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
         if (this.selected) {
             this.geometryMap.get(this.selected.name).disableEdit();
         }
-        this.hide();
+        this.showDetail(false);
     }
 
 
@@ -299,7 +294,7 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
                     this.pending = false;
                     this.edit = false;
                     this.selected = undefined;
-                    this.showGeofenceDetails(false);
+                    this.showDetail(false);
                 }
             );
         } else {
@@ -315,7 +310,7 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
                     this.pending = false;
                     this.create = false;
                     this.selected = undefined;
-                    this.showGeofenceDetails(false);
+                    this.showDetail(false);
                 }
             )
         }
