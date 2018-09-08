@@ -266,6 +266,7 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
 
 
     modify(geofence?: Geozone): void {
+        console.log('XXX', geofence);
         if (this.selected) {
             this.geometryMap.get(this.selected.name).disableEdit();
         }
@@ -274,6 +275,9 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
             this.edit = true;
             this.selected = geofence;
             this.geometryMap.get(geofence.name).enableEdit();
+        } else if (this.selected) {
+            this.edit = true;
+            this.geometryMap.get(this.selected.name).enableEdit();
         }
     }
 
