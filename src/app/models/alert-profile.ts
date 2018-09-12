@@ -11,6 +11,7 @@ export class AlertProfile {
     active: boolean;
     speedKph: number;
     zoneId: number;
+    zoneName: string;
     params1: number;
     params2: string;
     weekDays: DaySelected;

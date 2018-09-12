@@ -15,6 +15,8 @@ import { AddEditContactComponent } from 'app/main/administration/contact/add-edi
 import { ContactRequest } from 'app/models/request/contact.request';
 import { merge, of, ReplaySubject } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { Geozone } from 'app/models/geozone';
+import { GeozoneService } from 'app/services/geozone.service';
 
 @Component({
     selector: 'add-edit-alert-profile',
@@ -25,6 +27,8 @@ export class AddEditAlertProfileComponent implements OnInit {
 
     isEditing: boolean = false;
     contactList: Contact[];
+    zoneList: Geozone[];
+
     types: Array<AlertType> = [
         AlertType.ALERT_START,
         AlertType.ALERT_STOP,
@@ -45,12 +49,22 @@ export class AddEditAlertProfileComponent implements OnInit {
     contactChanged: ReplaySubject<any>;
 
     constructor(private contactService: ContactService,
+                private geozoneService: GeozoneService,
                 private applicationContext: ApplicationContext,
                 public matDialog: MatDialog,
                 public dialogRef: MatDialogRef<AddEditAlertProfileComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: AlertProfile | AlertProfileRequest | any) {}
 
     ngOnInit() {
+        this.geozoneService.getAll().subscribe(
+            data => {
+                this.zoneList = data;
+            },
+            error => {},
+            () => {}
+        );
+
+
         this.contactChanged = new ReplaySubject(1);
         merge(this.contactChanged)
         .pipe(

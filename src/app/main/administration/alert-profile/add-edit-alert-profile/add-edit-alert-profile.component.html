@@ -12,12 +12,6 @@
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
                 <mat-form-field class="full-width">
-                    <!--input type="text" matInput
-                           i18n-placeholder
-                           placeholder="Type"
-                           aria-label="Type of alert"
-                           required
-                           [(ngModel)]="data.type" name="Type of alert"-->
                     <mat-select i18n-placeholder
                                 placeholder="Type"
                                 aria-label="Type of alert"
@@ -61,7 +55,7 @@
             <mat-select [multiple]="true"
                         i18n-placeholder
                         [(ngModel)]="data.contactIds"
-                        required
+                        [required]="true"
                         name="List of contacts"
                         placeholder="Contacts to receive Alerts"
                         aria-label="Contacts to receive alerts">
@@ -88,12 +82,15 @@
             </div>
             <div fxFlex="25">
                 <mat-form-field class="full-width">
-                    <input type="text" matInput
-                           i18n-placeholder
-                           placeholder="Zone ID"
-                           aria-label="Geozone ID"
-                           [(ngModel)]="data.zoneId"
-                           name="Geozone ID">
+                    <mat-select i18n-placeholder
+                                placeholder="Zone"
+                                aria-label="Geozone"
+                                name="Geozone"
+                                [(ngModel)]="data.zoneId">
+                        <mat-option *ngFor="let zone of zoneList" [value]="zone.id">
+                            {{zone.name}}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
             </div>
             <div fxFlex="25">

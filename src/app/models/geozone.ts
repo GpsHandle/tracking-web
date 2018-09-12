@@ -23,7 +23,6 @@ export class Geozone {
     private _privateArea: boolean;
     private _geojson: GeoJsonInf;
 
-
     constructor() {
         this.geojson = new GeoJsonInf();
     }
