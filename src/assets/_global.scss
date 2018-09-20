@@ -139,7 +139,10 @@
   }
 
   .x-dialog-close-btn {
+    position: relative;
     float: right;
+    margin-top: -24px;
+    margin-right: -24px;
   }
 
   .mat-table {

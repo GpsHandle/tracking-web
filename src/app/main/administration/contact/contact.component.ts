@@ -18,8 +18,6 @@ import { DeleteContactComponent } from 'app/main/administration/contact/delete-c
 })
 export class ContactComponent implements OnInit {
 
-    constructor(public dialog: MatDialog, private contactService: ContactService,
-                private applicationContext: ApplicationContext) { }
     dataSource: Array<Contact>;
     change: ReplaySubject<any>;
 
@@ -28,6 +26,9 @@ export class ContactComponent implements OnInit {
     resultsLength = 0;
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
+
+    constructor(public dialog: MatDialog, private contactService: ContactService,
+                private applicationContext: ApplicationContext) { }
 
     ngOnInit() {
         this.change = new ReplaySubject(1);

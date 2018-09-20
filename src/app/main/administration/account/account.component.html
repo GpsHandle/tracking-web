@@ -16,13 +16,6 @@
            [dataSource]="dataSource"
            matSort multiTemplateDataRows>
 
-        <!--ng-container matColumnDef="toggle">
-            <th mat-header-cell *matHeaderCellDef i18n>#</th>
-            <td mat-cell *matCellDef="let element">
-                <mat-slide-toggle [checked]="checkStatus(element)" (change)="toggleStatus(element)"></mat-slide-toggle>
-            </td>
-        </ng-container-->
-
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> ID </th>
             <td mat-cell *matCellDef="let element"> {{element.id}} </td>

@@ -1,0 +1,111 @@
+<div mat-dialog-title>
+    <span i18n>Driver #</span>
+    <span class="x-dialog-close-btn">
+        <button mat-icon-button mat-dialog-close [tabIndex]="-1">
+            <mat-icon>cancel</mat-icon>
+        </button>
+    </span>
+</div>
+
+<!--//-->
+<div mat-dialog-content>
+    <form>
+        <div fxLayout="column">
+            <div fxLayout="row" fxLayoutGap="16px">
+                <div fxFlex="50">
+                    <mat-form-field class="full-width">
+                        <input type="text"
+                               matInput
+                               i18n-placeholder
+                               placeholder="First Name"
+                               name="driver-first-name"
+                               [(ngModel)]="data.firstName">
+                    </mat-form-field>
+                </div>
+                <div fxFlex="50">
+                    <mat-form-field class="full-width">
+                        <input type="text"
+                               matInput
+                               i18n-placeholder
+                               placeholder="Last Name"
+                               name="driver-last-name"
+                               [(ngModel)]="data.lastName">
+                    </mat-form-field>
+                </div>
+            </div>
+            <!--//-->
+            <mat-form-field>
+                <input matInput
+                       type="text"
+                       name="driver-contacts"
+                       i18n-placeholder
+                       placeholder="Contacts">
+                <button matSuffix mat-icon-button>
+                    <mat-icon>add</mat-icon>
+                </button>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput
+                       [matDatepicker]="dateOfBirth"
+                       i18n-placeholder
+                       placeholder="Date of Birth">
+                <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+                <mat-datepicker #dateOfBirth></mat-datepicker>
+            </mat-form-field>
+
+            <div fxLayout="row" fxLayoutGap="16px">
+                <mat-form-field fxFlex="50">
+                    <input type="text"
+                           matInput
+                           name="driver-license-number"
+                           [(ngModel)]="data.driverLicenseNumber"
+                           i18n-placeholder
+                           placeholder="License Number">
+                </mat-form-field>
+                <mat-form-field fxFlex="50">
+                    <input type="text"
+                           matInput
+                           name="driver-license-type"
+                           [(ngModel)]="data.driverLicenseType"
+                           i18n-placeholder
+                           placeholder="License Type">
+                </mat-form-field>
+            </div>
+
+            <mat-form-field>
+                <input type="text"
+                       matInput
+                       name="driver-license-type-description"
+                       [(ngModel)]="data.driverLicenseTypeDescription"
+                       i18n-placeholder
+                       placeholder="License Type Description">
+            </mat-form-field>
+
+            <div fxLayout="row" fxLayoutGap="16px">
+                <mat-form-field fxFlex="50">
+                    <input matInput
+                           [matDatepicker]="issuedDate"
+                           i18n-placeholder
+                           placeholder="Issued Date">
+                    <mat-datepicker-toggle matSuffix [for]="issuedDate"></mat-datepicker-toggle>
+                    <mat-datepicker #issuedDate></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field fxFlex="50">
+                    <input matInput
+                           [matDatepicker]="expiredDate"
+                           i18n-placeholder
+                           placeholder="Expired Date">
+                    <mat-datepicker-toggle matSuffix [for]="expiredDate"></mat-datepicker-toggle>
+                    <mat-datepicker #expiredDate></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<!--//-->
+<div mat-dialog-actions align="end">
+    <button mat-flat-button mat-dialog-close="true" i18n>Save</button>
+    <button mat-button mat-dialog-close i18n>Cancel</button>
+</div>
