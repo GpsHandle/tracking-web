@@ -31,6 +31,7 @@ import { CircleMarker } from 'leaflet';
 import { MatBottomSheet } from '@angular/material';
 import { PanelCommandComponent } from 'app/main/tracking/live/panel-command/panel-command.component';
 import { ApplicationContext } from 'app/application-context';
+import { Device } from 'app/models/device';
 
 const TILE_OSM = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
 const TILE_MAPBOX = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}';
@@ -327,11 +328,11 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
         event.stopPropagation();
     }
 
-    openPanelCommand(event: Event) {
+    openPanelCommand(event: Event, selected: Device) {
         if (event) {
             event.stopPropagation();
         }
-
+        console.log('Device #', selected);
         this.bottomSheet.open(PanelCommandComponent);
     }
 

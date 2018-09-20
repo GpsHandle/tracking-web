@@ -32,7 +32,7 @@
                             <button mat-icon-button class="small" (click)="stopPropagation($event)"><mat-icon mat-list-icon>cellfull</mat-icon></button>
                         </div>
                         <div>
-                            <button mat-icon-button class="small" (click)="openPanelCommand($event)"><mat-icon mat-list-icon>console</mat-icon></button>
+                            <button mat-icon-button class="small" (click)="openPanelCommand($event, device)"><mat-icon mat-list-icon>console</mat-icon></button>
                             <button mat-icon-button class="small" (click)="requestLocationUpdate($event)"><mat-icon mat-list-icon>refresh</mat-icon></button>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                             <mat-icon>history</mat-icon>
                             <span>history >></span>
                         </a>
-                        <button mat-stroked-button (click)="openPanelCommand()">
+                        <button mat-stroked-button (click)="openPanelCommand($event, selectedDevice)">
                             <mat-icon>console</mat-icon>
                             <span>Send Command</span>
                         </button>
