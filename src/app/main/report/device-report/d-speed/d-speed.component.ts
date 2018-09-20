@@ -30,7 +30,7 @@ export class DSpeedComponent implements OnChanges, OnInit, AfterViewInit {
     resultsLength: number;
     dataChange: ReplaySubject<any>;
 
-    displayedColumns = ['latitude', 'longitude', 'altitude', 'heading', 'odometerKM', 'speedKPH', 'address', 'status', 'timestamp'];
+    displayedColumns = ['latlng', 'altitude', 'heading', 'odometerKM', 'speedKPH', 'address', 'status', 'timestamp'];
 
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild(MatPaginator) paginator: MatPaginator;
