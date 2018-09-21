@@ -8,11 +8,20 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { AddEditDriverComponent } from 'app/main/administration/driver/add-edit-driver/add-edit-driver.component';
 import { DeleteDriverComponent } from 'app/main/administration/driver/delete-driver/delete-driver.component';
 import { OptionalColumnDriverComponent } from 'app/main/administration/driver/optional-column-driver/optional-column-driver.component';
+import { DriverRequest } from 'app/models/request/driver.request';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
     selector: 'app-driver',
     templateUrl: './driver.component.html',
-    styleUrls: ['./driver.component.scss']
+    styleUrls: ['./driver.component.scss'],
+    animations: [
+        trigger('detailExpand', [
+            state('collapsed', style({height: '0px', minHeight: '0', display: 'none'})),
+            state('expanded', style({height: '*'})),
+            transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+        ]),
+    ],
 })
 export class DriverComponent implements OnInit {
     dataSource: Array<Driver>;
@@ -75,19 +84,74 @@ export class DriverComponent implements OnInit {
         );
     }
 
+    isExpanded(element: any): boolean {
+        return this.expandedElement === element;
+    }
+
+    toggleExpandCollapse(element): void {
+        if (this.isExpanded(element)) {
+            this.expandedElement = null;
+        } else {
+            this.expandedElement = element;
+        }
+    }
+
+    getContact(driver: Driver) {
+        const contacts = driver.contacts;
+        let prefix = '';
+        let rtn = '';
+        for (let i = 0; i < contacts.length; i++) {
+            rtn += prefix;
+            rtn += contacts[i].name;
+
+            if (i < contacts.length - 1) {
+                prefix = ', ';
+            } else {
+                prefix = '';
+            }
+        }
+        return rtn;
+    }
+
+
     dialogNewDriver() {
+        const driver = new DriverRequest();
         const dialogRef = this.dialog.open(AddEditDriverComponent, {
             minWidth: 500,
-            data: new Driver()
+            data: driver
         });
         dialogRef.afterClosed().subscribe(
-            data => {},
+            data => {
+                console.log('Creating driver#', driver);
+                if (data) {
+                    this.createDriver(driver);
+                }
+            },
             error => {},
             () => {}
         )
     }
 
-    dialogDeleteDriver() {
+    createDriver(driver: DriverRequest) {
+        this.applicationContext.spin(true);
+        this.driverService.create(driver).subscribe(
+            data => {
+                this.applicationContext.info("Created a driver!");
+            },
+            error => {
+                this.applicationContext.error("Not able to create driver for now");
+            },
+            () => {
+                this.change.next(1);
+            }
+        );
+    }
+
+    dialogEditing(driver: Driver) {
+
+    }
+
+    dialogDeleteDriver(driver: Driver) {
         const dialogRef = this.dialog.open(DeleteDriverComponent, {
 
         });

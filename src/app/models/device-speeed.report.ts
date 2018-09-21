@@ -9,6 +9,6 @@ export class DeviceSpeeedReport {
     public longitude: number;
     public odometerKM: number;
     public speedKPH: number;
-    public status: number;
+    public status: string;
     public timestamp: number;
 }

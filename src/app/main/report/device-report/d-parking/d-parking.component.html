@@ -20,6 +20,11 @@
         <td mat-cell *matCellDef="let row">{{ row.altitude }}</td>
     </ng-container>
 
+    <ng-container matColumnDef="latlng">
+        <th mat-header-cell *matHeaderCellDef i18n>Lat/Lng</th>
+        <td mat-cell *matCellDef="let row">{{ row.latitude + ", " + row.longitude }}</td>
+    </ng-container>
+
     <ng-container matColumnDef="latitude">
         <th mat-header-cell *matHeaderCellDef>Latitude</th>
         <td mat-cell *matCellDef="let row">{{ row.latitude }}</td>

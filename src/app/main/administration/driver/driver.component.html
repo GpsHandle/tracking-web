@@ -29,12 +29,12 @@
 
         <ng-container matColumnDef="contacts">
             <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Contacts</th>
-            <td mat-cell *matCellDef="let el">{{el.contacts}}</td>
+            <td mat-cell *matCellDef="let el">{{getContact(el)}}</td>
         </ng-container>
 
         <ng-container matColumnDef="dateOfBirth">
             <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Date of Birth</th>
-            <td mat-cell *matCellDef="let el">{{el.dateOfBirth | date:'short'}}</td>
+            <td mat-cell *matCellDef="let el">{{el.dateOfBirth | date:'shortDate'}}</td>
         </ng-container>
 
         <ng-container matColumnDef="driverExperiencesMonths">
@@ -64,12 +64,12 @@
 
         <ng-container matColumnDef="driverLicenseIssueDate">
             <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Driver License Issued Date</th>
-            <td mat-cell *matCellDef="let el">{{el.driverLicenseIssueDate | date: 'short'}}</td>
+            <td mat-cell *matCellDef="let el">{{el.driverLicenseIssueDate | date: 'shortDate'}}</td>
         </ng-container>
 
         <ng-container matColumnDef="driverLicenseExpiredDate">
             <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Driver License Expired Date</th>
-            <td mat-cell *matCellDef="let el">{{el.driverLicenseExpiredDate | date: 'short'}}</td>
+            <td mat-cell *matCellDef="let el">{{el.driverLicenseExpiredDate | date: 'shortDate'}}</td>
         </ng-container>
 
         <!--//-->
@@ -111,14 +111,33 @@
             <td mat-cell *matCellDef="let el" [attr.colspan]="displayedColumns.length">
                 <div fxLayout="column" class="element-detail" [@detailExpand]="el == expandedElement ? 'expanded' : 'collapsed'">
                     <div fxLayout="row" fxLayoutGap="16px" class="full-width">
-                        Driver///Driver///Driver///Driver
+
+                        <div class="flex-center">
+                            <div>
+                                <button mat-button (click)="dialogEditing(el)">
+                                    <mat-icon color="accent">edit</mat-icon>
+                                    <span>Edit</span>
+                                </button>
+                                <button mat-button (click)="dialogDeleteDriver(el)">
+                                    <mat-icon color="warn">delete</mat-icon>
+                                    <span>Delete</span>
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+            class="element-row"
+            [class.expanded-row]="isExpanded(element)"
+            (click)="toggleExpandCollapse(element)"></tr>
+
+        <tr mat-row *matRowDef="let row; columns: ['expanded-detail']" class="detail-row"></tr>
+
     </table>
 
     <mat-paginator [length]="resultsLength"

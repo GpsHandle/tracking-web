@@ -9,7 +9,7 @@ export class DeviceParkingReport {
     public address: string;
     public odometerKM: number;
     public speedKPH: number;
-    public status: number;
+    public status: string;
     public timestamp: number;
     public stoppedTime: number
 }

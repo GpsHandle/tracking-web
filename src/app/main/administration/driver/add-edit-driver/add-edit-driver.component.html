@@ -34,20 +34,29 @@
                 </div>
             </div>
             <!--//-->
-            <mat-form-field>
-                <input matInput
-                       type="text"
-                       name="driver-contacts"
-                       i18n-placeholder
-                       placeholder="Contacts">
-                <button matSuffix mat-icon-button>
+            <mat-form-field class="full-width">
+                <mat-select [multiple]="true"
+                            i18n-placeholder
+                            [(ngModel)]="data.contactIds"
+                            [required]="true"
+                            name="driver-contacts"
+                            placeholder="Contacts to receive Alerts"
+                            aria-label="Contacts to receive alerts">
+                    <mat-option *ngFor="let contact of contactList" [value]="contact.id">
+                        {{contact.name}}
+                    </mat-option>
+                </mat-select>
+                <button mat-icon-button matSuffix (click)="dialogToAddContact($event)">
                     <mat-icon>add</mat-icon>
                 </button>
             </mat-form-field>
+
             <mat-form-field>
                 <input matInput
                        [matDatepicker]="dateOfBirth"
+                       [(ngModel)]="data.dateOfBirth"
                        i18n-placeholder
+                       name="driver-date-of-birth"
                        placeholder="Date of Birth">
                 <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
                 <mat-datepicker #dateOfBirth></mat-datepicker>
@@ -85,6 +94,8 @@
                 <mat-form-field fxFlex="50">
                     <input matInput
                            [matDatepicker]="issuedDate"
+                           [(ngModel)]="data.driverLicenseIssueDate"
+                           name="driver-license-issue-date"
                            i18n-placeholder
                            placeholder="Issued Date">
                     <mat-datepicker-toggle matSuffix [for]="issuedDate"></mat-datepicker-toggle>
@@ -93,13 +104,14 @@
                 <mat-form-field fxFlex="50">
                     <input matInput
                            [matDatepicker]="expiredDate"
+                           [(ngModel)]="data.driverLicenseExpiredDate"
+                           name="driver-license-expire-date"
                            i18n-placeholder
                            placeholder="Expired Date">
                     <mat-datepicker-toggle matSuffix [for]="expiredDate"></mat-datepicker-toggle>
                     <mat-datepicker #expiredDate></mat-datepicker>
                 </mat-form-field>
             </div>
-
         </div>
     </form>
 </div>
