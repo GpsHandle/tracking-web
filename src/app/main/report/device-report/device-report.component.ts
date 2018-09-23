@@ -3,6 +3,7 @@ import { DeviceLittle } from 'app/models/little/device.little';
 import { MatDrawer, MatSidenav, MatTableDataSource } from '@angular/material';
 import { DeviceService } from 'app/services/device.service';
 import { ApplicationContext } from 'app/application-context';
+import { DeviceReportService } from 'app/services/device-report.service';
 
 @Component({
     selector: 'app-report',
@@ -21,6 +22,7 @@ export class DeviceReportComponent implements OnInit {
     @ViewChild(MatDrawer) sideNav: MatDrawer;
 
     constructor(private deviceService: DeviceService,
+                private deviceReportService: DeviceReportService,
                 private applicationContext: ApplicationContext) { }
 
     ngOnInit() {
@@ -87,5 +89,18 @@ export class DeviceReportComponent implements OnInit {
     last72hours(): void {
         this.to = Date.now();
         this.from = this.to - 72 * 3600 * 1000;
+    }
+
+    //----------export----------//
+    exportPdf() {
+
+
+        this.deviceReportService.exportSpeedReport(this.selected.id, this.from, this.to).subscribe(
+            data => {
+                console.log('Data', data);
+            },
+            error => {},
+            () => {}
+        );
     }
 }

@@ -39,4 +39,14 @@ export class DeviceReportService {
         params = params.append('to', String(to));
         return this.http.get<DeviceParkingReport[]>(url, {params: params});
     }
+
+    exportSpeedReport(device: number, from: number, to: number): Observable<string> {
+        let url = API_REPORT_DEVICE_PATH + "/exp/speed/" + device;
+        let params = new HttpParams();
+        params = params.append('from', String(from));
+        params = params.append('to', String(to));
+        params = params.append('format', 'pdf');
+
+        return this.http.get<string>(url, { params: params });
+    }
 }
