@@ -152,7 +152,8 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
     private alive: boolean = true;
     private subscription;
     //-------------------------------------------------------------------------
-    constructor(private eventService: EventService, private cdRef : ChangeDetectorRef) {
+    constructor(private eventService: EventService,
+                private cdRef : ChangeDetectorRef) {
         this.dataChange = new ReplaySubject(1);
     }
 

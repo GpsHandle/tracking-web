@@ -8,6 +8,7 @@ import { AccountReportComponent } from 'app/main/report/account-report/account-r
 import { DriverReportComponent } from 'app/main/report/driver-report/driver-report.component';
 import { ShipmentReportComponent } from 'app/main/report/shipment-report/shipment-report.component';
 import { AlertHistoryComponent } from 'app/main/report/alert-history/alert-history.component';
+import { EventService } from 'app/services/event.service';
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import { AlertHistoryComponent } from 'app/main/report/alert-history/alert-histo
         MaterialShared
     ],
     providers: [
-        DeviceService
+        DeviceService,
+        EventService
     ],
     declarations: [
         AccountReportComponent,

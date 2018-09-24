@@ -59,8 +59,6 @@ export class DParkingComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     ngOnChanges(changes: {[propKey: string]: SimpleChange}): void {
-        console.log('[>_] Changed', changes);
-
         //this.loadData();
         this.dataChange.next(100);
     }
@@ -78,7 +76,6 @@ export class DParkingComponent implements OnChanges, OnInit, AfterViewInit {
                     return this.deviceReportService!.getParkingReport(this.device, this.from, this.to);
                 }),
                 map((data: any) => {
-                    console.log('##', data);
                     return data;
                 }),
                 catchError(() => {

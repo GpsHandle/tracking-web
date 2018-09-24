@@ -24,39 +24,62 @@
                         <span>{{selected.name || selected.deviceId}}</span>
                     </mat-panel-title>
                     <mat-panel-description>
-                        Device Description
+
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 <mat-divider></mat-divider>
 
                 <ng-template matExpansionPanelContent>
-                    <div fxLayout="column">
-                        <div fxLayout="row" fxLayoutGap="16px" class="rpt-board-timepicker">
+                    <!--<div fxLayout="column">-->
+                        <!--<div fxLayout="row" fxLayoutGap="16px" class="rpt-board-timepicker">-->
+                            <!--<button mat-stroked-button color="primary" (click)="last2hours()">Last 2 hours</button>-->
+                            <!--<button mat-stroked-button color="primary" (click)="last8hours()">Last 8 hours</button>-->
+                            <!--<button mat-stroked-button color="primary" (click)="last24hours()">Last 24 hours</button>-->
+                            <!--<button mat-stroked-button color="primary" (click)="last72hours()">Last 3 days</button>-->
+                            <!--<button mat-stroked-button color="primary">Custom</button>-->
+                        <!--</div>-->
+                        <!--<div fxLayout="row" fxLayoutGap="16px" class="rpt-board-timepicker">-->
+                            <!--<mat-form-field>-->
+                                <!--<input matInput [matDatepicker]="picker1" placeholder="Choose a date for start">-->
+                                <!--<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>-->
+                                <!--<mat-datepicker #picker1 startView="year" [startAt]="startDate"></mat-datepicker>-->
+                            <!--</mat-form-field>-->
+                            <!--<mat-form-field>-->
+                                <!--<input matInput [matDatepicker]="picker" placeholder="Choose a date">-->
+                                <!--<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+                                <!--<mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>-->
+                            <!--</mat-form-field>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <event-line-chart [eventList]="eventList"></event-line-chart>
+                </ng-template>
+                <mat-action-row>
+                    <div fxLayout="row" fxLayoutGap="16px" class="rpt-board-timepicker">
                             <button mat-stroked-button color="primary" (click)="last2hours()">Last 2 hours</button>
                             <button mat-stroked-button color="primary" (click)="last8hours()">Last 8 hours</button>
                             <button mat-stroked-button color="primary" (click)="last24hours()">Last 24 hours</button>
                             <button mat-stroked-button color="primary" (click)="last72hours()">Last 3 days</button>
-                            <button mat-stroked-button color="primary">Custom</button>
-                        </div>
-                        <div fxLayout="row" fxLayoutGap="16px" class="rpt-board-timepicker">
-                            <mat-form-field>
-                                <input matInput [matDatepicker]="picker1" placeholder="Choose a date for start">
-                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                                <mat-datepicker #picker1 startView="year" [startAt]="startDate"></mat-datepicker>
-                            </mat-form-field>
-                            <mat-form-field>
-                                <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
-                            </mat-form-field>
-                        </div>
+                            <button mat-stroked-button color="primary" (click)="customTime($event)" disabled>Custom</button>
 
-                        <div fxLayout="row" fxLayoutGap="16px">
-                            <button mat-icon-button (click)="exportPdf()"><mat-icon>pdf</mat-icon></button>
-                            <button mat-icon-button><mat-icon>excel</mat-icon></button>
-                        </div>
+                        <!--<div *ngIf="showCustom" fxLayout="row" fxLayoutGap="16px">-->
+                            <!--<mat-form-field>-->
+                                <!--<input matInput [matDatepicker]="picker1" placeholder="Choose a date for start">-->
+                                <!--<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>-->
+                                <!--<mat-datepicker #picker1 startView="year" [startAt]="startDate"></mat-datepicker>-->
+                            <!--</mat-form-field>-->
+                            <!--<mat-form-field>-->
+                                <!--<input matInput [matDatepicker]="picker" placeholder="Choose a date">-->
+                                <!--<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+                                <!--<mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>-->
+                            <!--</mat-form-field>-->
+                        <!--</div>-->
+
                     </div>
-                </ng-template>
+                    <div align="end">
+                        <button mat-icon-button (click)="exportPdf()"><mat-icon>pdf</mat-icon></button>
+                        <button mat-icon-button><mat-icon>excel</mat-icon></button>
+                    </div>
+                </mat-action-row>
             </mat-expansion-panel>
         </mat-accordion>
 

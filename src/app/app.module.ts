@@ -21,7 +21,6 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { RegisterComponent } from './pages/register/register.component';
 import { LogoutComponent } from './pages/logout/logout.component';
 
-
 @NgModule({
     declarations: [
         AppComponent,
@@ -31,7 +30,7 @@ import { LogoutComponent } from './pages/logout/logout.component';
         ErrorComponent,
         ForgotPasswordComponent,
         RegisterComponent,
-        LogoutComponent
+        LogoutComponent,
     ],
     imports: [
         BrowserModule,
