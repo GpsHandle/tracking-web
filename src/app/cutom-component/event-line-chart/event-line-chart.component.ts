@@ -56,6 +56,7 @@ export class EventLineChartComponent implements OnInit, AfterViewChecked, OnChan
                 let X:Array<any> = ['timestamp'];
                 let S:Array<any> = ['SpeedKPH'];
                 let F:Array<any> = ['FuelLevel'];
+                let B:Array<any> = ['Battery'];
 
                 const ta = _.uniqBy(this.eventList, 'timestamp');
 
@@ -65,11 +66,12 @@ export class EventLineChartComponent implements OnInit, AfterViewChecked, OnChan
                     _.forEach(ta, (d) => {
                         X.push(d.timestamp);
                         S.push(d.speedKPH);
-                        F.push(0);
+                        F.push(d.fuelLevel);
+                        B.push(d.batteryLevel);
                     });
 
                     let cols = [
-                        X, S, F
+                        X, S, F, B
                     ];
                     this.chart.load({
                         columns: cols
@@ -79,17 +81,19 @@ export class EventLineChartComponent implements OnInit, AfterViewChecked, OnChan
                 let X:Array<any> = ['timestamp'];
                 let S:Array<any> = ['SpeedKPH'];
                 let F:Array<any> = ['FuelLevel'];
+                let B:Array<any> = ['Battery'];
 
                 const ta = _.uniqBy(this.eventList, 'timestamp');
 
                 _.forEach(ta, (d) => {
                     X.push(d.timestamp);
                     S.push(d.speedKPH);
-                    F.push(0);
+                    F.push(d.fuelLevel);
+                    B.push(d.batteryLevel);
                 });
 
                 let cols = [
-                    X, S, F
+                    X, S, F, B
                 ];
 
                 this.chart = c3.generate({
