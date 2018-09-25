@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/index';
 import { PageableCommonResponse } from 'app/models/pageable-common.response';
 import { DeviceSpeeedReport } from 'app/models/device-speeed.report';
@@ -40,13 +40,21 @@ export class DeviceReportService {
         return this.http.get<DeviceParkingReport[]>(url, {params: params});
     }
 
-    exportSpeedReport(device: number, from: number, to: number): Observable<string> {
+    exportSpeedReport(device: number, from: number, to: number): Observable<HttpResponse<Blob>> {
         let url = API_REPORT_DEVICE_PATH + "/exp/speed/" + device;
         let params = new HttpParams();
         params = params.append('from', String(from));
         params = params.append('to', String(to));
         params = params.append('format', 'pdf');
 
-        return this.http.get<string>(url, { params: params });
+        let headers = new HttpHeaders({
+                'Accept': 'application/pdf'
+            });
+
+        return this.http.get<HttpResponse<Blob>>(url, {
+            headers: headers,
+            params: params,
+            responseType: 'blob' as 'json'
+        });
     }
 }

@@ -19,9 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
         } else {
                 const token = this.applicationContext.getToken();
                 const changeReg = req.clone({
-                    headers: req.headers.set('Content-Type', 'application/json')
-                        .set('Accept', 'application/json')
-                        .set('Authorization', token)
+                    headers: req.headers.set('Authorization', token)
                 });
                 return next.handle(changeReg)
                     .pipe(
@@ -35,8 +33,9 @@ export class AuthInterceptor implements HttpInterceptor {
                                     this.applicationContext.logout();
                                     this.applicationContext.navigate(['/error']);
                                     return of(err)
+                                } else {
+                                    throw err;
                                 }
-                                throw err;
                             }
                         )
                     );

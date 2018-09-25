@@ -10,6 +10,8 @@ import { EventData } from 'app/models/event-data';
 import { merge, of as observableOf, ReplaySubject } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 
+import { saveAs } from 'file-saver/FileSaver';
+
 @Component({
     selector: 'app-report',
     templateUrl: './device-report.component.html',
@@ -131,14 +133,19 @@ export class DeviceReportComponent implements OnInit {
 
     //----------export----------//
     exportPdf() {
-
-
+        this.applicationContext.spin(true);
         this.deviceReportService.exportSpeedReport(this.selected.id, this.from, this.to).subscribe(
-            data => {
+            (data) => {
                 console.log('Data', data);
+                this.applicationContext.spin(false);
+                saveAs(data, 'device-report.pdf');
             },
-            error => {},
-            () => {}
+            error => {
+                console.log('Data', error);
+            },
+            () => {
+                console.log('Completed');
+            }
         );
     }
 }

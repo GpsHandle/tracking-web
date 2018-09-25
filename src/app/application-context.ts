@@ -207,7 +207,7 @@ export class ApplicationContext implements OnInit, OnDestroy {
     }
 
     navigate(commands: any[], extras?: NavigationExtras) {
-        return this.router.navigate(commands);
+        return this.router.navigate(commands, extras);
     }
 
     isLoggedIn(): boolean {

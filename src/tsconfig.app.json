@@ -13,7 +13,8 @@
       "leaflet-easybutton",
       "leaflet.markercluster",
       "leaflet-polylinedecorator",
-      "jwt-decode"
+      "jwt-decode",
+      "file-saver"
     ]
   },
   "exclude": [
