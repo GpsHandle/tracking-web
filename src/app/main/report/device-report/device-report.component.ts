@@ -132,13 +132,13 @@ export class DeviceReportComponent implements OnInit {
     }
 
     //----------export----------//
-    exportPdf() {
+    export(fmt?: string) {
         this.applicationContext.spin(true);
-        this.deviceReportService.exportSpeedReport(this.selected.id, this.from, this.to).subscribe(
+        this.deviceReportService.exportSpeedReport(this.selected.id, this.from, this.to, fmt).subscribe(
             (data) => {
                 console.log('Data', data);
                 this.applicationContext.spin(false);
-                saveAs(data, 'device-report.pdf');
+                saveAs(data, 'device-report.' + fmt );
             },
             error => {
                 console.log('Data', error);
