@@ -83,12 +83,12 @@
             </mat-expansion-panel>
         </mat-accordion>
 
-        <mat-tab-group>
+        <mat-tab-group (selectedTabChange)="onTabChanged($event)">
             <mat-tab i18n-label label="Speed Report">
-                <app-d-speed [device]="selected.id" [from]="from" [to]="to"></app-d-speed>
+                <rpt-speed [device]="selected.id" [from]="from" [to]="to"></rpt-speed>
             </mat-tab>
             <mat-tab i18n-label label="Parking Report">
-                <app-d-parking [device]="selected.id" [from]="from" [to]="to" ></app-d-parking>
+                <rpt-parking [device]="selected.id" [from]="from" [to]="to" ></rpt-parking>
             </mat-tab>
             <mat-tab i18n-label label="Geozone Report">
                 <ul>

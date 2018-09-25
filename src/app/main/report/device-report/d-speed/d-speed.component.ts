@@ -17,7 +17,7 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { ApplicationContext } from 'app/application-context';
 
 @Component({
-    selector: 'app-d-speed',
+    selector: 'rpt-speed',
     templateUrl: './d-speed.component.html',
     styleUrls: ['./d-speed.component.scss']
 })

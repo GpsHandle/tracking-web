@@ -7,8 +7,9 @@ import {merge, Observable, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import * as d_ from "date-fns";
 import { ApplicationContext } from 'app/application-context';
+
 @Component({
-    selector: 'app-d-parking',
+    selector: 'rpt-parking',
     templateUrl: './d-parking.component.html',
     styleUrls: ['./d-parking.component.scss']
 })

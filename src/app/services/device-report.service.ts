@@ -40,8 +40,9 @@ export class DeviceReportService {
         return this.http.get<DeviceParkingReport[]>(url, {params: params});
     }
 
-    exportSpeedReport(device: number, from: number, to: number, fmt?: string): Observable<HttpResponse<Blob>> {
-        let url = API_REPORT_DEVICE_PATH + "/exp/speed/" + device;
+    export(device: number, from: number, to: number, type?: string, fmt?: string): Observable<HttpResponse<Blob>> {
+        type = type ? type : 'speed';
+        let url = API_REPORT_DEVICE_PATH + "/exp/" + type + "/" + device;
         let params = new HttpParams();
         params = params.append('from', String(from));
         params = params.append('to', String(to));
@@ -50,8 +51,8 @@ export class DeviceReportService {
         }
 
         let headers = new HttpHeaders({
-                'Accept': 'text/html, application/pdf, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-            });
+            'Accept': 'text/html, application/pdf, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        });
 
         return this.http.get<HttpResponse<Blob>>(url, {
             headers: headers,

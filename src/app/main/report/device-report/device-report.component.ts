@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DeviceLittle } from 'app/models/little/device.little';
-import { MatDialog, MatDrawer, MatSidenav, MatTableDataSource } from '@angular/material';
+import { MatDialog, MatDrawer, MatSidenav, MatTabChangeEvent, MatTableDataSource } from '@angular/material';
 import { DeviceService } from 'app/services/device.service';
 import { ApplicationContext } from 'app/application-context';
 import { DeviceReportService } from 'app/services/device-report.service';
@@ -27,6 +27,8 @@ export class DeviceReportComponent implements OnInit {
     eventList: Array<EventData>;
     dataChange: ReplaySubject<any>;
 
+    selectedTab: Tabs;
+
     @ViewChild(MatDrawer) sideNav: MatDrawer;
 
     constructor(
@@ -37,6 +39,7 @@ export class DeviceReportComponent implements OnInit {
         private applicationContext: ApplicationContext) { }
 
     ngOnInit() {
+        this.selectedTab = Tabs.SPEED_REPORT;
         this.dataChange = new ReplaySubject(1);
         this.eventList = [];
         this.applicationContext.spin(true);
@@ -134,18 +137,59 @@ export class DeviceReportComponent implements OnInit {
     //----------export----------//
     export(fmt?: string) {
         this.applicationContext.spin(true);
-        this.deviceReportService.exportSpeedReport(this.selected.id, this.from, this.to, fmt).subscribe(
+
+        let type = 'speed';
+        switch (this.selectedTab) {
+            case Tabs.SPEED_REPORT:
+                type = 'speed';
+                break;
+            case Tabs.PARKING_REPORT:
+                type = 'parking';
+                break;
+            case Tabs.GEOZONE_REPORT:
+                type = 'geozone';
+                break;
+            case Tabs.ALERT_HISTORY:
+                type = 'alert';
+        }
+
+        let fileName = type+'_report.' + fmt;
+        this.deviceReportService.export(this.selected.id, this.from, this.to, type, fmt).subscribe(
             (data) => {
-                console.log('Data', data);
                 this.applicationContext.spin(false);
-                saveAs(data, 'device-report.' + fmt );
+                saveAs(data, fileName );
             },
             error => {
-                console.log('Data', error);
+                //console.log('Data', error);
             },
             () => {
-                console.log('Completed');
+                //console.log('Completed');
             }
         );
     }
+
+    onTabChanged(event: MatTabChangeEvent) {
+        console.log('Event', event);
+        switch (event.index) {
+            case 0:
+                this.selectedTab = Tabs.SPEED_REPORT;
+                break;
+            case 1:
+                this.selectedTab = Tabs.PARKING_REPORT;
+                break;
+            case 2:
+                this.selectedTab = Tabs.GEOZONE_REPORT;
+                break;
+            case 3:
+                this.selectedTab = Tabs.ALERT_HISTORY;
+                break;
+        }
+    }
+}
+
+export enum Tabs {
+    SPEED_REPORT,
+    PARKING_REPORT,
+    GEOZONE_REPORT,
+    ALERT_HISTORY
 }
