@@ -11,7 +11,6 @@ import { SpinnerComponent } from 'app/pages/spinner/spinner.component';
 
 import * as _ from 'lodash';
 import { NavigationExtras } from '@angular/router/src/router';
-import { CacheUtil } from 'app/cache-util';
 
 export const redirectUrl = 'redirectUrl';
 const DEFAULT_REDIRECT_URL = '/main/tracking';
