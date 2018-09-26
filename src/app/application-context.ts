@@ -11,6 +11,7 @@ import { SpinnerComponent } from 'app/pages/spinner/spinner.component';
 
 import * as _ from 'lodash';
 import { NavigationExtras } from '@angular/router/src/router';
+import { CacheUtil } from 'app/cache-util';
 
 export const redirectUrl = 'redirectUrl';
 const DEFAULT_REDIRECT_URL = '/main/tracking';
@@ -64,7 +65,7 @@ export class ApplicationContext implements OnInit, OnDestroy {
 
     ];
 
-
+    private portalMap = new Map<string, DomPortalHost>();
     //------------------------------------------------------------------------------------------------------------------
     //~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~
     //------------------------------------------------------------------------------------------------------------------
@@ -97,6 +98,28 @@ export class ApplicationContext implements OnInit, OnDestroy {
                 this.bodyPortal.detach();
             }
         }, 1);
+    }
+
+    spinAt(id: string, shouldShow?: boolean,) {
+        let elPortal = this.portalMap.get(id);
+        if (!elPortal || !elPortal.hasAttached()) {
+            elPortal = new DomPortalHost(
+                document.getElementById(id),
+                this.factoryResolver,
+                this.appRef,
+                this.injector
+            );
+            this.portalMap.set(id, elPortal);
+        }
+
+        const holderPortal = this.holderPortal;
+        setTimeout(function () {
+            if (shouldShow && !elPortal.hasAttached()) {
+                elPortal.attach(holderPortal);
+            } else {
+                elPortal.detach();
+            }
+        });
     }
 
     store(result?: AuthResponse): void {

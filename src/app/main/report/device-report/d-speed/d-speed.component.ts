@@ -83,7 +83,7 @@ export class DSpeedComponent implements OnChanges, OnInit, AfterViewInit {
                 startWith({}),
                 switchMap(() => {
                     //this.spinner.show(true);
-                    this.applicationContext.spin(true);
+                    //this.applicationContext.spinAt('speed-table', true);
                     if (!this.device) {
                         return observableOf({});
                     }
@@ -100,7 +100,7 @@ export class DSpeedComponent implements OnChanges, OnInit, AfterViewInit {
             ).subscribe(
                 data => {
                     this.dataSource.data = data;
-                    this.applicationContext.spin(false);
+                    //this.applicationContext.spinAt('speed-table', false);
             });
     }
 }

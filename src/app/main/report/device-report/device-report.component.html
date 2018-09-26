@@ -1,6 +1,6 @@
 <mat-drawer-container class="side-nav-container">
     <mat-drawer mode="side" [opened]="true" class="mat-elevation-z3">
-        <div class="rpt-nav-device">
+        <div class="rpt-nav-device" id = "deviceList">
             <mat-form-field class="rpt-device-filter">
                 <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Device Filter">
             </mat-form-field>

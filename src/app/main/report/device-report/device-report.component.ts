@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DeviceLittle } from 'app/models/little/device.little';
 import { MatDialog, MatDrawer, MatSidenav, MatTabChangeEvent, MatTableDataSource } from '@angular/material';
 import { DeviceService } from 'app/services/device.service';
@@ -31,6 +31,7 @@ export class DeviceReportComponent implements OnInit {
 
     @ViewChild(MatDrawer) sideNav: MatDrawer;
 
+
     constructor(
         private matDialog: MatDialog,
         private deviceService: DeviceService,
@@ -42,21 +43,26 @@ export class DeviceReportComponent implements OnInit {
         this.selectedTab = Tabs.SPEED_REPORT;
         this.dataChange = new ReplaySubject(1);
         this.eventList = [];
-        this.applicationContext.spin(true);
         this.selected = {};
+        this.loadEventData();
+
+        console.log('Starting report page');
+
+        this.applicationContext.spinAt('deviceList', true);
         this.deviceService.getAllLittle().subscribe(
             response => {
+                this.applicationContext.spinAt('deviceList', false);
                 this.deviceList = response;
                 this.selected = this.deviceList[0];
-            },
-            error => {},
-            () => {
-                this.applicationContext.spin(false);
-                //this.loadEventData();
                 this.dataChange.next(1);
+            },
+            error => {
+                this.applicationContext.spinAt('deviceList', false);
+            },
+            () => {
             }
         );
-        this.loadEventData();
+
     }
 
     private loadEventData() {

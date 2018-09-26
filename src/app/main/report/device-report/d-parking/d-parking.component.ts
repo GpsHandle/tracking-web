@@ -70,7 +70,7 @@ export class DParkingComponent implements OnChanges, OnInit, AfterViewInit {
                 startWith({}),
                 switchMap(() => {
                     //this.spinner.show(true);
-                    this.applicationContext.spin(true);
+                    //this.applicationContext.spin(true);
                     if (!this.device) {
                         return observableOf([]);
                     }
@@ -86,7 +86,7 @@ export class DParkingComponent implements OnChanges, OnInit, AfterViewInit {
             data => {
                 this.dataSource.data = data;
                 //this.spinner.show(false);
-                this.applicationContext.spin(false);
+                //this.applicationContext.spin(false);
             });
     }
 
