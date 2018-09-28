@@ -6,7 +6,7 @@ export class Account {
     private _accountId: string;
     private _firstName: string;
     private _lastName: string;
-    private _status: string;
+    private _status: any;
     private _privilege: Role;
     private _company: CompanyLittle | any;
     private _phoneNumber: string;
@@ -53,11 +53,11 @@ export class Account {
         this._lastName = value;
     }
 
-    get status(): string {
+    get status(): any {
         return this._status;
     }
 
-    set status(value: string) {
+    set status(value: any) {
         this._status = value;
     }
 

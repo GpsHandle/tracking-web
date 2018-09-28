@@ -9,6 +9,7 @@ import { DriverReportComponent } from 'app/main/report/driver-report/driver-repo
 import { ShipmentReportComponent } from 'app/main/report/shipment-report/shipment-report.component';
 import { AlertHistoryComponent } from 'app/main/report/alert-history/alert-history.component';
 import { EventService } from 'app/services/event.service';
+import { DashboardComponent } from './dashboard.component';
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import { EventService } from 'app/services/event.service';
         AccountReportComponent,
         DriverReportComponent,
         ShipmentReportComponent,
-        AlertHistoryComponent
+        AlertHistoryComponent,
+        DashboardComponent
     ]
 })
 export class ReportModule { }

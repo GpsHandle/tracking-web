@@ -6,11 +6,16 @@ import { AlertHistoryComponent } from 'app/main/report/alert-history/alert-histo
 import { DriverReportComponent } from 'app/main/report/driver-report/driver-report.component';
 import { ShipmentReportComponent } from 'app/main/report/shipment-report/shipment-report.component';
 import { AuthGuard } from 'app/guards/auth.guard';
-import { DeviceReportModule } from 'app/main/report/device-report/device-report.module';
+import { DashboardComponent } from 'app/main/report/dashboard.component';
 
 const routes: Routes = [
     {
         path: '',
+        component: DashboardComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'device',
         loadChildren: 'app/main/report/device-report/device-report.module#DeviceReportModule',
         canActivate: [AuthGuard],
     },

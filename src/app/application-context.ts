@@ -377,3 +377,11 @@ export class ApplicationContext implements OnInit, OnDestroy {
         this._token_type = value;
     }
 }
+
+export enum AccountStatus {
+    UNKNOWN,
+    DELETED,
+    PENDING,
+    INACTIVATED,
+    ACTIVATED
+}
