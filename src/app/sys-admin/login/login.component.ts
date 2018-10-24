@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.model = {};
+        this.applicationContext.logout();
     }
 
     login(): void {

@@ -1,8 +1,13 @@
-<mat-toolbar>
-    <a mat-button [routerLink]="['dashboard']">Dashboard</a>
-    <a mat-button [routerLink]="['development']">Development</a>
-    <a mat-button [routerLink]="['event-logs']">Event Logs</a>
-    <span class="fill-remain-space"></span>
-    <button mat-button>Logout</button>
-</mat-toolbar>
-<router-outlet></router-outlet>
+<div class="main">
+    <mat-toolbar>
+        <a mat-button [routerLink]="['dashboard']">Dashboard</a>
+        <a mat-button [routerLink]="['development']">Development</a>
+        <a mat-button [routerLink]="['event-logs']">Event Logs</a>
+        <a mat-button [routerLink]="['unknown-device']">Unknown Devices</a>
+        <span class="fill-remain-space"></span>
+        <a mat-button [routerLink]="['..', 'logout']">Logout</a>
+    </mat-toolbar>
+    <div class="page-content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

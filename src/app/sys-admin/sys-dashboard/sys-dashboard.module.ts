@@ -6,6 +6,8 @@ import { SysDashboardComponent } from './sys-dashboard.component';
 import { DashboardComponent } from 'app/sys-admin/sys-dashboard/dashboard/dashboard.component';
 import { DevelopmentComponent } from 'app/sys-admin/sys-dashboard/development/development.component';
 import { EventLoggerComponent } from 'app/sys-admin/sys-dashboard/event-logger/event-logger.component';
+import { UnknownDeviceComponent } from './unknown-device/unknown-device.component';
+import { AddNewDeviceComponent } from './add-new-device/add-new-device.component';
 
 @NgModule({
     imports: [
@@ -17,7 +19,12 @@ import { EventLoggerComponent } from 'app/sys-admin/sys-dashboard/event-logger/e
         DashboardComponent,
         SysDashboardComponent,
         DevelopmentComponent,
-        EventLoggerComponent
+        EventLoggerComponent,
+        UnknownDeviceComponent,
+        AddNewDeviceComponent
+    ],
+    entryComponents: [
+        AddNewDeviceComponent
     ]
 })
 export class SysDashboardModule { }

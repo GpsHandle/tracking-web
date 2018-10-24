@@ -4,6 +4,7 @@ import { SysAdminRoutingModule } from 'app/sys-admin/sys-admin-routing.module';
 import { LoginComponent } from 'app/sys-admin/login/login.component';
 import { MaterialShared } from 'app/shared/material-shared';
 import { FormsModule } from '@angular/forms';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
     imports: [
@@ -13,7 +14,11 @@ import { FormsModule } from '@angular/forms';
         MaterialShared
     ],
     declarations: [
-        LoginComponent
+        LoginComponent,
+        LogoutComponent
+    ],
+    entryComponents: [
+
     ]
 })
 export class SysAdminModule { }

@@ -4,6 +4,7 @@ import { DashboardComponent } from 'app/sys-admin/sys-dashboard/dashboard/dashbo
 import { SysDashboardComponent } from 'app/sys-admin/sys-dashboard/sys-dashboard.component';
 import { EventLoggerComponent } from 'app/sys-admin/sys-dashboard/event-logger/event-logger.component';
 import { DevelopmentComponent } from 'app/sys-admin/sys-dashboard/development/development.component';
+import { UnknownDeviceComponent } from 'app/sys-admin/sys-dashboard/unknown-device/unknown-device.component';
 
 const routes: Routes = [
     { path: '', component: SysDashboardComponent,
@@ -11,6 +12,7 @@ const routes: Routes = [
             { path: 'dashboard', component: DashboardComponent, pathMatch: 'full' },
             { path: 'development', component: DevelopmentComponent, pathMatch: 'full' },
             { path: 'event-logs', component: EventLoggerComponent, pathMatch: 'full' },
+            { path: 'unknown-device', component: UnknownDeviceComponent, pathMatch: 'full' },
         ]
     }
 ];
