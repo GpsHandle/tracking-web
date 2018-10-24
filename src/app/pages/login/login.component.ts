@@ -1,5 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
 
 import { AuthService } from 'app/services/auth.service';
 import { ApplicationContext} from 'app/application-context';
@@ -15,13 +14,12 @@ export class LoginComponent implements OnInit {
     model: any = {};
 
     constructor(private auth: AuthService,
-                private router: Router,
                 private applicationContext: ApplicationContext) {}
 
     ngOnInit() {
         if (this.applicationContext.isLoggedIn()) {
             const redirectUrl = this.applicationContext.getRedirectURL();
-            this.router.navigate([redirectUrl]);
+            this.applicationContext.navigate([redirectUrl]);
         }
     }
 
@@ -32,7 +30,7 @@ export class LoginComponent implements OnInit {
                 this.applicationContext.spin(false);
                 this.applicationContext.store(result);
                 const redirectUrl = this.applicationContext.getRedirectURL();
-                this.router.navigate([redirectUrl]);
+                this.applicationContext.navigate([redirectUrl]);
             },
             (err: any) => {
                 if (err instanceof HttpErrorResponse) {
