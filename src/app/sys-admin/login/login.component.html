@@ -2,11 +2,11 @@
     <form class="l-form mat-elevation-z2">
         <mat-form-field class="full-width">
             <input matInput placeholder="Your Usermame" [(ngModel)]="model.username" name="username">
-            <span matPrefix><mat-icon matPrefix>profile</mat-icon></span>
+            <mat-icon matSuffix>profile</mat-icon>
         </mat-form-field>
         <mat-form-field class="full-width">
             <input matInput type="password" placeholder="Your Password" [(ngModel)]="model.password" name="password">
-            <span matPrefix class=""><mat-icon matPrefix>key</mat-icon></span>
+            <mat-icon matSuffix>key</mat-icon>
         </mat-form-field>
         <div class="l-button">
             <a mat-raised-button color="primary" (click)="login()">Login</a>
