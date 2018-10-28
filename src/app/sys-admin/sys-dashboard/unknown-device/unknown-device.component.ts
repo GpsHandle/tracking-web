@@ -62,10 +62,9 @@ export class UnknownDeviceComponent implements OnInit, AfterViewInit, AfterViewC
     }
 
     addNewDevice(element: UnknownDevice) {
-        const data = new Device();
         const dialogRef = this.dialog.open(AddNewDeviceComponent, {
             width: '800px',
-            data: data
+            data: element
         });
 
         dialogRef.afterClosed().subscribe(result => {
