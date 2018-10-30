@@ -3,6 +3,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PageableCommonResponse } from 'app/models/pageable-common.response';
 import { UnknownDevice } from 'app/models/unknown-device';
+import { Device } from 'app/models/device';
+import { DeviceRequest } from 'app/models/request/device.request';
 
 export const UNKNOWN_DEVICE = '/api/unknowndevice';
 
@@ -20,5 +22,18 @@ export class UnknownDeviceService {
         sort = sort ? sort : '';
         params = params.append('sort', sort + ',' + order);
         return this.http.get<PageableCommonResponse<UnknownDevice>>(UNKNOWN_DEVICE, {params: params});
+    }
+
+    addUknDevice(ukd: UnknownDevice): Observable<Device> {
+        const url = '/api/device';
+        let data = new DeviceRequest();
+        data.deviceId = ukd.uniqueId;
+        data.port = ukd.port;
+        return this.http.post<Device>(url, data);
+    }
+
+    add(data: DeviceRequest): Observable<Device> {
+        const url = '/api/device';
+        return this.http.post<Device>(url, data);
     }
 }
