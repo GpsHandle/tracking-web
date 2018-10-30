@@ -68,11 +68,11 @@ export class UnknownDeviceComponent implements OnInit, AfterViewInit, AfterViewC
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('closing dialog');
-            // this.cmd = undefined;
-            // if (result) {
-            //     this.create(result);
-            // }
+            this.unkownDeviceService.add(result).subscribe(
+                data => {},
+                error => {},
+                () => {}
+            )
         });
     }
 

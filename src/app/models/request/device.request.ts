@@ -33,25 +33,27 @@ export class DeviceRequest {
 
 
     constructor(device?: Device) {
-        this.id = device.id;
-        this.name = device.name;
-        this.deviceId = device.deviceId;
-        this.companyId = device.company ? device.company.id : null;
-        this.accountIds = _.map(device.accounts, (acc) => {
-            return acc.id;
-        });
+        if (device) {
+            this.id = device.id;
+            this.name = device.name;
+            this.deviceId = device.deviceId;
+            this.companyId = device.company ? device.company.id : null;
+            this.accountIds = _.map(device.accounts, (acc) => {
+                return acc.id;
+            });
 
-        this.expiredOn = device.expiredOn;
-        this.status = device.status;
+            this.expiredOn = device.expiredOn;
+            this.status = device.status;
 
-        this.vehicleId = device.vehicleId;
-        this.ipAddress = device.ipAddress;
-        this.port = device.port;
-        this.protocol = device.protocol;
-        this.serialNumber = device.serialNumber;
-        this.modelName = device.modelName;
-        this.manufacturerName = device.manufacturerName;
-        this.firmwareVersion = device.firmwareVersion;
-        this.originalCountry = device.originalCountry;
+            this.vehicleId = device.vehicleId;
+            this.ipAddress = device.ipAddress;
+            this.port = device.port;
+            this.protocol = device.protocol;
+            this.serialNumber = device.serialNumber;
+            this.modelName = device.modelName;
+            this.manufacturerName = device.manufacturerName;
+            this.firmwareVersion = device.firmwareVersion;
+            this.originalCountry = device.originalCountry;
+        }
     }
 }
