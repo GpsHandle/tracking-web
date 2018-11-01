@@ -3,6 +3,7 @@ import { AuthResponse } from 'app/models/auth.response';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from 'app/services/auth.service';
 import { ApplicationContext } from 'app/application-context';
+import * as _ from 'lodash';
 
 @Component({
     selector: 'app-login',
@@ -27,7 +28,13 @@ export class LoginComponent implements OnInit {
                 console.log('result', result);
                 this.applicationContext.spin(false);
                 this.applicationContext.store(result);
-                this.applicationContext.navigate(['admin', 'sys', 'dashboard']);
+
+                if (LoginComponent.isSysadmin(result.authorities)) {
+                    this.applicationContext.navigate(['admin', 'sys', 'dashboard']);
+                } else {
+                    const redirectUrl = this.applicationContext.getRedirectURL();
+                    this.applicationContext.navigate([redirectUrl]);
+                }
             },
             (err: any) => {
                 if (err instanceof HttpErrorResponse) {
@@ -40,5 +47,9 @@ export class LoginComponent implements OnInit {
             },
             () => {}
         );
+    }
+
+    static isSysadmin(l: string[]): boolean {
+        return (_.includes(l, 'V5LORD') || _.includes(l, "SYSADMIN"));
     }
 }
