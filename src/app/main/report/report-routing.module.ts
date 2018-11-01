@@ -9,9 +9,14 @@ import { AuthGuard } from 'app/guards/auth.guard';
 import { DashboardComponent } from 'app/main/report/dashboard.component';
 
 const routes: Routes = [
+    // {
+    //     path: '',
+    //     component: DashboardComponent,
+    //     pathMatch: 'full'
+    // },
     {
         path: '',
-        component: DashboardComponent,
+        redirectTo: 'device',
         pathMatch: 'full'
     },
     {
