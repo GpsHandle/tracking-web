@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
         this.applicationContext.spin(true);
         this.auth.login(this.model.username, this.model.password).subscribe(
             (result: AuthResponse) => {
-                console.log('result', result);
+                //console.log('result', result);
                 this.applicationContext.spin(false);
                 this.applicationContext.store(result);
 
