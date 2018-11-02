@@ -50,6 +50,6 @@ export class LoginComponent implements OnInit {
     }
 
     static isSysadmin(l: string[]): boolean {
-        return (_.includes(l, 'V5LORD') || _.includes(l, "SYSADMIN"));
+        return (_.includes(l, 'VD5LORD') || _.includes(l, "SYSADMIN"));
     }
 }
