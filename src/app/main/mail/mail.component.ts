@@ -8,9 +8,8 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
     encapsulation: ViewEncapsulation.None
 })
 export class MailComponent implements OnInit {
-
-    public form:FormGroup;
-    public content: AbstractControl;
+    public editor;
+    public editorContent = `<h3>I am Example 02</h3>`;
 
     public editorConfig = {
         theme: 'snow',
@@ -30,20 +29,31 @@ export class MailComponent implements OnInit {
     };
 
     constructor(private _fb:FormBuilder) {
-        this.form = _fb.group({
-            'content': ['<p>I am Example 01</p>', Validators.compose([Validators.required])],
-        });
-
-        this.content = this.form.controls['content'];
     };
 
-    public submitAnnouncement(values:Object):void {
-        if (this.form.valid) {
-            console.log('Submit!', values);
-        }
+    onEditorBlured(quill) {
+        console.log('editor blur!', quill);
+    }
+
+    onEditorFocused(quill) {
+        console.log('editor focus!', quill);
+    }
+
+    onEditorCreated(quill) {
+        this.editor = quill;
+        console.log('quill is ready! this is current quill instance object', quill);
+    }
+
+    onContentChanged({ quill, html, text }) {
+        console.log('quill content is changed!', quill, html, text);
     }
 
     ngOnInit(): void {
+        // setTimeout(() => {
+        //     this.editorContent = '<h1>Example 02 changed!</h1>';
+        //     console.log('you can use the quill instance object to do something', this.editor);
+        //     // this.editor.disable();
+        // }, 2800)
     }
 
 
