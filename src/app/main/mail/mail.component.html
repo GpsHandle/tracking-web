@@ -2,8 +2,28 @@
   mail works!
 </p>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form">
-    <div class="form-group" [ngClass]="{'has-error': (!content.valid && content.touched), 'has-success': (content.valid && content.touched)}">
-        <quill-editor class="form-control" [formControl]="content" [options]="editorConfig"></quill-editor>
-    </div>
-</form>
+<div id="toolbar">
+    <!-- Add a bold button -->
+    <button class="ql-bold">Bold</button>
+    <button class="ql-italic">Italic</button>
+    <!-- Add font size dropdown -->
+    <select class="ql-size">
+        <option value="small"></option>
+        <!-- Note a missing, thus falsy value, is used to reset to default -->
+        <option selected></option>
+        <option value="large"></option>
+        <option value="huge"></option>
+    </select>
+    <!-- Add subscript and superscript buttons -->
+    <button class="ql-script" value="sub"></button>
+    <button class="ql-script" value="super"></button>
+    <button style="width: 120px" (click)="customButtonClick()">custom button</button>
+</div>
+<quill-editor  [(ngModel)]="editorContent"
+               [options]="editorConfig"
+               (blur)="onEditorBlured($event)"
+               (focus)="onEditorFocused($event)"
+               (ready)="onEditorCreated($event)"
+               (change)="onContentChanged($event)">
+</quill-editor>`
+<div class="ql-editor preview" [innerHTML]="editorContent"></div>
