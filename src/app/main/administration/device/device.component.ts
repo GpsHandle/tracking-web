@@ -7,17 +7,17 @@ import { DeviceService } from 'app/services/device.service';
 import { OptionalColumnDeviceComponent } from 'app/main/administration/device/optional-column-device/optional-column-device.component';
 import { AddEditDeviceComponent } from 'app/main/administration/device/add-edit-device/add-edit-device.component';
 import { DeleteEvent } from 'app/models/delete-event';
-import { ConfirmDeleteComponent } from 'app/shared/components/confirm-delete/confirm-delete.component';
 import { DeviceRequest } from 'app/models/request/device.request';
 
-import {merge} from 'rxjs/observable/merge';
-import {of as observableOf} from 'rxjs/observable/of';
-import {catchError} from 'rxjs/operators/catchError';
-import {map} from 'rxjs/operators/map';
-import {startWith} from 'rxjs/operators/startWith';
-import {switchMap} from 'rxjs/operators/switchMap';
+import { merge } from 'rxjs/observable/merge';
+import { of as observableOf } from 'rxjs/observable/of';
+import { catchError } from 'rxjs/operators/catchError';
+import { map } from 'rxjs/operators/map';
+import { startWith } from 'rxjs/operators/startWith';
+import { switchMap } from 'rxjs/operators/switchMap';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { ActivatedRoute } from '@angular/router';
+import { DeleteDeviceComponent } from 'app/main/administration/device/delete-device/delete-device.component';
 
 @Component({
     selector: 'applicationContext-device',
@@ -32,29 +32,29 @@ export class DeviceComponent implements OnInit, AfterViewInit {
     displayedColumns = ['toggle', 'name', 'deviceId', 'companyName', 'vehicleName', 'protocol', 'lastEventTime', 'expiredOn', 'createdBy', 'createdOn', 'actions'];
 
     columns = {
-        id:                 {selected: false, order: 0},
-        name:               {selected: false, order: 1},
-        deviceId:           {selected: false, order: 2},
-        companyId:          {selected: false, order: 3},
-        companyName:        {selected: false, order: 4},
-        vehicleId:          {selected: false, order: 5},
-        vehicleName:        {selected: false, order: 6},
-        ipAddress:          {selected: false, order: 7},
-        port:               {selected: false, order: 8},
-        protocol:           {selected: false, order: 9},
-        status:             {selected: false, order: 9},
-        expiredOn:          {selected: false, order: 9},
-        serialNumber:       {selected: false, order: 10},
-        modelName:          {selected: false, order: 11},
-        manufacturerName:   {selected: false, order: 12},
-        firmwareVersion:    {selected: false, order: 13},
-        originalCountry:    {selected: false, order: 14},
-        lastEventTime:      {selected: false, order: 141},
-        createdBy:          {selected: false, order: 15},
-        createdOn:          {selected: false, order: 16},
-        updatedBy:          {selected: false, order: 17},
-        updatedOn:          {selected: false, order: 18},
-        actions:            {selected: false, order: 19}
+        id: {selected: false, order: 0},
+        name: {selected: false, order: 1},
+        deviceId: {selected: false, order: 2},
+        companyId: {selected: false, order: 3},
+        companyName: {selected: false, order: 4},
+        vehicleId: {selected: false, order: 5},
+        vehicleName: {selected: false, order: 6},
+        ipAddress: {selected: false, order: 7},
+        port: {selected: false, order: 8},
+        protocol: {selected: false, order: 9},
+        status: {selected: false, order: 9},
+        expiredOn: {selected: false, order: 9},
+        serialNumber: {selected: false, order: 10},
+        modelName: {selected: false, order: 11},
+        manufacturerName: {selected: false, order: 12},
+        firmwareVersion: {selected: false, order: 13},
+        originalCountry: {selected: false, order: 14},
+        lastEventTime: {selected: false, order: 141},
+        createdBy: {selected: false, order: 15},
+        createdOn: {selected: false, order: 16},
+        updatedBy: {selected: false, order: 17},
+        updatedOn: {selected: false, order: 18},
+        actions: {selected: false, order: 19}
     };
 
     resultsLength = 0;
@@ -62,10 +62,12 @@ export class DeviceComponent implements OnInit, AfterViewInit {
     dataChange: ReplaySubject<number>;
 
     cmd: string;
+
     constructor(private dialog: MatDialog,
                 private applicationContext: ApplicationContext,
                 private route: ActivatedRoute,
-                private service: DeviceService) { }
+                private service: DeviceService) {
+    }
 
     ngOnInit() {
         this.initTableSettings();
@@ -103,11 +105,11 @@ export class DeviceComponent implements OnInit, AfterViewInit {
                     return observableOf([]);
                 })
             ).subscribe(data => {
-                this.dataSource.data = data;
-                if (this.cmd === 'add') {
-                    this.openDialogNewObject();
-                }
-            });
+            this.dataSource.data = data;
+            if (this.cmd === 'add') {
+                this.openDialogNewObject();
+            }
+        });
     }
 
     applyFilter(filterValue: string) {
@@ -180,7 +182,9 @@ export class DeviceComponent implements OnInit, AfterViewInit {
     }
 
     openDialogEditing(data: Device): void {
-        if (data.company === null) data.company = {};
+        if (data.company === null) {
+            data.company = {};
+        }
         const dialogRef = this.dialog.open(AddEditDeviceComponent, {
             disableClose: true,
             data: data
@@ -198,7 +202,7 @@ export class DeviceComponent implements OnInit, AfterViewInit {
             response => {
                 this.dataChange.next(0);
             }
-        )
+        );
     }
 
     openDialogConfirmDelete(device: Device): void {
@@ -206,7 +210,7 @@ export class DeviceComponent implements OnInit, AfterViewInit {
         data.setId(device.id);
         data.setName(device.name);
         data.setType('Device');
-        const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+        const dialogRef = this.dialog.open(DeleteDeviceComponent, {
             disableClose: true,
             data: data
         });
@@ -243,14 +247,16 @@ export class DeviceComponent implements OnInit, AfterViewInit {
             device.status = 'enabled';
         }
 
-        let request = new DeviceRequest(device)
+        let request = new DeviceRequest(device);
         this.service.update(device.id, request).subscribe(
-            data => {},
-            error => {},
+            data => {
+            },
+            error => {
+            },
             () => {
-                this.applicationContext.info("Updated device #id: " + device.id);
+                this.applicationContext.info('Updated device #id: ' + device.id);
             }
-        )
+        );
     }
 
 }

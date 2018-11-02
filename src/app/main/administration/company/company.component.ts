@@ -5,7 +5,6 @@ import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/m
 import { ApplicationContext } from 'app/application-context';
 import { CompanyService } from 'app/services/company.service';
 import { DeleteEvent } from 'app/models/delete-event';
-import { ConfirmDeleteComponent } from 'app/shared/components/confirm-delete/confirm-delete.component';
 import { OptionalColumnCompanyComponent } from 'app/main/administration/company/optional-column-company/optional-column-company.component';
 import { AddEditCompanyComponent } from 'app/main/administration/company/add-edit-company/add-edit-company.component';
 import { merge } from 'rxjs/observable/merge';
