@@ -36,6 +36,7 @@ import { DeleteDeviceComponent } from './delete-device/delete-device.component';
     ],
     entryComponents: [
         AddEditDeviceComponent,
+        DeleteDeviceComponent,
         OptionalColumnDeviceComponent,
     ]
 })
