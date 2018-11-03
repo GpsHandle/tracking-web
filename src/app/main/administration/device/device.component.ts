@@ -217,13 +217,13 @@ export class DeviceComponent implements OnInit, AfterViewInit {
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
-                this._delete(result);
+                this._delete(device.id);
             }
         });
     }
 
-    _delete(device: Device): void {
-        this.service._delete(device.id).subscribe(
+    _delete(deviceId: number): void {
+        this.service._delete(deviceId).subscribe(
             data => {
                 this.dataChange.next(0);
             },
