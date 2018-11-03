@@ -228,10 +228,10 @@ export class DeviceComponent implements OnInit, AfterViewInit {
                 this.dataChange.next(0);
             },
             error => {
-                this.dataChange.next(error);
+                //this.dataChange.next(error);
             },
             () => {
-                this.dataChange.next(1);
+                //this.dataChange.next(1);
             }
         );
     }
