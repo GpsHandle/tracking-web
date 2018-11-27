@@ -11,12 +11,12 @@ import 'leaflet-editable';
 import { GeozoneRequest } from 'app/models/request/geozone.request';
 import { ApplicationContext } from 'app/application-context';
 import { GeoUtils } from 'app/main/administration/geozone/GeoUtils';
-import { LatLng, Point } from 'leaflet';
-import { FeatureGroup } from 'leaflet';
+// import { LatLng} from 'leaflet';
+// import { FeatureGroup } from 'leaflet';
 
 const TILE_OSM_URL = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
-const TILE_MAPBOX_URL = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}';
-const TILE_GOOGLE_URL = 'http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}';
+const TILE_MAPBOX_URL = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
+const TILE_GOOGLE_URL = 'https://www.google.com/maps/vt?lyrs=s@189&gl=en&x={x}&y={y}&z={z}';
 
 @Component({
     selector: 'app-geozone',
@@ -27,7 +27,7 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
 
     private customDefault: L.Icon;
     private map: L.Map;
-    private editableLayers: FeatureGroup<any>;
+    private editableLayers: L.FeatureGroup<any>;
 
     showDetails: boolean = false;
 
@@ -71,8 +71,8 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
         let mapbox = L.tileLayer(TILE_MAPBOX_URL, {
             maxZoom: 18,
             attribution: osmAttrib,
-            id: 'mapbox.streets',
-            accessToken: 'pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA'
+            //id: 'mapbox.streets',
+            //accessToken: 'pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA'
         });
         let google = L.tileLayer(TILE_GOOGLE_URL, {
             maxZoom: 18,
@@ -395,7 +395,7 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
         this.selected.geojson.properties.radius = r;
     }
 
-    get center(): LatLng {
+    get center(): L.LatLng {
         if (this.isCircle()) {
             return L.GeoJSON.coordsToLatLng(this.coordinates);
         } else {

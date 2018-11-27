@@ -1,6 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DeviceLittle } from 'app/models/little/device.little';
-import { MatDialog, MatDrawer, MatSidenav, MatTabChangeEvent, MatTableDataSource } from '@angular/material';
+import { MatDialog, MatDrawer, MatTabChangeEvent} from '@angular/material';
 import { DeviceService } from 'app/services/device.service';
 import { ApplicationContext } from 'app/application-context';
 import { DeviceReportService } from 'app/services/device-report.service';
@@ -10,7 +10,7 @@ import { EventData } from 'app/models/event-data';
 import { merge, of as observableOf, ReplaySubject } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 
-import { saveAs } from 'file-saver/FileSaver';
+import { saveAs } from 'file-saver';
 
 @Component({
     selector: 'app-report',
@@ -163,7 +163,7 @@ export class DeviceReportComponent implements OnInit {
         this.deviceReportService.export(this.selected.id, this.from, this.to, type, fmt).subscribe(
             (data) => {
                 this.applicationContext.spin(false);
-                saveAs(data, fileName );
+                saveAs(data.body, fileName );
             },
             error => {
                 //console.log('Data', error);

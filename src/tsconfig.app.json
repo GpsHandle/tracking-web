@@ -5,16 +5,15 @@
     "module": "es2015",
     "baseUrl": "",
     "types": [
-      "d3",
       "lodash",
+      "file-saver",
       "leaflet",
       "leaflet-editable",
       "leaflet-draw",
       "leaflet-easybutton",
       "leaflet.markercluster",
       "leaflet-polylinedecorator",
-      "jwt-decode",
-      "file-saver"
+      "jwt-decode"
     ]
   },
   "exclude": [

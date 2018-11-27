@@ -52,6 +52,7 @@ export class TimeInput implements MatFormFieldControl<MyTime>, OnInit, OnDestroy
   parts: FormGroup;
   stateChanges = new Subject<void>();
   focused = false;
+
   ngControl = null;
   errorState = false;
   controlType = 'time-input';
