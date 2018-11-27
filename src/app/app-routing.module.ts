@@ -23,10 +23,6 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         canActivateChild: [AuthGuard]
     },
-    {
-        path: 'admin',
-        loadChildren: 'app/sys-admin/sys-admin.module#SysAdminModule',
-    },
     { path: 'error',            pathMatch: 'full', component: ErrorComponent },
     { path: 'forgot-password',  pathMatch: 'full', component: ForgotPasswordComponent },
     { path: 'register',         pathMatch: 'full', component: RegisterComponent },
