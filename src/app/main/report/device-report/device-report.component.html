@@ -30,27 +30,6 @@
                 <mat-divider></mat-divider>
 
                 <ng-template matExpansionPanelContent>
-                    <!--<div fxLayout="column">-->
-                        <!--<div fxLayout="row" fxLayoutGap="16px" class="rpt-board-timepicker">-->
-                            <!--<button mat-stroked-button color="primary" (click)="last2hours()">Last 2 hours</button>-->
-                            <!--<button mat-stroked-button color="primary" (click)="last8hours()">Last 8 hours</button>-->
-                            <!--<button mat-stroked-button color="primary" (click)="last24hours()">Last 24 hours</button>-->
-                            <!--<button mat-stroked-button color="primary" (click)="last72hours()">Last 3 days</button>-->
-                            <!--<button mat-stroked-button color="primary">Custom</button>-->
-                        <!--</div>-->
-                        <!--<div fxLayout="row" fxLayoutGap="16px" class="rpt-board-timepicker">-->
-                            <!--<mat-form-field>-->
-                                <!--<input matInput [matDatepicker]="picker1" placeholder="Choose a date for start">-->
-                                <!--<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>-->
-                                <!--<mat-datepicker #picker1 startView="year" [startAt]="startDate"></mat-datepicker>-->
-                            <!--</mat-form-field>-->
-                            <!--<mat-form-field>-->
-                                <!--<input matInput [matDatepicker]="picker" placeholder="Choose a date">-->
-                                <!--<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
-                                <!--<mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>-->
-                            <!--</mat-form-field>-->
-                        <!--</div>-->
-                    <!--</div>-->
                     <event-line-chart [eventList]="eventList"></event-line-chart>
                 </ng-template>
                 <mat-action-row>
@@ -91,20 +70,10 @@
                 <rpt-parking [device]="selected.id" [from]="from" [to]="to" ></rpt-parking>
             </mat-tab>
             <mat-tab i18n-label label="Geozone Report">
-                <ul>
-                    <li>Alert history (table)</li>
-                    <li>Speed details (table)</li>
-                    <li>Geozone details (table)</li>
-                    <li>Parking report (table)</li>
-                </ul>
+                <app-geozone-report></app-geozone-report>
             </mat-tab>
             <mat-tab i18n-label label="Alert History">
-                <ul>
-                    <li>Alert history (table)</li>
-                    <li>Speed details (table)</li>
-                    <li>Geozone details (table)</li>
-                    <li>Parking report (table)</li>
-                </ul>
+                <app-alert-history></app-alert-history>
             </mat-tab>
         </mat-tab-group>
     </mat-drawer-content>

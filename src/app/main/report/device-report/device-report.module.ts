@@ -7,6 +7,8 @@ import { DSpeedComponent } from './d-speed/d-speed.component';
 import { DParkingComponent } from './d-parking/d-parking.component';
 import { DeviceReportCustomTimeComponent } from './device-report-custom-time/device-report-custom-time.component';
 import { CustomComponentModule } from 'app/cutom-component/custom-component.module';
+import { GeozoneReportComponent } from './geozone-report/geozone-report.component';
+import { AlertHistoryComponent } from './alert-history/alert-history.component';
 
 @NgModule({
     imports: [
@@ -19,7 +21,9 @@ import { CustomComponentModule } from 'app/cutom-component/custom-component.modu
         DeviceReportComponent,
         DSpeedComponent,
         DParkingComponent,
-        DeviceReportCustomTimeComponent
+        DeviceReportCustomTimeComponent,
+        GeozoneReportComponent,
+        AlertHistoryComponent
     ],
     entryComponents: [
         DeviceReportCustomTimeComponent
