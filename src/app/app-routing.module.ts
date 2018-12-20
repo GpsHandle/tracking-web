@@ -18,7 +18,7 @@ const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full'},
     { path: 'login',    component: LoginComponent },
     { path: 'logout',   component: LogoutComponent },
-    { path: 'deno',   component: DemoComponent },
+    { path: 'demo',   component: DemoComponent },
     {
         path: 'main',
         loadChildren: 'app/main/main.module#MainModule',
