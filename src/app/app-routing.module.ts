@@ -11,12 +11,14 @@ import { ForgotPasswordComponent } from 'app/pages/forgot-password/forgot-passwo
 import { RegisterComponent } from 'app/pages/register/register.component';
 import { LogoutComponent } from 'app/pages/logout/logout.component';
 import { SysAdminGuard } from 'app/guards/sys-admin.guard';
+import { DemoComponent } from 'app/pages/demo/demo.component';
 
 
 const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full'},
     { path: 'login',    component: LoginComponent },
     { path: 'logout',   component: LogoutComponent },
+    { path: 'deno',   component: DemoComponent },
     {
         path: 'main',
         loadChildren: 'app/main/main.module#MainModule',

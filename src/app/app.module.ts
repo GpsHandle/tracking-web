@@ -19,6 +19,8 @@ import { ErrorComponent } from './pages/error/error.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LogoutComponent } from './pages/logout/logout.component';
+import { WINDOW_PROVIDERS } from 'app/shared/window-provider';
+import { DemoComponent } from './pages/demo/demo.component';
 
 @NgModule({
     declarations: [
@@ -30,6 +32,7 @@ import { LogoutComponent } from './pages/logout/logout.component';
         ForgotPasswordComponent,
         RegisterComponent,
         LogoutComponent,
+        DemoComponent,
     ],
     imports: [
         BrowserModule,
@@ -50,7 +53,8 @@ import { LogoutComponent } from './pages/logout/logout.component';
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
             multi: true
-        }
+        },
+        WINDOW_PROVIDERS
     ],
     entryComponents: [
         SpinnerComponent

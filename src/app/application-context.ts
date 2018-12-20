@@ -1,4 +1,12 @@
-import { ApplicationRef, ComponentFactoryResolver, Injectable, Injector, OnDestroy, OnInit } from '@angular/core';
+import {
+    ApplicationRef,
+    ComponentFactoryResolver,
+    Inject,
+    Injectable,
+    Injector,
+    OnDestroy,
+    OnInit
+} from '@angular/core';
 import {AuthResponse} from 'app/models/auth.response';
 import * as jwt from 'jwt-decode';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -9,11 +17,14 @@ import { Router } from '@angular/router';
 import { ComponentPortal, DomPortalHost } from '@angular/cdk/portal';
 import { SpinnerComponent } from 'app/pages/spinner/spinner.component';
 
-import * as _ from 'lodash';
 import { NavigationExtras } from '@angular/router/src/router';
+import { WINDOW } from 'app/shared/window-provider';
 
 export const redirectUrl = 'redirectUrl';
 const DEFAULT_REDIRECT_URL = '/main/tracking';
+
+const DEMO_SITE = 'demo.gpshandle.com';
+
 
 @Injectable()
 export class ApplicationContext implements OnInit, OnDestroy {
@@ -69,7 +80,8 @@ export class ApplicationContext implements OnInit, OnDestroy {
     //~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~
     //------------------------------------------------------------------------------------------------------------------
 
-    constructor(private snackBar: MatSnackBar, private router: Router,
+    constructor(@Inject(WINDOW) private window: Window, private snackBar: MatSnackBar,
+                private router: Router,
                 private factoryResolver: ComponentFactoryResolver,
                 private appRef: ApplicationRef,
                 private injector: Injector) {
@@ -375,6 +387,11 @@ export class ApplicationContext implements OnInit, OnDestroy {
 
     set token_type(value: string) {
         this._token_type = value;
+    }
+
+    isDemo() {
+        const host = this.window.location.hostname;
+        return host === DEMO_SITE;
     }
 }
 
