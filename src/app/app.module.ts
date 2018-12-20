@@ -21,6 +21,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { WINDOW_PROVIDERS } from 'app/shared/window-provider';
 import { DemoComponent } from './pages/demo/demo.component';
+import { CustomDirectivesModule } from 'app/directives/custom-directives.module';
 
 @NgModule({
     declarations: [
@@ -40,10 +41,9 @@ import { DemoComponent } from './pages/demo/demo.component';
         CommonModule,
         FormsModule,
         HttpClientModule,
-
         MaterialShared,
-
-        AppRoutingModule
+        AppRoutingModule,
+        CustomDirectivesModule
     ],
     providers: [
         AuthService,
