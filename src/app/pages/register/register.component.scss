@@ -1,11 +1,10 @@
 .page-register {
-  max-width: 1000px;
+  min-width: 500px;
   height: 100%;
   margin: auto;
-
-  .form-register {
-    width: 400px;
-    float: right;
-    padding: 16px;
+  display: table;
+  .page-register-center {
+    display: table-cell;
+    vertical-align: middle;
   }
 }
