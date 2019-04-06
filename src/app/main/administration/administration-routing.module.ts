@@ -44,6 +44,11 @@ const routes: Routes = [
                 loadChildren: 'app/main/administration/alert-profile/alert-profile.module#AlertProfileModule',
                 canActivate: [AuthGuard]
             },
+            {
+                path: 'unknown-device',
+                loadChildren: 'app/main/administration/unknown-device/unknown-device.module#UnknownDeviceModule',
+                canActivate: [AuthGuard]
+            }
         ]
     }
 ];

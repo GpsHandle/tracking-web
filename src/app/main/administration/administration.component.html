@@ -32,6 +32,13 @@
                 <mat-icon matListIcon>bell</mat-icon>
                 <a matLine routerLink="_alert" i18n>Alert Profile</a>
             </mat-list-item>
+
+            <mat-divider></mat-divider>
+            <!--SystemAdmin-->
+            <mat-list-item role="listitem" *showIfRole="'vd5lord'">
+                <mat-icon matListIcon>unknown</mat-icon>
+                <a matLine routerLink="unknown-device" i18n>Unknown Devices</a>
+            </mat-list-item>
         </mat-nav-list>
     </mat-sidenav>
 

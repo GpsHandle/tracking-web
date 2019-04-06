@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Observable, of} from 'rxjs';
 import { PageableCommonResponse } from 'app/models/pageable-common.response';
 import { UnknownDevice } from 'app/models/unknown-device';
 import { Device } from 'app/models/device';
@@ -26,12 +26,26 @@ export class UnknownDeviceService {
 
     addUknDevice(ukd: UnknownDevice): Observable<Device> {
         const url = '/api/device';
-        let data = new DeviceRequest();
+        const data = new DeviceRequest();
         data.deviceId = ukd.uniqueId;
         data.port = ukd.port;
         return this.http.post<Device>(url, data);
     }
 
+    addAllUknDevice(): Observable<number> {
+      const url = '/api/unknowndevice/all';
+      return this.http.put<number>(url, '');
+    }
+
+  deleteAllUnknownDevice(): Observable<number> {
+    const url = '/api/unknowndevice/all';
+    return this.http.delete<number>(url);
+  }
+
+    deleteUknDevice(id: number): Observable<any> {
+      const url = '/api/unknowndevice/' + id;
+      return this.http.delete(url);
+    }
     add(data: DeviceRequest): Observable<Device> {
         const url = '/api/device';
         return this.http.post<Device>(url, data);
