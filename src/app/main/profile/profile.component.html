@@ -58,5 +58,18 @@
         <mat-form-field>
             <input matInput placeholder="Authorities" disabled [value]="authorities">
         </mat-form-field>
+
+        <div fxLayout="row" fxLayoutGap="16px">
+            <div fxFlex="50">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Language" disabled [value]="">
+                </mat-form-field>
+            </div>
+            <div fxFlex="50">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Timezone" disabled [value]="">
+                </mat-form-field>
+            </div>
+        </div>
     </form>
 </div>
