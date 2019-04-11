@@ -5,7 +5,7 @@ import { UnknownDeviceService } from 'app/main/administration/unknown-device/ser
 import { merge, of as observableOf, ReplaySubject } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { ApplicationContext } from 'app/application-context';
-// import { AddNewDeviceComponent } from 'app/administration/add-new-device/add-new-device.component';
+import { AddNewDeviceComponent } from 'app/main/administration/unknown-device/add-new-device/add-new-device.component';
 
 @Component({
     selector: 'app-unknown-device',
@@ -61,18 +61,18 @@ export class UnknownDeviceComponent implements OnInit, AfterViewInit, AfterViewC
     }
 
     addNewDevice(element: UnknownDevice) {
-        // const dialogRef = this.dialog.open(AddNewDeviceComponent, {
-        //     width: '800px',
-        //     data: element
-        // });
-        //
-        // dialogRef.afterClosed().subscribe(result => {
-        //     this.unkownDeviceService.add(result).subscribe(
-        //         data => {},
-        //         error => {},
-        //         () => {}
-        //     );
-        // });
+        const dialogRef = this.dialog.open(AddNewDeviceComponent, {
+            width: '800px',
+            data: element
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            this.unkownDeviceService.add(result).subscribe(
+                data => {},
+                error => {},
+                () => {}
+            );
+        });
     }
 
     addUknDevice(eletement: UnknownDevice) {
