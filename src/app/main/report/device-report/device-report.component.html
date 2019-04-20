@@ -25,10 +25,10 @@
                     </mat-panel-title>
                     <mat-panel-description>
                         <div fxLayout="row" fxLayoutGap="16px" class="rpt-board-timepicker">
-                            <button mat-stroked-button color="primary" (click)="last2hours()">Last 2 hours</button>
-                            <button mat-stroked-button color="primary" (click)="last8hours()">Last 8 hours</button>
-                            <button mat-stroked-button color="primary" (click)="last24hours()">Last 24 hours</button>
-                            <button mat-stroked-button color="primary" (click)="last72hours()">Last 3 days</button>
+                            <button mat-stroked-button color="primary" (click)="last2hours($event)">Last 2 hours</button>
+                            <button mat-stroked-button color="primary" (click)="last8hours($event)">Last 8 hours</button>
+                            <button mat-stroked-button color="primary" (click)="last24hours($event)">Last 24 hours</button>
+                            <button mat-stroked-button color="primary" (click)="last72hours($event)">Last 3 days</button>
                             <button mat-stroked-button color="primary" (click)="customTime($event)" disabled>Custom</button>
 
                             <!--<div *ngIf="showCustom" fxLayout="row" fxLayoutGap="16px">-->

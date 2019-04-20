@@ -108,25 +108,29 @@ export class DeviceReportComponent implements OnInit {
         this.tIcon = this.sideNav.opened ? 'back' : 'sub-menu';
     }
 
-    last2hours(): void {
+    last2hours(event: Event): void {
+        event.stopPropagation();
         this.to = Date.now();
         this.from = this.to - 2 * 3600 * 1000;
         this.dataChange.next(1);
     }
 
-    last8hours(): void {
+    last8hours(event: Event): void {
+        event.stopPropagation();
         this.to = Date.now();
         this.from = this.to - 8 * 3600 * 1000;
         this.dataChange.next(1);
     }
 
-    last24hours(): void {
+    last24hours(event: Event): void {
+        event.stopPropagation();
         this.to = Date.now();
         this.from = this.to - 24 * 3600 * 1000;
         this.dataChange.next(1);
     }
 
-    last72hours(): void {
+    last72hours(event: Event): void {
+        event.stopPropagation();
         this.to = Date.now();
         this.from = this.to - 72 * 3600 * 1000;
         this.dataChange.next(1);
