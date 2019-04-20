@@ -23,6 +23,7 @@
 .rpt-info-board {
   .mat-expansion-panel-header-title {
     align-items: center;
+    flex-grow: 0;
   }
   .mat-expansion-panel-header-description {
     flex-basis: 0;
