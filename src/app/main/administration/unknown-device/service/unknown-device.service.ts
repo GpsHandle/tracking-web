@@ -28,6 +28,7 @@ export class UnknownDeviceService {
         const url = '/api/device';
         const data = new DeviceRequest();
         data.deviceId = ukd.uniqueId;
+        data.uniqueId = ukd.uniqueId;
         data.port = ukd.port;
         return this.http.post<Device>(url, data);
     }

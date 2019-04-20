@@ -75,8 +75,9 @@ export class UnknownDeviceComponent implements OnInit, AfterViewInit, AfterViewC
         });
     }
 
-    addUknDevice(eletement: UnknownDevice) {
-        this.unkownDeviceService.addUknDevice(eletement).subscribe(
+    addUknDevice(element: UnknownDevice) {
+        console.log('UnknownDevice', element)
+        this.unkownDeviceService.addUknDevice(element).subscribe(
             data => {
                 this.dataChange.next(1);
             },

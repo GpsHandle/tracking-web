@@ -8,6 +8,7 @@ export class Device {
     public name: string;
     public description: string;
     public deviceId: string;
+    public uniqueId: string;
     public imei: string;
 
     public company: CompanyLittle | any;
