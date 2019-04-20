@@ -145,7 +145,8 @@ export class DeviceReportComponent implements OnInit {
     }
 
     //----------export----------//
-    export(fmt?: string) {
+    export(event: Event, fmt?: string) {
+        event.stopPropagation();
         this.applicationContext.spin(true);
 
         let type = 'speed';
@@ -170,9 +171,12 @@ export class DeviceReportComponent implements OnInit {
                 saveAs(data.body, fileName );
             },
             error => {
+                this.applicationContext.spin(false);
+                this.applicationContext.error(error);
                 //console.log('Data', error);
             },
             () => {
+                this.applicationContext.spin(false);
                 //console.log('Completed');
             }
         );
