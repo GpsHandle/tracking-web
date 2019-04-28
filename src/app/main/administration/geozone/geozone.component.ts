@@ -11,6 +11,7 @@ import 'leaflet-editable';
 import { GeozoneRequest } from 'app/models/request/geozone.request';
 import { ApplicationContext } from 'app/application-context';
 import { GeoUtils } from 'app/main/administration/geozone/GeoUtils';
+import { LatLng } from 'leaflet';
 // import { LatLng} from 'leaflet';
 // import { FeatureGroup } from 'leaflet';
 
@@ -127,45 +128,50 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
     }
 
     private drawGeofences(): void {
-        _.forEach(this.geofenceList, (g) => {
-            g = GeoUtils.convertGeofence(g);
-            let geometryObj = null;
-            if (g.geojson.properties.type === 'Circle') {
-                let ll = L.GeoJSON.coordsToLatLng(g.geojson.geometry.coordinates);
-                geometryObj = L.circle(ll, {radius: g.geojson.properties.radius}).addTo(this.map);
-            } else if (g.geojson.properties.type === 'Rectangle') {
-                let lls = L.GeoJSON.coordsToLatLngs(g.geojson.geometry.coordinates, 1);
-                geometryObj = L.rectangle(lls).addTo(this.map);
-            } else if (g.geojson.properties.type === 'Polygon') {
-                let lls = L.GeoJSON.coordsToLatLngs(g.geojson.geometry.coordinates, 1);
-                geometryObj = L.polygon(lls).addTo(this.map);
-            }
-
-            geometryObj.on('click', () => {
-                geometryObj.toggleEdit();
-            });
-
-            geometryObj.on('editable:drawing:start', () => {
-                if (this.isCircle()) {
-                    this.radius = geometryObj._mRadius;
-                }
-                this.coordinates = geometryObj.toGeoJSON().geometry.coordinates;
-            });
-
-            geometryObj.on('editable:drawing:end', () => {
-                geometryObj.disableEdit();
-            });
-
-            geometryObj.on('editable:drawing:move', () => {
+        if (this.geofenceList && this.geofenceList.length > 0) {
+            _.forEach(this.geofenceList, (g) => {
+                g = GeoUtils.convertGeofence(g);
+                let geometryObj = null;
                 if (g.geojson.properties.type === 'Circle') {
-                    this.radius = geometryObj._mRadius;
+                    let ll = L.GeoJSON.coordsToLatLng(g.geojson.geometry.coordinates);
+                    geometryObj = L.circle(ll, {radius: g.geojson.properties.radius}).addTo(this.map);
+                } else if (g.geojson.properties.type === 'Rectangle') {
+                    let lls = L.GeoJSON.coordsToLatLngs(g.geojson.geometry.coordinates, 1);
+                    geometryObj = L.rectangle(lls).addTo(this.map);
+                } else if (g.geojson.properties.type === 'Polygon') {
+                    let lls = L.GeoJSON.coordsToLatLngs(g.geojson.geometry.coordinates, 1);
+                    geometryObj = L.polygon(lls).addTo(this.map);
                 }
-                this.coordinates = geometryObj.toGeoJSON().geometry.coordinates;
+
+                if (geometryObj) {
+                    geometryObj.on('click', () => {
+                        geometryObj.toggleEdit();
+                    });
+
+                    geometryObj.on('editable:drawing:start', () => {
+                        if (this.isCircle()) {
+                            this.radius = geometryObj._mRadius;
+                        }
+                        this.coordinates = geometryObj.toGeoJSON().geometry.coordinates;
+                    });
+
+                    geometryObj.on('editable:drawing:end', () => {
+                        geometryObj.disableEdit();
+                    });
+
+                    geometryObj.on('editable:drawing:move', () => {
+                        if (g.geojson.properties.type === 'Circle') {
+                            this.radius = geometryObj._mRadius;
+                        }
+                        this.coordinates = geometryObj.toGeoJSON().geometry.coordinates;
+
+                    });
+
+                    this.geometryMap.set(g.name, geometryObj);
+                }
 
             });
-
-            this.geometryMap.set(g.name, geometryObj);
-        });
+        }
     }
 
     //--
@@ -192,6 +198,11 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
         event.stopPropagation();
         this.service._delete(geofence.id).subscribe(
             data => {
+                this.pending = false;
+                this.create = false;
+                this.edit = false;
+                this.selected = undefined;
+                this.showDetail(false);
             },
             error => {},
             () => {
@@ -253,7 +264,7 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
     }
 
     cancel(): void {
-        if (this.selected) {
+        if (this.selected && this.geometryMap.get(this.selected.name)) {
             this.geometryMap.get(this.selected.name).disableEdit();
         }
         this.showDetail(false);
@@ -262,17 +273,22 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
 
     modify(geofence?: Geozone): void {
         console.log('XXX', geofence);
-        if (this.selected) {
+        console.log('XXX', this.selected);
+        if (this.selected && this.geometryMap.get(this.selected.name)) {
             this.geometryMap.get(this.selected.name).disableEdit();
         }
 
         if (geofence) {
             this.edit = true;
             this.selected = geofence;
-            this.geometryMap.get(geofence.name).enableEdit();
+            if (this.geometryMap.get(geofence.name)) {
+                this.geometryMap.get(geofence.name).enableEdit();
+            }
         } else if (this.selected) {
             this.edit = true;
-            this.geometryMap.get(this.selected.name).enableEdit();
+            if (this.geometryMap.get(this.selected.name)) {
+                this.geometryMap.get(this.selected.name).enableEdit();
+            }
         }
     }
 
@@ -404,7 +420,7 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
                 abc.push(L.GeoJSON.coordsToLatLng(coor))
             });
 
-            return L.latLngBounds(abc).getCenter();
+            return abc.length > 0 ? L.latLngBounds(abc).getCenter() : new LatLng(0, 0);
         }
     }
 }
