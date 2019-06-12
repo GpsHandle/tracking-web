@@ -4,7 +4,7 @@ import { AddEditAlertProfileComponent } from 'app/main/administration/alert-prof
 import { AlertProfileRequest } from 'app/models/request/alert-profile.request';
 import { AlertProfileService } from 'app/services/alert-profile.service';
 import { ApplicationContext } from 'app/application-context';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { ReplaySubject } from 'rxjs';
 import { AlertProfile } from 'app/models/alert-profile';
 import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';

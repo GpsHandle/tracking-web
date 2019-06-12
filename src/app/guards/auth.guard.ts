@@ -3,7 +3,7 @@ import {
     CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanLoad, Route,
     CanActivateChild, Router, NavigationExtras
 } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import {ApplicationContext} from 'app/application-context';
 
 @Injectable()

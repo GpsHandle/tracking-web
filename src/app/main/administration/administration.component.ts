@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
-import 'rxjs/add/operator/filter';
 @Component({
     selector: 'app-administration',
     templateUrl: './administration.component.html',

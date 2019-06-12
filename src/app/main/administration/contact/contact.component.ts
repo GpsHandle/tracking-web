@@ -5,10 +5,9 @@ import { OptionalColumnContactComponent } from 'app/main/administration/contact/
 import { Contact } from 'app/models/contact';
 import { ContactRequest } from 'app/models/request/contact.request';
 import { ContactService } from 'app/services/contact.service';
-import { merge, of } from 'rxjs';
+import { merge, of, ReplaySubject } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { ApplicationContext } from 'app/application-context';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { DeleteContactComponent } from 'app/main/administration/contact/delete-contact/delete-contact.component';
 
 @Component({

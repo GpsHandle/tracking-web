@@ -2,12 +2,10 @@ import * as _ from 'lodash';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Company } from 'app/models/company';
 import { Account } from 'app/models/account';
 import { CompanyService } from 'app/services/company.service';
-import { startWith } from 'rxjs/operators/startWith';
-import { map } from 'rxjs/operators/map';
 import { AccountLittle } from 'app/models/little/account.little';
 import { AccountService } from 'app/services/account.service';
 import { DeviceRequest } from 'app/models/request/device.request';
@@ -16,6 +14,7 @@ import { Device } from 'app/models/device';
 import { AlertProfile } from 'app/models/alert-profile';
 import { AlertProfileService } from 'app/services/alert-profile.service';
 import { AlertProfileLittle } from 'app/models/little/alert-profile.little';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-edit-device',

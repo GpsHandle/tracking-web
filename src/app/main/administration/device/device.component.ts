@@ -9,15 +9,12 @@ import { AddEditDeviceComponent } from 'app/main/administration/device/add-edit-
 import { DeleteEvent } from 'app/models/delete-event';
 import { DeviceRequest } from 'app/models/request/device.request';
 
-import { merge } from 'rxjs/observable/merge';
-import { of as observableOf } from 'rxjs/observable/of';
-import { catchError } from 'rxjs/operators/catchError';
-import { map } from 'rxjs/operators/map';
-import { startWith } from 'rxjs/operators/startWith';
-import { switchMap } from 'rxjs/operators/switchMap';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { merge } from 'rxjs';
+import { of as observableOf } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { DeleteDeviceComponent } from 'app/main/administration/device/delete-device/delete-device.component';
+import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 
 @Component({
     selector: 'applicationContext-device',
@@ -95,7 +92,7 @@ export class DeviceComponent implements OnInit, AfterViewInit {
                         this.paginator.pageIndex, this.paginator.pageSize,
                         this.sort.active, this.sort.direction);
                 }),
-                map(data => {
+                map((data: any) => {
                     this.applicationContext.spin(false);
                     this.resultsLength = data.totalElements;
                     return data.content;

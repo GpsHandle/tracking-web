@@ -13,7 +13,7 @@ import { DeviceSpeeedReport } from 'app/models/device-speeed.report';
 
 import { merge, of as observableOf} from 'rxjs';
 import { catchError, map, startWith, switchMap} from 'rxjs/operators';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { ReplaySubject } from 'rxjs';
 import { ApplicationContext } from 'app/application-context';
 
 @Component({

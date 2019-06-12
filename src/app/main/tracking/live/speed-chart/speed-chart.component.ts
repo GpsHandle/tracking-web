@@ -8,7 +8,7 @@ import {
     OnInit,
     SimpleChange
 } from '@angular/core';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { interval, ReplaySubject } from 'rxjs';
 import { EventService } from 'app/services/event.service';
 import { merge, of as observableOf } from 'rxjs/index';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
@@ -16,7 +16,6 @@ import * as d3 from 'd3';
 import * as c3 from 'c3';
 import { EventData } from 'app/models/event-data';
 import * as _ from 'lodash';
-import { TimerObservable } from 'rxjs/observable/TimerObservable';
 
 @Component({
     selector: 'speed-chart',
@@ -229,13 +228,21 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
             this.subscription.unsubscribe();
         }
 
-        this.subscription = TimerObservable.create(15, 15 * 1000)
-            .takeWhile(() => this.alive)
-            .subscribe(() => {
+        interval(15 * 1000).pipe(startWith(15)).subscribe(
+            () => {
                 this.to = Date.now();
                 this.from = this.to - this.period * 60 * 60 * 1000; // 6 hours
                 this.dataChange.next(101);
-            });
+            }
+        );
+
+        // this.subscription = TimerObservable.create(15, 15 * 1000)
+        //     .takeWhile(() => this.alive)
+        //     .subscribe(() => {
+        //         this.to = Date.now();
+        //         this.from = this.to - this.period * 60 * 60 * 1000; // 6 hours
+        //         this.dataChange.next(101);
+        //     });
     }
 
     private draw() {

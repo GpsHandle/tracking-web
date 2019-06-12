@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import { AbstractService } from 'app/services/abstract.service';
 import { AccountRequest } from 'app/models/request/account.request';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 
 export const ACCOUNT_API_URL = '/api/account';
 

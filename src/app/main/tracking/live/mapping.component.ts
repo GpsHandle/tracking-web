@@ -13,15 +13,6 @@ import * as distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import {DeviceService} from 'app/services/device.service';
 import {EventService} from 'app/services/event.service';
 import {EventData} from 'app/models/event-data';
-import { TimerObservable } from 'rxjs/observable/TimerObservable';
-
-import 'rxjs/add/operator/takeWhile';
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/observable/interval';
-// import 'rxjs/add/observable/forkJoin';
-import { Observable } from 'rxjs/Observable';
-import { forkJoin } from 'rxjs/observable/forkJoin'
 
 import { StatusPieChart } from 'app/models/status-pie-chart';
 import { DeviceLittle } from 'app/models/little/device.little';
@@ -32,6 +23,8 @@ import { MatBottomSheet } from '@angular/material';
 import { PanelCommandComponent } from 'app/main/tracking/live/panel-command/panel-command.component';
 import { ApplicationContext } from 'app/application-context';
 import { Device } from 'app/models/device';
+import { forkJoin, interval } from 'rxjs';
+import { startWith } from 'rxjs/operators';
 
 const TILE_OSM = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
 const TILE_MAPBOX = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
@@ -139,9 +132,8 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     loadLivesEvent(): void {
-        TimerObservable.create(20, 10 * 1000)
-            .takeWhile(() => this.alive)
-            .subscribe(() => {
+        interval(10 * 1000).pipe(startWith(20)).subscribe(
+            () => {
                 this.eventService.getLiveEvents().subscribe(
                     liveEvents => {
                         this.liveEvents = liveEvents;
@@ -155,7 +147,8 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
 
                     }
                 );
-            });
+            }
+        );
     }
 
     processEvents(): void {

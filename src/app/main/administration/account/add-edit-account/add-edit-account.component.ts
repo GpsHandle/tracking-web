@@ -7,12 +7,11 @@ import { FormControl } from '@angular/forms';
 import { CompanyService } from 'app/services/company.service';
 import { Privilege } from 'app/models/privilege';
 
-import { Observable } from 'rxjs/Observable';
-import { startWith } from 'rxjs/operators/startWith';
-import { map } from 'rxjs/operators/map';
+import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { AccountRequest } from 'app/models/request/account.request';
 import { Account } from 'app/models/account';
 import { ApplicationContext } from 'app/application-context';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'applicationContext-add-edit-account',

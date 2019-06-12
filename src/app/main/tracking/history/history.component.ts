@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
-import 'rxjs/add/operator/switchMap';
 import * as L from 'leaflet';
 import 'leaflet-polylinedecorator';
 import 'leaflet-easybutton';

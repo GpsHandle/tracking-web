@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import {AuthResponse} from 'app/models/auth.response';
 import * as jwt from 'jwt-decode';
-import 'rxjs/add/operator/distinctUntilChanged';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { Privilege } from 'app/models/privilege';
 import { HttpErrorResponse } from '@angular/common/http';
