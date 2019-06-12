@@ -1,5 +1,3 @@
-import { el } from '@angular/platform-browser/testing/src/browser_util';
-
 export class MappingUtils {
     public static COLOR_LIVING: string  = "#00e80e";
     public static COLOR_IDLE: string    = "#ffb403";

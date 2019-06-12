@@ -19,8 +19,8 @@ export class UnknownDeviceComponent implements OnInit, AfterViewInit, AfterViewC
     resultsLength = 0;
     displayedColumns = ['checkbok', 'uniqueId', 'remoteIpAddress', 'port', 'createdOn', 'actions'];
 
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    @ViewChild(MatSort) sort: MatSort;
+    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+    @ViewChild(MatSort, { static: true }) sort: MatSort;
 
     constructor(private dialog: MatDialog,
                 private unkownDeviceService: UnknownDeviceService,

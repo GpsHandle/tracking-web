@@ -24,8 +24,8 @@ export class ContactComponent implements OnInit {
     displayedColumns: string[] = ['name', 'description', 'firstName', 'lastName', 'title', 'phoneNumber',
         'emailAddress', 'addressLine1', 'addressLine2', 'createdBy', 'createdOn', 'updatedBy', 'updatedOn', 'actions'];
     resultsLength = 0;
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    @ViewChild(MatSort) sort: MatSort;
+    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+    @ViewChild(MatSort, { static: true }) sort: MatSort;
 
     constructor(public dialog: MatDialog, private contactService: ContactService,
                 private applicationContext: ApplicationContext) { }

@@ -43,8 +43,8 @@ export class AddEditAlertProfileComponent implements OnInit {
         AlertType.ALERT_FUEL_FILL
     ];
 
-    @ViewChild(Weekday) weekDays: Weekday;
-    @ViewChild(DayTime) dayTime: DayTime;
+    @ViewChild(Weekday, { static: true }) weekDays: Weekday;
+    @ViewChild(DayTime, { static: true }) dayTime: DayTime;
 
     contactChanged: ReplaySubject<any>;
 

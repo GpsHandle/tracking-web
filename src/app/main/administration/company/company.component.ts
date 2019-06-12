@@ -25,8 +25,8 @@ export class CompanyComponent implements OnInit, AfterViewInit {
     dataChange: ReplaySubject<number>;
     resultsLength = 0;
 
-    @ViewChild(MatSort) sort: MatSort;
-    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort, { static: true }) sort: MatSort;
+    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
     displayedColumns = ['name', 'emailAddress', 'phoneNumber', 'addressLine1', 'addressLine2', 'createdBy', 'createdOn', 'actions'];
 

@@ -11,7 +11,7 @@ export class DayTime implements OnInit {
 
   scheduleTime: MyTime;
   @Input() editMode = true;
-  @ViewChild(TimeInput) timeInput: TimeInput;
+  @ViewChild(TimeInput, { static: true }) timeInput: TimeInput;
   constructor() { }
 
   ngOnInit() {

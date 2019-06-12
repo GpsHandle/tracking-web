@@ -29,7 +29,7 @@ export class DeviceReportComponent implements OnInit {
 
     selectedTab: Tabs;
 
-    @ViewChild(MatDrawer) sideNav: MatDrawer;
+    @ViewChild(MatDrawer, { static: true }) sideNav: MatDrawer;
 
 
     constructor(

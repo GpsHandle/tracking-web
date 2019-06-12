@@ -22,7 +22,7 @@ const routes: Routes = [
     { path: 'demo',   component: DemoComponent, canActivate: [DemoGuard] },
     {
         path: 'main',
-        loadChildren: 'app/main/main.module#MainModule',
+        loadChildren: () => import('app/main/main.module').then(m => m.MainModule),
         canActivate: [AuthGuard],
         canActivateChild: [AuthGuard]
     },

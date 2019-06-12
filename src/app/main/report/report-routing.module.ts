@@ -19,7 +19,7 @@ const routes: Routes = [
     },
     {
         path: 'device',
-        loadChildren: 'app/main/report/device-report/device-report.module#DeviceReportModule',
+        loadChildren: () => import('app/main/report/device-report/device-report.module').then(m => m.DeviceReportModule),
         canActivate: [AuthGuard],
     },
     { path: 'account', component: AccountReportComponent },

@@ -30,8 +30,8 @@ export class DriverComponent implements OnInit {
     expandedElement: Driver;
 
     resultsLength = 0;
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    @ViewChild(MatSort) sort: MatSort;
+    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+    @ViewChild(MatSort, { static: true }) sort: MatSort;
 
     displayedColumns = ['id', 'name', 'contacts', 'dateOfBirth', 'driverExperiencesMonths', 'typeOfVehicleExperienced',
     'driverLicenseNumber', 'driverLicenseType', 'driverLicenseTypeDescription', 'driverLicenseIssueDate', 'driverLicenseExpiredDate',

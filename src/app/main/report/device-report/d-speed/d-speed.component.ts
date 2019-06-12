@@ -32,8 +32,8 @@ export class DSpeedComponent implements OnChanges, OnInit, AfterViewInit {
 
     displayedColumns = ['latlng', 'altitude', 'heading', 'odometerKM', 'speedKPH', 'address', 'status', 'timestamp'];
 
-    @ViewChild(MatSort) sort: MatSort;
-    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort, { static: true }) sort: MatSort;
+    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
     constructor(private deviceReportService: DeviceReportService,
                 private applicationContext: ApplicationContext) {

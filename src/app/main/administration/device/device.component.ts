@@ -26,8 +26,8 @@ import { DeleteDeviceComponent } from 'app/main/administration/device/delete-dev
 })
 export class DeviceComponent implements OnInit, AfterViewInit {
 
-    @ViewChild(MatSort) sort: MatSort;
-    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort, { static: true }) sort: MatSort;
+    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
     displayedColumns = ['toggle', 'name', 'deviceId', 'companyName', 'vehicleName', 'protocol', 'lastEventTime', 'expiredOn', 'createdBy', 'createdOn', 'actions'];
 

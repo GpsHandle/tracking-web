@@ -13,27 +13,27 @@ const routes: Routes = [
         children: [
             {
                 path: 'dashboard',
-                loadChildren: 'app/main/dashboard/dashboard.module#DashboardModule',
+                loadChildren: () => import('app/main/dashboard/dashboard.module').then(m => m.DashboardModule),
                 canActivate: [AuthGuard]
             },
             {
                 path: 'tracking',
-                loadChildren: 'app/main/tracking/mapping.module#MappingModule',
+                loadChildren: () => import('app/main/tracking/mapping.module').then(m => m.MappingModule),
                 canActivate: [AuthGuard]
             },
             {
                 path: 'report',
-                loadChildren: 'app/main/report/report.module#ReportModule',
+                loadChildren: () => import('app/main/report/report.module').then(m => m.ReportModule),
                 canActivate: [AuthGuard]
             },
             {
                 path: '_admin',
-                loadChildren: 'app/main/administration/administration.module#AdministrationModule',
+                loadChildren: () => import('app/main/administration/administration.module').then(m => m.AdministrationModule),
                 canActivate: [AuthGuard],
             },
             {
                 path: 'help',
-                loadChildren: 'app/main/help/help.module#HelpModule',
+                loadChildren: () => import('app/main/help/help.module').then(m => m.HelpModule),
                 canActivate: [AuthGuard]
             },
             {
@@ -42,7 +42,7 @@ const routes: Routes = [
             },
             {
                 path: 'mail',
-                loadChildren: 'app/main/mail/mail.module#MailModule',
+                loadChildren: () => import('app/main/mail/mail.module').then(m => m.MailModule),
                 canActivate: [AuthGuard],
             }
         ]

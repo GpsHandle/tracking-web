@@ -10,43 +10,43 @@ const routes: Routes = [
         children:[
             {
                 path: '_account',
-                loadChildren: 'app/main/administration/account/account.module#AccountModule',
+                loadChildren: () => import('app/main/administration/account/account.module').then(m => m.AccountModule),
                 canActivate: [AuthGuard]
             },
             {
                 path: '_company',
-                loadChildren: 'app/main/administration/company/company.module#CompanyModule',
+                loadChildren: () => import('app/main/administration/company/company.module').then(m => m.CompanyModule),
                 canActivate: [SysAdminGuard],
                 canLoad: [SysAdminGuard]
             },
             {
                 path: 'contact',
-                loadChildren: 'app/main/administration/contact/contact.module#ContactModule',
+                loadChildren: () => import('app/main/administration/contact/contact.module').then(m => m.ContactModule),
                 canActivate: [AuthGuard]
             },
             {
                 path: '_device',
-                loadChildren: 'app/main/administration/device/device.module#DeviceModule',
+                loadChildren: () => import('app/main/administration/device/device.module').then(m => m.DeviceModule),
                 canActivate: [AuthGuard]
             },
             {
                 path: '_driver',
-                loadChildren: 'app/main/administration/driver/driver.module#DriverModule',
+                loadChildren: () => import('app/main/administration/driver/driver.module').then(m => m.DriverModule),
                 canActivate: [AuthGuard]
             },
             {
                 path: '_geozone',
-                loadChildren: 'app/main/administration/geozone/geozone.module#GeozoneModule',
+                loadChildren: () => import('app/main/administration/geozone/geozone.module').then(m => m.GeozoneModule),
                 canActivate: [AuthGuard]
             },
             {
                 path: '_alert',
-                loadChildren: 'app/main/administration/alert-profile/alert-profile.module#AlertProfileModule',
+                loadChildren: () => import('app/main/administration/alert-profile/alert-profile.module').then(m => m.AlertProfileModule),
                 canActivate: [AuthGuard]
             },
             {
                 path: 'unknown-device',
-                loadChildren: 'app/main/administration/unknown-device/unknown-device.module#UnknownDeviceModule',
+                loadChildren: () => import('app/main/administration/unknown-device/unknown-device.module').then(m => m.UnknownDeviceModule),
                 canActivate: [AuthGuard]
             }
         ]

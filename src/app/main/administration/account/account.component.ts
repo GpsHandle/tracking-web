@@ -40,8 +40,8 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
     dataSource: MatTableDataSource<Account>;
     dataChange: ReplaySubject<any>;
 
-    @ViewChild(MatSort) sort: MatSort;
-    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort, { static: true }) sort: MatSort;
+    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
     displayedColumns = ['accountId', 'firstName', 'lastName', 'status', 'companyName', 'notes', 'createdBy', 'createdOn'];
     expandedElement: any;

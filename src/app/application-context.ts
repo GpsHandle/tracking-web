@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 import { ComponentPortal, DomPortalHost } from '@angular/cdk/portal';
 import { SpinnerComponent } from 'app/pages/spinner/spinner.component';
 
-import { NavigationExtras } from '@angular/router/src/router';
+import { NavigationExtras } from '@angular/router/router';
 import { WINDOW } from 'app/shared/window-provider';
 
 export const redirectUrl = 'redirectUrl';

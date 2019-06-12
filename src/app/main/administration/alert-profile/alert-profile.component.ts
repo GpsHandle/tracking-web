@@ -37,8 +37,8 @@ export class AlertProfileComponent implements OnInit {
         'alertApp', 'cannedAction', */'contacts', 'subject', 'text', 'templateId', 'createdBy', 'createdOn', 'updatedBy', 'updatedOn'];
     expandedElement: any;
     resultsLength = 0;
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    @ViewChild(MatSort) sort: MatSort;
+    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+    @ViewChild(MatSort, { static: true }) sort: MatSort;
 
     ngOnInit() {
         this.change = new ReplaySubject(1);
