@@ -196,6 +196,11 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
     //-- Delete, Edit
     delete(event: Event, geofence: Geozone): void {
         event.stopPropagation();
+
+        console.log('Geofence', geofence);
+        console.log('this.editableLayers', this.editableLayers);
+        console.log('this.geofenceList', this.geofenceList);
+
         this.service._delete(geofence.id).subscribe(
             data => {
                 this.pending = false;
@@ -203,15 +208,15 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
                 this.edit = false;
                 this.selected = undefined;
                 this.showDetail(false);
-            },
-            error => {},
-            () => {
+
                 this.applicationContext.info("Deleted geofence #" + geofence.name);
                 _.remove(this.geofenceList, (g) => {
                     return (g.id === geofence.id);
                 });
-                this.editableLayers.removeLayer(geofence.internalId);
-            }
+                this.editableLayers.removeLayer(this.geometryMap.get(geofence.name));
+            },
+            error => {},
+            () => {}
         )
     }
 
@@ -234,7 +239,6 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
                 break;
         }
 
-        // this.geometry.enable();
         this.geometry.on('click', () => {
             this.geometry.toggleEdit();
         });
@@ -252,8 +256,6 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
         });
 
         this.geometry.on('editable:drawing:move', () => {
-            console.log("Geo---drawing", this.geometry);
-
             if (this.isCircle()) {
                 this.radius = this.geometry._mRadius;
             }
@@ -318,6 +320,8 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
                 data => {
                     this.applicationContext.info('Created #' + this.selected.name);
                     this.geofenceList.push(data);
+
+                    console.log('this.geometry', this.geometry);
                 },
                 error => {
                     this.pending = false;

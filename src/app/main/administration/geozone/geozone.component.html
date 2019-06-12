@@ -44,9 +44,9 @@
                 <button mat-flat-button (click)="modify()" i18n *ngIf="!edit && !create">Edit</button>
             </mat-toolbar>
             <div class="geo-detail-info">
-                <div fxLayout="row" fxLayoutGap="16px">
-                    <div fxFlex="33">
-                        <form class="">
+                <form class="">
+                    <div fxLayout="row" fxLayoutGap="16px">
+                        <div fxFlex="33">
                             <div fxLayout="column">
                                 <mat-form-field fxFlex="100">
                                     <input matInput placeholder="Geozone Name" [(ngModel)]="selected.name" name="geofence-name" [disabled]="!edit && !create">
@@ -58,6 +58,14 @@
                                     <input matInput type="number" placeholder="Max Speed" [(ngModel)]="selected.maxSpeedKPH" name="geofence-maxspeed" [disabled]="!edit && !create">
                                 </mat-form-field>
 
+
+                            </div>
+                        </div>
+                        <div fxFlex="33">
+                            <div fxLayout="column">
+                                <mat-form-field fxFlex="100">
+                                    <input matInput placeholder="Type" [(ngModel)]="type" name="geofence-type" disabled>
+                                </mat-form-field>
                                 <mat-form-field fxFlex="100">
                                     <input matInput type="text" placeholder="Color" [(ngModel)]="selected.color" name="geofence-color" [disabled]="!edit && !create">
                                 </mat-form-field>
@@ -65,13 +73,9 @@
                                 <mat-checkbox [(ngModel)]="selected.privateArea" name="geofence-pri-area" [disabled]="!edit && !create">Private Zone</mat-checkbox>
                                 <mat-checkbox [(ngModel)]="selected.reverseGeocode" name="geofence-rev-code" [disabled]="!edit && !create">Reverse Geocode</mat-checkbox>
                             </div>
-                        </form>
-                    </div>
-                    <div fxFlex="67" class="geo-detail-coordinates">
-                        <form>
-                            <mat-form-field>
-                                <input matInput placeholder="Type" [(ngModel)]="type" name="geofence-type" disabled>
-                            </mat-form-field>
+                        </div>
+                        <div fxFlex="33" class="geo-detail-coordinates">
+
                             <div *ngIf="isCircle()">
                                 <div>
                                     <mat-form-field>
@@ -97,9 +101,9 @@
                                     </mat-form-field>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
 
         </div>
