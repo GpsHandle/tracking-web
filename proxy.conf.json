@@ -1,11 +1,15 @@
 {
   "/oauth": {
     "target": "http://dev.gpshandle.com",
-    "secure": false
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "info"
   },
 
   "/api": {
     "target": "http://dev.gpshandle.com",
-    "secure": false
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "info"
   }
 }

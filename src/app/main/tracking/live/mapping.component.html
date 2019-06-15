@@ -90,11 +90,15 @@
                     <div fxLayout="column" fxLayoutGap="16px" class="flex-middle">
                         <a mat-stroked-button [routerLink]="['history', selectedDevice.id]">
                             <mat-icon>history</mat-icon>
-                            <span>history >></span>
+                            <span>View Device History >></span>
                         </a>
                         <button mat-stroked-button (click)="openPanelCommand($event, selectedDevice)">
                             <mat-icon>console</mat-icon>
                             <span>Send Command</span>
+                        </button>
+                        <button mat-stroked-button>
+                            <mat-icon>report</mat-icon>
+                            <span>View Device Report</span>
                         </button>
                     </div>
 
