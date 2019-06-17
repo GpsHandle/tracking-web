@@ -61,7 +61,7 @@
                     <div class="m-table-details">
                         <table>
                             <tr>
-                                <td class="t-head">DevicDeviceIDeID</td>
+                                <td class="t-head">DeviceID</td>
                                 <td>{{selectedDevice.name || selectedDevice.deviceId}}</td>
                             </tr>
                             <tr>
@@ -87,7 +87,7 @@
                         </table>
                     </div>
 
-                    <div fxLayout="column" fxLayoutGap="16px" class="flex-middle">
+                    <div fxLayout="column" fxLayoutGap="16px">
                         <a mat-stroked-button [routerLink]="['history', selectedDevice.id]">
                             <mat-icon>history</mat-icon>
                             <span>View Device History >></span>

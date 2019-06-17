@@ -1,12 +1,15 @@
-<p>
-  mail works!
-</p>
-
-<quill-editor  [(ngModel)]="editorContent"
-               [options]="editorConfig"
-               (blur)="onEditorBlured($event)"
-               (focus)="onEditorFocused($event)"
-               (ready)="onEditorCreated($event)"
-               (change)="onContentChanged($event)">
-</quill-editor>`
-<div class="ql-editor preview" [innerHTML]="editorContent"></div>
+<div fxLayout="row" fxLayoutGap="16px">
+    <div fxFlex="30">
+        <span>Mail List</span>
+    </div>
+    <div fxFlex="70">
+        <quill-editor  [(ngModel)]="editorContent"
+                       [options]="editorConfig"
+                       (blur)="onEditorBlured($event)"
+                       (focus)="onEditorFocused($event)"
+                       (ready)="onEditorCreated($event)"
+                       (change)="onContentChanged($event)">
+        </quill-editor>
+        <div class="ql-editor preview" [innerHTML]="editorContent"></div>
+    </div>
+</div>
