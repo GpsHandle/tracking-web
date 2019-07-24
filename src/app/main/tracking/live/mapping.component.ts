@@ -94,15 +94,6 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        // this.deviceService.getAllLittle().subscribe(
-        //     data => {
-        //         this.allDeviceList = data;
-        //         this.deviceList = _.filter(this.allDeviceList, (d) => {
-        //             return true;
-        //         });
-        //     }
-        // );
-
         this.loadLivesEvent();
         this.customDefault = L.icon({
             iconRetinaUrl: '/assets/images/marker-icon-2x.png',
@@ -141,7 +132,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     loadLivesEvent(): void {
-        interval(10 * 1000).pipe(takeUntil(this.unsubscribe$)).subscribe(
+        interval(10 * 1000).pipe(startWith(10), takeUntil(this.unsubscribe$)).subscribe(
             () => {
                 this.eventService.getLiveEvents().subscribe(
                     liveEvents => {
