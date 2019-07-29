@@ -57,6 +57,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
 
     selectedDevice: DeviceLittle;
     selectedMarker: CircleMarker;
+    currentMarker: L.Marker;
 
     private unsubscribe$ = new Subject<void>();
 
@@ -177,7 +178,10 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
 
                     if (event.latitude && event.longitude) {
                         let marker = this.buildMarker(event);
-                        this.popupLink.register(marker, event);
+                        this.popupLink.register(marker, event, (_smarker) => {this.currentMarker = _smarker});
+                        if (this.currentMarker && !this.currentMarker.isPopupOpen()) {
+                            this.currentMarker.togglePopup();
+                        }
                         this.markersCluster.addLayer(marker);
                         marker.on('click', () => {
                             this.selectedDevice = d;

@@ -24,8 +24,13 @@ export class PopupService {
     }
 
 
-    register(marker: L.Marker, data: any): void  {
-        marker.on('click', ($event: L.LeafletMouseEvent)  => this.popup($event, data) );
+    register(marker: L.Marker, data: any, fn?: Function): void  {
+        marker.on('click', ($event: L.LeafletMouseEvent)  => {
+            if (fn) {
+                fn(marker);
+            }
+            this.popup($event, data);
+        } );
     }
 
     popup(event: L.LeafletMouseEvent, data: any) {

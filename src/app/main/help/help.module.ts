@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UsageComponent } from './usage/usage.component';
 import { HelpRoutingModule } from 'app/main/help/help-routing.module';
 import { MatListModule, MatSidenavModule } from '@angular/material';
+import { HelpComponent } from './help.component';
 
 @NgModule({
     imports: [
@@ -12,7 +13,8 @@ import { MatListModule, MatSidenavModule } from '@angular/material';
         MatSidenavModule
     ],
     declarations: [
-        UsageComponent
+        UsageComponent,
+        HelpComponent
     ]
 })
 export class HelpModule { }

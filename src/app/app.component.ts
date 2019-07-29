@@ -6,7 +6,11 @@ import {ApplicationContext} from './application-context';
   template: `<router-outlet></router-outlet>`,
   styles: [``]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-    constructor() {}
+    constructor(private context: ApplicationContext) {}
+
+    ngOnInit(): void {
+        
+    }
 }
