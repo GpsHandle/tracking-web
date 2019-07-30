@@ -8,10 +8,10 @@ import {
     OnInit,
     SimpleChange
 } from '@angular/core';
-import { interval, ReplaySubject } from 'rxjs';
+import { interval, ReplaySubject, Subject } from 'rxjs';
 import { EventService } from 'app/services/event.service';
 import { merge, of as observableOf } from 'rxjs/index';
-import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { catchError, map, startWith, switchMap, takeUntil } from 'rxjs/operators';
 import * as d3 from 'd3';
 import * as c3 from 'c3';
 import { EventData } from 'app/models/event-data';
@@ -148,8 +148,8 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
     private historyEventsOptimizeForChart: EventData[];
     loading: boolean = false;
     opac: number = 1;
-    private alive: boolean = true;
-    private subscription;
+
+    private unsubscribe$ = new Subject<void>();
     //-------------------------------------------------------------------------
     constructor(private eventService: EventService,
                 private cdRef : ChangeDetectorRef) {
@@ -166,7 +166,8 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
     }
 
     ngOnDestroy(): void {
-        this.alive = false;
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
     }
 
     ngAfterViewInit(): void {
@@ -224,25 +225,13 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
     }
 
     private intervalUpdate() {
-        if (this.subscription) {
-            this.subscription.unsubscribe();
-        }
-
-        interval(15 * 1000).pipe(startWith(15)).subscribe(
+        interval(15 * 1000).pipe(startWith(15), takeUntil(this.unsubscribe$)).subscribe(
             () => {
                 this.to = Date.now();
                 this.from = this.to - this.period * 60 * 60 * 1000; // 6 hours
                 this.dataChange.next(101);
             }
         );
-
-        // this.subscription = TimerObservable.create(15, 15 * 1000)
-        //     .takeWhile(() => this.alive)
-        //     .subscribe(() => {
-        //         this.to = Date.now();
-        //         this.from = this.to - this.period * 60 * 60 * 1000; // 6 hours
-        //         this.dataChange.next(101);
-        //     });
     }
 
     private draw() {
