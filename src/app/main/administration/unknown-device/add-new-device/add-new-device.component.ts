@@ -4,11 +4,9 @@ import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import * as _ from 'lodash';
 import { UnknownDevice } from 'app/models/unknown-device';
-import { CompanyService } from 'app/services/company.service';
 import { AccountService } from 'app/services/account.service';
 import { AlertProfileService } from 'app/services/alert-profile.service';
 import { DeviceService } from 'app/services/device.service';
-import { Company } from 'app/models/company';
 import { Account } from 'app/models/account';
 import { AlertProfile } from 'app/models/alert-profile';
 import { DeviceRequest } from 'app/models/request/device.request';
@@ -19,10 +17,6 @@ import { DeviceRequest } from 'app/models/request/device.request';
   styleUrls: ['./add-new-device.component.scss']
 })
 export class AddNewDeviceComponent implements OnInit {
-
-    filteredCompanies: Observable<Company[]>;
-    companyControl: FormControl = new FormControl();
-    companyList: Company[];
 
     statusList: string[];
     filteredStatus: Observable<string[]>;
@@ -36,8 +30,7 @@ export class AddNewDeviceComponent implements OnInit {
     accountIds: number[];
     alertIds: number[];
 
-  constructor(private companyService: CompanyService,
-              private accountService: AccountService,
+  constructor(private accountService: AccountService,
               private alertProfileService: AlertProfileService,
               private deviceService: DeviceService,
               public dialogRef: MatDialogRef<AddNewDeviceComponent>,
@@ -89,18 +82,6 @@ export class AddNewDeviceComponent implements OnInit {
         // this.dateExpired = this.data.expiredOn ? new Date(this.data.expiredOn) : null;
     }
 
-    filter(value: string): Company[] {
-        if (_.isString(value)) {
-            return this.companyList.filter(co => co.name.toLowerCase().indexOf(value.toLowerCase()) === 0);
-        } else {
-            return this.companyList;
-        }
-    }
-
-
-    displayFn(company: Company): string | Company {
-        return company ? company.name : company;
-    }
 
     cancel(): void {
         this.dialogRef.close();
@@ -109,7 +90,6 @@ export class AddNewDeviceComponent implements OnInit {
     onSave(): void {
         this.data.expiredOn = this.dateExpired;
         const data1 = new DeviceRequest(this.data);
-        data1.companyId = this.companyControl.value.id;
         data1.status = this.statusControl.value;
         data1.accountIds = this.accountIds;
         data1.alertProfileIds = this.alertIds;

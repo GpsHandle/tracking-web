@@ -14,17 +14,6 @@ const routes: Routes = [
                 canActivate: [AuthGuard]
             },
             {
-                path: '_company',
-                loadChildren: () => import('app/main/administration/company/company.module').then(m => m.CompanyModule),
-                canActivate: [SysAdminGuard],
-                canLoad: [SysAdminGuard]
-            },
-            {
-                path: 'contact',
-                loadChildren: () => import('app/main/administration/contact/contact.module').then(m => m.ContactModule),
-                canActivate: [AuthGuard]
-            },
-            {
                 path: '_device',
                 loadChildren: () => import('app/main/administration/device/device.module').then(m => m.DeviceModule),
                 canActivate: [AuthGuard]

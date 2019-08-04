@@ -11,7 +11,6 @@ export class Device {
     public uniqueId: string;
     public imei: string;
 
-    public company: CompanyLittle | any;
     public accounts: Array<AccountLittle | any>;
     public alertProfiles: Array<AlertProfileLittle | any>
 

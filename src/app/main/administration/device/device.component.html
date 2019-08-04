@@ -36,16 +36,6 @@
             <mat-cell *matCellDef="let element"> {{element.deviceId}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="companyId">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n> Company ID </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.company !== null ? element.company.id : ''}} </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="companyName">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n> Company Name </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.company !== null ? element.company.name: ''}} </mat-cell>
-        </ng-container>
-
         <ng-container matColumnDef="vehicleId">
             <mat-header-cell *matHeaderCellDef mat-sort-header i18n> Vehicle ID </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.vehicleId}} </mat-cell>

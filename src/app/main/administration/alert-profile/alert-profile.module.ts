@@ -7,7 +7,6 @@ import { MaterialShared } from 'app/shared/material-shared';
 import { CustomDirectivesModule } from 'app/directives/custom-directives.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SchedulerModule } from 'app/shared/scheduler/scheduler.module';
-import { ContactModule } from 'app/main/administration/contact/contact.module';
 import { DeleteAlertProfileComponent } from './delete-alert-profile/delete-alert-profile.component';
 import { GeozoneService } from 'app/services/geozone.service';
 
@@ -18,7 +17,6 @@ import { GeozoneService } from 'app/services/geozone.service';
         CustomDirectivesModule,
         AlertProfileRoutingModule,
         ReactiveFormsModule,
-        ContactModule,
         FormsModule,
         SchedulerModule
     ],

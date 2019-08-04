@@ -2,9 +2,7 @@ import * as _ from 'lodash';
 import { Component, OnInit, Inject, AfterViewInit } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 
-import { Company } from 'app/models/company';
 import { FormControl } from '@angular/forms';
-import { CompanyService } from 'app/services/company.service';
 import { Privilege } from 'app/models/privilege';
 
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
@@ -23,9 +21,7 @@ export class AddEditAccountComponent implements OnInit, AfterViewInit {
     privilege: number;
     password: string;
     re_password: string;
-    companyList: Company[];
 
-    filteredCompanies: Observable<Company[]>;
     filteredStatus: Observable<string[]>;
 
     companyControl: FormControl = new FormControl();
@@ -35,8 +31,7 @@ export class AddEditAccountComponent implements OnInit, AfterViewInit {
     privilegeList: Array<Privilege>;
 
 
-    constructor(private companyService: CompanyService,
-                private applicationContext: ApplicationContext,
+    constructor(private applicationContext: ApplicationContext,
                 public dialogRef: MatDialogRef<AddEditAccountComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: Account | any) { }
 
@@ -46,20 +41,6 @@ export class AddEditAccountComponent implements OnInit, AfterViewInit {
         this.companyControl.setValue(this.data.company);
         this.statusControl.setValue(this.data.status);
         this.privilegeList = this.applicationContext.getPrivileges();
-
-        this.companyService.getAll().subscribe(
-            response => {
-                this.companyList = response;
-            },
-            error => {},
-            () => {
-                this.filteredCompanies = this.companyControl.valueChanges
-                    .pipe(
-                        startWith(''),
-                        map(value => this.filter(value))
-                    );
-            }
-        );
 
         this.filteredStatus = this.statusControl.valueChanges
             .pipe(
@@ -85,18 +66,5 @@ export class AddEditAccountComponent implements OnInit, AfterViewInit {
 
         data1.password = this.password;
         this.dialogRef.close(data1);
-    }
-
-    filter(value: string): Company[] {
-        if(_.isString(value)) {
-            return this.companyList.filter(co => co.name.toLowerCase().indexOf(value.toLowerCase()) === 0)
-        } else {
-            return this.companyList;
-        }
-    }
-
-
-    displayFn(company: Company): string | undefined {
-        return company ? company.name : undefined;
     }
 }

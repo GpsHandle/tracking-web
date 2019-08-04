@@ -1,4 +1,3 @@
-import { CompanyLittle } from 'app/models/little/company.little';
 import { Role } from 'app/models/role';
 
 export class Account {
@@ -8,7 +7,6 @@ export class Account {
     private _lastName: string;
     private _status: any;
     private _privilege: Role;
-    private _company: CompanyLittle | any;
     private _phoneNumber: string;
     private _photoUrl: string;
     private _emailAddress: string;
@@ -67,14 +65,6 @@ export class Account {
 
     set privilege(value: Role) {
         this._privilege = value;
-    }
-
-    get company(): CompanyLittle | any {
-        return this._company;
-    }
-
-    set company(value: CompanyLittle | any) {
-        this._company = value;
     }
 
     get phoneNumber(): string {

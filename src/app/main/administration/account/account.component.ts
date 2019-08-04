@@ -18,10 +18,10 @@ import { startWith } from 'rxjs/operators';
 import { of as observableOf } from 'rxjs';
 import { AccountRequest } from 'app/models/request/account.request';
 import { ReplaySubject } from 'rxjs';
-import { CompanyLittle } from 'app/models/little/company.little';
 import { HttpErrorResponse } from '@angular/common/http';
 import { DeleteAccountComponent } from 'app/main/administration/account/delete-account/delete-account.component';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { PageableCommonResponse } from 'app/models/pageable-common.response';
 
 @Component({
     selector: 'applicationContext-account',
@@ -95,7 +95,7 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
                         this.paginator.pageIndex, this.paginator.pageSize,
                         this.sort.active, this.sort.direction);
                 }),
-                map(data => {
+                map((data: PageableCommonResponse<Account>) => {
                     this.resultsLength = data.totalElements;
                     return data.content;
                 }),

@@ -33,23 +33,6 @@
                     </mat-form-field>
                 </div>
             </div>
-            <!--//-->
-            <mat-form-field class="full-width">
-                <mat-select [multiple]="true"
-                            i18n-placeholder
-                            [(ngModel)]="data.contactIds"
-                            [required]="true"
-                            name="driver-contacts"
-                            placeholder="Contacts to receive Alerts"
-                            aria-label="Contacts to receive alerts">
-                    <mat-option *ngFor="let contact of contactList" [value]="contact.id">
-                        {{contact.name}}
-                    </mat-option>
-                </mat-select>
-                <button mat-icon-button matSuffix (click)="dialogToAddContact($event)">
-                    <mat-icon>add</mat-icon>
-                </button>
-            </mat-form-field>
 
             <mat-form-field>
                 <input matInput

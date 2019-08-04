@@ -26,14 +26,12 @@ export class DeviceComponent implements OnInit, AfterViewInit {
     @ViewChild(MatSort, { static: true }) sort: MatSort;
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-    displayedColumns = ['toggle', 'name', 'deviceId', 'companyName', 'vehicleName', 'protocol', 'lastEventTime', 'expiredOn', 'createdBy', 'createdOn', 'actions'];
+    displayedColumns = ['toggle', 'name', 'deviceId', 'vehicleName', 'protocol', 'lastEventTime', 'expiredOn', 'createdBy', 'createdOn', 'actions'];
 
     columns = {
         id: {selected: false, order: 0},
         name: {selected: false, order: 1},
         deviceId: {selected: false, order: 2},
-        companyId: {selected: false, order: 3},
-        companyName: {selected: false, order: 4},
         vehicleId: {selected: false, order: 5},
         vehicleName: {selected: false, order: 6},
         ipAddress: {selected: false, order: 7},
@@ -154,7 +152,6 @@ export class DeviceComponent implements OnInit, AfterViewInit {
 
     openDialogNewObject(): void {
         const data = new Device();
-        //data.companyId = this.applicationContext.getCurrentAccount().organizationId;
         const dialogRef = this.dialog.open(AddEditDeviceComponent, {
             width: '800px',
             disableClose: true,
@@ -179,9 +176,6 @@ export class DeviceComponent implements OnInit, AfterViewInit {
     }
 
     openDialogEditing(data: Device): void {
-        if (data.company === null) {
-            data.company = {};
-        }
         const dialogRef = this.dialog.open(AddEditDeviceComponent, {
             disableClose: true,
             data: data

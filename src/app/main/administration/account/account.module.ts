@@ -10,7 +10,6 @@ import { CustomPipeModule } from 'app/pipes/custom-pipe.module';
 import { CustomDirectivesModule } from 'app/directives/custom-directives.module';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
 import { AccountService } from 'app/services/account.service';
-import { CompanyService } from 'app/services/company.service';
 
 @NgModule({
     imports: [
@@ -34,8 +33,7 @@ import { CompanyService } from 'app/services/company.service';
         DeleteAccountComponent
     ],
     providers: [
-        AccountService,
-        CompanyService
+        AccountService
     ]
 })
 export class AccountModule { }

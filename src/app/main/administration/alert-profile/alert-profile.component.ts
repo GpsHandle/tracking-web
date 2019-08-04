@@ -10,6 +10,7 @@ import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { DeleteAlertProfileComponent } from 'app/main/administration/alert-profile/delete-alert-profile/delete-alert-profile.component';
+import { PageableCommonResponse } from 'app/models/pageable-common.response';
 
 @Component({
     selector: 'app-alert-profile',
@@ -54,7 +55,7 @@ export class AlertProfileComponent implements OnInit {
                     this.paginator.pageIndex, this.paginator.pageSize,
                     this.sort.active, this.sort.direction);
             }),
-            map(data => {
+            map((data: PageableCommonResponse<AlertProfile>) => {
                 this.applicationContext.spin(false);
                 this.resultsLength = data.totalElements;
                 return data.content;

@@ -5,7 +5,6 @@ import { UnknownDeviceRoutingModule } from 'app/main/administration/unknown-devi
 import { MaterialShared } from 'app/shared/material-shared';
 import { AddNewDeviceComponent } from 'app/main/administration/unknown-device/add-new-device/add-new-device.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CompanyService } from 'app/services/company.service';
 import { AccountService } from 'app/services/account.service';
 import { AlertProfileService } from 'app/services/alert-profile.service';
 import { DeviceService } from 'app/services/device.service';
@@ -25,8 +24,7 @@ import { DeviceService } from 'app/services/device.service';
     providers: [
         AccountService,
         AlertProfileService,
-        DeviceService,
-        CompanyService
+        DeviceService
     ],
     entryComponents: [
         AddNewDeviceComponent

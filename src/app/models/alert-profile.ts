@@ -1,4 +1,3 @@
-import { ContactLittle } from 'app/models/little/contact.little';
 import { DaySelected } from 'app/shared/scheduler/weekday/weekday';
 import { MyTime } from 'app/shared/scheduler/daytime/time-input';
 
@@ -20,7 +19,6 @@ export class AlertProfile {
     alertSms: boolean;
     alertApp: boolean;
     cannedAction: string;
-    contacts: Array<ContactLittle>;
     subject: string;
     text: string;
     templateId: string;

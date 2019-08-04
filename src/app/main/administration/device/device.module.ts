@@ -9,7 +9,6 @@ import { CustomPipeModule } from 'app/pipes/custom-pipe.module';
 import { MaterialShared } from 'app/shared/material-shared';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomDirectivesModule } from 'app/directives/custom-directives.module';
-import { CompanyService } from 'app/services/company.service';
 import { AccountService } from 'app/services/account.service';
 import { DeleteDeviceComponent } from './delete-device/delete-device.component';
 
@@ -25,8 +24,7 @@ import { DeleteDeviceComponent } from './delete-device/delete-device.component';
     ],
     providers: [
         AccountService,
-        DeviceService,
-        CompanyService
+        DeviceService
     ],
     declarations: [
         DeviceComponent,
