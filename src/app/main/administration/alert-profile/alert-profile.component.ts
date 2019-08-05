@@ -33,9 +33,9 @@ export class AlertProfileComponent implements OnInit {
     dataSource: Array<AlertProfile>;
     change: ReplaySubject<any>;
 
-    displayedColumns: string[] = ['name', 'description', /*'publicInCompany',*/ 'type', 'active',
+    displayedColumns: string[] = ['name', 'description', 'type', 'active',
         'speedKph', 'zoneId', 'params1', 'params2', /*'weekDays', 'dayTime', 'alertEmail', 'alertSms',
-        'alertApp', 'cannedAction', */'contacts', 'subject', 'text', 'templateId', 'createdBy', 'createdOn', 'updatedBy', 'updatedOn'];
+        'alertApp', 'cannedAction', */'subject', 'text', 'templateId', 'createdBy', 'createdOn', 'updatedBy', 'updatedOn'];
     expandedElement: any;
     resultsLength = 0;
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;

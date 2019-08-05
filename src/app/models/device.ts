@@ -1,4 +1,3 @@
-import { CompanyLittle } from 'app/models/little/company.little';
 import { AccountLittle } from 'app/models/little/account.little';
 import { AlertProfileLittle } from 'app/models/little/alert-profile.little';
 

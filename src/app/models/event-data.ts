@@ -3,8 +3,6 @@
  */
 export interface EventData {
     id: number;
-    companyId: number; // company-id in db
-    companyName: string;
     devId: number; // device-id in db
     deviceId: string,
     deviceName: string,

@@ -41,8 +41,6 @@ export class ApplicationContext implements OnInit, OnDestroy {
     private _authorities: Array<string>;
     private _expires_in: number;
     private _jti: string;
-    private _companyId: number;
-    private _organizationName: string;
     private _scope: string;
     private _token_type: string;
     private _firstPageUrl: string;
@@ -70,7 +68,6 @@ export class ApplicationContext implements OnInit, OnDestroy {
         '/main/tracking',
         '/main/report',
         '/main/_admin/_account',
-        '/main/_admin/_company',
 
     ];
 
@@ -140,8 +137,6 @@ export class ApplicationContext implements OnInit, OnDestroy {
             this.authorities        = result.authorities;
             this.expires_in         = result.expires_in;
             this.jti                = result.jti;
-            this.companyId          = result.companyId;
-            this.organizationName   = result.organizationName;
             this.scope              = result.scope;
             this.token_type         = result.token_type;
             this.firstPageUrl       = result.firstPageUrl;
@@ -153,8 +148,6 @@ export class ApplicationContext implements OnInit, OnDestroy {
         localStorage.setItem('AUTHORITIES', JSON.stringify(this.authorities));
         localStorage.setItem('EXPIRES_IN', String(this.expires_in));
         localStorage.setItem('JTI', String(this.jti));
-        localStorage.setItem('COMPANY_ID', String(this.companyId));
-        localStorage.setItem('ORGANIZATION_NAME', this.organizationName);
         localStorage.setItem('SCOPE', this.scope);
         localStorage.setItem('TOKEN_TYPE', this.token_type);
         localStorage.setItem('FIRST_PAGE_URL', this.firstPageUrl);
@@ -170,8 +163,6 @@ export class ApplicationContext implements OnInit, OnDestroy {
             this.authorities        = JSON.parse(localStorage.getItem('AUTHORITIES'));
             this.expires_in         = parseInt(localStorage.getItem('EXPIRES_IN'), 10);
             this.jti                = localStorage.getItem('JTI');
-            this.companyId          = parseInt(localStorage.getItem('COMPANY_ID'), 10);
-            this.organizationName   = localStorage.getItem('ORGANIZATION_NAME');
             this.scope              = localStorage.getItem('SCOPE');
             this.token_type         = localStorage.getItem('TOKEN_TYPE');
             this.firstPageUrl       = localStorage.getItem('FIRST_PAGE_URL');
@@ -190,8 +181,6 @@ export class ApplicationContext implements OnInit, OnDestroy {
         this.authorities        = null;
         this.expires_in         = null;
         this.jti                = null;
-        this.companyId          = null;
-        this.organizationName   = null;
         this.scope              = null;
         this.token_type         = null;
         this.firstPageUrl       = null;
@@ -202,8 +191,6 @@ export class ApplicationContext implements OnInit, OnDestroy {
         localStorage.setItem('AUTHORITIES', JSON.stringify(this.authorities));
         localStorage.setItem('EXPIRES_IN', String(this.expires_in));
         localStorage.setItem('JTI', String(this.jti));
-        localStorage.setItem('COMPANY_ID', String(this.companyId));
-        localStorage.setItem('ORGANIZATION_NAME', this.organizationName);
         localStorage.setItem('SCOPE', this.scope);
         localStorage.setItem('TOKEN_TYPE', this.token_type);
         localStorage.setItem('FIRST_PAGE_URL', this.firstPageUrl);
@@ -354,22 +341,6 @@ export class ApplicationContext implements OnInit, OnDestroy {
 
     set jti(value: string) {
         this._jti = value;
-    }
-
-    get companyId(): number {
-        return this._companyId;
-    }
-
-    set companyId(value: number) {
-        this._companyId = value;
-    }
-
-    get organizationName(): string {
-        return this._organizationName;
-    }
-
-    set organizationName(value: string) {
-        this._organizationName = value;
     }
 
     get scope(): string {

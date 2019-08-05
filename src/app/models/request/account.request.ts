@@ -9,8 +9,6 @@ export class AccountRequest {
     password: string;
     status: string;
     privilege: Role;
-    companyId: number;
-    companyName: string;
     phoneNumber: string;
     photoUrl: string;
     emailAddress: string;
@@ -27,8 +25,6 @@ export class AccountRequest {
             this.lastName = account.lastName;
             this.status = account.status;
             this.privilege = account.privilege;
-            this.companyId = account.company ? account.company.id : null;
-            this.companyName = account.company ? account.company.name : null;
             this.phoneNumber = account.phoneNumber;
             this.photoUrl = account.photoUrl;
             this.emailAddress = account.emailAddress;

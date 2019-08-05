@@ -11,7 +11,6 @@ export class DeviceRequest {
     uniqueId: string;
     imei: string;
 
-    companyId: number;
     accountIds: Array<number>;
     alertProfileIds: Array<number>;
 
@@ -39,7 +38,6 @@ export class DeviceRequest {
             this.name = device.name;
             this.deviceId = device.deviceId;
             this.uniqueId = device.uniqueId;
-            this.companyId = device.company ? device.company.id : null;
             this.accountIds = _.map(device.accounts, (acc) => {
                 return acc.id;
             });

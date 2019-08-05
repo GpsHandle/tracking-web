@@ -6,8 +6,6 @@ export class AuthResponse {
     private _authorities: string[];
     private _expires_in: number;
     private _jti: string;
-    private _companyId: number;
-    private _organizationName: string;
     private _firstPageUrl: string;
     private _scope: string;
     private _token_type: string;
@@ -67,23 +65,6 @@ export class AuthResponse {
 
     set jti(value: string) {
         this._jti = value;
-    }
-
-
-    get companyId(): number {
-        return this._companyId;
-    }
-
-    set companyId(value: number) {
-        this._companyId = value;
-    }
-
-    get organizationName(): string {
-        return this._organizationName;
-    }
-
-    set organizationName(value: string) {
-        this._organizationName = value;
     }
 
     get scope(): string {

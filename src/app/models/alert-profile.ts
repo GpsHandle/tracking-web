@@ -5,7 +5,6 @@ export class AlertProfile {
     id: number;
     name: string;
     description: string;
-    publicInCompany: boolean;
     type: string;
     active: boolean;
     speedKph: number;

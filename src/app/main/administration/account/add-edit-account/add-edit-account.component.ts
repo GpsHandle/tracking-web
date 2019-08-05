@@ -24,7 +24,6 @@ export class AddEditAccountComponent implements OnInit, AfterViewInit {
 
     filteredStatus: Observable<string[]>;
 
-    companyControl: FormControl = new FormControl();
     statusControl: FormControl = new FormControl();
 
     isEditing = false;
@@ -38,7 +37,6 @@ export class AddEditAccountComponent implements OnInit, AfterViewInit {
     ngOnInit() {
         this.isEditing = !!this.data.accountId;
 
-        this.companyControl.setValue(this.data.company);
         this.statusControl.setValue(this.data.status);
         this.privilegeList = this.applicationContext.getPrivileges();
 
@@ -60,8 +58,6 @@ export class AddEditAccountComponent implements OnInit, AfterViewInit {
 
     onSave(): void {
         let data1 = new AccountRequest(this.data);
-        data1.companyId = this.companyControl.value.id;
-        data1.companyName = this.companyControl.value.name;
         data1.status = this.statusControl.value;
 
         data1.password = this.password;

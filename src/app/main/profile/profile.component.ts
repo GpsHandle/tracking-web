@@ -11,8 +11,6 @@ export class ProfileComponent implements OnInit {
 
     accountId: number;
     accountName: string;
-    companyId: number;
-    companyName: string;
     access_token: string;
     token_type: string;
     jti: string;
@@ -30,8 +28,6 @@ export class ProfileComponent implements OnInit {
 
         this.accountId      = this.applicationContext.accountId;
         this.accountName    = this.applicationContext.accountName;
-        this.companyId      = this.applicationContext.companyId;
-        this.companyName    = this.applicationContext.organizationName;
         this.firstPageUrl   = this.applicationContext.firstPageUrl;
         this.access_token   = this.applicationContext.access_token;
         this.token_type     = this.applicationContext.token_type;

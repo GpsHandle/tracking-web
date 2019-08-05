@@ -27,11 +27,6 @@
             <td mat-cell *matCellDef="let el">{{el.firstName + " " + el.lastName}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="contacts">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Contacts</th>
-            <td mat-cell *matCellDef="let el">{{getContact(el)}}</td>
-        </ng-container>
-
         <ng-container matColumnDef="dateOfBirth">
             <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Date of Birth</th>
             <td mat-cell *matCellDef="let el">{{el.dateOfBirth | date:'shortDate'}}</td>

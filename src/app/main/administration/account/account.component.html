@@ -41,17 +41,6 @@
             <td mat-cell *matCellDef="let element"> {{element.status}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="companyId">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Company ID </th>
-            <td mat-cell *matCellDef="let element"> {{element.company ? element.company.id : ''}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="companyName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Company Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.company ? element.company.name: ''}} </td>
-        </ng-container>
-
-
         <ng-container matColumnDef="phoneNumber">
             <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Phone Number </th>
             <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
@@ -138,14 +127,7 @@
                                        [value]="element.firstName + ' ' + element.lastName" disabled>
                             </mat-form-field>
                         </div>
-                        <div fxFlex="50">
-                            <mat-form-field class="full-width">
-                                <input type="text" matInput
-                                       i18n-placeholder placeholder="Company"
-                                       [value]="element.company ? element.company.name : ''"
-                                       disabled>
-                            </mat-form-field>
-                        </div>
+
                         <div fxFlex="50">
                             <mat-form-field class="full-width">
                                 <input type="text" matInput

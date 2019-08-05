@@ -13,7 +13,6 @@ export class GeoJsonInf {
 
 export class Geozone {
     private _id: number;
-    private _companyId: number;
     private _accounts: Array<AccountLittle>;
     private _name: string;
     private _color: string;
@@ -36,14 +35,6 @@ export class Geozone {
 
     set id(value: number) {
         this._id = value;
-    }
-
-    get companyId(): number {
-        return this._companyId;
-    }
-
-    set companyId(value: number) {
-        this._companyId = value;
     }
 
     get accounts(): Array<AccountLittle> {

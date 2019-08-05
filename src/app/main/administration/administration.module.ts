@@ -19,16 +19,10 @@ import { CustomPipeModule } from 'app/pipes/custom-pipe.module';
     ],
     declarations: [
         AdministrationComponent,
-        //CompanyComponent,
-        //AddEditCompanyComponent,
-        //OptionalColumnCompanyComponent,
     ],
     providers: [
-        //CompanyService
     ],
     entryComponents: [
-        //AddEditCompanyComponent,
-        //OptionalColumnCompanyComponent,
     ]
 })
 export class AdministrationModule { }

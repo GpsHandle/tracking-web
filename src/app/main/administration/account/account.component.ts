@@ -43,7 +43,7 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
     @ViewChild(MatSort, { static: true }) sort: MatSort;
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-    displayedColumns = ['accountId', 'firstName', 'lastName', 'status', 'companyName', 'notes', 'createdBy', 'createdOn'];
+    displayedColumns = ['accountId', 'firstName', 'lastName', 'status', 'notes', 'createdBy', 'createdOn'];
     expandedElement: any;
     columns = {
         id:                 {selected: false, order: 0},
@@ -51,8 +51,6 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
         firstName:          {selected: false, order: 2},
         lastName:           {selected: false, order: 3},
         status:             {selected: false, order: 4},
-        companyId:          {selected: false, order: 5},
-        companyName:        {selected: false, order: 6},
         phoneNumber:        {selected: false, order: 7},
         photoUrl:           {selected: false, order: 8},
         emailAddress:       {selected: false, order: 9},
@@ -166,7 +164,6 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
 
     openDialogNewObject(): void {
         const data = new Account();
-        data.company = {};
         const dialogRef = this.dialog.open(AddEditAccountComponent, {
             width: '800px',
             disableClose: true,
@@ -193,9 +190,6 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
     }
 
     openDialogEditing(data: Account): void {
-        if (!data.company) {
-            data.company = new CompanyLittle();
-        }
         const dialogRef = this.dialog.open(AddEditAccountComponent, {
             width: '800px',
             disableClose: true,

@@ -33,7 +33,7 @@ export class DriverComponent implements OnInit {
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-    displayedColumns = ['id', 'name', 'contacts', 'dateOfBirth', 'driverExperiencesMonths', 'typeOfVehicleExperienced',
+    displayedColumns = ['id', 'name', 'dateOfBirth', 'driverExperiencesMonths', 'typeOfVehicleExperienced',
     'driverLicenseNumber', 'driverLicenseType', 'driverLicenseTypeDescription', 'driverLicenseIssueDate', 'driverLicenseExpiredDate',
     'createdBy', 'createdOn', 'updatedBy', 'updatedOn'];
     constructor(private applicationContext: ApplicationContext,
@@ -94,23 +94,6 @@ export class DriverComponent implements OnInit {
         } else {
             this.expandedElement = element;
         }
-    }
-
-    getContact(driver: Driver) {
-        const contacts = driver.contacts;
-        let prefix = '';
-        let rtn = '';
-        for (let i = 0; i < contacts.length; i++) {
-            rtn += prefix;
-            rtn += contacts[i].name;
-
-            if (i < contacts.length - 1) {
-                prefix = ', ';
-            } else {
-                prefix = '';
-            }
-        }
-        return rtn;
     }
 
 

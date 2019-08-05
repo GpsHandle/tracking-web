@@ -1,8 +1,6 @@
 import { Geozone } from 'app/models/geozone';
-import { AccountLittle } from 'app/models/little/account.little';
 
 export class GeozoneRequest {
-    companyId: number;
     accountIds: Array<number>;
     name: string;
     color: string;

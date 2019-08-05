@@ -4,7 +4,6 @@ import * as _ from 'lodash';
 export class AlertProfileRequest {
     name: string;
     description: string;
-    publicInCompany: boolean;
     type: string;
     active: boolean;
     speedKph: number;
@@ -19,8 +18,6 @@ export class AlertProfileRequest {
     alertApp: boolean;
     cannedAction: string;
 
-    contactIds: Array<number>;
-
     subject: string;
     text: string;
     templateId: string;
@@ -30,7 +27,6 @@ export class AlertProfileRequest {
 
         rtn.name = alertProfile.name;
         rtn.description = alertProfile.description;
-        rtn.publicInCompany = alertProfile.publicInCompany;
         rtn.type = alertProfile.type;
         rtn.active = alertProfile.active;
         rtn.speedKph = alertProfile.speedKph;
@@ -43,8 +39,6 @@ export class AlertProfileRequest {
         rtn.alertSms = alertProfile.alertSms;
         rtn.alertApp = alertProfile.alertApp;
         rtn.cannedAction = alertProfile.cannedAction;
-
-        rtn.contactIds = _.map(alertProfile.contacts, x => x.id);
 
         rtn.subject = alertProfile.subject;
         rtn.text = alertProfile.text;
