@@ -26,7 +26,7 @@ export class SysAdminGuard implements CanActivate, CanLoad {
     }
 
     private checkSystemRole(): boolean {
-        return (_.includes(this.applicationContext.authorities, 'VD5LORD') ||
+        return (_.includes(this.applicationContext.authorities, 'SUPER') ||
             _.includes(this.applicationContext.authorities, 'SYSADMIN'));
     }
 }

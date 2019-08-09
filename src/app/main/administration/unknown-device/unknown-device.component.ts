@@ -81,7 +81,9 @@ export class UnknownDeviceComponent implements OnInit, AfterViewInit, AfterViewC
             data => {
                 this.dataChange.next(1);
             },
-            error => {},
+            error => {
+                this.applicationContext.error(error);
+            },
             () => {}
         );
     }

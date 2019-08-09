@@ -7,7 +7,7 @@
         <button mat-icon-button (click)="openDialogColumnOptions()">
             <mat-icon>settings</mat-icon>
         </button>
-        <button mat-icon-button (click)="openDialogNewObject()" *showIfRole="'vd5lord,sysadmin,admin,moderator'">
+        <button mat-icon-button (click)="openDialogNewObject()" *showIfRole="'super,sysadmin,admin,moderator'">
             <mat-icon>add</mat-icon>
         </button>
     </div>
@@ -208,6 +208,10 @@
         <tr mat-row *matRowDef="let row; columns: ['expanded-detail']" class="detail-row"></tr>
 
     </table>
+
+    <ng-container *ngIf="ngNoData | async" class="no-records">
+        <p>There are no sub-account under the account</p>
+    </ng-container>
 
     <mat-paginator #paginator
                    [length]="resultsLength"

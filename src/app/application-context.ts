@@ -53,7 +53,7 @@ export class ApplicationContext implements OnInit, OnDestroy {
         {id: 2, name: "MODERATOR"},
         {id: 3, name: "ADMIN"},
         {id: 4, name: "SYSADMIN"},
-        {id: 5, name: "VD5LORD"}
+        {id: 5, name: "SUPER"}
     ];
 
     statusList: Array<string> = [
@@ -256,7 +256,7 @@ export class ApplicationContext implements OnInit, OnDestroy {
         const config = this._createConfig(true);
 
         if (message instanceof HttpErrorResponse) {
-            this.snackBar.open(message.error.error_description || message.message, null, config);
+            this.snackBar.open(message.error.message || message.message, null, config);
         } else {
             this.snackBar.open(message, null, config);
         }

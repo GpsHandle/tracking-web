@@ -22,6 +22,7 @@ import { LogoutComponent } from './pages/logout/logout.component';
 import { WINDOW_PROVIDERS } from 'app/shared/window-provider';
 import { DemoComponent } from './pages/demo/demo.component';
 import { CustomDirectivesModule } from 'app/directives/custom-directives.module';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
 
 @NgModule({
     declarations: [
@@ -54,7 +55,7 @@ import { CustomDirectivesModule } from 'app/directives/custom-directives.module'
             useClass: AuthInterceptor,
             multi: true
         },
-        WINDOW_PROVIDERS
+        WINDOW_PROVIDERS,
     ],
     entryComponents: [
         SpinnerComponent

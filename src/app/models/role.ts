@@ -4,5 +4,5 @@ export const enum Role {
     MODERATOR,
     ADMIN,
     SYSADMIN,
-    VD5LORD
+    SUPER
 }

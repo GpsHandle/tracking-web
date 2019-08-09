@@ -66,6 +66,7 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
     };
 
     resultsLength = 0;
+    ngNoData;
 
     constructor(private dialog: MatDialog,
                 private applicationContext: ApplicationContext,
@@ -75,6 +76,7 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
         this.initTableSettings();
         this.dataChange = new ReplaySubject(1);
         this.dataSource = new MatTableDataSource();
+        this.ngNoData = this.dataSource.connect().pipe(map(data => data.length === 0));
     }
 
     ngAfterViewChecked(): void {
