@@ -21,11 +21,12 @@ export class Account {
 
 
     get id(): number {
-        return this._id;
+        return this._id ? this._id : this._rId;
     }
 
     set id(value: number) {
         this._id = value;
+        this._rId = value;
     }
 
 
