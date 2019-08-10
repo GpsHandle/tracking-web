@@ -2,6 +2,7 @@ import { Role } from 'app/models/role';
 
 export class Account {
     private _id: number;
+    private _rId: number;
     private _accountId: string;
     private _firstName: string;
     private _lastName: string;
@@ -25,6 +26,15 @@ export class Account {
 
     set id(value: number) {
         this._id = value;
+    }
+
+
+    get rId(): number {
+        return this._rId;
+    }
+
+    set rId(value: number) {
+        this._rId = value;
     }
 
     get accountId(): string {
