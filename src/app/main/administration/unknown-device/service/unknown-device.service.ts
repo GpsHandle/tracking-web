@@ -51,4 +51,9 @@ export class UnknownDeviceService {
         const url = '/api/device';
         return this.http.post<Device>(url, data);
     }
+
+    addUnkDeviceList(param: {selections: number[]}) {
+        const url = '/api/unknowndevice';
+        return this.http.post<Device>(url, param);
+    }
 }
