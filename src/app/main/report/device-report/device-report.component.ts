@@ -22,10 +22,14 @@ export class DeviceReportComponent implements OnInit {
     selected: DeviceLittle | any;
     tIcon: string = 'back';
 
+    timerange: any;
     from: number = 0;
     to: number = 0;
     eventList: Array<EventData>;
+
     dataChange: ReplaySubject<any>;
+    distance: number;
+    totalEvents: number;
 
     selectedTab: Tabs;
 
@@ -42,12 +46,14 @@ export class DeviceReportComponent implements OnInit {
     ngOnInit() {
         this.selectedTab = Tabs.SPEED_REPORT;
         this.dataChange = new ReplaySubject(1);
+
+        this.timerange = '2';
+        this.to = this.to ? this.to : (new Date()).getTime();
+        this.from = this.from ? this.from : this.to - this.timerange * 60 * 60 * 1000;
+
         this.eventList = [];
         this.selected = {};
         this.loadEventData();
-
-        console.log('Starting report page');
-
         this.applicationContext.spinAt('deviceList', true);
         this.deviceService.getAllLittle().subscribe(
             response => {
@@ -84,6 +90,8 @@ export class DeviceReportComponent implements OnInit {
             ).subscribe(
             (data: EventData[]) => {
                 this.eventList = data;
+                this.distance = data[0] ? data[0].odometerKM - data[data.length - 1].odometerKM : 0;
+                this.totalEvents = data.length;
             });
 
     }
@@ -108,32 +116,14 @@ export class DeviceReportComponent implements OnInit {
         this.tIcon = this.sideNav.opened ? 'back' : 'sub-menu';
     }
 
-    last2hours(event: Event): void {
-        event.stopPropagation();
-        this.to = Date.now();
-        this.from = this.to - 2 * 3600 * 1000;
-        this.dataChange.next(1);
-    }
+    timerangeChange(e: any) {
+        if (this.timerange !== 'custom') {
+            this.to = (new Date()).getTime();
+            this.from = this.to - this.timerange * 60 * 60 * 1000;
+            this.dataChange.next(1);
+        } else {
 
-    last8hours(event: Event): void {
-        event.stopPropagation();
-        this.to = Date.now();
-        this.from = this.to - 8 * 3600 * 1000;
-        this.dataChange.next(1);
-    }
-
-    last24hours(event: Event): void {
-        event.stopPropagation();
-        this.to = Date.now();
-        this.from = this.to - 24 * 3600 * 1000;
-        this.dataChange.next(1);
-    }
-
-    last72hours(event: Event): void {
-        event.stopPropagation();
-        this.to = Date.now();
-        this.from = this.to - 72 * 3600 * 1000;
-        this.dataChange.next(1);
+        }
     }
 
     customTime(event: Event) {

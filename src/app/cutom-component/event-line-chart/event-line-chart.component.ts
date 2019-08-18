@@ -49,7 +49,6 @@ export class EventLineChartComponent implements OnInit, AfterViewChecked, OnChan
     }
 
     private draw() {
-        console.log('drawing', this.eventList);
         if (this.eventList && this.eventList.length > 0) {
             if (this.chart) {
                 //update
