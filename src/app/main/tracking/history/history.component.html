@@ -4,16 +4,21 @@
     </div>
     <div fxFlex="50" class="history-details">
         <mat-toolbar>
-            <mat-button-toggle-group class="history-range-group" (change)="timeDistanceChange()" [(ngModel)]="timeDistance">
-                <mat-button-toggle value="1">1h</mat-button-toggle>
-                <mat-button-toggle value="2">2h</mat-button-toggle>
-                <mat-button-toggle value="8">8h</mat-button-toggle>
-                <mat-button-toggle value="24">24h</mat-button-toggle>
-                <mat-button-toggle value="48">48h</mat-button-toggle>
-                <mat-button-toggle value="72">3d</mat-button-toggle>
-                <mat-button-toggle value="custom">Custom</mat-button-toggle>
-            </mat-button-toggle-group>
-            <div>{{name}}</div>
+            <mat-form-field>
+                <mat-select [(value)]="timerange" (selectionChange)="timeDistanceChange()">
+                    <mat-option value="1">Last 1 hour</mat-option>
+                    <mat-option value="2">Last 2 hours</mat-option>
+                    <mat-option value="8">Last 8 hours</mat-option>
+                    <mat-option value="24">Last 1 day</mat-option>
+                    <mat-option value="48">Last 2 days</mat-option>
+                    <mat-option value="72">Last 3 days</mat-option>
+                    <mat-option value="custom">custom</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="his-dev-name">
+                <span>Device: </span>
+                <span>{{name}}</span>
+            </div>
             <span class="fill-remain-space"></span>
             <button mat-button>
                 <mat-icon>excel</mat-icon>

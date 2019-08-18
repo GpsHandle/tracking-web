@@ -58,7 +58,7 @@ export class HistoryComponent implements OnInit, AfterViewInit {
     displayedColumns = ['location', 'heading', 'speedKPH', 'address', 'status', 'timestamp', 'age'];
     selection = new SelectionModel<EventData>(true, []);
 
-    timeDistance: any;
+    timerange: any;
 
     //charting
     private chart: any;
@@ -79,8 +79,9 @@ export class HistoryComponent implements OnInit, AfterViewInit {
         });
 
         this.dataSource = new MatTableDataSource();
-        this.timeFrom = this.timeFrom ? this.timeFrom : 0;
-        this.timeTo = this.timeTo ? this.timeTo : 0;
+        this.timerange = '2';
+        this.timeTo = this.timeTo ? this.timeTo : (new Date()).getTime();
+        this.timeFrom = this.timeFrom ? this.timeFrom : this.timeTo - this.timerange * 60 * 60 * 1000;
         this.loadHistoryEvents();
 
     }
@@ -104,62 +105,13 @@ export class HistoryComponent implements OnInit, AfterViewInit {
         L.control.scale().addTo(this.map);
         L.control.zoom().setPosition('bottomleft').addTo(this.map);
 
-        // let range = [];
-        //
-        // let range1h = L.easyButton('<span>1h</span>', function (button, map) {
-        //     this.timeTo = (new Date()).getTime();
-        //     this.timeFrom = this.timeTo - 60 * 60 * 1000;
-        //     this.loadHistoryEvents();
-        // }.bind(this));
-        //
-        // let range2h = L.easyButton('<span>2h</span>', function () {
-        //     this.timeTo = (new Date()).getTime();
-        //     this.timeFrom = this.timeTo - 2 * 60 * 60 * 1000;
-        //     this.loadHistoryEvents();
-        // }.bind(this));
-        // let range6h = L.easyButton('<span>6h</span>', function () {
-        //     this.timeTo = (new Date()).getTime();
-        //     this.timeFrom = this.timeTo - 6 * 60 * 60 * 1000;
-        //     this.loadHistoryEvents();
-        // }.bind(this));
-        // let range12h = L.easyButton('<span>12h</span>', function () {
-        //     this.timeTo = (new Date()).getTime();
-        //     this.timeFrom = this.timeTo - 12 * 60 * 60 * 1000;
-        //     this.loadHistoryEvents();
-        // }.bind(this));
-        //
-        // let range1d = L.easyButton('<span>1d</span>', function () {
-        //     this.timeTo = (new Date()).getTime();
-        //     this.timeFrom = this.timeTo - 24 * 60 * 60 * 1000;
-        //     this.loadHistoryEvents();
-        // }.bind(this));
-        // let range3d = L.easyButton('<span>3d</span>', function () {
-        //     this.timeTo = (new Date()).getTime();
-        //     this.timeFrom = this.timeTo - 72 * 60 * 60 * 1000;
-        //     this.loadHistoryEvents();
-        // }.bind(this));
-        //
-        // let range1w = L.easyButton('<span>1w</span>', function () {
-        //     this.timeTo = (new Date()).getTime();
-        //     this.timeFrom = this.timeTo - 7 * 24* 60 * 60 * 1000;
-        //     this.loadHistoryEvents();
-        // }.bind(this));
-        // let range1m = L.easyButton('<span>1m</span>', function () {
-        //     this.timeTo = (new Date()).getTime();
-        //     this.timeFrom = this.timeTo - 30 * 24* 60 * 60 * 1000;
-        //     this.loadHistoryEvents();
-        // }.bind(this));
-        //
-        // range.push(range1h, range2h, range6h, range12h, range1d, range3d, range1w, range1m);
-        //
-        // L.easyBar(range).addTo(this.map);
     }
 
     timeDistanceChange(): void {
-        console.log('Timedistance', this.timeDistance)
-        if (this.timeDistance !== 'custom') {
+        console.log('timerange', this.timerange)
+        if (this.timerange !== 'custom') {
             this.timeTo = (new Date()).getTime();
-            this.timeFrom = this.timeTo - this.timeDistance * 60 * 60 * 1000;
+            this.timeFrom = this.timeTo - this.timerange * 60 * 60 * 1000;
             this.loadHistoryEvents();
         } else {
 
