@@ -126,9 +126,13 @@
     }
   }
 
-.m-t-d-command {
-  margin-top: 16px;
-}
+  .btn-map-left {
+    text-align: left!important;
+  }
+
+  .m-t-d-command {
+    margin-top: 16px;
+  }
 
   //Override css mapping
   .marker-label {
