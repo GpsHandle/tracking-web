@@ -14,6 +14,10 @@ const routes: Routes = [
             //     canActivate: [AuthGuard]
             // },
         ]
+    },
+    {
+        path: ':deviceId',
+        component: DeviceReportComponent,
     }
 ];
 

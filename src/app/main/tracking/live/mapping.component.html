@@ -90,16 +90,16 @@
                     <div fxLayout="column" fxLayoutGap="16px">
                         <a mat-stroked-button class="btn-map-left" [routerLink]="['history', selectedDevice.id]">
                             <mat-icon>history</mat-icon>
-                            <span>View Device History >></span>
+                            <span>View Device History</span>
                         </a>
                         <button mat-stroked-button class="btn-map-left" (click)="openPanelCommand($event, selectedDevice)">
                             <mat-icon>console</mat-icon>
                             <span>Send Command</span>
                         </button>
-                        <button mat-stroked-button class="btn-map-left">
+                        <a mat-stroked-button class="btn-map-left" [routerLink]="['/', 'main', 'report', 'device', selectedDevice.id]">
                             <mat-icon>report</mat-icon>
                             <span>View Device Report</span>
-                        </button>
+                        </a>
                     </div>
 
                     <speed-chart class="fill-remain-space speed-chart-max-width" [device]="selectedDevice.id" [period]="24"></speed-chart>

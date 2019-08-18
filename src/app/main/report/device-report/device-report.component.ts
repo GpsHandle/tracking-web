@@ -11,6 +11,8 @@ import { merge, of as observableOf, ReplaySubject } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 
 import { saveAs } from 'file-saver';
+import { ActivatedRoute } from '@angular/router';
+import * as _ from 'lodash';
 
 @Component({
     selector: 'app-report',
@@ -37,6 +39,7 @@ export class DeviceReportComponent implements OnInit {
 
 
     constructor(
+        private route: ActivatedRoute,
         private matDialog: MatDialog,
         private deviceService: DeviceService,
         private eventService: EventService,
@@ -44,6 +47,7 @@ export class DeviceReportComponent implements OnInit {
         private applicationContext: ApplicationContext) { }
 
     ngOnInit() {
+        const selId = this.route.snapshot.paramMap.get('deviceId');
         this.selectedTab = Tabs.SPEED_REPORT;
         this.dataChange = new ReplaySubject(1);
 
@@ -59,7 +63,8 @@ export class DeviceReportComponent implements OnInit {
             response => {
                 this.applicationContext.spinAt('deviceList', false);
                 this.deviceList = response;
-                this.selected = this.deviceList[0];
+
+                this.selected = selId ? _.find(this.deviceList, x => { return x.id == selId}) : this.deviceList[0];
                 this.dataChange.next(1);
             },
             error => {
