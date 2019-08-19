@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
-import { DeviceReportComponent } from 'app/main/report/device-report/device-report.component';
+import { DeviceReportLayoutComponent } from 'app/main/report/device-report/layout/device-report-layout.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: DeviceReportComponent,
+        component: DeviceReportLayoutComponent,
         children: [
             // {
             //     path: 'dashboard',
@@ -17,7 +17,7 @@ const routes: Routes = [
     },
     {
         path: ':deviceId',
-        component: DeviceReportComponent,
+        component: DeviceReportLayoutComponent,
     }
 ];
 

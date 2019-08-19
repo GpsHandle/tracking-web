@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DeviceReportRoutingModule } from 'app/main/report/device-report/device-report-routing.module';
-import { DeviceReportComponent } from 'app/main/report/device-report/device-report.component';
+import { DeviceReportLayoutComponent } from 'app/main/report/device-report/layout/device-report-layout.component';
 import { MaterialShared } from 'app/shared/material-shared';
-import { DSpeedComponent } from './d-speed/d-speed.component';
-import { DParkingComponent } from './d-parking/d-parking.component';
-import { DeviceReportCustomTimeComponent } from './device-report-custom-time/device-report-custom-time.component';
+import { DSpeedComponent } from './component/d-speed/d-speed.component';
+import { DParkingComponent } from './component/d-parking/d-parking.component';
+import { DeviceReportCustomTimeComponent } from './component/device-report-custom-time/device-report-custom-time.component';
 import { CustomComponentModule } from 'app/cutom-component/custom-component.module';
-import { GeozoneReportComponent } from './geozone-report/geozone-report.component';
-import { AlertHistoryComponent } from './alert-history/alert-history.component';
+import { GeozoneReportComponent } from './component/geozone-report/geozone-report.component';
+import { AlertHistoryComponent } from './component/alert-history/alert-history.component';
 
 @NgModule({
     imports: [
@@ -18,7 +18,7 @@ import { AlertHistoryComponent } from './alert-history/alert-history.component';
         CustomComponentModule
     ],
     declarations: [
-        DeviceReportComponent,
+        DeviceReportLayoutComponent,
         DSpeedComponent,
         DParkingComponent,
         DeviceReportCustomTimeComponent,

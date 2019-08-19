@@ -4,7 +4,7 @@ import { MatDialog, MatDrawer, MatTabChangeEvent} from '@angular/material';
 import { DeviceService } from 'app/services/device.service';
 import { ApplicationContext } from 'app/application-context';
 import { DeviceReportService } from 'app/services/device-report.service';
-import { DeviceReportCustomTimeComponent } from 'app/main/report/device-report/device-report-custom-time/device-report-custom-time.component';
+import { DeviceReportCustomTimeComponent } from 'app/main/report/device-report/component/device-report-custom-time/device-report-custom-time.component';
 import { EventService } from 'app/services/event.service';
 import { EventData } from 'app/models/event-data';
 import { merge, of as observableOf, ReplaySubject } from 'rxjs';
@@ -16,10 +16,10 @@ import * as _ from 'lodash';
 
 @Component({
     selector: 'app-report',
-    templateUrl: './device-report.component.html',
-    styleUrls: ['./device-report.component.scss']
+    templateUrl: './device-report-layout.component.html',
+    styleUrls: ['./device-report-layout.component.scss']
 })
-export class DeviceReportComponent implements OnInit {
+export class DeviceReportLayoutComponent implements OnInit {
     deviceList: DeviceLittle[];
     selected: DeviceLittle | any;
     tIcon: string = 'back';
@@ -47,7 +47,8 @@ export class DeviceReportComponent implements OnInit {
         private applicationContext: ApplicationContext) { }
 
     ngOnInit() {
-        const selId = this.route.snapshot.paramMap.get('deviceId');
+        let selId = this.route.snapshot.paramMap.get('deviceId');
+        const selIdN = selId ? parseInt(selId, 10) : 0;
         this.selectedTab = Tabs.SPEED_REPORT;
         this.dataChange = new ReplaySubject(1);
 
@@ -64,7 +65,7 @@ export class DeviceReportComponent implements OnInit {
                 this.applicationContext.spinAt('deviceList', false);
                 this.deviceList = response;
 
-                this.selected = selId ? _.find(this.deviceList, x => { return x.id == selId}) : this.deviceList[0];
+                this.selected = selIdN ? _.find(this.deviceList, x => { return x.id === selIdN}) : this.deviceList[0];
                 this.dataChange.next(1);
             },
             error => {
