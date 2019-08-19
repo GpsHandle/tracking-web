@@ -1,0 +1,19 @@
+<mat-drawer-container class="side-nav-container">
+    <mat-drawer mode="side" [opened]="true" class="mat-elevation-z3">
+        <div class="rpt-nav-device" id = "deviceList">
+            <mat-form-field class="rpt-device-filter">
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Device Filter">
+            </mat-form-field>
+            <mat-nav-list class="rpt-list-device">
+                <mat-list-item *ngFor="let device of deviceList" [routerLink]="device.id">
+                    <div>
+                        <span>{{device.name || device.deviceId}}</span>
+                    </div>
+                </mat-list-item>
+            </mat-nav-list>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

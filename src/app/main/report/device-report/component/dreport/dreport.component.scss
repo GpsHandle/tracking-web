@@ -1,0 +1,42 @@
+.side-nav-container {
+  height: 100%;
+
+  mat-drawer {
+    width: 300px;
+  }
+}
+
+.rpt-nav-device {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .rpt-device-filter {
+    padding: 8px 16px 0;
+  }
+  .rpt-list-device {
+    overflow-y: auto;
+    height: 100%;
+  }
+}
+
+.rpt-info-board {
+  .mat-expansion-panel-header-title {
+    align-items: center;
+    flex-grow: 0;
+  }
+  .mat-expansion-panel-header-description {
+    flex-basis: 0;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .rpt-board-timepicker {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+  }
+  .mat-divider {
+    margin-bottom: 16px;
+  }
+}

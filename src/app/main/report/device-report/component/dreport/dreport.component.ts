@@ -1,54 +1,54 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DeviceLittle } from 'app/models/little/device.little';
-import { MatDialog, MatDrawer, MatTabChangeEvent} from '@angular/material';
-import { DeviceService } from 'app/services/device.service';
-import { ApplicationContext } from 'app/application-context';
-import { DeviceReportService } from 'app/services/device-report.service';
-import { DeviceReportCustomTimeComponent } from 'app/main/report/device-report/component/device-report-custom-time/device-report-custom-time.component';
-import { EventService } from 'app/services/event.service';
-import { EventData } from 'app/models/event-data';
+import { DeviceReportCustomTimeComponent } from 'app/main/report/device-report/component/custom-timerange-dialog/device-report-custom-time.component';
+import { saveAs } from 'file-saver';
+import { MatDialog, MatTabChangeEvent } from '@angular/material';
 import { merge, of as observableOf, ReplaySubject } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-
-import { saveAs } from 'file-saver';
+import { EventData } from 'app/models/event-data';
 import { ActivatedRoute } from '@angular/router';
-import * as _ from 'lodash';
+import { DeviceService } from 'app/services/device.service';
+import { EventService } from 'app/services/event.service';
+import { DeviceReportService } from 'app/services/device-report.service';
+import { ApplicationContext } from 'app/application-context';
+import { DeviceLittle } from 'app/models/little/device.little';
+import { DeviceReportCommService } from 'app/main/report/device-report/service/device-report-comm.service';
+import { EventLineChartComponent } from 'app/cutom-component/event-line-chart/event-line-chart.component';
 
 @Component({
-    selector: 'app-report',
-    templateUrl: './device-report-layout.component.html',
-    styleUrls: ['./device-report-layout.component.scss']
+    selector: 'app-dashboard',
+    templateUrl: './dreport.component.html',
+    styleUrls: ['./dreport.component.scss']
 })
-export class DeviceReportLayoutComponent implements OnInit {
-    deviceList: DeviceLittle[];
-    selected: DeviceLittle | any;
+export class DreportComponent implements OnInit {
+    selectedTab: Tabs;
+    selectedName: string;
     tIcon: string = 'back';
 
     timerange: any;
     from: number = 0;
     to: number = 0;
+    selectedId: any;
     eventList: Array<EventData>;
 
     dataChange: ReplaySubject<any>;
     distance: number;
     totalEvents: number;
 
-    selectedTab: Tabs;
+    @ViewChild(EventLineChartComponent, {static: false})
+    private chartComponent: EventLineChartComponent;
 
-    @ViewChild(MatDrawer, { static: true }) sideNav: MatDrawer;
 
-
-    constructor(
-        private route: ActivatedRoute,
-        private matDialog: MatDialog,
-        private deviceService: DeviceService,
-        private eventService: EventService,
-        private deviceReportService: DeviceReportService,
-        private applicationContext: ApplicationContext) { }
+    constructor(private route: ActivatedRoute,
+                private matDialog: MatDialog,
+                private deviceService: DeviceService,
+                private deviceReportCommService: DeviceReportCommService,
+                private eventService: EventService,
+                private deviceReportService: DeviceReportService,
+                private applicationContext: ApplicationContext) { }
 
     ngOnInit() {
-        let selId = this.route.snapshot.paramMap.get('deviceId');
-        const selIdN = selId ? parseInt(selId, 10) : 0;
+        // this.selectedId = this.route.snapshot.paramMap.get('deviceId');
+        //const selIdN = selId ? parseInt(selId, 10) : 0;
         this.selectedTab = Tabs.SPEED_REPORT;
         this.dataChange = new ReplaySubject(1);
 
@@ -57,35 +57,15 @@ export class DeviceReportLayoutComponent implements OnInit {
         this.from = this.from ? this.from : this.to - this.timerange * 60 * 60 * 1000;
 
         this.eventList = [];
-        this.selected = {};
-        this.loadEventData();
-        this.applicationContext.spinAt('deviceList', true);
-        this.deviceService.getAllLittle().subscribe(
-            response => {
-                this.applicationContext.spinAt('deviceList', false);
-                this.deviceList = response;
 
-                this.selected = selIdN ? _.find(this.deviceList, x => { return x.id === selIdN}) : this.deviceList[0];
-                this.dataChange.next(1);
-            },
-            error => {
-                this.applicationContext.spinAt('deviceList', false);
-            },
-            () => {
-            }
-        );
-
-    }
-
-    private loadEventData() {
         merge(this.dataChange)
             .pipe(
                 startWith([]),
                 switchMap(() => {
-                    if (!this.selected.id) {
+                    if (!this.selectedId) {
                         return observableOf([]);
                     }
-                    return this.eventService!.getHistoryEvents(this.selected.id, this.from, this.to);
+                    return this.eventService!.getHistoryEvents(this.selectedId, this.from, this.to);
                 }),
                 map((data: any) => {
                     return data;
@@ -96,33 +76,27 @@ export class DeviceReportLayoutComponent implements OnInit {
             ).subscribe(
             (data: EventData[]) => {
                 this.eventList = data;
-                this.distance = data[0] ? data[0].odometerKM - data[data.length - 1].odometerKM : 0;
+                this.selectedName = data[0] ? data[0].deviceName || data[0].deviceId : '';
+                    this.distance = data[0] ? data[0].odometerKM - data[data.length - 1].odometerKM : 0;
                 this.totalEvents = data.length;
             });
 
-    }
+        this.route.params.pipe(map(p => p.deviceId)).subscribe(deviceId => {
+            this.selectedId = deviceId;
+            this.dataChange.next(1);
+        });
 
-
-    applyFilter(filterValue: string) {
-        // filterValue = filterValue.trim(); // Remove whitespace
-        // filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-        // this.deviceTableDataSource.filter = filterValue;
-    }
-
-
-    selectThisDevice(device: DeviceLittle): void {
-        console.log('Device: ', device);
-        this.selected = device;
-        this.dataChange.next(1);
     }
 
     tonggleSidebar(e: any) {
         e.stopPropagation();
-        this.sideNav.toggle();
-        this.tIcon = this.sideNav.opened ? 'back' : 'sub-menu';
+        this.deviceReportCommService.toggleSideNav();
+        this.tIcon = this.tIcon === 'sub-menu' ? 'back' : 'sub-menu';
+        this.dataChange.next(1);
     }
 
     timerangeChange(e: any) {
+        console.log('Change time ...');
         if (this.timerange !== 'custom') {
             this.to = (new Date()).getTime();
             this.from = this.to - this.timerange * 60 * 60 * 1000;
@@ -161,7 +135,7 @@ export class DeviceReportLayoutComponent implements OnInit {
         }
 
         let fileName = type+'_report.' + fmt;
-        this.deviceReportService.export(this.selected.id, this.from, this.to, type, fmt).subscribe(
+        this.deviceReportService.export(this.selectedId, this.from, this.to, type, fmt).subscribe(
             (data) => {
                 this.applicationContext.spin(false);
                 saveAs(data.body, fileName );

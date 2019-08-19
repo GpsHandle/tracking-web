@@ -9,7 +9,7 @@ import { AuthGuard } from 'app/guards/auth.guard';
 const routes: Routes = [
     // {
     //     path: '',
-    //     component: DashboardComponent,
+    //     component: DreportComponent,
     //     pathMatch: 'full'
     // },
     {
