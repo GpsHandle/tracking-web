@@ -65,11 +65,11 @@
 </mat-accordion>
 
 <mat-tab-group (selectedTabChange)="onTabChanged($event)">
-    <mat-tab i18n-label label="Speed Report">
-        <rpt-speed [device]="selectedId" [from]="from" [to]="to"></rpt-speed>
-    </mat-tab>
     <mat-tab i18n-label label="Parking Report">
         <rpt-parking [device]="selectedId" [from]="from" [to]="to" ></rpt-parking>
+    </mat-tab>
+    <mat-tab i18n-label label="Speed Report">
+        <rpt-speed [device]="selectedId" [from]="from" [to]="to"></rpt-speed>
     </mat-tab>
     <mat-tab i18n-label label="Geozone Report">
         <app-geozone-report></app-geozone-report>
