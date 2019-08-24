@@ -15,9 +15,9 @@ export class DeviceService extends AbstractService<DeviceRequest, Device> {
         super(http, router, API_DEVICE_PATH);
     }
 
-    getAllLittle(): Observable<DeviceLittle[]> {
+    getAllDevice(): Observable<Device[]> {
         const url = API_DEVICE_PATH + '/all';
-        return this.http.get<DeviceLittle[]>(url);
+        return this.http.get<Device[]>(url);
     }
 
     getAllStatus(): Observable<string[]> {

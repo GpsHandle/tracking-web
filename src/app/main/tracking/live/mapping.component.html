@@ -62,27 +62,33 @@
                         <table>
                             <tr>
                                 <td class="t-head">DeviceID</td>
-                                <td>{{selectedDevice.name || selectedDevice.deviceId}}</td>
-                            </tr>
-                            <tr>
-                                <td class="popup-title" i18n>Status</td>
-                                <td>{{selectedDevice.status}}</td>
-                            </tr>
-                            <tr>
-                                <td class="t-head">Lat/Lng</td>
-                                <td>{{selectedDevice.latitude}}/{{selectedDevice.longitude}}</td>
+                                <td>
+                                    <span>{{selectedDevice.name || selectedDevice.deviceId}}</span>
+                                    <span> - </span>
+                                    <span>{{selectedDevice.status}}</span>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="t-head">Lat/Lng</td>
-                                <td>{{selectedDevice.lastUpdateTime | date: 'short'}}</td>
+                                <td>{{selectedDevice.lastLatitude}}/{{selectedDevice.lastLongitude}}</td>
+                            </tr>
+                            <tr>
+                                <td class="t-head">Last Event</td>
+                                <td>{{selectedDevice.lastEventTime | date: 'short'}}</td>
                             </tr>
                             <tr>
                                 <td class="t-head">SpeedKPH</td>
-                                <td>{{selectedDevice.speedKph}} km/h</td>
+                                <td>{{selectedDevice.lastSpeedKph}} km/h</td>
                             </tr>
                             <tr>
                                 <td class="t-head">Address</td>
-                                <td>{{selectedDevice.address}}</td>
+                                <td>{{selectedDevice.lastAddress}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="t-head">
+                                    <span>The device has been staying here for</span>
+                                    <span> {{selectedDevice.stayedTimeInWords}}</span>
+                                </td>
                             </tr>
                         </table>
                     </div>

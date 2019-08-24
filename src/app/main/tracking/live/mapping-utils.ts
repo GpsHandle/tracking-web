@@ -1,3 +1,5 @@
+import * as differenceInMilliseconds from 'date-fns/difference_in_milliseconds'
+
 export class MappingUtils {
     public static COLOR_LIVING: string  = "#00e80e";
     public static COLOR_IDLE: string    = "#ffb403";
@@ -10,8 +12,11 @@ export class MappingUtils {
         MappingUtils.COLOR_STOPPED,
         MappingUtils.COLOR_DEAD
     ];
+
     public static getStatus(timestamp: number): string {
         const now = (new Date()).getTime();
+        const diff = differenceInMilliseconds(now, timestamp);
+
         if (now - timestamp <= 10 * 60 * 1000 /*600 seconds*/) {
             return 'live';
         } else if (now - timestamp <= 60*60*1000) {

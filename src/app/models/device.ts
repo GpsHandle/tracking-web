@@ -34,14 +34,20 @@ export class Device {
     public firmwareVersion: string;
     public originalCountry: string;
 
-    lastEventTime: Date;
+    lastEventTime: number;
     lastSpeedKph: number;
     lastLatitude: number;
     lastLongitude: number;
     lastAddress: string;
+    stayedTime: number;
     //--
     public createdBy: string;
     public createdOn: Date;
     public updatedBy: string;
     public updatedOn: Date;
+
+    public lastUpdateTimeInWords: string;
+    public stayedTimeInWords: string;
+    public selected: boolean;
+    public state: number; //stopped, living, idle
 }

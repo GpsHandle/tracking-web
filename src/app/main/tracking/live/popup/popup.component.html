@@ -24,6 +24,12 @@
         <td>{{address}}</td>
     </tr>
     <tr>
+        <td colspan="2" class="t-head">
+            <span>The device has been staying here for</span>
+            <span> {{stayedTimeInWords}}</span>
+        </td>
+    </tr>
+    <tr>
         <td colspan="2">
             <a [routerLink]="['main', 'tracking', 'history', devId]"> history >></a>
         </td>

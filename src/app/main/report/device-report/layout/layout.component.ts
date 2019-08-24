@@ -14,6 +14,7 @@ import { saveAs } from 'file-saver';
 import { ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 import { DeviceReportCommService } from 'app/main/report/device-report/service/device-report-comm.service';
+import { Device } from 'app/models/device';
 
 @Component({
     selector: 'app-report',
@@ -21,7 +22,7 @@ import { DeviceReportCommService } from 'app/main/report/device-report/service/d
     styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-    deviceList: DeviceLittle[];
+    deviceList: Device [];
     selected: DeviceLittle | any;
     from: number = 0;
     to: number = 0;
@@ -43,7 +44,7 @@ export class LayoutComponent implements OnInit {
 
     ngOnInit() {
         this.applicationContext.spinAt('deviceList', true);
-        this.deviceService.getAllLittle().subscribe(
+        this.deviceService.getAllDevice().subscribe(
             response => {
                 this.applicationContext.spinAt('deviceList', false);
                 this.deviceList = response;

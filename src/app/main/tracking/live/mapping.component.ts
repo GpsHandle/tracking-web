@@ -12,10 +12,8 @@ import * as distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 
 import {DeviceService} from 'app/services/device.service';
 import {EventService} from 'app/services/event.service';
-import {EventData} from 'app/models/event-data';
 
 import { StatusPieChart } from 'app/models/status-pie-chart';
-import { DeviceLittle } from 'app/models/little/device.little';
 import { PopupService } from 'app/main/tracking/live/popup/popup.service';
 import { MappingUtils } from 'app/main/tracking/live/mapping-utils';
 import { CircleMarker } from 'leaflet';
@@ -35,15 +33,15 @@ const TILE_MAPBOX = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.
     styleUrls: ['./mapping.component.scss']
 })
 export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
-    liveEvents: EventData[];
+    // liveEvents: EventData[];
     customDefault: L.Icon;
     map: L.Map;
 
     numberOfLoad: number = 0;
     markersCluster: MarkerClusterGroup;
 
-    deviceList: DeviceLittle[];
-    allDeviceList: DeviceLittle[];
+    deviceList: Device[];
+    allDeviceList: Device[];
 
     //-- chart
     private chart0: any;
@@ -55,7 +53,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
 
     private totalDevice: number;
 
-    selectedDevice: DeviceLittle;
+    selectedDevice: Device | any;
     selectedMarker: CircleMarker;
     currentMarker: L.Marker;
 
@@ -68,30 +66,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                 private bottomSheet: MatBottomSheet) { }
 
     ngOnInit() {
-        this.applicationContext.spin(true);
-        forkJoin(
-            this.deviceService.getAllLittle(),
-            this.eventService.getLiveEvents()
-        ).subscribe(
-            data => {
-                this.allDeviceList = data[0];
-                this.liveEvents = data[1];
-
-                this.deviceList = _.filter(this.allDeviceList, (d) => {
-                    return true;
-                });
-                this.applicationContext.spin(false);
-                this.processEvents();
-            },
-            error => {
-                this.applicationContext.error("Error when loading data");
-            },
-            () => {
-            }
-        );
-
-
-        //this.initOverviewPieChart();
+        this.numberOfLoad = 0;
     }
 
     ngAfterViewInit(): void {
@@ -133,19 +108,23 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     loadLivesEvent(): void {
+        this.applicationContext.spin(true);
         interval(10 * 1000).pipe(startWith(10), takeUntil(this.unsubscribe$)).subscribe(
             () => {
-                this.eventService.getLiveEvents().subscribe(
-                    liveEvents => {
-                        this.liveEvents = liveEvents;
+                this.deviceService.getAllDevice().subscribe(
+                    data => {
                         this.numberOfLoad++;
+                        this.allDeviceList = data;
+                        this.deviceList = _.filter(this.allDeviceList, (d) => {
+                            return true;
+                        });
+                        this.applicationContext.spin(false);
                         this.processEvents();
                     },
                     error => {
-
+                        this.applicationContext.error("Error when loading data");
                     },
                     () => {
-
                     }
                 );
             }
@@ -161,66 +140,52 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
         this.deadDev.reset();
 
         this.markersCluster.clearLayers();
-        _.forEach(this.liveEvents, function (event) {
-            if (event) {
-                let d = _.find(this.allDeviceList, function (dt) {
-                    return event.devId === dt.id;
-                });
+        _.forEach(this.allDeviceList, function (device: Device) {
+            device.lastUpdateTimeInWords = distanceInWordsToNow(device.lastEventTime) + ' ago';
+            device.stayedTimeInWords = distanceInWordsToNow(device.stayedTime);
+            const status = MappingUtils.getStatus(device.lastEventTime);
+            switch (status) {
+                case 'live':
+                    this.liveDev.increase();
+                    device.state = 2; //living
+                    break;
+                case 'idle':
+                    this.idleDev.increase();
+                    device.state = 1; //idle
+                    break;
+                case 'stop':
+                    this.stopDev.increase();
+                    device.state = 0; //stop
+                    break;
+                case 'dead':
+                    this.deadDev.increase();
+                    device.state = -1;
+                    break;
+            }
 
-                if (d) {
-                    d.address = event.address;
-                    d.latitude = event.latitude;
-                    d.longitude = event.longitude;
-                    d.lastUpdateTime = event.timestamp;
-                    d.speedKph = event.speedKPH;
-                    d.status = event.status;
-                    d.lastUpdateTimeInWords = distanceInWordsToNow(event.timestamp) + ' ago';
-
-                    if (event.latitude && event.longitude) {
-                        let marker = this.buildMarker(event);
-                        this.popupLink.register(marker, event, (_smarker) => {this.currentMarker = _smarker});
-                        if (this.currentMarker && !this.currentMarker.isPopupOpen()) {
-                            this.currentMarker.togglePopup();
-                        }
-                        this.markersCluster.addLayer(marker);
-                        marker.on('click', () => {
-                            this.selectedDevice = d;
-                            //circle around marker
-                            if (this.selectedMarker) {
-                                this.selectedMarker.removeFrom(this.map);
-                            }
-                            let center = L.latLng(this.selectedDevice.latitude, this.selectedDevice.longitude);
-                            this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
-                        });
-                    }
-
-                    const status = MappingUtils.getStatus(event.timestamp);
-                    switch (status) {
-                        case 'live':
-                            this.liveDev.increase();
-                            d.state = 2; //living
-                            break;
-                        case 'idle':
-                            this.idleDev.increase();
-                            d.state = 1; //idle
-                            break;
-                        case 'stop':
-                            this.stopDev.increase();
-                            d.state = 0; //stop
-                            break;
-                        case 'dead':
-                            this.deadDev.increase();
-                            d.state = -1;
-                            break;
-                    }
+            if (device.lastLatitude && device.lastLongitude) {
+                let marker = this.buildMarker(device);
+                this.popupLink.register(marker, device, (_smarker) => {this.currentMarker = _smarker});
+                if (this.currentMarker && !this.currentMarker.isPopupOpen()) {
+                    this.currentMarker.togglePopup();
                 }
+                this.markersCluster.addLayer(marker);
+                marker.on('click', () => {
+                    this.selectedDevice = device;
+                    //circle around marker
+                    if (this.selectedMarker) {
+                        this.selectedMarker.removeFrom(this.map);
+                    }
+                    let center = L.latLng(this.selectedDevice.lastLatitude, this.selectedDevice.lastLongitude);
+                    this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
+                });
             }
 
 
         }.bind(this));
 
         if (this.selectedDevice) {
-            let center = L.latLng(this.selectedDevice.latitude, this.selectedDevice.longitude);
+            let center = L.latLng(this.selectedDevice.lastLatitude, this.selectedDevice.lastLongitude);
             let oldZoom = this.map.getZoom();
             this.map.setView(center, oldZoom);
 
@@ -229,8 +194,9 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.selectedMarker.removeFrom(this.map);
             }
             this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
-        } else if (this.liveEvents.length > 0 ) {
+        } else if (this.deviceList.length > 0 ) {
             this.map.addLayer(this.markersCluster);
+            console.log('this.numberOfLoad', this.numberOfLoad);
             if (this.numberOfLoad === 1) {
                 let bounds: LatLngBounds = this.markersCluster.getBounds();
                 if (bounds.isValid()) {
@@ -244,18 +210,18 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
             }
 
         }
-        this.totalDevice = this.liveEvents.length;
+        this.totalDevice = this.allDeviceList.length;
         this.stats.push(this.liveDev, this.idleDev, this.stopDev, this.deadDev);
         this.draw();
     }
 
-    buildMarker(event: EventData): L.Marker {
-        let ll = L.latLng(event.latitude, event.longitude);
-        let icon = this.buildIcon(event);
-        let popup = this.buildPopup(event);
+    buildMarker(dev: Device): L.Marker {
+        let ll = L.latLng(dev.lastLatitude, dev.lastLongitude);
+        let icon = this.buildIcon(dev);
+        let popup = this.buildPopup(dev);
 
 
-        let devName = event.deviceName ? event.deviceName : event.deviceId;
+        let devName = dev.name ? dev.name : dev.deviceId;
 
         let m = L.marker(ll, {icon: icon})
             .bindTooltip(devName, {
@@ -268,9 +234,9 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
         return m;
     }
 
-    buildIcon(event: EventData): L.DivIcon {
+    buildIcon(dev: Device): L.DivIcon {
         let htmlIcon = '';
-        htmlIcon = '<div style="background-color:' + MappingUtils.getColor(event.timestamp) + '; width: 100%; height: 100%;"></div>';
+        htmlIcon = '<div style="background-color:' + MappingUtils.getColor(dev.lastEventTime) + '; width: 100%; height: 100%;"></div>';
         // html?: string | false;
         // bgPos?: PointExpression;
         // iconSize?: PointExpression;
@@ -282,7 +248,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
         });
     }
 
-    buildPopup(event: EventData): L.Popup {
+    buildPopup(dev: Device): L.Popup {
         let popup = L.popup();
         popup.setContent(document.createElement('div'));
         popup.options.offset = L.point(0, 0);
@@ -292,14 +258,15 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
 
     applyFilter(filterValue: string) {
         filterValue = filterValue.trim(); // Remove whitespace
-        this.deviceList = _.filter(this.allDeviceList, (dev: DeviceLittle) => {
+        this.deviceList = _.filter(this.allDeviceList, (dev: Device) => {
             return (dev.name && _.includes(dev.name, filterValue)) ||
                 (dev.deviceId && _.includes(dev.deviceId, filterValue)) ||
-                (dev.address && _.includes(dev.address, filterValue));
+                (dev.lastAddress && _.includes(dev.lastAddress, filterValue));
         });
     }
 
-    selectThisDevice(event: any, device: DeviceLittle): void {
+    //--
+    selectThisDevice(event: any, device: Device | any): void {
         event.stopPropagation();
 
         if (this.selectedDevice) {
@@ -307,16 +274,17 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
         }
         device.selected = !device.selected;
 
-        let center = L.latLng(device.latitude, device.longitude);
+        const center = L.latLng(device.lastLatitude, device.lastLongitude);
         if (center) {
             this.map.setView(center, 15);
-
             this.selectedDevice = device;
             //circle around marker
             if (this.selectedMarker) {
                 this.selectedMarker.removeFrom(this.map);
             }
+            console.log('Center', center);
             this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
+            console.log('Center1', center);
         }
     }
 
