@@ -225,7 +225,7 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
     }
 
     private intervalUpdate() {
-        interval(15 * 1000).pipe(startWith(15), takeUntil(this.unsubscribe$)).subscribe(
+        interval(10 * 1000).pipe(startWith(15), takeUntil(this.unsubscribe$)).subscribe(
             () => {
                 this.to = Date.now();
                 this.from = this.to - this.period * 60 * 60 * 1000; // 6 hours

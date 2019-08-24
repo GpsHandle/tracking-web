@@ -109,7 +109,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
 
     loadLivesEvent(): void {
         this.applicationContext.spin(true);
-        interval(10 * 1000).pipe(startWith(10), takeUntil(this.unsubscribe$)).subscribe(
+        interval(10 * 1000).pipe(startWith(10000), takeUntil(this.unsubscribe$)).subscribe(
             () => {
                 this.deviceService.getAllDevice().subscribe(
                     data => {
@@ -122,6 +122,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                         this.processEvents();
                     },
                     error => {
+                        console.log('Error', error);
                         this.applicationContext.error("Error when loading data");
                     },
                     () => {
@@ -282,9 +283,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
             if (this.selectedMarker) {
                 this.selectedMarker.removeFrom(this.map);
             }
-            console.log('Center', center);
             this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
-            console.log('Center1', center);
         }
     }
 

@@ -104,7 +104,7 @@ export class ApplicationContext implements OnInit, OnDestroy {
             } else {
                 this.bodyPortal.detach();
             }
-        }, 1);
+        }, 0);
     }
 
     spinAt(id: string, shouldShow?: boolean,) {
@@ -126,7 +126,7 @@ export class ApplicationContext implements OnInit, OnDestroy {
             } else {
                 elPortal.detach();
             }
-        });
+        }, 0);
     }
 
     store(result?: AuthResponse): void {
