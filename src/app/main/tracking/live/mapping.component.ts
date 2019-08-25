@@ -104,7 +104,10 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     loadLivesEvent(): void {
-        this.applicationContext.spin(true);
+        if (this.numberOfLoad < 1) {
+            this.applicationContext.spin(true);
+        }
+
         interval(10 * 1000).pipe(
             startWith(10000),
             takeUntil(this.unsubscribe$),
@@ -142,10 +145,10 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                             device.state = -1;
                             break;
                     }
-                    this.numberOfLoad++;
+
                     return device;
                 });
-
+                this.numberOfLoad++;
                 this.totalDevice = this.allDeviceList.length;
                 this.stats.push(this.liveDev, this.idleDev, this.stopDev, this.deadDev);
                 return data;
@@ -192,6 +195,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                     this.map.addLayer(this.markersCluster);
                     console.log('this.numberOfLoad', this.numberOfLoad);
                     if (this.numberOfLoad === 1) {
+                        this.applicationContext.spin(false);
                         let bounds: LatLngBounds = this.markersCluster.getBounds();
                         if (bounds.isValid()) {
                             this.map.fitBounds(bounds);
@@ -204,7 +208,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                     }
 
                 }
-
+                this.draw();
             }
         );
 
