@@ -21,8 +21,8 @@ import { MatBottomSheet } from '@angular/material';
 import { PanelCommandComponent } from 'app/main/tracking/live/panel-command/panel-command.component';
 import { ApplicationContext } from 'app/application-context';
 import { Device } from 'app/models/device';
-import { forkJoin, interval, Subject, Subscription } from 'rxjs';
-import { startWith, take, takeUntil } from 'rxjs/operators';
+import { forkJoin, interval, of as observableOf, Subject, Subscription } from 'rxjs';
+import { catchError, map, startWith, switchMap, take, takeUntil } from 'rxjs/operators';
 
 const TILE_OSM = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
 const TILE_MAPBOX = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
@@ -78,8 +78,6 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
         });
 
         this.markersCluster = L.markerClusterGroup();
-
-
         this.map = L.map('map-id', {
             zoomControl: false,
             center: L.latLng(21.731253, 105.996139),
@@ -100,8 +98,6 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
 
     }
 
-
-
     ngOnDestroy(): void {
         this.unsubscribe$.next();
         this.unsubscribe$.complete();
@@ -109,27 +105,133 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
 
     loadLivesEvent(): void {
         this.applicationContext.spin(true);
-        interval(10 * 1000).pipe(startWith(10000), takeUntil(this.unsubscribe$)).subscribe(
-            () => {
-                this.deviceService.getAllDevice().subscribe(
-                    data => {
-                        this.numberOfLoad++;
-                        this.allDeviceList = data;
-                        this.deviceList = _.filter(this.allDeviceList, (d) => {
-                            return true;
-                        });
-                        this.applicationContext.spin(false);
-                        this.processEvents();
-                    },
-                    error => {
-                        console.log('Error', error);
-                        this.applicationContext.error("Error when loading data");
-                    },
-                    () => {
+        interval(10 * 1000).pipe(
+            startWith(10000),
+            takeUntil(this.unsubscribe$),
+            switchMap(() => {
+                return this.deviceService.getAllDevice();
+            }),
+            map(data => {
+                this.stats = [];
+                this.liveDev.reset();
+                this.idleDev.reset();
+                this.stopDev.reset();
+                this.deadDev.reset();
+
+                this.markersCluster.clearLayers();
+                this.allDeviceList = _.map(data, (device: Device) => {
+                    device.lastUpdateTimeInWords = distanceInWordsToNow(device.lastEventTime) + ' ago';
+                    device.stayedTimeInWords = distanceInWordsToNow(device.stayedTime);
+
+                    const status = MappingUtils.getStatus(device.lastEventTime);
+                    switch (status) {
+                        case 'live':
+                            this.liveDev.increase();
+                            device.state = 2; //living
+                            break;
+                        case 'idle':
+                            this.idleDev.increase();
+                            device.state = 1; //idle
+                            break;
+                        case 'stop':
+                            this.stopDev.increase();
+                            device.state = 0; //stop
+                            break;
+                        case 'dead':
+                            this.deadDev.increase();
+                            device.state = -1;
+                            break;
                     }
-                );
+                    this.numberOfLoad++;
+                    return device;
+                });
+
+                this.totalDevice = this.allDeviceList.length;
+                this.stats.push(this.liveDev, this.idleDev, this.stopDev, this.deadDev);
+                return data;
+            }),
+            catchError(error => {
+                return observableOf([]);
+            })).subscribe(
+            (data: Device[]) => {
+                this.deviceList = _.filter(this.allDeviceList, (d) => {
+                    return true;
+                });
+
+                data.forEach((device, index) => {
+                    if (device.lastLatitude && device.lastLongitude) {
+                        let marker = this.buildMarker(device);
+                        this.popupLink.register(marker, device, (_smarker) => {this.currentMarker = _smarker});
+                        if (this.currentMarker && !this.currentMarker.isPopupOpen()) {
+                            this.currentMarker.togglePopup();
+                        }
+                        this.markersCluster.addLayer(marker);
+                        marker.on('click', () => {
+                            this.selectedDevice = device;
+                            //circle around marker
+                            if (this.selectedMarker) {
+                                this.selectedMarker.removeFrom(this.map);
+                            }
+                            let center = L.latLng(this.selectedDevice.lastLatitude, this.selectedDevice.lastLongitude);
+                            this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
+                        });
+                    }
+                });
+
+                if (this.selectedDevice) {
+                    let center = L.latLng(this.selectedDevice.lastLatitude, this.selectedDevice.lastLongitude);
+                    let oldZoom = this.map.getZoom();
+                    this.map.setView(center, oldZoom);
+
+                    //circle around marker
+                    if (this.selectedMarker) {
+                        this.selectedMarker.removeFrom(this.map);
+                    }
+                    this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
+                } else if (this.deviceList.length > 0 ) {
+                    this.map.addLayer(this.markersCluster);
+                    console.log('this.numberOfLoad', this.numberOfLoad);
+                    if (this.numberOfLoad === 1) {
+                        let bounds: LatLngBounds = this.markersCluster.getBounds();
+                        if (bounds.isValid()) {
+                            this.map.fitBounds(bounds);
+                        }
+
+                    }
+
+                    if (this.selectedMarker) {
+                        this.selectedMarker.removeFrom(this.map);
+                    }
+
+                }
+
             }
         );
+
+
+        // interval(10 * 1000).pipe(
+        //     startWith(10000),
+        //     takeUntil(this.unsubscribe$)).subscribe(
+        //     () => {
+        //         this.deviceService.getAllDevice().subscribe(
+        //             data => {
+        //                 this.numberOfLoad++;
+        //                 this.allDeviceList = data;
+        //                 this.deviceList = _.filter(this.allDeviceList, (d) => {
+        //                     return true;
+        //                 });
+        //                 this.applicationContext.spin(false);
+        //                 this.processEvents();
+        //             },
+        //             error => {
+        //                 console.log('Error', error);
+        //                 this.applicationContext.error("Error when loading data");
+        //             },
+        //             () => {
+        //             }
+        //         );
+        //     }
+        // );
     }
 
     processEvents(): void {
@@ -141,6 +243,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
         this.deadDev.reset();
 
         this.markersCluster.clearLayers();
+
         _.forEach(this.allDeviceList, function (device: Device) {
             device.lastUpdateTimeInWords = distanceInWordsToNow(device.lastEventTime) + ' ago';
             device.stayedTimeInWords = distanceInWordsToNow(device.stayedTime);
@@ -220,10 +323,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
         let ll = L.latLng(dev.lastLatitude, dev.lastLongitude);
         let icon = this.buildIcon(dev);
         let popup = this.buildPopup(dev);
-
-
         let devName = dev.name ? dev.name : dev.deviceId;
-
         let m = L.marker(ll, {icon: icon})
             .bindTooltip(devName, {
                 permanent: true,
