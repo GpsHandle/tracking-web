@@ -85,7 +85,7 @@
                                 <td>{{selectedDevice.lastAddress}}</td>
                             </tr>
                             <tr>
-                                <td colspan="2" class="t-head">
+                                <td colspan="2" class="t-head text-warn">
                                     <span>The device has been staying here for</span>
                                     <span> {{selectedDevice.stayedTimeInWords}}</span>
                                 </td>
@@ -93,7 +93,7 @@
                         </table>
                     </div>
 
-                    <div fxLayout="column" fxLayoutGap="16px">
+                    <div fxLayout="column" fxLayoutGap="10px">
                         <a mat-stroked-button class="btn-map-left" [routerLink]="['history', selectedDevice.id]">
                             <mat-icon>history</mat-icon>
                             <span>View Device History</span>

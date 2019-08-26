@@ -18,7 +18,7 @@ import { PopupService } from 'app/main/tracking/live/popup/popup.service';
 import { MappingUtils } from 'app/main/tracking/live/mapping-utils';
 import { CircleMarker } from 'leaflet';
 import { MatBottomSheet } from '@angular/material';
-import { PanelCommandComponent } from 'app/main/tracking/live/panel-command/panel-command.component';
+import { CommandComponent } from 'app/main/tracking/live/command/command.component';
 import { ApplicationContext } from 'app/application-context';
 import { Device } from 'app/models/device';
 import { forkJoin, interval, of as observableOf, Subject, Subscription } from 'rxjs';
@@ -406,8 +406,11 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
         if (event) {
             event.stopPropagation();
         }
-        console.log('Device #', selected);
-        this.bottomSheet.open(PanelCommandComponent);
+        this.bottomSheet.open(CommandComponent, {data: {
+                id: selected.id,
+                deviceName: selected.name,
+                deviceId: selected.deviceId
+        }});
     }
 
     requestLocationUpdate(event: Event) {

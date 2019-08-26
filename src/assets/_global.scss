@@ -31,6 +31,9 @@
     color: mat-color($primary, default-contrast);
   }
 
+  .text-warn {
+    color: red;
+  }
 
   .flex-middle {
     justify-content: center;

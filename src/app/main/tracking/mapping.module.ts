@@ -10,7 +10,7 @@ import { HistoryComponent } from './history/history.component';
 import { PopupService } from 'app/main/tracking/live/popup/popup.service';
 import { PopupComponent } from 'app/main/tracking/live/popup/popup.component';
 import { SpeedChartComponent } from 'app/main/tracking/live/speed-chart/speed-chart.component';
-import { PanelCommandComponent } from './live/panel-command/panel-command.component';
+import { CommandComponent } from './live/command/command.component';
 import { MatBottomSheet, MatBottomSheetContainer } from '@angular/material';
 import { CustomPipeModule } from 'app/pipes/custom-pipe.module';
 
@@ -34,14 +34,14 @@ import { CustomPipeModule } from 'app/pipes/custom-pipe.module';
     entryComponents: [
         PopupComponent,
         MatBottomSheetContainer,
-        PanelCommandComponent
+        CommandComponent
     ],
     declarations: [
         MappingComponent,
         HistoryComponent,
         PopupComponent,
         SpeedChartComponent,
-        PanelCommandComponent
+        CommandComponent
     ]
 })
 export class MappingModule { }

@@ -7,10 +7,12 @@
     flex-direction: row;
     font-size: 20px;
     align-items: center;
+    padding-bottom: 16px;
+    padding-top: 16px;
 
     .btn-close {
       position: relative;
-      margin-top: -16px;
+      margin-top: -32px;
       margin-right: -14px;
     }
   }

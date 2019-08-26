@@ -24,4 +24,9 @@ export class DeviceService extends AbstractService<DeviceRequest, Device> {
         const url = API_DEVICE_PATH + '/status';
         return this.http.get<string[]>(url);
     }
+
+    sendCommand(id: number, cmdStr: string) {
+        const url = API_DEVICE_PATH + '/' + id + '/cmd';
+        return this.http.post(url, cmdStr);
+    }
 }
