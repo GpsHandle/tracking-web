@@ -163,7 +163,7 @@ export class ApplicationContext implements OnInit, OnDestroy {
             try {
                 this.authorities        = JSON.parse(this.myStorage.getItem('AUTHORITIES'));
             } catch (e) {
-                //
+                // no authorities
             }
 
             this.expires_in         = parseInt(this.myStorage.getItem('EXPIRES_IN'), 10);
