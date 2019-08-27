@@ -37,7 +37,7 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
         DemoComponent,
     ],
     imports: [
-        BrowserModule,
+        BrowserModule.withServerTransition({ appId: 'serverApp' }),
         BrowserAnimationsModule,
         CommonModule,
         FormsModule,

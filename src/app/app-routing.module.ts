@@ -10,16 +10,12 @@ import { ErrorComponent } from 'app/pages/error/error.component';
 import { ForgotPasswordComponent } from 'app/pages/forgot-password/forgot-password.component';
 import { RegisterComponent } from 'app/pages/register/register.component';
 import { LogoutComponent } from 'app/pages/logout/logout.component';
-import { SysAdminGuard } from 'app/guards/sys-admin.guard';
-import { DemoComponent } from 'app/pages/demo/demo.component';
-import { DemoGuard } from 'app/guards/demo.guard';
 
 
 const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full'},
     { path: 'login',    component: LoginComponent },
     { path: 'logout',   component: LogoutComponent },
-    { path: 'demo',   component: DemoComponent, canActivate: [DemoGuard] },
     {
         path: 'main',
         loadChildren: () => import('app/main/main.module').then(m => m.MainModule),

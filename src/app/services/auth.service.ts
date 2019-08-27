@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {AuthResponse} from "app/models/auth.response";
+import { ApplicationContext } from 'app/application-context';
+import { MyUniversalService } from 'app/shared/my-universal.service';
 
 @Injectable()
 export class AuthService {
 
 
-    private basicAuthHeader = 'Basic ' + btoa('webapp:123456');
-    constructor(private http: HttpClient) {}
+    private basicAuthHeader = 'Basic ' + this.btoa('webapp:123456');
+    constructor(private http: HttpClient, private universal: MyUniversalService) {}
 
     login(username: string, password: string): Observable<AuthResponse> {
         const headers = new HttpHeaders({
@@ -22,5 +24,12 @@ export class AuthService {
             options);
     }
 
+    private btoa(val: string): string {
+        if (this.universal.isPlatformBrowser()) {
+            return btoa(val);
+        } else {
+            return val;
+        }
+    }
 
 }

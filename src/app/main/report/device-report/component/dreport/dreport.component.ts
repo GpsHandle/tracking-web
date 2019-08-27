@@ -10,7 +10,6 @@ import { DeviceService } from 'app/services/device.service';
 import { EventService } from 'app/services/event.service';
 import { DeviceReportService } from 'app/services/device-report.service';
 import { ApplicationContext } from 'app/application-context';
-import { DeviceLittle } from 'app/models/little/device.little';
 import { DeviceReportCommService } from 'app/main/report/device-report/service/device-report-comm.service';
 import { EventLineChartComponent } from 'app/cutom-component/event-line-chart/event-line-chart.component';
 
@@ -95,7 +94,7 @@ export class DreportComponent implements OnInit {
         this.dataChange.next(1);
     }
 
-    timerangeChange(e: any) {
+    timerangeChange() {
         console.log('Change time ...');
         if (this.timerange !== 'custom') {
             this.to = (new Date()).getTime();

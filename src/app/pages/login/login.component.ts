@@ -44,8 +44,4 @@ export class LoginComponent implements OnInit {
             () => {}
         );
     }
-
-    isDemo(): boolean {
-        return this.applicationContext.isDemo();
-    }
 }

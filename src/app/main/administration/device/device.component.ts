@@ -15,6 +15,7 @@ import { ReplaySubject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { DeleteDeviceComponent } from 'app/main/administration/device/delete-device/delete-device.component';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { MyUniversalService } from 'app/shared/my-universal.service';
 
 @Component({
     selector: 'applicationContext-device',
@@ -59,6 +60,7 @@ export class DeviceComponent implements OnInit, AfterViewInit {
     cmd: string;
 
     constructor(private dialog: MatDialog,
+                private myStorage: MyUniversalService,
                 private applicationContext: ApplicationContext,
                 private route: ActivatedRoute,
                 private service: DeviceService) {
@@ -115,7 +117,7 @@ export class DeviceComponent implements OnInit, AfterViewInit {
 
     initTableSettings(): void {
         try {
-            const displayeds = JSON.parse(localStorage.getItem('dev-disp-cols'));
+            const displayeds = JSON.parse(this.myStorage.getItem('dev-disp-cols'));
             if (displayeds != null) {
                 this.displayedColumns = displayeds;
             }
@@ -145,7 +147,7 @@ export class DeviceComponent implements OnInit, AfterViewInit {
                         }
                     });
                 }
-                localStorage.setItem('dev-disp-cols', JSON.stringify(this.displayedColumns));
+                this.myStorage.setItem('dev-disp-cols', JSON.stringify(this.displayedColumns));
             }
         );
     }

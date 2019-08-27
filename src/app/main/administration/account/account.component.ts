@@ -22,6 +22,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { DeleteAccountComponent } from 'app/main/administration/account/delete-account/delete-account.component';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { PageableCommonResponse } from 'app/models/pageable-common.response';
+import { MyUniversalService } from 'app/shared/my-universal.service';
 
 @Component({
     selector: 'applicationContext-account',
@@ -69,6 +70,7 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
     ngNoData;
 
     constructor(private dialog: MatDialog,
+                private myStorage: MyUniversalService,
                 private applicationContext: ApplicationContext,
                 private service: AccountService) { }
 
@@ -116,7 +118,7 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
 
     initTableSettings(): void {
         try {
-            const displayeds = JSON.parse(localStorage.getItem('acc-disp-cols'));
+            const displayeds = JSON.parse(this.myStorage.getItem('acc-disp-cols'));
             if (displayeds != null) {
                 this.displayedColumns = displayeds;
             }
@@ -146,7 +148,7 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
                         }
                     });
                 }
-                localStorage.setItem('acc-disp-cols', JSON.stringify(this.displayedColumns));
+                this.myStorage.setItem('acc-disp-cols', JSON.stringify(this.displayedColumns));
             }
         );
     }

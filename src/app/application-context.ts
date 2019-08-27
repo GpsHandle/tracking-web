@@ -5,7 +5,7 @@ import {
     Injectable,
     Injector,
     OnDestroy,
-    OnInit
+    OnInit, PLATFORM_ID
 } from '@angular/core';
 import {AuthResponse} from 'app/models/auth.response';
 import * as jwt from 'jwt-decode';
@@ -18,12 +18,11 @@ import { SpinnerComponent } from 'app/pages/spinner/spinner.component';
 
 import { NavigationExtras } from '@angular/router/router';
 import { WINDOW } from 'app/shared/window-provider';
+import { MyUniversalService } from 'app/shared/my-universal.service';
+import { isPlatformBrowser } from '@angular/common';
 
 export const redirectUrl = 'redirectUrl';
 const DEFAULT_REDIRECT_URL = '/main/tracking';
-
-const DEMO_SITE = 'demo.gpshandle.com';
-
 
 @Injectable()
 export class ApplicationContext implements OnInit, OnDestroy {
@@ -78,6 +77,7 @@ export class ApplicationContext implements OnInit, OnDestroy {
 
     constructor(@Inject(WINDOW) private window: Window, private snackBar: MatSnackBar,
                 private router: Router,
+                private myStorage: MyUniversalService,
                 private factoryResolver: ComponentFactoryResolver,
                 private appRef: ApplicationRef,
                 private injector: Injector) {
@@ -142,32 +142,37 @@ export class ApplicationContext implements OnInit, OnDestroy {
             this.firstPageUrl       = result.firstPageUrl;
         }
 
-        localStorage.setItem('ACCESS_TOKEN', this.access_token);
-        localStorage.setItem('ACCOUNT_ID', String(this.accountId));
-        localStorage.setItem('ACCOUNT_NAME', this.accountName);
-        localStorage.setItem('AUTHORITIES', JSON.stringify(this.authorities));
-        localStorage.setItem('EXPIRES_IN', String(this.expires_in));
-        localStorage.setItem('JTI', String(this.jti));
-        localStorage.setItem('SCOPE', this.scope);
-        localStorage.setItem('TOKEN_TYPE', this.token_type);
-        localStorage.setItem('FIRST_PAGE_URL', this.firstPageUrl);
+        this.myStorage.setItem('ACCESS_TOKEN', this.access_token);
+        this.myStorage.setItem('ACCOUNT_ID', String(this.accountId));
+        this.myStorage.setItem('ACCOUNT_NAME', this.accountName);
+        this.myStorage.setItem('AUTHORITIES', JSON.stringify(this.authorities));
+        this.myStorage.setItem('EXPIRES_IN', String(this.expires_in));
+        this.myStorage.setItem('JTI', String(this.jti));
+        this.myStorage.setItem('SCOPE', this.scope);
+        this.myStorage.setItem('TOKEN_TYPE', this.token_type);
+        this.myStorage.setItem('FIRST_PAGE_URL', this.firstPageUrl);
 
-        localStorage.setItem(redirectUrl, this.redirectURL);
+        this.myStorage.setItem(redirectUrl, this.redirectURL);
     }
 
     populate(): void {
         try {
-            this.access_token       = localStorage.getItem('ACCESS_TOKEN');
-            this.accountId          = parseInt(localStorage.getItem('ACCOUNT_ID'), 10);
-            this.accountName        = localStorage.getItem('ACCOUNT_NAME');
-            this.authorities        = JSON.parse(localStorage.getItem('AUTHORITIES'));
-            this.expires_in         = parseInt(localStorage.getItem('EXPIRES_IN'), 10);
-            this.jti                = localStorage.getItem('JTI');
-            this.scope              = localStorage.getItem('SCOPE');
-            this.token_type         = localStorage.getItem('TOKEN_TYPE');
-            this.firstPageUrl       = localStorage.getItem('FIRST_PAGE_URL');
+            this.access_token       = this.myStorage.getItem('ACCESS_TOKEN');
+            this.accountId          = parseInt(this.myStorage.getItem('ACCOUNT_ID'), 10);
+            this.accountName        = this.myStorage.getItem('ACCOUNT_NAME');
+            try {
+                this.authorities        = JSON.parse(this.myStorage.getItem('AUTHORITIES'));
+            } catch (e) {
+                //
+            }
 
-            this.redirectURL = localStorage.getItem(redirectUrl);
+            this.expires_in         = parseInt(this.myStorage.getItem('EXPIRES_IN'), 10);
+            this.jti                = this.myStorage.getItem('JTI');
+            this.scope              = this.myStorage.getItem('SCOPE');
+            this.token_type         = this.myStorage.getItem('TOKEN_TYPE');
+            this.firstPageUrl       = this.myStorage.getItem('FIRST_PAGE_URL');
+
+            this.redirectURL = this.myStorage.getItem(redirectUrl);
         } catch (e) {
             console.log(e);
         }
@@ -185,15 +190,15 @@ export class ApplicationContext implements OnInit, OnDestroy {
         this.token_type         = null;
         this.firstPageUrl       = null;
 
-        localStorage.setItem('ACCESS_TOKEN', this.access_token);
-        localStorage.setItem('ACCOUNT_ID', String(this.accountId));
-        localStorage.setItem('ACCOUNT_NAME', this.accountName);
-        localStorage.setItem('AUTHORITIES', JSON.stringify(this.authorities));
-        localStorage.setItem('EXPIRES_IN', String(this.expires_in));
-        localStorage.setItem('JTI', String(this.jti));
-        localStorage.setItem('SCOPE', this.scope);
-        localStorage.setItem('TOKEN_TYPE', this.token_type);
-        localStorage.setItem('FIRST_PAGE_URL', this.firstPageUrl);
+        this.myStorage.setItem('ACCESS_TOKEN', this.access_token);
+        this.myStorage.setItem('ACCOUNT_ID', String(this.accountId));
+        this.myStorage.setItem('ACCOUNT_NAME', this.accountName);
+        this.myStorage.setItem('AUTHORITIES', JSON.stringify(this.authorities));
+        this.myStorage.setItem('EXPIRES_IN', String(this.expires_in));
+        this.myStorage.setItem('JTI', String(this.jti));
+        this.myStorage.setItem('SCOPE', this.scope);
+        this.myStorage.setItem('TOKEN_TYPE', this.token_type);
+        this.myStorage.setItem('FIRST_PAGE_URL', this.firstPageUrl);
     }
 
     getRedirectURL() {
@@ -357,11 +362,6 @@ export class ApplicationContext implements OnInit, OnDestroy {
 
     set token_type(value: string) {
         this._token_type = value;
-    }
-
-    isDemo() {
-        const host = this.window.location.hostname;
-        return host === DEMO_SITE;
     }
 }
 
