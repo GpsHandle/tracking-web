@@ -12,7 +12,7 @@ import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/m
 import { AddEditAccountComponent } from 'app/main/administration/account/add-edit-account/add-edit-account.component';
 import { OptionalColumnAccountComponent } from './optional-column-account/optional-column-account.component';
 import { ApplicationContext } from 'app/application-context';
-import { merge } from 'rxjs';
+import { merge, Observable, Subject } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { startWith } from 'rxjs/operators';
 import { of as observableOf } from 'rxjs';
@@ -67,7 +67,7 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
     };
 
     resultsLength = 0;
-    ngNoData;
+    ngNoData: Observable<boolean>;
 
     constructor(private dialog: MatDialog,
                 private myStorage: UniversalStorage,
