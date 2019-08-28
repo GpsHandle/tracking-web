@@ -18,7 +18,7 @@ import { SpinnerComponent } from 'app/pages/spinner/spinner.component';
 
 import { NavigationExtras } from '@angular/router/router';
 import { WINDOW } from 'app/shared/window-provider';
-import { MyUniversalService } from 'app/shared/my-universal.service';
+import { UniversalStorage } from 'app/shared/universal-storage.service';
 import { isPlatformBrowser } from '@angular/common';
 
 export const redirectUrl = 'redirectUrl';
@@ -77,7 +77,7 @@ export class ApplicationContext implements OnInit, OnDestroy {
 
     constructor(@Inject(WINDOW) private window: Window, private snackBar: MatSnackBar,
                 private router: Router,
-                private myStorage: MyUniversalService,
+                private myStorage: UniversalStorage,
                 private factoryResolver: ComponentFactoryResolver,
                 private appRef: ApplicationRef,
                 private injector: Injector) {

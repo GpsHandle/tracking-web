@@ -15,7 +15,7 @@ import { ReplaySubject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { DeleteDeviceComponent } from 'app/main/administration/device/delete-device/delete-device.component';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-import { MyUniversalService } from 'app/shared/my-universal.service';
+import { UniversalStorage } from 'app/shared/universal-storage.service';
 
 @Component({
     selector: 'applicationContext-device',
@@ -60,7 +60,7 @@ export class DeviceComponent implements OnInit, AfterViewInit {
     cmd: string;
 
     constructor(private dialog: MatDialog,
-                private myStorage: MyUniversalService,
+                private myStorage: UniversalStorage,
                 private applicationContext: ApplicationContext,
                 private route: ActivatedRoute,
                 private service: DeviceService) {

@@ -10,10 +10,10 @@ import { ApplicationContext } from 'app/application-context';
 
 @Component({
     selector: 'rpt-parking',
-    templateUrl: './d-parking.component.html',
-    styleUrls: ['./d-parking.component.scss']
+    templateUrl: './parking.component.html',
+    styleUrls: ['./parking.component.scss']
 })
-export class DParkingComponent implements OnChanges, OnInit, AfterViewInit {
+export class ParkingComponent implements OnChanges, OnInit, AfterViewInit {
     private _device: number;
     private _from: number;
     private _to: number;

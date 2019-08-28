@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from 'app/main/report/device-report/layout/layout.component';
-import { DreportComponent } from 'app/main/report/device-report/component/dreport/dreport.component';
+import { ReportComponent } from 'app/main/report/device-report/component/report/report.component';
 import { DashboardComponent } from 'app/main/report/device-report/component/dashboard/dashboard.component';
 
 const routes: Routes = [
@@ -22,7 +22,7 @@ const routes: Routes = [
             },
             {
                 path: ':deviceId',
-                component: DreportComponent,
+                component: ReportComponent,
                 pathMatch: 'full'
             }
         ]

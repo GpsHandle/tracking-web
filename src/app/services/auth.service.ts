@@ -3,14 +3,14 @@ import { Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {AuthResponse} from "app/models/auth.response";
 import { ApplicationContext } from 'app/application-context';
-import { MyUniversalService } from 'app/shared/my-universal.service';
+import { UniversalStorage } from 'app/shared/universal-storage.service';
 
 @Injectable()
 export class AuthService {
 
 
     private basicAuthHeader = 'Basic ' + this.btoa('webapp:123456');
-    constructor(private http: HttpClient, private universal: MyUniversalService) {}
+    constructor(private http: HttpClient, private universal: UniversalStorage) {}
 
     login(username: string, password: string): Observable<AuthResponse> {
         const headers = new HttpHeaders({

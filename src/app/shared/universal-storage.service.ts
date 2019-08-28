@@ -4,7 +4,7 @@ import { isPlatformBrowser } from '@angular/common';
 @Injectable({
     providedIn: 'root'
 })
-export class MyUniversalService {
+export class UniversalStorage {
 
     private isBrowser: boolean;
     constructor(@Inject(PLATFORM_ID) private platformId: Object) {

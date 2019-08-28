@@ -12,11 +12,6 @@ const routes: Routes = [
         component: MainComponent,
         children: [
             {
-                path: 'dreport',
-                loadChildren: () => import('app/main/dashboard/dashboard.module').then(m => m.DashboardModule),
-                canActivate: [AuthGuard]
-            },
-            {
                 path: 'tracking',
                 loadChildren: () => import('app/main/tracking/mapping.module').then(m => m.MappingModule),
                 canActivate: [AuthGuard]

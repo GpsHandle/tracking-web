@@ -15,10 +15,10 @@ import { EventLineChartComponent } from 'app/cutom-component/event-line-chart/ev
 
 @Component({
     selector: 'app-dashboard',
-    templateUrl: './dreport.component.html',
-    styleUrls: ['./dreport.component.scss']
+    templateUrl: './report.component.html',
+    styleUrls: ['./report.component.scss']
 })
-export class DreportComponent implements OnInit {
+export class ReportComponent implements OnInit {
     selectedTab: Tabs;
     selectedName: string;
     tIcon: string = 'back';

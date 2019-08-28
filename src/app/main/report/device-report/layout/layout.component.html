@@ -5,7 +5,7 @@
                 <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Device Filter">
             </mat-form-field>
             <mat-nav-list class="rpt-list-device">
-                <mat-list-item *ngFor="let device of deviceList" [routerLink]="device.id">
+                <mat-list-item *ngFor="let device of deviceList; trackBy: trackByFn" [routerLink]="device.id">
                     <div>
                         <span>{{device.name || device.deviceId}}</span>
                     </div>

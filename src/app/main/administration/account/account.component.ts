@@ -22,7 +22,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { DeleteAccountComponent } from 'app/main/administration/account/delete-account/delete-account.component';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { PageableCommonResponse } from 'app/models/pageable-common.response';
-import { MyUniversalService } from 'app/shared/my-universal.service';
+import { UniversalStorage } from 'app/shared/universal-storage.service';
 
 @Component({
     selector: 'applicationContext-account',
@@ -70,7 +70,7 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
     ngNoData;
 
     constructor(private dialog: MatDialog,
-                private myStorage: MyUniversalService,
+                private myStorage: UniversalStorage,
                 private applicationContext: ApplicationContext,
                 private service: AccountService) { }
 

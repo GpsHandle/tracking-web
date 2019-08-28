@@ -23,6 +23,7 @@ import { ApplicationContext } from 'app/application-context';
 import { Device } from 'app/models/device';
 import { forkJoin, interval, of as observableOf, Subject, Subscription } from 'rxjs';
 import { catchError, map, startWith, switchMap, take, takeUntil } from 'rxjs/operators';
+import { ChartAPI } from 'c3';
 
 const TILE_OSM = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
 const TILE_MAPBOX = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
@@ -44,8 +45,8 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     allDeviceList: Device[];
 
     //-- chart
-    private chart0: any;
-    private stats: any;
+    private chart0: ChartAPI;
+    private stats = [];
     private liveDev = new StatusPieChart(1,"Live", 0);
     private idleDev = new StatusPieChart(2,"Idle", 0);
     private stopDev = new StatusPieChart(3,"Stop", 0);
@@ -211,116 +212,6 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.draw();
             }
         );
-
-
-        // interval(10 * 1000).pipe(
-        //     startWith(10000),
-        //     takeUntil(this.unsubscribe$)).subscribe(
-        //     () => {
-        //         this.deviceService.getAllDevice().subscribe(
-        //             data => {
-        //                 this.numberOfLoad++;
-        //                 this.allDeviceList = data;
-        //                 this.deviceList = _.filter(this.allDeviceList, (d) => {
-        //                     return true;
-        //                 });
-        //                 this.applicationContext.spin(false);
-        //                 this.processEvents();
-        //             },
-        //             error => {
-        //                 console.log('Error', error);
-        //                 this.applicationContext.error("Error when loading data");
-        //             },
-        //             () => {
-        //             }
-        //         );
-        //     }
-        // );
-    }
-
-    processEvents(): void {
-        let icon = this.customDefault;
-        this.stats = [];
-        this.liveDev.reset();
-        this.idleDev.reset();
-        this.stopDev.reset();
-        this.deadDev.reset();
-
-        this.markersCluster.clearLayers();
-
-        _.forEach(this.allDeviceList, function (device: Device) {
-            device.lastUpdateTimeInWords = distanceInWordsToNow(device.lastEventTime) + ' ago';
-            device.stayedTimeInWords = distanceInWordsToNow(device.stayedTime);
-            const status = MappingUtils.getStatus(device.lastEventTime);
-            switch (status) {
-                case 'live':
-                    this.liveDev.increase();
-                    device.state = 2; //living
-                    break;
-                case 'idle':
-                    this.idleDev.increase();
-                    device.state = 1; //idle
-                    break;
-                case 'stop':
-                    this.stopDev.increase();
-                    device.state = 0; //stop
-                    break;
-                case 'dead':
-                    this.deadDev.increase();
-                    device.state = -1;
-                    break;
-            }
-
-            if (device.lastLatitude && device.lastLongitude) {
-                let marker = this.buildMarker(device);
-                this.popupLink.register(marker, device, (_smarker) => {this.currentMarker = _smarker});
-                if (this.currentMarker && !this.currentMarker.isPopupOpen()) {
-                    this.currentMarker.togglePopup();
-                }
-                this.markersCluster.addLayer(marker);
-                marker.on('click', () => {
-                    this.selectedDevice = device;
-                    //circle around marker
-                    if (this.selectedMarker) {
-                        this.selectedMarker.removeFrom(this.map);
-                    }
-                    let center = L.latLng(this.selectedDevice.lastLatitude, this.selectedDevice.lastLongitude);
-                    this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
-                });
-            }
-
-
-        }.bind(this));
-
-        if (this.selectedDevice) {
-            let center = L.latLng(this.selectedDevice.lastLatitude, this.selectedDevice.lastLongitude);
-            let oldZoom = this.map.getZoom();
-            this.map.setView(center, oldZoom);
-
-            //circle around marker
-            if (this.selectedMarker) {
-                this.selectedMarker.removeFrom(this.map);
-            }
-            this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
-        } else if (this.deviceList.length > 0 ) {
-            this.map.addLayer(this.markersCluster);
-            console.log('this.numberOfLoad', this.numberOfLoad);
-            if (this.numberOfLoad === 1) {
-                let bounds: LatLngBounds = this.markersCluster.getBounds();
-                if (bounds.isValid()) {
-                    this.map.fitBounds(bounds);
-                }
-
-            }
-
-            if (this.selectedMarker) {
-                this.selectedMarker.removeFrom(this.map);
-            }
-
-        }
-        this.totalDevice = this.allDeviceList.length;
-        this.stats.push(this.liveDev, this.idleDev, this.stopDev, this.deadDev);
-        this.draw();
     }
 
     buildMarker(dev: Device): L.Marker {

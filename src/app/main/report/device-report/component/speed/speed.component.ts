@@ -18,10 +18,10 @@ import { ApplicationContext } from 'app/application-context';
 
 @Component({
     selector: 'rpt-speed',
-    templateUrl: './d-speed.component.html',
-    styleUrls: ['./d-speed.component.scss']
+    templateUrl: './speed.component.html',
+    styleUrls: ['./speed.component.scss']
 })
-export class DSpeedComponent implements OnChanges, OnInit, AfterViewInit {
+export class SpeedComponent implements OnChanges, OnInit, AfterViewInit {
     private _device: number;
     private _from: number;
     private _to: number;
