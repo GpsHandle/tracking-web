@@ -22,7 +22,7 @@ export class ParkingComponent implements OnChanges, OnInit, AfterViewInit {
     dataSource: MatTableDataSource<DeviceParkingReport>;
     resultsLength: number;
     dataChange: ReplaySubject<any>;
-    displayedColumns = ['latlng', 'altitude', 'odometerKM', 'speedKPH', 'heading', 'status', 'address', 'timestamp', 'stoppedTime'];
+    displayedColumns = ['latlng', 'address', 'startParkingTime', 'endParkingTime', 'stoppedTime'];
 
     constructor(private deviceReportService: DeviceReportService,
                 private applicationContext: ApplicationContext) {

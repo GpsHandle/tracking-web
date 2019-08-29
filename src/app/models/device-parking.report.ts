@@ -11,5 +11,10 @@ export class DeviceParkingReport {
     public speedKPH: number;
     public status: string;
     public timestamp: number;
-    public stoppedTime: number
+    public stoppedTime: number;
+
+    public startParkingTime: number;
+    public endParkingTime: number;
+    public startParkingOdometterKM: number;
+    public endParkingOdometterKM: number;
 }

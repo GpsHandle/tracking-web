@@ -60,6 +60,16 @@
         <td mat-cell *matCellDef="let row">{{ row.timestamp | date: 'short'}}</td>
     </ng-container>
 
+    <ng-container matColumnDef="startParkingTime">
+        <th mat-header-cell *matHeaderCellDef>Start parking time</th>
+        <td mat-cell *matCellDef="let row">{{ row.startParkingTime | date: 'short'}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="endParkingTime">
+        <th mat-header-cell *matHeaderCellDef>End parking time</th>
+        <td mat-cell *matCellDef="let row">{{ row.endParkingTime | date: 'short'}}</td>
+    </ng-container>
+
     <ng-container matColumnDef="address">
         <th mat-header-cell *matHeaderCellDef>Address</th>
         <td mat-cell *matCellDef="let row">{{ row.address }}</td>
