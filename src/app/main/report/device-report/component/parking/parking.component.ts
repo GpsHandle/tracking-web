@@ -1,10 +1,10 @@
-import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChange } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChange } from '@angular/core';
 import { DeviceReportService } from 'app/services/device-report.service';
 import { MatTableDataSource } from '@angular/material';
-import { ReplaySubject } from 'rxjs';
+import { ReplaySubject, Subject } from 'rxjs';
 import { DeviceParkingReport } from 'app/models/device-parking.report';
 import {merge, Observable, of as observableOf} from 'rxjs';
-import {catchError, map, startWith, switchMap} from 'rxjs/operators';
+import { catchError, map, startWith, switchMap, takeUntil } from 'rxjs/operators';
 import { ApplicationContext } from 'app/application-context';
 
 import { formatDistance } from 'date-fns'
@@ -14,7 +14,7 @@ import { formatDistance } from 'date-fns'
     templateUrl: './parking.component.html',
     styleUrls: ['./parking.component.scss']
 })
-export class ParkingComponent implements OnChanges, OnInit, AfterViewInit {
+export class ParkingComponent implements OnChanges, OnInit, OnDestroy {
     private _device: number;
     private _from: number;
     private _to: number;
@@ -22,6 +22,8 @@ export class ParkingComponent implements OnChanges, OnInit, AfterViewInit {
     dataSource: MatTableDataSource<DeviceParkingReport>;
     resultsLength: number;
     dataChange: ReplaySubject<any>;
+    private unsubscribe$ = new Subject<void>();
+
     displayedColumns = ['latlng', 'address', 'startParkingTime', 'endParkingTime', 'stoppedTime'];
 
     constructor(private deviceReportService: DeviceReportService,
@@ -58,20 +60,11 @@ export class ParkingComponent implements OnChanges, OnInit, AfterViewInit {
 
     ngOnInit() {
         this.dataSource = new MatTableDataSource();
-    }
-
-    ngOnChanges(changes: {[propKey: string]: SimpleChange}): void {
-        //this.loadData();
-        this.dataChange.next(100);
-    }
-    ngAfterViewInit(): void {
-
         merge(this.dataChange)
             .pipe(
                 startWith({}),
+                takeUntil(this.unsubscribe$),
                 switchMap(() => {
-                    //this.spinner.show(true);
-                    //this.applicationContext.spin(true);
                     if (!this.device) {
                         return observableOf([]);
                     }
@@ -91,9 +84,20 @@ export class ParkingComponent implements OnChanges, OnInit, AfterViewInit {
             });
     }
 
+    ngOnChanges(changes: {[propKey: string]: SimpleChange}): void {
+        //this.loadData();
+        this.dataChange.next(100);
+    }
+
     timeDistance(period: number): string {
         const date2 = new Date().getTime();
         const date1 = date2 - period;
         return formatDistance(date1, date2);
     }
+
+    ngOnDestroy(): void {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
+    }
+
 }

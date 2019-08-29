@@ -8,7 +8,7 @@ import { ParkingComponent } from './component/parking/parking.component';
 import { DeviceReportCustomTimeComponent } from './component/custom-timerange-dialog/device-report-custom-time.component';
 import { CustomComponentModule } from 'app/cutom-component/custom-component.module';
 import { GeozoneComponent } from './component/geozone/geozone.component';
-import { AlertHistoryComponent } from './component/alert-history/alert-history.component';
+import { AlertLogsComponent } from './component/alert-logs/alert-logs.component';
 import { ReportComponent } from './component/report/report.component';
 import { DeviceReportCommService } from 'app/main/report/device-report/service/device-report-comm.service';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
@@ -26,7 +26,7 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
         ParkingComponent,
         DeviceReportCustomTimeComponent,
         GeozoneComponent,
-        AlertHistoryComponent,
+        AlertLogsComponent,
         ReportComponent,
         DashboardComponent
     ],

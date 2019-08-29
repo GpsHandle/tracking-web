@@ -4,8 +4,10 @@ import { Observable } from 'rxjs/index';
 import { PageableCommonResponse } from 'app/models/pageable-common.response';
 import { DeviceSpeeedReport } from 'app/models/device-speeed.report';
 import { DeviceParkingReport } from 'app/models/device-parking.report';
+import { AlertEventLog } from 'app/models/alert-event-log';
 
 const API_REPORT_DEVICE_PATH = '/api/r/device';
+const API_REPORT_ALERT_PATH = '/api/alert/r/';
 
 @Injectable({
     providedIn: 'root'
@@ -38,6 +40,20 @@ export class DeviceReportService {
         params = params.append('from', String(from));
         params = params.append('to', String(to));
         return this.http.get<DeviceParkingReport[]>(url, {params: params});
+    }
+
+    getAlertLogs(device: number, from: number, to: number, page: number, size: number, sort: string, order: string): Observable<PageableCommonResponse<AlertEventLog>> {
+        let url = API_REPORT_ALERT_PATH + device;
+
+        let params = new HttpParams();
+        params = params.append('from', String(from));
+        params = params.append('to', String(to));
+        params = params.append('page', String(page));
+        params = params.append('size', String(size));
+        sort = sort ? sort : '';
+        order = order ? order : '';
+        params = params.append('sort', sort + ',' + order);
+        return this.http.get<PageableCommonResponse<AlertEventLog>>(url, {params: params});
     }
 
     export(device: number, from: number, to: number, type?: string, fmt?: string): Observable<HttpResponse<Blob>> {

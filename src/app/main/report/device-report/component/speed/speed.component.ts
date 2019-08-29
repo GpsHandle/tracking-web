@@ -80,10 +80,8 @@ export class SpeedComponent implements OnChanges, OnInit, AfterViewInit {
 
         merge(this.sort.sortChange, this.paginator.page, this.dataChange)
             .pipe(
-                startWith({}),
+                startWith([]),
                 switchMap(() => {
-                    //this.spinner.show(true);
-                    //this.applicationContext.spinAt('speed-table', true);
                     if (!this.device) {
                         return observableOf({});
                     }

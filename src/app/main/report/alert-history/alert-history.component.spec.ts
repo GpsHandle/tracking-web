@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AlertHistoryComponent } from './alert-history.component';
 
-describe('AlertHistoryComponent', () => {
+describe('AlertLogsComponent', () => {
   let component: AlertHistoryComponent;
   let fixture: ComponentFixture<AlertHistoryComponent>;
 

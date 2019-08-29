@@ -71,10 +71,10 @@
     <mat-tab i18n-label label="Speed Report">
         <rpt-speed [device]="selectedId" [from]="from" [to]="to"></rpt-speed>
     </mat-tab>
-    <mat-tab i18n-label label="Geozone Report">
-        <app-geozone-report></app-geozone-report>
-    </mat-tab>
+    <!--mat-tab i18n-label label="Geozone Report">
+        <app-geozone-report [device]="selectedId" [from]="from" [to]="to"></app-geozone-report>
+    </mat-tab-->
     <mat-tab i18n-label label="Alert History">
-        <app-alert-history></app-alert-history>
+        <app-alert-history [device]="selectedId" [from]="from" [to]="to"></app-alert-history>
     </mat-tab>
 </mat-tab-group>
