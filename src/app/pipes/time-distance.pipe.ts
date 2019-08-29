@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import * as distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
+import { formatDistanceToNow } from 'date-fns'
 
 @Pipe({
   name: 'timeDistance'
@@ -7,7 +7,7 @@ import * as distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 export class TimeDistancePipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
-    return distanceInWordsToNow(value);
+    return formatDistanceToNow(value);
   }
 
 }

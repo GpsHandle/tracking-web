@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartAPI } from 'c3';
+import { ChartAPI, PrimitiveArray } from 'c3';
 import * as c3 from 'c3';
 import * as d3 from 'd3';
 import { StatusPieChart } from 'app/models/status-pie-chart';
@@ -123,13 +123,14 @@ export class DashboardComponent implements OnInit {
     }
 
     private updatePie() {
+        const columns: Array<[string, ...PrimitiveArray]> = [
+            ['Live',    this.liveDev.count],
+            ['IDLE',    this.idleDev.count],
+            ['Stopped', this.stopDev.count],
+            ['Dead',    this.deadDev.count],
+        ];
         const cols = {
-            columns: [
-                ['Live',    this.liveDev.count],
-                ['IDLE',    this.idleDev.count],
-                ['Stopped', this.stopDev.count],
-                ['Dead',    this.deadDev.count],
-            ]
+            columns: columns
         };
         this.chart0.load(cols);
         d3.select('#chart0 .c3-chart-arcs-title')

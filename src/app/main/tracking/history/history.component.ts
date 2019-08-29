@@ -16,6 +16,7 @@ import * as c3 from 'c3';
 
 import { SelectionModel } from '@angular/cdk/collections';
 import { ApplicationContext } from 'app/application-context';
+import { PrimitiveArray } from 'c3';
 
 const TILE_OSM = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
 const TILE_MAPBOX = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
@@ -41,9 +42,9 @@ export class HistoryComponent implements OnInit, AfterViewInit {
     private historyEvents: EventData[];
 
     private historyEventsOptimizeForChart: EventData[];
-    private timestampCol: Array<any> = ['timestamp'];
-    private speedKphCol: Array<any> = ['SpeedKPH'];
-    private fuelLevelCol: Array<any> = ['FuelLevel'];
+    private timestampCol: [string, ...PrimitiveArray] = ['timestamp'];
+    private speedKphCol: [string, ...PrimitiveArray] = ['SpeedKPH'];
+    private fuelLevelCol: [string, ...PrimitiveArray] = ['FuelLevel'];
 
     private polyline: Polyline;
     private decor: any;

@@ -7,7 +7,7 @@ import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import { LatLngBounds, MarkerClusterGroup } from 'leaflet';
 
-import * as distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
+import { formatDistanceToNow } from 'date-fns';
 
 
 import {DeviceService} from 'app/services/device.service';
@@ -24,6 +24,7 @@ import { Device } from 'app/models/device';
 import { forkJoin, interval, of as observableOf, Subject, Subscription } from 'rxjs';
 import { catchError, map, startWith, switchMap, take, takeUntil } from 'rxjs/operators';
 import { ChartAPI } from 'c3';
+import { PrimitiveArray } from 'c3';
 
 const TILE_OSM = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
 const TILE_MAPBOX = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
@@ -124,8 +125,8 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
 
                 this.markersCluster.clearLayers();
                 this.allDeviceList = _.map(data, (device: Device) => {
-                    device.lastUpdateTimeInWords = distanceInWordsToNow(device.lastEventTime) + ' ago';
-                    device.stayedTimeInWords = distanceInWordsToNow(device.stayedTime);
+                    device.lastUpdateTimeInWords = formatDistanceToNow(device.lastEventTime) + ' ago';
+                    device.stayedTimeInWords = formatDistanceToNow(device.stayedTime);
 
                     const status = MappingUtils.getStatus(device.lastEventTime);
                     switch (status) {
@@ -373,13 +374,14 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     private updatePie() {
+        const columns: Array<[string, ...PrimitiveArray]> = [
+            ['Live',    this.liveDev.count],
+            ['IDLE',    this.idleDev.count],
+            ['Stopped', this.stopDev.count],
+            ['Dead',    this.deadDev.count],
+        ];
         const cols = {
-            columns: [
-                ['Live',    this.liveDev.count],
-                ['IDLE',    this.idleDev.count],
-                ['Stopped', this.stopDev.count],
-                ['Dead',    this.deadDev.count],
-            ]
+            columns: columns
         };
         this.chart0.load(cols);
         d3.select('#chart0 .c3-chart-arcs-title')

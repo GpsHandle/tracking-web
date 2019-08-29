@@ -1,4 +1,4 @@
-import * as differenceInMilliseconds from 'date-fns/difference_in_milliseconds'
+import { differenceInMilliseconds } from 'date-fns'
 
 export class MappingUtils {
     public static COLOR_LIVING: string  = "#00e80e";

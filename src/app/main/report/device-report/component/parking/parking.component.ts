@@ -5,8 +5,9 @@ import { ReplaySubject } from 'rxjs';
 import { DeviceParkingReport } from 'app/models/device-parking.report';
 import {merge, Observable, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
-import * as d_ from "date-fns";
 import { ApplicationContext } from 'app/application-context';
+
+import { formatDistance } from 'date-fns'
 
 @Component({
     selector: 'rpt-parking',
@@ -91,6 +92,6 @@ export class ParkingComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     timeDistance(period: number): string {
-        return d_.distanceInWords(0, period);
+        return formatDistance(0, period);
     }
 }

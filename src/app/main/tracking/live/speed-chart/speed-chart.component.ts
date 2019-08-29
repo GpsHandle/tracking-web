@@ -16,6 +16,8 @@ import * as d3 from 'd3';
 import * as c3 from 'c3';
 import { EventData } from 'app/models/event-data';
 import * as _ from 'lodash';
+import { ChartConfiguration, Data, PrimitiveArray } from 'c3';
+import { AxisName } from 'c3';
 
 @Component({
     selector: 'speed-chart',
@@ -258,9 +260,9 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
                 columns: cols
             });
         } else {
-            let X:Array<any> = ['timestamp'];
-            let S:Array<any> = ['SpeedKPH'];
-            let F:Array<any> = ['FuelLevel'];
+            let X: [string, ...PrimitiveArray] = ['timestamp'];
+            let S: [string, ...PrimitiveArray] = ['SpeedKPH'];
+            let F: [string, ...PrimitiveArray] = ['FuelLevel'];
 
             const ta = _.uniqBy(this.historyEventsOptimizeForChart, 'timestamp');
 
@@ -270,20 +272,27 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
                 F.push(0);
             });
 
-            let cols = [
+            const cols: Array<[string, ...PrimitiveArray]> = [
                 X, S, F
             ];
 
-            this.chart = c3.generate({
+            const y: AxisName = 'y';
+            const y2: AxisName = 'y2';
+
+            const axes: { [key: string]: AxisName } = {
+                SpeedKPH: y,
+                FuelLevel: y2
+            };
+
+            const data: Data = {
+                columns: cols,
+                axes: axes,
+                x: 'timestamp'
+            };
+
+            const chartConfig: ChartConfiguration = {
                 bindto: '#chart1',
-                data: {
-                    columns: cols,
-                    axes: {
-                        SpeedKPH: 'y',
-                        FuelLevel: 'y2'
-                    },
-                    x: 'timestamp'
-                },
+                data: data,
                 transition: {
                     duration: 0
                 },
@@ -324,7 +333,9 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
                 point: {
                     show: false
                 }
-            });
+            };
+
+            this.chart = c3.generate(chartConfig);
         }
     }
 
