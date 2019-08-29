@@ -27,7 +27,6 @@ export class DashboardComponent implements OnInit {
 
     ngOnInit() {
         this.dashboardService.deviceList$.subscribe(devices => {
-            console.log('device-list', devices);
             this.totalDevice = devices.length;
             this.deviceList = devices;
 

@@ -12,7 +12,7 @@ import { EventData } from 'app/models/event-data';
 import * as _ from 'lodash';
 import * as c3 from 'c3';
 import * as d3 from 'd3';
-import { ChartAPI, ChartConfiguration, PrimitiveArray } from 'c3';
+import { AxisName, ChartAPI, ChartConfiguration, PrimitiveArray } from 'c3';
 
 @Component({
     selector: 'event-line-chart',
@@ -59,9 +59,6 @@ export class EventLineChartComponent implements OnInit, AfterViewChecked, OnChan
                 let B:[string, ...PrimitiveArray] = ['Battery'];
 
                 const ta = _.uniqBy(this.eventList, 'timestamp');
-
-                console.log('drawing+ta', ta);
-
                 if (ta && ta.length > 0) {
                     _.forEach(ta, (d) => {
                         X.push(d.timestamp);
@@ -95,13 +92,16 @@ export class EventLineChartComponent implements OnInit, AfterViewChecked, OnChan
                     X, S, F, B
                 ];
 
+                const y: AxisName = 'y';
+                const y2: AxisName = 'y2';
+
                 this.chart = c3.generate({
                     bindto: '#event-line-chart',
                     data: {
                         columns: columns,
                         axes: {
-                            SpeedKPH: 'y',
-                            FuelLevel: 'y2'
+                            SpeedKPH: y,
+                            FuelLevel: y2
                         },
                         x: 'timestamp'
                     },

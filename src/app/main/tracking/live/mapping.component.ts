@@ -195,7 +195,6 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                     this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
                 } else if (this.deviceList.length > 0 ) {
                     this.map.addLayer(this.markersCluster);
-                    console.log('this.numberOfLoad', this.numberOfLoad);
                     if (this.numberOfLoad === 1) {
                         this.applicationContext.spin(false);
                         let bounds: LatLngBounds = this.markersCluster.getBounds();

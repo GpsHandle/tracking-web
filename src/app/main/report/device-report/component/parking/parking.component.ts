@@ -92,6 +92,8 @@ export class ParkingComponent implements OnChanges, OnInit, AfterViewInit {
     }
 
     timeDistance(period: number): string {
-        return formatDistance(0, period);
+        const date2 = new Date().getTime();
+        const date1 = date2 - period;
+        return formatDistance(date1, date2);
     }
 }
