@@ -22,7 +22,7 @@ export class AddEditAlertProfileComponent implements OnInit {
     isEditing: boolean = false;
     zoneList: Geozone[];
 
-    types: Array<AlertType> = [
+    types: Array<string> = [
         AlertType.ALERT_START,
         AlertType.ALERT_STOP,
         AlertType.ALERT_ENGINE_START,

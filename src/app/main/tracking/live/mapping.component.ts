@@ -159,6 +159,9 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                 return observableOf([]);
             })).subscribe(
             (data: Device[]) => {
+                if (this.numberOfLoad === 1) {
+                    this.applicationContext.spin(false);
+                }
                 this.deviceList = _.filter(this.allDeviceList, (d) => {
                     return true;
                 });

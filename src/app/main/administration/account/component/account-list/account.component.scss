@@ -1,0 +1,11 @@
+.element-detail {
+  overflow: hidden;
+  display: flex;
+}
+.element-row td {
+  border-bottom-width: 0;
+}
+
+tr.detail-row {
+  height: 0;
+}

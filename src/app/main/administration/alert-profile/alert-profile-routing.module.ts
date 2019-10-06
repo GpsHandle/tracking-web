@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AlertProfileComponent } from 'app/main/administration/alert-profile/alert-profile.component';
+import { AlertProfileComponent } from 'app/main/administration/alert-profile/component/alert-profile-list/alert-profile.component';
 
 const routes: Routes = [
     {

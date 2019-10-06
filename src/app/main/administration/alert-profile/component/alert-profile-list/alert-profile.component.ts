@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatPaginator, MatSort } from '@angular/material';
-import { AddEditAlertProfileComponent } from 'app/main/administration/alert-profile/add-edit-alert-profile/add-edit-alert-profile.component';
+import { AddEditAlertProfileComponent } from 'app/main/administration/alert-profile/component/add-edit-alert-profile/add-edit-alert-profile.component';
 import { AlertProfileRequest } from 'app/models/request/alert-profile.request';
 import { AlertProfileService } from 'app/services/alert-profile.service';
 import { ApplicationContext } from 'app/application-context';
@@ -9,7 +9,7 @@ import { AlertProfile } from 'app/models/alert-profile';
 import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { DeleteAlertProfileComponent } from 'app/main/administration/alert-profile/delete-alert-profile/delete-alert-profile.component';
+import { DeleteAlertProfileComponent } from 'app/main/administration/alert-profile/component/delete-alert-profile/delete-alert-profile.component';
 import { PageableCommonResponse } from 'app/models/pageable-common.response';
 
 @Component({

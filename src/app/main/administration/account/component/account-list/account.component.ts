@@ -9,8 +9,8 @@ import {
 import { AccountService } from 'app/services/account.service';
 import { Account } from 'app/models/account';
 import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { AddEditAccountComponent } from 'app/main/administration/account/add-edit-account/add-edit-account.component';
-import { OptionalColumnAccountComponent } from './optional-column-account/optional-column-account.component';
+import { AddEditAccountComponent } from 'app/main/administration/account/component/add-edit-account/add-edit-account.component';
+import { OptionalColumnAccountComponent } from '../optional-column-account/optional-column-account.component';
 import { ApplicationContext } from 'app/application-context';
 import { merge, Observable, Subject } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
@@ -19,7 +19,7 @@ import { of as observableOf } from 'rxjs';
 import { AccountRequest } from 'app/models/request/account.request';
 import { ReplaySubject } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { DeleteAccountComponent } from 'app/main/administration/account/delete-account/delete-account.component';
+import { DeleteAccountComponent } from 'app/main/administration/account/component/delete-account/delete-account.component';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { PageableCommonResponse } from 'app/models/pageable-common.response';
 import { UniversalStorage } from 'app/shared/universal-storage.service';
@@ -230,7 +230,7 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
-                this._delete(result);
+                this._delete(account);
             }
         });
     }

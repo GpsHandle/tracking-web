@@ -1,6 +1,6 @@
 <div mat-dialog-title>
     <span i18n>{{isEditing ? 'Modifying Alert Profile' : 'Creating Alert Profile'}}</span>
-    <span> #{{ data ? data.id : ''}}</span>
+    <span> #{{ data ? data.description : ''}}</span>
     <span class="x-dialog-close-btn">
         <button mat-icon-button mat-dialog-close>
             <mat-icon>cancel</mat-icon>
@@ -17,7 +17,7 @@
                                 aria-label="Type of alert"
                                 required
                                 [(ngModel)]="data.type"
-                                name="Type of alert">
+                                name="type-of-alert">
                         <mat-option *ngFor="let type of types" [value]="type">
                             {{type}}
                         </mat-option>
