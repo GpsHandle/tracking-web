@@ -63,13 +63,6 @@ export class ApplicationContext implements OnInit, OnDestroy {
         'ACTIVATED'
     ];
 
-    pageUrlList: Array<string> = [
-        '/main/tracking',
-        '/main/report',
-        '/main/_admin/_account',
-
-    ];
-
     private portalMap = new Map<string, DomPortalHost>();
     //------------------------------------------------------------------------------------------------------------------
     //~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~

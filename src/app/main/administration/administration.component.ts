@@ -10,6 +10,5 @@ export class AdministrationComponent implements OnInit, AfterViewInit {
 
     ngOnInit() { }
     ngAfterViewInit(): void {
-        //this.router.navigate(["/main/_admin/_account"]);
     }
 }

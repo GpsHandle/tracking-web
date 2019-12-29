@@ -53,6 +53,12 @@ export class AddEditAlertProfileComponent implements OnInit {
             error => {},
             () => {}
         );
+
+        if (!this.data.name) {
+            this.data.catalog = 'eventual';
+            this.data.type = AlertType.ALERT_GEOFENCE_IN;
+            this.data.active = true;
+        }
     }
     onSave() {
         this.data.weekDays = this.weekDays.data;

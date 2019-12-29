@@ -5,6 +5,7 @@ export class AlertProfile {
     id: number;
     name: string;
     description: string;
+    catalog: string;
     type: string;
     active: boolean;
     speedKph: number;

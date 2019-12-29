@@ -9,27 +9,27 @@ const routes: Routes = [
         component: AdministrationComponent,
         children:[
             {
-                path: '_account',
+                path: 'account',
                 loadChildren: () => import('app/main/administration/account/account.module').then(m => m.AccountModule),
                 canActivate: [AuthGuard]
             },
             {
-                path: '_device',
+                path: 'device',
                 loadChildren: () => import('app/main/administration/device/device.module').then(m => m.DeviceModule),
                 canActivate: [AuthGuard]
             },
             {
-                path: '_driver',
+                path: 'driver',
                 loadChildren: () => import('app/main/administration/driver/driver.module').then(m => m.DriverModule),
                 canActivate: [AuthGuard]
             },
             {
-                path: '_geozone',
+                path: 'geozone',
                 loadChildren: () => import('app/main/administration/geozone/geozone.module').then(m => m.GeozoneModule),
                 canActivate: [AuthGuard]
             },
             {
-                path: '_alert',
+                path: 'alert',
                 loadChildren: () => import('app/main/administration/alert-profile/alert-profile.module').then(m => m.AlertProfileModule),
                 canActivate: [AuthGuard]
             },

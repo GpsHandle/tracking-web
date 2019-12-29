@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 export class AlertProfileRequest {
     name: string;
     description: string;
+    catalog: string;
     type: string;
     active: boolean;
     speedKph: number;

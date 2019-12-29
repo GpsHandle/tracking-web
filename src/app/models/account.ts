@@ -1,4 +1,5 @@
 import { Role } from 'app/models/role';
+import {SmtpProperties} from "./smtp-properties";
 
 export class Account {
     private _id: number;
@@ -18,6 +19,8 @@ export class Account {
     private _updatedBy: string;
     private _createdOn: Date;
     private _updatedOn: Date;
+
+    smtpProperties: SmtpProperties[];
 
 
     get id(): number {

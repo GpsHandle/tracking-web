@@ -9,6 +9,21 @@
 </div>
 <div mat-dialog-content>
     <form class="">
+
+        <div fxLayout="row" fxLayoutGap="16px">
+            <div fxFlex="50">
+                <mat-form-field class="full-width">
+                    <mat-select i18n-placeholder
+                                placeholder="Select a type of Alert"
+                                name="catalog-alert"
+                                [(ngModel)]="data.catalog"
+                                required>
+                        <mat-option value="eventual">Eventual</mat-option>
+                        <mat-option value="interval">Interval</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
                 <mat-form-field class="full-width">
@@ -28,8 +43,6 @@
                 <mat-slide-toggle [(ngModel)]="data.active"
                                   name="Active">Active/Inactive</mat-slide-toggle>
             </div>
-
-
         </div>
         <mat-form-field class="full-width">
             <input type="text" matInput

@@ -10,6 +10,7 @@ import { CustomPipeModule } from 'app/pipes/custom-pipe.module';
 import { CustomDirectivesModule } from 'app/directives/custom-directives.module';
 import { DeleteAccountComponent } from './component/delete-account/delete-account.component';
 import { AccountService } from 'app/services/account.service';
+import { EditAccountComponent } from './component/edit-account/edit-account.component';
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import { AccountService } from 'app/services/account.service';
         AccountComponent,
         AddEditAccountComponent,
         OptionalColumnAccountComponent,
-        DeleteAccountComponent
+        DeleteAccountComponent,
+        EditAccountComponent
     ],
     entryComponents: [
         AddEditAccountComponent,
