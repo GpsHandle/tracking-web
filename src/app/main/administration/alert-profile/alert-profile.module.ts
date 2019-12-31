@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SchedulerModule } from 'app/shared/scheduler/scheduler.module';
 import { DeleteAlertProfileComponent } from './component/delete-alert-profile/delete-alert-profile.component';
 import { GeozoneService } from 'app/services/geozone.service';
+import { AlertProfileEditComponent } from './component/alert-profile-edit/alert-profile-edit.component';
+import { AlertProfileAddComponent } from './component/alert-profile-add/alert-profile-add.component';
 
 @NgModule({
     imports: [
@@ -23,7 +25,9 @@ import { GeozoneService } from 'app/services/geozone.service';
     declarations: [
         AlertProfileComponent,
         AddEditAlertProfileComponent,
-        DeleteAlertProfileComponent
+        DeleteAlertProfileComponent,
+        AlertProfileEditComponent,
+        AlertProfileAddComponent
     ],
     entryComponents: [
         AddEditAlertProfileComponent,

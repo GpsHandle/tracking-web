@@ -8,15 +8,15 @@
   </mat-chip>
 </mat-chip-list>
 
-<button mat-button
+<button mat-stroked-button
         [color]="colorAll()"
         (click)="toggleAllDays()"
         [disabled]="!editMode">All week</button>
-<button mat-button
+<button mat-stroked-button
         [color]="colorWeekDays()"
         (click)="toggleWeekDays()"
         [disabled]="!editMode">Weekdays</button>
-<button mat-button
+<button mat-stroked-button
         [color]="colorWeekend()"
         (click)="toggleWeekend()"
         [disabled]="!editMode">Weekend</button>

@@ -1,0 +1,4 @@
+@import "component/alert-profile-add/alert-profile-add.component";
+@mixin alert-profile($theme) {
+    @include alert-profile-add($theme);
+}

@@ -5,10 +5,10 @@
                 [(value)]="scheduleTime"
                 [disabled]="!editMode"></time-input>
   </mat-form-field>
-  <button mat-button
+  <button mat-stroked-button
           (click)="setBizTime()"
           [disabled]="!editMode">Business time</button>
-  <button mat-button
+  <button mat-stroked-button
           (click)="setAllDay()"
           [disabled]="!editMode">All day</button>
 </div>

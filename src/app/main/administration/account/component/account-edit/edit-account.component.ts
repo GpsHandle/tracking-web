@@ -8,11 +8,19 @@ import {Privilege} from "../../../../../models/privilege";
 import {ApplicationContext} from "../../../../../application-context";
 import {FormControl} from "@angular/forms";
 import {SmtpProperties} from "../../../../../models/smtp-properties";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
     selector: 'app-edit-account',
     templateUrl: './edit-account.component.html',
-    styleUrls: ['./edit-account.component.scss']
+    styleUrls: ['./edit-account.component.scss'],
+    animations: [
+        trigger('detailExpand', [
+            state('collapsed', style({height: '0px', minHeight: '0'})),
+            state('expanded', style({height: '*'})),
+            transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+        ]),
+    ],
 })
 export class EditAccountComponent implements OnInit {
 
@@ -27,9 +35,11 @@ export class EditAccountComponent implements OnInit {
     filteredStatus: Observable<string[]>;
 
     isAddNewSmtp: boolean;
-    aNewSmtpServer: SmtpProperties;
 
-    smtpDisplayedColumns = ['host', 'port'];
+    aNewSmtpServer: SmtpProperties;
+    columnsToDisplay = ['host', 'port'];
+    expandedElement: SmtpProperties | null;
+
     constructor(private applicationContext: ApplicationContext,
                 private route: ActivatedRoute,
                 private accountService: AccountService) { }
@@ -37,6 +47,7 @@ export class EditAccountComponent implements OnInit {
     ngOnInit() {
         this.account = new Account();
         this.privilegeList = this.applicationContext.getPrivileges();
+        this.statusControl.disable()
         this.filteredStatus = this.statusControl.valueChanges
             .pipe(
                 startWith(''),
@@ -73,5 +84,19 @@ export class EditAccountComponent implements OnInit {
     cancelNewSmtpServer() {
         this.isAddNewSmtp = false;
         this.aNewSmtpServer = null;
+    }
+
+    editThisAccount() {
+        this.isEditing = true;
+        this.statusControl.enable();
+    }
+
+    saveEditedAccount() {
+        console.log('Account', this.account);
+    }
+
+    cancelEditedAccount() {
+        this.isEditing = false;
+        this.statusControl.disable();
     }
 }

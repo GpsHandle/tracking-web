@@ -19,11 +19,11 @@ export class DayTime implements OnInit {
   }
 
   setBizTime() {
-    this.scheduleTime = {fromHour: '08', fromMinute: '00', toHour: '17', toMinute: '59'};
+    this.scheduleTime = {fromHour: '08', fromMinute: '00', toHour: '17', toMinute: '59'} as MyTime;
   }
 
   setAllDay() {
-    this.scheduleTime = {fromHour: '00', fromMinute: '00', toHour: '23', toMinute: '59'};
+    this.scheduleTime = {fromHour: '00', fromMinute: '00', toHour: '23', toMinute: '59'} as MyTime;
   }
 
   @Input()

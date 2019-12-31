@@ -1,13 +1,12 @@
-<div mat-dialog-title>
-    <span i18n>{{isEditing ? 'Modifying Alert Profile' : 'Creating Alert Profile'}}</span>
-    <span> #{{ data ? data.description : ''}}</span>
-    <span class="x-dialog-close-btn">
-        <button mat-icon-button mat-dialog-close>
-            <mat-icon>cancel</mat-icon>
-        </button>
-    </span>
-</div>
-<div mat-dialog-content>
+<mat-toolbar>
+    <button mat-icon-button arial-label="Back to account list" [routerLink]="['/main/admin/alert']"><mat-icon>back</mat-icon></button>
+    <span class="fill-remain-space"></span>
+    <button *ngIf="!isEditing" mat-flat-button color="primary" (click)="edit()">Edit</button>
+    <button *ngIf="isEditing" mat-flat-button color="accent" (click)="save()" class="margin-righ-16">Save</button>
+    <button *ngIf="isEditing" mat-flat-button color="warn" (click)="cancel()">Cancel</button>
+</mat-toolbar>
+
+<div class="alert-profile-add">
     <form class="">
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
@@ -117,7 +116,7 @@
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50" class="flex-center">
                 <mat-checkbox [(ngModel)]="data.alertEmail"
-                    name="ALert to email">Alert to email</mat-checkbox>
+                              name="ALert to email">Alert to email</mat-checkbox>
             </div>
             <div fxFlex="50" class="flex-center">
                 <mat-checkbox [(ngModel)]="data.alertSms"
@@ -163,8 +162,4 @@
                    [(ngModel)]="data.templateId">
         </mat-form-field>
     </form>
-</div>
-<div mat-dialog-actions align="end">
-    <button mat-flat-button (click)="onSave()" i18n>Save</button>
-    <button mat-button mat-dialog-close i18n>Cancel</button>
 </div>

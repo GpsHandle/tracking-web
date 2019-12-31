@@ -1,12 +1,15 @@
 @import '../../../assets/variables';
+@import "alert-profile/alert-profile.module";
 
 @mixin main-admin-component($theme) {
-  .mat-sidenav {
-      width: $side-nav-width;
-      max-width: 350px;
-      .side-nav-menu {
-          overflow-y: auto;
-      }
-  }
+    .mat-sidenav {
+        width: $side-nav-width;
+        max-width: 350px;
+        .side-nav-menu {
+            overflow-y: auto;
+        }
+    }
+
+    @include alert-profile($theme);
 }
 

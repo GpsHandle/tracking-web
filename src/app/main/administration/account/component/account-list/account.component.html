@@ -7,7 +7,7 @@
         <button mat-icon-button (click)="openDialogColumnOptions()">
             <mat-icon>settings</mat-icon>
         </button>
-        <button mat-icon-button (click)="openDialogNewObject()" *showIfRole="'super,sysadmin,admin,moderator'">
+        <button mat-icon-button routerLink="add" *showIfRole="'super,sysadmin,admin,moderator'">
             <mat-icon>add</mat-icon>
         </button>
     </div>
