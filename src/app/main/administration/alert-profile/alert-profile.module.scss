@@ -1,4 +1,8 @@
 @import "component/alert-profile-add/alert-profile-add.component";
+@import "component/alert-profile-edit/alert-profile-edit.component";
+@import "component/alert-profile-list/alert-profile.component";
 @mixin alert-profile($theme) {
     @include alert-profile-add($theme);
+    @include alert-profile-edit($theme);
+    @include alert-profile-list($theme);
 }

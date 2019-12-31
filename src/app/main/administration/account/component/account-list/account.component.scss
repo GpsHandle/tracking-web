@@ -1,11 +1,14 @@
-.element-detail {
-  overflow: hidden;
-  display: flex;
-}
-.element-row td {
-  border-bottom-width: 0;
-}
+@mixin account-list($theme) {
 
-tr.detail-row {
-  height: 0;
+    .element-detail {
+        overflow: hidden;
+        display: flex;
+    }
+    .element-row td {
+        border-bottom-width: 0;
+    }
+
+    tr.detail-row {
+        height: 0;
+    }
 }

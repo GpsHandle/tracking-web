@@ -1,4 +1,6 @@
 @import "../../assets/variables";
+@import "administration/administration.module";
+@import "tracking/mapping.module";
 @mixin main-component($theme) {
 
     .main {
@@ -25,4 +27,6 @@
         z-index: 100;
     }
 
+    @include administration-module($theme);
+    @include mapping-module($theme);
 }

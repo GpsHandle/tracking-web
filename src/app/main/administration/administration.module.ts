@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdministrationComponent } from 'app/main/administration/administration.component';
+import { AdministrationComponent } from 'app/main/administration/layout/administration.component';
 import { AdministrationRoutingModule} from 'app/main/administration/administration-routing.module';
 import { MaterialShared} from 'app/shared/material-shared';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';

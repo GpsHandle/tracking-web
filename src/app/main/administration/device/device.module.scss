@@ -1,0 +1,5 @@
+@import "component/device-list/device-list.component";
+
+@mixin device-module($theme) {
+    @include device-list($theme);
+}

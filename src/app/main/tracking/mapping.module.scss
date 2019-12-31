@@ -1,0 +1,6 @@
+@import "live/mapping.component";
+@import "history/history.component";
+@mixin mapping-module($theme) {
+    @include map-component($theme);
+    @include tracking-history($theme);
+}

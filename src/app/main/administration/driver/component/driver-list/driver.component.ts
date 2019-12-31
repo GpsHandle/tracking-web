@@ -5,9 +5,9 @@ import { DriverService } from 'app/services/driver.service';
 import { merge, of, ReplaySubject } from 'rxjs';
 import { MatDialog, MatPaginator, MatSort } from '@angular/material';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-import { AddEditDriverComponent } from 'app/main/administration/driver/add-edit-driver/add-edit-driver.component';
-import { DeleteDriverComponent } from 'app/main/administration/driver/delete-driver/delete-driver.component';
-import { OptionalColumnDriverComponent } from 'app/main/administration/driver/optional-column-driver/optional-column-driver.component';
+import { AddEditDriverComponent } from 'app/main/administration/driver/component/add-edit-driver/add-edit-driver.component';
+import { DeleteDriverComponent } from 'app/main/administration/driver/component/delete-driver/delete-driver.component';
+import { OptionalColumnDriverComponent } from 'app/main/administration/driver/component/optional-column-driver/optional-column-driver.component';
 import { DriverRequest } from 'app/models/request/driver.request';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 

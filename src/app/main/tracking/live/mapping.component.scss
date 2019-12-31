@@ -1,3 +1,7 @@
+@import "command/command.component";
+@import "popup/popup.component";
+@import "speed-chart/speed-chart.component";
+
 @mixin map-component($theme) {
   .side-nav-container {
     height: 100%;
@@ -150,5 +154,8 @@
       opacity: 0.2;
     }
   }
+
+    @include command-component($theme);
+    @include speed-chart($theme);
 
 }

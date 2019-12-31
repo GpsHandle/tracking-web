@@ -1,78 +1,81 @@
-.page-history {
-  height: 100%;
+@mixin tracking-history($theme) {
+    .page-history {
+        height: 100%;
 
-  .main-map {
-    height: 100%;
-  }
+        .main-map {
+            height: 100%;
+        }
 
-  .history-details {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    .history-details-content {
-      overflow-y: auto;
-      height: 100%;
+        .history-details {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            .history-details-content {
+                overflow-y: auto;
+                height: 100%;
+            }
+
+            .history-table {
+                overflow-y: auto;
+                height: 100%;
+                &::-webkit-scrollbar {
+                    width: 6px;
+                    background-color: #ffffff;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background-color: #c3c3c3;
+                }
+            }
+            #chart2 {
+                height: 100%;
+                display: flex;
+                flex: 1 1 auto;
+                position: relative;
+                overflow-y: auto;
+
+            }
+        }
+
+        .his-dev-name {
+            margin-left: 16px;
+            margin-right: 16px;
+        }
+
+        .mat-header-row {
+            position: sticky;
+        }
+
+        .axis {
+            font: 10px sans-serif;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+        .axis-title {
+            fill: none;
+            stroke: black;
+            stroke-width: 0.5px;
+        }
+
+
+        .axis--x path {
+            /*display: none;*/
+        }
+
+        .line {
+            fill: none;
+            stroke: steelblue;
+            stroke-width: 1.5px;
+        }
+
+        .history-range-group {
+            box-shadow: none;
+        }
     }
 
-    .history-table {
-      overflow-y: auto;
-      height: 100%;
-      &::-webkit-scrollbar {
-        width: 6px;
-        background-color: #ffffff;
-      }
-      &::-webkit-scrollbar-thumb {
-        background-color: #c3c3c3;
-      }
-    }
-    #chart2 {
-      height: 100%;
-      display: flex;
-      flex: 1 1 auto;
-      position: relative;
-      overflow-y: auto;
-
-    }
-  }
-
-  .his-dev-name {
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-
-  .mat-header-row {
-    position: sticky;
-  }
-
-  .axis {
-    font: 10px sans-serif;
-  }
-
-  .axis path,
-  .axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-  }
-
-  .axis-title {
-    fill: none;
-    stroke: black;
-    stroke-width: 0.5px;
-  }
-
-
-  .axis--x path {
-    /*display: none;*/
-  }
-
-  .line {
-    fill: none;
-    stroke: steelblue;
-    stroke-width: 1.5px;
-  }
-
-  .history-range-group {
-    box-shadow: none;
-  }
 }

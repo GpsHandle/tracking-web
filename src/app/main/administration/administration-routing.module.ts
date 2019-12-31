@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from "@angular/router";
-import { AdministrationComponent} from "./administration.component";
+import { AdministrationComponent} from "./layout/administration.component";
 import { AuthGuard} from 'app/guards/auth.guard';
 import { SysAdminGuard } from 'app/guards/sys-admin.guard';
 const routes: Routes = [

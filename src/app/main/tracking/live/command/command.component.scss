@@ -1,19 +1,21 @@
-.x-panel-container {
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
-  .x-panel-header {
-    display: flex;
-    flex-direction: row;
-    font-size: 20px;
-    align-items: center;
-    padding-bottom: 16px;
-    padding-top: 16px;
+@mixin command-component($theme) {
+    .x-panel-container {
+        display: flex;
+        flex-direction: column;
+        min-width: 300px;
+        .x-panel-header {
+            display: flex;
+            flex-direction: row;
+            font-size: 20px;
+            align-items: center;
+            padding-bottom: 16px;
+            padding-top: 16px;
 
-    .btn-close {
-      position: relative;
-      margin-top: -32px;
-      margin-right: -14px;
+            .btn-close {
+                position: relative;
+                margin-top: -32px;
+                margin-right: -14px;
+            }
+        }
     }
-  }
 }

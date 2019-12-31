@@ -11,7 +11,6 @@ import { CustomDirectivesModule } from 'app/directives/custom-directives.module'
 import { DeleteAccountComponent } from './component/delete-account/delete-account.component';
 import { AccountService } from 'app/services/account.service';
 import { EditAccountComponent } from './component/account-edit/edit-account.component';
-import { AccountAddComponent } from './component/account-add/account-add.component';
 
 @NgModule({
     imports: [

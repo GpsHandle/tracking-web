@@ -4,8 +4,8 @@ import { Device } from 'app/models/device';
 import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { ApplicationContext } from 'app/application-context';
 import { DeviceService } from 'app/services/device.service';
-import { OptionalColumnDeviceComponent } from 'app/main/administration/device/optional-column-device/optional-column-device.component';
-import { AddEditDeviceComponent } from 'app/main/administration/device/add-edit-device/add-edit-device.component';
+import { OptionalColumnDeviceComponent } from 'app/main/administration/device/component/optional-column-device/optional-column-device.component';
+import { AddEditDeviceComponent } from 'app/main/administration/device/component/add-edit-device/add-edit-device.component';
 import { DeleteEvent } from 'app/models/delete-event';
 import { DeviceRequest } from 'app/models/request/device.request';
 
@@ -13,14 +13,14 @@ import { merge } from 'rxjs';
 import { of as observableOf } from 'rxjs';
 import { ReplaySubject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { DeleteDeviceComponent } from 'app/main/administration/device/delete-device/delete-device.component';
+import { DeleteDeviceComponent } from 'app/main/administration/device/component/delete-device/delete-device.component';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { UniversalStorage } from 'app/shared/universal-storage.service';
 
 @Component({
     selector: 'applicationContext-device',
     templateUrl: './device.component.html',
-    styleUrls: ['./device.component.scss']
+    styleUrls: ['./device-list.component.scss']
 })
 export class DeviceComponent implements OnInit, AfterViewInit {
 

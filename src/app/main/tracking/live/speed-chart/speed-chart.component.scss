@@ -1,23 +1,22 @@
-.s-p-chart1 {
-  height: 100%;
-  width: 100%;
-  position: relative;
+@mixin speed-chart($theme) {
+    .s-p-chart1 {
+        height: 100%;
+        width: 100%;
+        position: relative;
 
-  .overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    cursor: pointer;
-  }
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            cursor: pointer;
+        }
 
-  #chart1 {
-    position: absolute;
-    display: block;
-    height: 100%;
-    width: 100%;
-  }
+        #chart1 {
+            position: absolute;
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+    }
 }
-
-
-

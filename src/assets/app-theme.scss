@@ -1,8 +1,5 @@
 @import '../../node_modules/@angular/material/theming';
 @import "../app/main/main.component";
-@import "../app/main/administration/administration.component";
-@import "../app/main/administration/alert-profile/alert-profile.module";
-@import "../app/main/tracking/live/mapping.component";
 @import "../app/pages/login/login.component";
 @import "global";
 // Plus imports for other components in your app.
@@ -31,7 +28,6 @@ $my-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 // that you are using.
 @mixin load-component-style($theme) {
   @include main-component($theme);
-  @include main-admin-component($theme);
   @include map-component($theme);
   @include style-login($theme);
   @include global-style($theme);

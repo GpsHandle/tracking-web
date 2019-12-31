@@ -1,0 +1,12 @@
+@import "alert-profile/alert-profile.module";
+@import "account/account.module";
+@import "device/device.module";
+@import "driver/driver.module";
+@import "layout/administration.component";
+@mixin administration-module($theme) {
+    @include account-module($theme);
+    @include alert-profile($theme);
+    @include device-module($theme);
+    @include driver-module($theme);
+    @include main-admin-component($theme);
+}
