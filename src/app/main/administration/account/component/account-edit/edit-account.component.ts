@@ -9,6 +9,8 @@ import {ApplicationContext} from "../../../../../application-context";
 import {FormControl} from "@angular/forms";
 import {SmtpProperties} from "../../../../../models/smtp-properties";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import * as _ from 'lodash';
+import {AccountRequest} from "../../../../../models/request/account.request";
 
 @Component({
     selector: 'app-edit-account',
@@ -47,11 +49,12 @@ export class EditAccountComponent implements OnInit {
     ngOnInit() {
         this.account = new Account();
         this.privilegeList = this.applicationContext.getPrivileges();
+        console.log('this.privilegeList', this.privilegeList);
         this.statusControl.disable()
         this.filteredStatus = this.statusControl.valueChanges.pipe(
                 startWith(''),
                 map(value => {
-                    return this.applicationContext.statusList.filter(opt => opt.toLowerCase().indexOf(value.toLowerCase()) === 0);
+                    return this.applicationContext.statusList.filter(opt => _.lowerCase(opt).indexOf(_.lowerCase(value)) === 0);
                 })
             );
 
@@ -91,6 +94,15 @@ export class EditAccountComponent implements OnInit {
 
     saveEditedAccount() {
         console.log('Account', this.account);
+        this.account.status = this.statusControl.value;
+        const accountR = new AccountRequest(this.account);
+        this.accountService.update(this.accountId, accountR).subscribe(
+            data => {
+                this.applicationContext.info("An account was updated successfully!");
+            },
+            error => {},
+            () => {}
+        )
     }
 
     cancelEditedAccount() {
