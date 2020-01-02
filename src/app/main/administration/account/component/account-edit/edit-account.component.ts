@@ -48,8 +48,7 @@ export class EditAccountComponent implements OnInit {
         this.account = new Account();
         this.privilegeList = this.applicationContext.getPrivileges();
         this.statusControl.disable()
-        this.filteredStatus = this.statusControl.valueChanges
-            .pipe(
+        this.filteredStatus = this.statusControl.valueChanges.pipe(
                 startWith(''),
                 map(value => {
                     return this.applicationContext.statusList.filter(opt => opt.toLowerCase().indexOf(value.toLowerCase()) === 0);
@@ -58,7 +57,6 @@ export class EditAccountComponent implements OnInit {
 
         this.route.params.pipe(
             switchMap(params => {
-                console.log("params", params);
                 this.accountId = params['id'];
                 return this.accountService.getById(this.accountId)
             })
