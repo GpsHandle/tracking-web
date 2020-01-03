@@ -11,7 +11,8 @@ import { CustomDirectivesModule } from 'app/directives/custom-directives.module'
 import { DeleteAccountComponent } from './component/delete-account/delete-account.component';
 import { AccountService } from 'app/services/account.service';
 import { EditAccountComponent } from './component/account-edit/edit-account.component';
-import { AddAccountComponent } from './component/add-account/add-account.component';
+import { AddAccountComponent } from './component/account-add/add-account.component';
+import { ChangePasswordDialogComponent } from './component/change-password-dialog/change-password-dialog.component';
 
 @NgModule({
     imports: [
@@ -29,12 +30,14 @@ import { AddAccountComponent } from './component/add-account/add-account.compone
         OptionalColumnAccountComponent,
         DeleteAccountComponent,
         EditAccountComponent,
-        AddAccountComponent
+        AddAccountComponent,
+        ChangePasswordDialogComponent
     ],
     entryComponents: [
         AddEditAccountComponent,
         OptionalColumnAccountComponent,
-        DeleteAccountComponent
+        DeleteAccountComponent,
+        ChangePasswordDialogComponent
     ],
     providers: [
         AccountService

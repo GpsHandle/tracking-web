@@ -11,6 +11,9 @@ import {SmtpProperties} from "../../../../../models/smtp-properties";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import * as _ from 'lodash';
 import {AccountRequest} from "../../../../../models/request/account.request";
+import {MatDialog} from "@angular/material/dialog";
+import {AddEditAccountComponent} from "../add-edit-account/add-edit-account.component";
+import {ChangePasswordDialogComponent} from "../change-password-dialog/change-password-dialog.component";
 
 @Component({
     selector: 'app-edit-account',
@@ -44,7 +47,8 @@ export class EditAccountComponent implements OnInit {
 
     constructor(private applicationContext: ApplicationContext,
                 private route: ActivatedRoute,
-                private accountService: AccountService) { }
+                private accountService: AccountService,
+                private dialog: MatDialog) { }
 
     ngOnInit() {
         this.account = new Account();
@@ -99,6 +103,7 @@ export class EditAccountComponent implements OnInit {
         this.accountService.update(this.accountId, accountR).subscribe(
             data => {
                 this.applicationContext.info("An account was updated successfully!");
+                this.applicationContext.navigate(['/main/admin/account'])
             },
             error => {},
             () => {}
@@ -108,5 +113,19 @@ export class EditAccountComponent implements OnInit {
     cancelEditedAccount() {
         this.isEditing = false;
         this.statusControl.disable();
+    }
+
+    openChangePasswdDialog() {
+        const dialogRef = this.dialog.open(ChangePasswordDialogComponent, {
+            width: '350px',
+            disableClose: true,
+            data: this.account
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                //this.create(result);
+            }
+        });
     }
 }

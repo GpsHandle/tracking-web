@@ -7,7 +7,7 @@
         <button mat-icon-button (click)="openDialogColumnOptions()">
             <mat-icon>settings</mat-icon>
         </button>
-        <button mat-icon-button (click)="openDialogNewObject()">
+        <button mat-icon-button routerLink="add">
             <mat-icon>add</mat-icon>
         </button>
     </div>
@@ -124,7 +124,7 @@
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef i18n> Actions </mat-header-cell>
             <mat-cell *matCellDef="let element">
-                <button mat-icon-button (click)="openDialogEditing(element)">
+                <button mat-icon-button [routerLink]="[element.id]">
                     <mat-icon color="accent">edit</mat-icon>
                 </button>
                 <button mat-icon-button (click)="openDialogConfirmDelete(element)">

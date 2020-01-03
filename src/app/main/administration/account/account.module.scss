@@ -1,6 +1,6 @@
 @import "component/account-edit/edit-account.component";
 @import "component/account-list/account.component";
-@import "component/add-account/add-account.component";
+@import "component/account-add/add-account.component";
 @import "component/add-edit-account/add-edit-account.component";
 @mixin account-module($theme) {
     @include account-add($theme);

@@ -1,18 +1,35 @@
 <mat-toolbar>
     <button mat-icon-button arial-label="Back to account list" [routerLink]="['/main/admin/account']"><mat-icon>back</mat-icon></button>
     <span class="fill-remain-space"></span>
-    <button *ngIf="!isEditing" mat-flat-button color="primary" (click)="editThisAccount()">Edit</button>
-    <button *ngIf="isEditing" mat-flat-button color="accent" (click)="saveEditedAccount()" class="margin-righ-16">Save</button>
-    <button *ngIf="isEditing" mat-flat-button color="warn" (click)="cancelEditedAccount()">Cancel</button>
+    <button *ngIf="!isEditing" mat-flat-button color="primary" (click)="editThisAccount()">
+        <mat-icon>edit</mat-icon>
+        <span>Edit</span>
+    </button>
+    <button *ngIf="isEditing" mat-flat-button color="accent" (click)="saveEditedAccount()" class="margin-righ-16">
+        <mat-icon>save</mat-icon>
+        <span>Save</span>
+    </button>
+    <button *ngIf="isEditing" mat-flat-button color="warn" (click)="cancelEditedAccount()">
+        <mat-icon>cancel</mat-icon>
+        <span>Cancel</span>
+    </button>
 </mat-toolbar>
 
 <div fxLayout="row" fxLayoutGap="16px" class="padding-16">
     <div fxFlex="67">
         <div fxLayout="column">
-            <mat-form-field class="full-width">
-                <input matInput i18n-placeholder placeholder="Account ID" name="acc-account-id" [(ngModel)]="account.accountId" required [disabled]="!isEditing">
-            </mat-form-field>
-            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxLayoutGap.xs="0px">
+            <div fxLayout="row" fxLayoutGap="16px">
+                <div fxFlex="50">
+                    <mat-form-field class="full-width">
+                        <input matInput i18n-placeholder placeholder="Account ID" name="acc-account-id" [(ngModel)]="account.accountId" required [disabled]="!isEditing">
+                    </mat-form-field>
+                </div>
+                <div fxFlex="50">
+                        <button mat-button color="primary" class="btn-change-password" (click)="openChangePasswdDialog()">Change password</button>
+                </div>
+            </div>
+
+            <!--div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxLayoutGap.xs="0px">
                 <div fxFlex="50">
                     <mat-form-field class="full-width">
                         <input type="password" matInput i18n-placeholder placeholder="Password" name="acc-password" [(ngModel)]="password" [disabled]="!isEditing">
@@ -23,7 +40,7 @@
                         <input type="password" matInput i18n-placeholder placeholder="Re-type Password" name="acc-re-password" [(ngModel)]="rePassword" [disabled]="!isEditing">
                     </mat-form-field>
                 </div>
-            </div>
+            </div-->
 
             <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxLayoutGap.xs="0px">
                 <div fxFlex="50">

@@ -4,7 +4,7 @@
     }
 
     .margin-righ-16 {
-        margin-right: 16px;
+        margin-right: 16px!important;
     }
 
     .center {
@@ -58,4 +58,9 @@
         opacity: 0.5;
     }
 
+    .btn-change-password {
+        top: 15px!important;
+        font-style: italic;
+        text-decoration: underline!important;
+    }
 }

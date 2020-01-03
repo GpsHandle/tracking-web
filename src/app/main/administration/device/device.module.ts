@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomDirectivesModule } from 'app/directives/custom-directives.module';
 import { AccountService } from 'app/services/account.service';
 import { DeleteDeviceComponent } from './component/delete-device/delete-device.component';
+import { DeviceAddComponent } from './component/device-add/device-add.component';
+import { DeviceViewEditComponent } from './component/device-view-edit/device-view-edit.component';
 
 @NgModule({
     imports: [
@@ -31,6 +33,8 @@ import { DeleteDeviceComponent } from './component/delete-device/delete-device.c
         AddEditDeviceComponent,
         OptionalColumnDeviceComponent,
         DeleteDeviceComponent,
+        DeviceAddComponent,
+        DeviceViewEditComponent,
     ],
     entryComponents: [
         AddEditDeviceComponent,
