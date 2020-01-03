@@ -9,6 +9,9 @@ import {Observable} from "rxjs";
 import {SmtpProperties} from "../../../../../models/smtp-properties";
 import {AccountRequest} from "../../../../../models/request/account.request";
 import {map, startWith} from "rxjs/operators";
+import {MatDialog} from "@angular/material/dialog";
+import {AddEditAccountComponent} from "../add-edit-account/add-edit-account.component";
+import {SmtpDialogComponent} from "../smtp-dialog/smtp-dialog.component";
 
 @Component({
     selector: 'app-add-account',
@@ -26,13 +29,18 @@ export class AddAccountComponent implements OnInit {
     columnsToDisplay = ['host', 'port'];
     expandedElement: SmtpProperties | null;
     isAddNewSmtp: boolean;
+    smtpServerList: Array<SmtpProperties>;
+    smtpServers: FormControl;
 
     constructor(private applicationContext: ApplicationContext,
                 private route: ActivatedRoute,
-                private accountService: AccountService) { }
+                private accountService: AccountService,
+                private dialog: MatDialog) { }
 
     ngOnInit() {
         this.account = new Account();
+        this.smtpServers = new FormControl();
+
         this.privilegeList = this.applicationContext.getPrivileges();
         this.filteredStatus = this.statusControl.valueChanges.pipe(
             startWith(''),
@@ -40,6 +48,13 @@ export class AddAccountComponent implements OnInit {
                 return this.applicationContext.statusList.filter(opt => opt.toLowerCase().indexOf(value.toLowerCase()) === 0);
             })
         );
+
+        this.accountService.getAllSmtpServer().subscribe(
+            data => {
+                console.log('Data', data);
+                this.smtpServerList = data;
+            }
+        )
     }
 
     newSmtpServer() {
@@ -69,5 +84,23 @@ export class AddAccountComponent implements OnInit {
             () => {
             }
         );
+    }
+
+    openDialogNewSmtp(event?: Event) {
+        if (event) {
+            event.stopPropagation()
+        }
+
+        const dialogRef = this.dialog.open(SmtpDialogComponent, {
+            width: '800px',
+            disableClose: true,
+            data: null
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                //this.update(data.id, result);
+            }
+        });
     }
 }

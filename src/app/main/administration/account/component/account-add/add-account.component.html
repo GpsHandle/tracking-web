@@ -112,78 +112,25 @@
             <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
         </table>
 
+        <div *ngIf="isAddNewSmtp">
+            <mat-form-field class="full-width">
+                <mat-label>SMTP Servers</mat-label>
+                <mat-select [formControl]="smtpServers" multiple>
+                    <mat-option *ngFor="let smtp of smtpServerList" [value]="smtp">{{smtp.host}}</mat-option>
+                </mat-select>
 
-        <div>
-            <div *ngIf="isAddNewSmtp">
-                <div fxLayout.gt-sm="row" fxLayoutGap="16px">
-                    <div fxFlex.gt-sm="80" fxFlex.lt-sm="100">
-                        <mat-form-field class="full-width">
-                            <label>
-                                <input matInput i18n-placeholder placeholder="Host" name="smtp-host" [(ngModel)]="aNewSmtpServer.host">
-                            </label>
-                        </mat-form-field>
-                    </div>
-                    <div fxFlex.gt-sm="20" fxFlex.lt-sm="100">
-                        <mat-form-field class="full-width">
-                            <label>
-                                <input matInput i18n-placeholder placeholder="Port" name="smtp-port" [(ngModel)]="aNewSmtpServer.port">
-                            </label>
-                        </mat-form-field>
-                    </div>
-                </div>
-                <div fxLayoutGap.gt-sm="row" fxLayoutGap="16px">
-                    <div fxFlex="50">
-                        <mat-form-field class="full-width">
-                            <label>
-                                <input matInput i18n-placeholder placeholder="Username" name="smtp-username" [(ngModel)]="aNewSmtpServer.username">
-                            </label>
-                        </mat-form-field>
-                    </div>
-                    <div fxFlex="50">
-                        <mat-form-field class="full-width">
-                            <label>
-                                <input matInput i18n-placeholder placeholder="Password" name="smtp-password" [(ngModel)]="aNewSmtpServer.password">
-                            </label>
-                        </mat-form-field>
-                    </div>
-                </div>
-
-                <div fxLayoutGap.gt-sm="row" fxLayoutGap="16px">
-                    <div fxFlex.gt-sm="80">
-                        <mat-form-field class="full-width">
-                            <label>
-                                <input matInput i18n-placeholder type="number" placeholder="Max size attachment" name="smtp-max-size-attachment" [(ngModel)]="aNewSmtpServer.maxSizeAttachment">
-                            </label>
-                        </mat-form-field>
-                    </div>
-                    <div fxFlex.gt-sm="20">
-                        <mat-form-field class="full-width">
-                            <label>
-                                <input matInput i18n-placeholder placeholder="Unit" name="max-size-unit" value="MB" disabled>
-                            </label>
-                        </mat-form-field>
-                    </div>
-                </div>
-                <div fxLayoutGap.gt-sm="row" fxLayoutGap="16px">
-                    <div fxFlex.gt-sm="50">
-                        <mat-checkbox [(ngModel)]="aNewSmtpServer.auth">Authentication</mat-checkbox>
-                    </div>
-                    <div fxFlex.gt-sm="50">
-                        <mat-checkbox [(ngModel)]="aNewSmtpServer.startTls">Start TLS</mat-checkbox>
-                    </div>
-                </div>
-            </div>
-
-            <mat-divider></mat-divider>
-
-            <div class="center">
-                <button *ngIf="!isAddNewSmtp" mat-flat-button color="primary" (click)="newSmtpServer()">
+                <button mat-icon-button matSuffix [attr.aria-label]="'Add new smtp server'" (click)="openDialogNewSmtp($event)">
                     <mat-icon>add</mat-icon>
-                    <span>New SMTP Server</span>
                 </button>
-                <button *ngIf="isAddNewSmtp" mat-flat-button color="primary" (click)="saveNewSmtpServer()" class="margin-righ-16">Save</button>
-                <button *ngIf="isAddNewSmtp" mat-flat-button color="warn" (click)="cancelNewSmtpServer()">Cancel</button>
-            </div>
+            </mat-form-field>
+        </div>
+        <div class="center">
+            <button *ngIf="!isAddNewSmtp" mat-flat-button color="primary" (click)="newSmtpServer()">
+                <mat-icon>add</mat-icon>
+                <span>New SMTP Server</span>
+            </button>
+            <button *ngIf="isAddNewSmtp" mat-flat-button color="primary" (click)="saveNewSmtpServer()" class="margin-righ-16">Save</button>
+            <button *ngIf="isAddNewSmtp" mat-flat-button color="warn" (click)="cancelNewSmtpServer()">Cancel</button>
         </div>
     </div>
 </div>

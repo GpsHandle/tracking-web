@@ -13,6 +13,7 @@ import { AccountService } from 'app/services/account.service';
 import { EditAccountComponent } from './component/account-edit/edit-account.component';
 import { AddAccountComponent } from './component/account-add/add-account.component';
 import { ChangePasswordDialogComponent } from './component/change-password-dialog/change-password-dialog.component';
+import { SmtpDialogComponent } from './component/smtp-dialog/smtp-dialog.component';
 
 @NgModule({
     imports: [
@@ -31,13 +32,15 @@ import { ChangePasswordDialogComponent } from './component/change-password-dialo
         DeleteAccountComponent,
         EditAccountComponent,
         AddAccountComponent,
-        ChangePasswordDialogComponent
+        ChangePasswordDialogComponent,
+        SmtpDialogComponent
     ],
     entryComponents: [
         AddEditAccountComponent,
         OptionalColumnAccountComponent,
         DeleteAccountComponent,
-        ChangePasswordDialogComponent
+        ChangePasswordDialogComponent,
+        SmtpDialogComponent
     ],
     providers: [
         AccountService

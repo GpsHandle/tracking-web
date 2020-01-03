@@ -24,4 +24,9 @@ export class AccountService extends AbstractService<AccountRequest, Account> {
         const url = ACCOUNT_API_URL + '/smtp/' + accountId ;
         return this.http.post<SmtpProperties>(url, aNewSmtpServer)
     }
+
+    getAllSmtpServer(accountId?: number): Observable<Array<SmtpProperties>> {
+        const url = ACCOUNT_API_URL + '/smtp/' + accountId;
+        return this.http.get<Array<SmtpProperties>>(url);
+    }
 }
