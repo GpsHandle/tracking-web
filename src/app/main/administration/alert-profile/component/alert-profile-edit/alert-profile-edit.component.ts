@@ -8,10 +8,24 @@ import {AlertProfile} from "../../../../../models/alert-profile";
 })
 export class AlertProfileEditComponent implements OnInit {
     data: AlertProfile;
+    isEditing: boolean;
+    types: any;
+    zoneList: any;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+    edit() {
+
+    }
+
+    save() {
+
+    }
+
+    cancel() {
+
+    }
 }
