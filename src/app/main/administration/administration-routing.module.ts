@@ -11,7 +11,11 @@ const routes: Routes = [
             {
                 path: 'account',
                 loadChildren: () => import('app/main/administration/account/account.module').then(m => m.AccountModule),
-                canActivate: [AuthGuard]
+                canActivate: [AuthGuard],
+                data: {
+                    authorities: [],
+                    pageTitle: 'account.title'
+                }
             },
             {
                 path: 'device',

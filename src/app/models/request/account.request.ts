@@ -1,5 +1,6 @@
 import { Account } from 'app/models/account';
 import { Role } from 'app/models/role';
+import {SmtpProperties} from "../smtp-properties";
 
 export class AccountRequest {
     id: number;
@@ -15,6 +16,7 @@ export class AccountRequest {
     addressLine1: string;
     addressLine2: string;
     notes: string;
+    smtpPropertiesIds: Array<number>;
 
 
     constructor(account? : Account) {

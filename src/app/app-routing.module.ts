@@ -6,7 +6,7 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AuthGuard} from "app/guards/auth.guard";
 import { NotFoundComponent} from "./pages/not-found/not-found.component";
 import { LoginComponent} from "./pages/login/login.component";
-import { ErrorComponent } from 'app/pages/error/error.component';
+import { ErrorComponent } from 'app/layouts/error/error.component';
 import { ForgotPasswordComponent } from 'app/pages/forgot-password/forgot-password.component';
 import { RegisterComponent } from 'app/pages/register/register.component';
 import { LogoutComponent } from 'app/pages/logout/logout.component';

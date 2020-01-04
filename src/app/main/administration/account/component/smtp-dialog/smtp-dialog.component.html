@@ -11,14 +11,14 @@
                     <div fxFlex.gt-sm="80" fxFlex.lt-sm="100">
                         <mat-form-field class="full-width">
                             <label>
-                                <input matInput i18n-placeholder placeholder="Host" name="smtp-host" [(ngModel)]="aNewSmtpServer.host">
+                                <input matInput i18n-placeholder placeholder="Host" name="smtp-host" [(ngModel)]="data.host">
                             </label>
                         </mat-form-field>
                     </div>
                     <div fxFlex.gt-sm="20" fxFlex.lt-sm="100">
                         <mat-form-field class="full-width">
                             <label>
-                                <input matInput i18n-placeholder placeholder="Port" name="smtp-port" [(ngModel)]="aNewSmtpServer.port">
+                                <input matInput i18n-placeholder placeholder="Port" name="smtp-port" [(ngModel)]="data.port">
                             </label>
                         </mat-form-field>
                     </div>
@@ -27,14 +27,14 @@
                     <div fxFlex="50">
                         <mat-form-field class="full-width">
                             <label>
-                                <input matInput i18n-placeholder placeholder="Username" name="smtp-username" [(ngModel)]="aNewSmtpServer.username">
+                                <input matInput i18n-placeholder placeholder="Username" name="smtp-username" [(ngModel)]="data.username">
                             </label>
                         </mat-form-field>
                     </div>
                     <div fxFlex="50">
                         <mat-form-field class="full-width">
                             <label>
-                                <input matInput i18n-placeholder placeholder="Password" name="smtp-password" [(ngModel)]="aNewSmtpServer.password">
+                                <input matInput i18n-placeholder placeholder="Password" name="smtp-password" [(ngModel)]="data.password">
                             </label>
                         </mat-form-field>
                     </div>
@@ -44,7 +44,7 @@
                     <div fxFlex.gt-sm="80">
                         <mat-form-field class="full-width">
                             <label>
-                                <input matInput i18n-placeholder type="number" placeholder="Max size attachment" name="smtp-max-size-attachment" [(ngModel)]="aNewSmtpServer.maxSizeAttachment">
+                                <input matInput i18n-placeholder type="number" placeholder="Max size attachment" name="smtp-max-size-attachment" [(ngModel)]="data.maxSizeAttachment">
                             </label>
                         </mat-form-field>
                     </div>
@@ -58,10 +58,10 @@
                 </div>
                 <div fxLayoutGap.gt-sm="row" fxLayoutGap="16px">
                     <div fxFlex.gt-sm="50">
-                        <mat-checkbox [(ngModel)]="aNewSmtpServer.auth">Authentication</mat-checkbox>
+                        <mat-checkbox [(ngModel)]="data.auth">Authentication</mat-checkbox>
                     </div>
                     <div fxFlex.gt-sm="50">
-                        <mat-checkbox [(ngModel)]="aNewSmtpServer.startTls">Start TLS</mat-checkbox>
+                        <mat-checkbox [(ngModel)]="data.startTls">Start TLS</mat-checkbox>
                     </div>
                 </div>
             </div>

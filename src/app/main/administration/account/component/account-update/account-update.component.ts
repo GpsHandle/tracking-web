@@ -10,15 +10,23 @@ import {SmtpProperties} from "../../../../../models/smtp-properties";
 import {AccountRequest} from "../../../../../models/request/account.request";
 import {map, startWith} from "rxjs/operators";
 import {MatDialog} from "@angular/material/dialog";
-import {AddEditAccountComponent} from "../add-edit-account/add-edit-account.component";
 import {SmtpDialogComponent} from "../smtp-dialog/smtp-dialog.component";
+import {animate, state, style, transition, trigger} from "@angular/animations";
+import * as _ from "lodash";
 
 @Component({
     selector: 'app-add-account',
-    templateUrl: './add-account.component.html',
-    styleUrls: ['./add-account.component.scss']
+    templateUrl: './account-update.component.html',
+    styleUrls: ['./account-update.component.scss'],
+    animations: [
+        trigger('detailExpand', [
+            state('collapsed', style({height: '0px', minHeight: '0'})),
+            state('expanded', style({height: '*'})),
+            transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+        ]),
+    ],
 })
-export class AddAccountComponent implements OnInit {
+export class AccountUpdateComponent implements OnInit {
     account: Account;
     password: string;
     rePassword: string;
@@ -67,11 +75,14 @@ export class AddAccountComponent implements OnInit {
     }
 
     cancelNewSmtpServer() {
-
+        this.isAddNewSmtp = false;
+        this.aNewSmtpServer = null;
     }
 
     save() {
+        this.account.status = this.statusControl.value;
         const accountr = new AccountRequest(this.account);
+        accountr.smtpPropertiesIds = _.map(this.account.smtpProperties, x => x.id);
         this.accountService.create(accountr).subscribe(
             data => {
                 console.log('data', data);
@@ -99,7 +110,14 @@ export class AddAccountComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
-                //this.update(data.id, result);
+                console.log('result', result);
+                const accountId = this.applicationContext.getAccountId();
+                this.accountService.createNewSmtp(accountId, result).subscribe(
+                    data => {
+                        this.applicationContext.info("A SMTP server was created!");
+                        this.smtpServerList.push(data);
+                    }
+                );
             }
         });
     }

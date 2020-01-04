@@ -47,19 +47,17 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
+                <div fxFlex="50">
+                    <mat-form-field class="full-width">
+                        <input type="text"  placeholder="Status" aria-label="Status" matInput [formControl]="statusControl" [matAutocomplete]="autoStatus">
+                        <mat-autocomplete #autoStatus="matAutocomplete">
+                            <mat-option *ngFor="let status of filteredStatus | async" [value]="status">
+                                {{status}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </div>
             </div>
-
-
-
-            <mat-form-field class="full-width">
-                <input type="text"  placeholder="Status" aria-label="Status" matInput [formControl]="statusControl" [matAutocomplete]="autoStatus">
-                <mat-autocomplete #autoStatus="matAutocomplete">
-                    <mat-option *ngFor="let status of filteredStatus | async" [value]="status">
-                        {{status}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-
 
             <div fxLayout="row" fxLayoutGap="16px">
                 <div fxFlex="50">
@@ -112,10 +110,10 @@
             <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
         </table>
 
-        <div *ngIf="isAddNewSmtp">
+        <div>
             <mat-form-field class="full-width">
                 <mat-label>SMTP Servers</mat-label>
-                <mat-select [formControl]="smtpServers" multiple>
+                <mat-select [formControl]="smtpServers" [(value)]="account.smtpProperties" multiple>
                     <mat-option *ngFor="let smtp of smtpServerList" [value]="smtp">{{smtp.host}}</mat-option>
                 </mat-select>
 
@@ -124,15 +122,21 @@
                 </button>
             </mat-form-field>
         </div>
-        <div class="center">
+        <!--div class="center">
             <button *ngIf="!isAddNewSmtp" mat-flat-button color="primary" (click)="newSmtpServer()">
                 <mat-icon>add</mat-icon>
                 <span>New SMTP Server</span>
             </button>
             <button *ngIf="isAddNewSmtp" mat-flat-button color="primary" (click)="saveNewSmtpServer()" class="margin-righ-16">Save</button>
             <button *ngIf="isAddNewSmtp" mat-flat-button color="warn" (click)="cancelNewSmtpServer()">Cancel</button>
-        </div>
+        </div-->
     </div>
+</div>
+<div class="center">
+    <button mat-flat-button color="primary">
+        <mat-icon>save</mat-icon>
+        <span>Save</span>
+    </button>
 </div>
 
 

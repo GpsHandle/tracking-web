@@ -1,4 +1,5 @@
 export class SmtpProperties {
+    id: number;
     accountId: number;
     protocol: string; //smtp, http, sms
     host: string;

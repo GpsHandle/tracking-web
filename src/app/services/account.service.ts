@@ -20,13 +20,13 @@ export class AccountService extends AbstractService<AccountRequest, Account> {
         return this.http.get<string[]>(url);
     }
 
-    addSmtpToAccount(accountId: number, aNewSmtpServer: SmtpProperties) {
+    createNewSmtp(accountId: number, aNewSmtpServer: SmtpProperties) {
         const url = ACCOUNT_API_URL + '/smtp/' + accountId ;
         return this.http.post<SmtpProperties>(url, aNewSmtpServer)
     }
 
     getAllSmtpServer(accountId?: number): Observable<Array<SmtpProperties>> {
-        const url = ACCOUNT_API_URL + '/smtp/' + accountId;
+        const url = accountId ? ACCOUNT_API_URL + '/smtp/' + accountId : ACCOUNT_API_URL + '/smtp';
         return this.http.get<Array<SmtpProperties>>(url);
     }
 }

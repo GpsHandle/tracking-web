@@ -12,8 +12,8 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 import * as _ from 'lodash';
 import {AccountRequest} from "../../../../../models/request/account.request";
 import {MatDialog} from "@angular/material/dialog";
-import {AddEditAccountComponent} from "../add-edit-account/add-edit-account.component";
 import {ChangePasswordDialogComponent} from "../change-password-dialog/change-password-dialog.component";
+import {SmtpDialogComponent} from "../smtp-dialog/smtp-dialog.component";
 
 @Component({
     selector: 'app-edit-account',
@@ -44,7 +44,8 @@ export class EditAccountComponent implements OnInit {
     aNewSmtpServer: SmtpProperties;
     columnsToDisplay = ['host', 'port'];
     expandedElement: SmtpProperties | null;
-
+    smtpServers: FormControl;
+    smtpServerList: Array<SmtpProperties>;
     constructor(private applicationContext: ApplicationContext,
                 private route: ActivatedRoute,
                 private accountService: AccountService,
@@ -52,6 +53,7 @@ export class EditAccountComponent implements OnInit {
 
     ngOnInit() {
         this.account = new Account();
+        this.smtpServers = new FormControl();
         this.privilegeList = this.applicationContext.getPrivileges();
         console.log('this.privilegeList', this.privilegeList);
         this.statusControl.disable()
@@ -71,6 +73,38 @@ export class EditAccountComponent implements OnInit {
             this.account = data;
             this.statusControl.setValue(this.account.status);
         });
+
+        this.accountService.getAllSmtpServer().subscribe(
+            data => {
+                console.log('Data', data);
+                this.smtpServerList = data;
+            }
+        )
+    }
+
+    openDialogNewSmtp(event?: Event) {
+        if (event) {
+            event.stopPropagation()
+        }
+
+        const dialogRef = this.dialog.open(SmtpDialogComponent, {
+            width: '800px',
+            disableClose: true,
+            data: null
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                console.log('result', result);
+                const accountId = this.applicationContext.getAccountId();
+                this.accountService.createNewSmtp(accountId, result).subscribe(
+                    data => {
+                        this.applicationContext.info("A SMTP server was created!");
+                        this.smtpServerList.push(data);
+                    }
+                );
+            }
+        });
     }
 
     addNewSmtpServer() {
@@ -81,7 +115,7 @@ export class EditAccountComponent implements OnInit {
     saveNewSmtpServer() {
         console.log('a new smtp server', this.aNewSmtpServer);
         this.aNewSmtpServer.accountId = this.accountId;
-        this.accountService.addSmtpToAccount(this.accountId, this.aNewSmtpServer).subscribe(data => {
+        this.accountService.createNewSmtp(this.accountId, this.aNewSmtpServer).subscribe(data => {
             console.log(data);
         })
     }
@@ -97,9 +131,9 @@ export class EditAccountComponent implements OnInit {
     }
 
     saveEditedAccount() {
-        console.log('Account', this.account);
         this.account.status = this.statusControl.value;
         const accountR = new AccountRequest(this.account);
+        accountR.smtpPropertiesIds = _.map(this.account.smtpProperties, x => x.id);
         this.accountService.update(this.accountId, accountR).subscribe(
             data => {
                 this.applicationContext.info("An account was updated successfully!");

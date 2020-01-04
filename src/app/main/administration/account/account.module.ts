@@ -11,7 +11,7 @@ import { CustomDirectivesModule } from 'app/directives/custom-directives.module'
 import { DeleteAccountComponent } from './component/delete-account/delete-account.component';
 import { AccountService } from 'app/services/account.service';
 import { EditAccountComponent } from './component/account-edit/edit-account.component';
-import { AddAccountComponent } from './component/account-add/add-account.component';
+import { AccountUpdateComponent } from './component/account-update/account-update.component';
 import { ChangePasswordDialogComponent } from './component/change-password-dialog/change-password-dialog.component';
 import { SmtpDialogComponent } from './component/smtp-dialog/smtp-dialog.component';
 
@@ -31,7 +31,7 @@ import { SmtpDialogComponent } from './component/smtp-dialog/smtp-dialog.compone
         OptionalColumnAccountComponent,
         DeleteAccountComponent,
         EditAccountComponent,
-        AddAccountComponent,
+        AccountUpdateComponent,
         ChangePasswordDialogComponent,
         SmtpDialogComponent
     ],

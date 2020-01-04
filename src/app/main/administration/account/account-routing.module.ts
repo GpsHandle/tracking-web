@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from 'app/main/administration/account/component/account-list/account.component';
 import {EditAccountComponent} from "./component/account-edit/edit-account.component";
 import {AuthGuard} from "../../../guards/auth.guard";
-import {AddAccountComponent} from "./component/account-add/add-account.component";
+import {AccountUpdateComponent} from "./component/account-update/account-update.component";
 
 const routes: Routes = [
     {
@@ -12,7 +12,7 @@ const routes: Routes = [
 
         ]
     },
-    { path: 'add', component: AddAccountComponent, canActivate: [AuthGuard] },
+    { path: 'add', component: AccountUpdateComponent, canActivate: [AuthGuard] },
     { path: ':id', component: EditAccountComponent, canActivate: [AuthGuard] }
 ];
 

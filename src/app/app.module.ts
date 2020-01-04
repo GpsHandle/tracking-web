@@ -15,7 +15,7 @@ import { AuthService} from 'app/services/auth.service';
 import { AuthGuard} from 'app/guards/auth.guard';
 import { NotFoundComponent } from 'app/pages/not-found/not-found.component';
 import { SpinnerComponent } from './pages/spinner/spinner.component';
-import { ErrorComponent } from './pages/error/error.component';
+import { ErrorComponent } from './layouts/error/error.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LogoutComponent } from './pages/logout/logout.component';
