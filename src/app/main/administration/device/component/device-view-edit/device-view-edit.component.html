@@ -14,3 +14,139 @@
         <span>Cancel</span>
     </button>
 </mat-toolbar>
+
+<div fxLayout="row" fxLayoutGap="16px" class="padding-16">
+    <div fxFlex="67">
+        <form>
+            <div fxLayout="column">
+                <div fxLayout="row" fxLayoutGap="16px">
+                    <div fxFlex="50">
+                        <mat-form-field class="full-width">
+                            <input matInput
+                                   i18n-placeholder
+                                   placeholder="Name"
+                                   name="dev-name"
+                                   [disabled]="!isEditing"
+                                   [(ngModel)]="data.name">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50">
+                        <mat-form-field class="full-width">
+                            <input matInput i18n-placeholder placeholder="Device ID" name="dev-device-id" [(ngModel)]="data.deviceId" [disabled]="data.id">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutGap="16px">
+                    <div fxFlex="80">
+                        <mat-form-field class="full-width">
+                            <mat-select [multiple]="true"
+                                        placeholder="Accounts"
+                                        [(ngModel)]="accountIds"
+                                        [disabled]="!isEditing"
+                                        name="Account List">
+                                <mat-option *ngFor="let acc of accountList | async"
+                                            [value]="acc.id">{{acc.accountId}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <mat-form-field class="full-width">
+                    <input matInput i18n-placeholder placeholder="Vehicle" name="dev-vehicle-id" [(ngModel)]="data.vehicleId" [disabled]="!isEditing">
+                </mat-form-field>
+
+                <div fxLayout="row" fxLayoutGap="16px">
+                    <div fxFlex="50">
+                        <mat-form-field class="full-width">
+                            <input matInput i18n-placeholder placeholder="IP Address" name="dev-ip-address" [(ngModel)]="data.ipAddress" [disabled]="!isEditing">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50">
+                        <mat-form-field class="full-width">
+                            <input matInput i18n-placeholder placeholder="Port" name="dev-port" [(ngModel)]="data.port" [disabled]="!isEditing">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutGap="16px">
+                    <div fxFlex="50">
+                        <mat-form-field class="full-width">
+                            <input matInput i18n-placeholder placeholder="Protocol" name="dev-port" [(ngModel)]="data.protocol" [disabled]="!isEditing">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50">
+                        <mat-form-field class="full-width">
+                            <input type="text" i18n-placeholder placeholder="Status" aria-label="Status" matInput [formControl]="statusControl" [matAutocomplete]="autoStatus">
+                            <mat-autocomplete #autoStatus="matAutocomplete">
+                                <mat-option *ngFor="let status of filteredStatus | async" [value]="status">
+                                    {{status}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxFlex="50">
+                        <mat-form-field>
+                            <input matInput
+                                   [matDatepicker]="picker"
+                                   placeholder="Expired On"
+                                   [(ngModel)]="dateExpired"
+                                   [disabled]="!isEditing"
+                                   name="Expired On">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutGap="16px">
+                    <div fxFlex="50">
+                        <mat-form-field class="full-width">
+                            <input matInput i18n-placeholder placeholder="Serial Number" name="dev-serial-number" [(ngModel)]="data.serialNumber" [disabled]="!isEditing">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50">
+                        <mat-form-field class="full-width">
+                            <input matInput i18n-placeholder placeholder="Model Name" name="dev-model-name" [(ngModel)]="data.modelName" [disabled]="!isEditing">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50">
+                        <mat-form-field class="full-width">
+                            <input matInput i18n-placeholder placeholder="Firmware Version" name="dev-firmware-version" [(ngModel)]="data.firmwareVersion" [disabled]="!isEditing">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutGap="16px">
+                    <div fxFlex="50">
+                        <mat-form-field class="full-width">
+                            <input matInput i18n-placeholder placeholder="Manufacturer Name" name="dev-manufacturer-name" [(ngModel)]="data.manufacturerName" [disabled]="!isEditing">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50">
+                        <mat-form-field class="full-width">
+                            <input matInput i18n-placeholder placeholder="Original Country" name="dev-original-country" [(ngModel)]="data.originalCountry" [disabled]="!isEditing">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+
+            <mat-divider></mat-divider>
+            <mat-form-field class="full-width">
+                <mat-select [multiple]="true"
+                            placeholder="Alerts"
+                            [disabled]="!isEditing"
+                            [(ngModel)]="alertIds" name="Alert List">
+                    <mat-option *ngFor="let alert of alertProfileList | async"
+                                [value]="alert.id">{{alert.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+    </div>
+    <div fxFlex="33"></div>
+</div>
+

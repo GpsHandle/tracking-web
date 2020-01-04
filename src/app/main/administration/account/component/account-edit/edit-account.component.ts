@@ -55,7 +55,6 @@ export class EditAccountComponent implements OnInit {
         this.account = new Account();
         this.smtpServers = new FormControl();
         this.privilegeList = this.applicationContext.getPrivileges();
-        console.log('this.privilegeList', this.privilegeList);
         this.statusControl.disable()
         this.filteredStatus = this.statusControl.valueChanges.pipe(
                 startWith(''),
