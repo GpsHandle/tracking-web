@@ -10,6 +10,8 @@ import { DriverService } from 'app/services/driver.service';
 import { AddEditDriverComponent } from './component/add-edit-driver/add-edit-driver.component';
 import { DeleteDriverComponent } from './component/delete-driver/delete-driver.component';
 import { OptionalColumnDriverComponent } from './component/optional-column-driver/optional-column-driver.component';
+import { DriverAddComponent } from './component/driver-add/driver-add.component';
+import { DriverViewEditComponent } from './component/driver-view-edit/driver-view-edit.component';
 
 @NgModule({
     imports: [
@@ -36,7 +38,9 @@ import { OptionalColumnDriverComponent } from './component/optional-column-drive
         DriverComponent,
         AddEditDriverComponent,
         DeleteDriverComponent,
-        OptionalColumnDriverComponent
+        OptionalColumnDriverComponent,
+        DriverAddComponent,
+        DriverViewEditComponent
     ]
 })
 export class DriverModule { }

@@ -57,8 +57,6 @@ export class DeviceComponent implements OnInit, AfterViewInit {
     dataSource: MatTableDataSource<Device> | null;
     dataChange: ReplaySubject<number>;
 
-    cmd: string;
-
     constructor(private dialog: MatDialog,
                 private myStorage: UniversalStorage,
                 private applicationContext: ApplicationContext,
@@ -70,12 +68,6 @@ export class DeviceComponent implements OnInit, AfterViewInit {
         this.initTableSettings();
         this.dataSource = new MatTableDataSource();
         this.dataChange = new ReplaySubject(1);
-
-        this.route.queryParams.subscribe(
-            params => {
-                this.cmd = params['cmd'];
-            }
-        );
     }
 
     ngAfterViewInit(): void {
@@ -103,9 +95,6 @@ export class DeviceComponent implements OnInit, AfterViewInit {
                 })
             ).subscribe(data => {
             this.dataSource.data = data;
-            if (this.cmd === 'add') {
-                this.openDialogNewObject();
-            }
         });
     }
 
@@ -152,48 +141,10 @@ export class DeviceComponent implements OnInit, AfterViewInit {
         );
     }
 
-    openDialogNewObject(): void {
-        const data = new Device();
-        const dialogRef = this.dialog.open(AddEditDeviceComponent, {
-            width: '800px',
-            disableClose: true,
-            data: data
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('closing dialog');
-            this.cmd = undefined;
-            if (result) {
-                this.create(result);
-            }
-        });
-    }
-
     create(device: DeviceRequest): void {
         this.service.create(device).subscribe(
             data => {
                 this.dataChange.next(data.id);
-            }
-        );
-    }
-
-    openDialogEditing(data: Device): void {
-        const dialogRef = this.dialog.open(AddEditDeviceComponent, {
-            disableClose: true,
-            data: data
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                this.update(result);
-            }
-        });
-    }
-
-    update(device: DeviceRequest): void {
-        this.service.update(device.id, device).subscribe(
-            response => {
-                this.dataChange.next(0);
             }
         );
     }

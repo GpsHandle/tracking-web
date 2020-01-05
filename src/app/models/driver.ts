@@ -5,6 +5,9 @@ export class Driver {
     firstName: string;
     lastName: string;
     dateOfBirth: Date;
+
+    address: string;
+
     driverExperiencesMonths: number;
     typeOfVehicleExperienced: string;
     driverLicenseNumber: string;

@@ -1,4 +1,4 @@
-import { DaySelected } from 'app/shared/scheduler/weekday/weekday';
+import {DaySelected, Weekday} from 'app/shared/scheduler/weekday/weekday';
 import { MyTime } from 'app/shared/scheduler/daytime/time-input';
 
 export class AlertProfile {
@@ -26,4 +26,11 @@ export class AlertProfile {
     private updatedBy: string;
     private createdOn: Date;
     private updatedOn: Date;
+
+
+    constructor() {
+        this.weekDays = {} as DaySelected;
+        this.dayTime = {} as MyTime;
+    }
+
 }

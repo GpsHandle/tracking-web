@@ -7,7 +7,7 @@
         <button mat-icon-button (click)="dialogOptionalColumn()">
             <mat-icon>settings</mat-icon>
         </button>
-        <button mat-icon-button (click)="dialogNewDriver()">
+        <button mat-icon-button routerLink="add">
             <mat-icon>add</mat-icon>
         </button>
     </div>
@@ -109,7 +109,7 @@
 
                         <div class="flex-center">
                             <div>
-                                <button mat-button (click)="dialogEditing(el)">
+                                <button mat-button [routerLink]="el.id">
                                     <mat-icon color="accent">edit</mat-icon>
                                     <span>Edit</span>
                                 </button>

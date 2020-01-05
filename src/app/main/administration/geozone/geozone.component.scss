@@ -12,6 +12,7 @@
   flex-direction: column;
   .filter {
     margin-left: 16px;
+      margin-right: 16px;
     display: inline-table;
     flex-flow: column;
 
@@ -47,7 +48,6 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-
   .geo-detail-map {
     height: 100%;
   }

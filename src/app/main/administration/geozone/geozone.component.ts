@@ -109,7 +109,10 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
             }).addTo(this.map);
     }
 
-    public addNewGeofence(): void {
+    public addNewGeofence(event?: Event): void {
+        if (event) {
+            event.stopPropagation();
+        }
         this.selected = new Geozone();
         this.showDetail(true);
         this.create = true;

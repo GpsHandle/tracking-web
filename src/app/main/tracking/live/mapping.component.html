@@ -4,16 +4,14 @@
             <div class="m-dev-header">
                 <mat-form-field class="m-dev-filter">
                     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Devices Filter">
-                </mat-form-field>
-                <div class="m-dev-add">
-                    <a mat-icon-button
-                       color="primary"
-                       [routerLink]="['/', 'main', 'admin', 'device']"
-                       [queryParams]="{cmd: 'add'}">
-                        <mat-icon>add</mat-icon>
-                    </a>
-                </div>
 
+                        <a mat-icon-button
+                           matSuffix
+                           color="primary"
+                           [routerLink]="['/', 'main', 'admin', 'device', 'add']">
+                            <mat-icon>add</mat-icon>
+                        </a>
+                </mat-form-field>
             </div>
             <mat-divider></mat-divider>
 

@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AlertProfile} from "../../../../../models/alert-profile";
 import {Geozone} from "../../../../../models/geozone";
 import {AlertType} from "../../../../../models/enums/alert-type.enum";
-import {DaySelected} from "../../../../../shared/scheduler/weekday/weekday";
+import {DaySelected, Weekday} from "../../../../../shared/scheduler/weekday/weekday";
 import {MyTime} from "../../../../../shared/scheduler/daytime/time-input";
 import {Router} from "@angular/router";
+import {DayTime} from "../../../../../shared/scheduler/daytime/day-time";
+import {GeozoneService} from "../../../../../services/geozone.service";
+import {ApplicationContext} from "../../../../../application-context";
+import {AlertProfileService} from "../../../../../services/alert-profile.service";
 
 @Component({
     selector: 'app-alert-profile-add',
@@ -15,7 +19,8 @@ export class AlertProfileAddComponent implements OnInit {
     isEditing: boolean;
     data: AlertProfile;
     zoneList: Geozone[];
-
+    @ViewChild(Weekday, { static: true }) weekDays: Weekday;
+    @ViewChild(DayTime, { static: true }) dayTime: DayTime;
     types: Array<string> = [
         AlertType.ALERT_START,
         AlertType.ALERT_STOP,
@@ -30,9 +35,18 @@ export class AlertProfileAddComponent implements OnInit {
         AlertType.ALERT_FUEL_FILL
     ];
 
-    constructor(private router: Router) { }
+    constructor(private applicationContext: ApplicationContext,
+                private alertProfileService: AlertProfileService,
+                private geozoneService: GeozoneService, private router: Router) { }
 
     ngOnInit() {
+        this.geozoneService.getAll().subscribe(
+            data => {
+                this.zoneList = data;
+            },
+            error => {},
+            () => {}
+        );
         if (!this.data) {
             this.data = {} as AlertProfile;
             this.data.weekDays = {} as DaySelected;
@@ -45,7 +59,20 @@ export class AlertProfileAddComponent implements OnInit {
     }
 
     save() {
+        this.data.weekDays = this.weekDays.data;
+        this.data.dayTime = this.dayTime.scheduleTime;
 
+        this.applicationContext.spin(true);
+        this.alertProfileService.create(this.data).subscribe(
+            response => {
+                this.applicationContext.spin(false);
+                this.applicationContext.info('An alert profile was created');
+            },
+            error => {},
+            () => {
+                // this.change.next();
+            }
+        );
     }
 
     cancel() {
