@@ -17,87 +17,87 @@
            matSort multiTemplateDataRows>
 
         <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> ID </th>
+            <th *matHeaderCellDef i18n="@@id" mat-header-cell mat-sort-header> ID </th>
             <td mat-cell *matCellDef="let element"> {{element.id}} </td>
         </ng-container>
 
         <ng-container matColumnDef="accountId">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Account ID </th>
+            <th *matHeaderCellDef i18n="@@accountId" mat-header-cell mat-sort-header> Account ID </th>
             <td mat-cell *matCellDef="let element"> {{element.accountId}} </td>
         </ng-container>
 
         <ng-container matColumnDef="firstName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> First Name </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@firstname"> First Name </th>
             <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
         </ng-container>
 
         <ng-container matColumnDef="lastName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Last Name </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@lastname"> Last Name </th>
             <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
         </ng-container>
 
         <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Status </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@status"> Status </th>
             <td mat-cell *matCellDef="let element"> {{element.status}} </td>
         </ng-container>
 
         <ng-container matColumnDef="phoneNumber">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Phone Number </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@phonenumber"> Phone Number </th>
             <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
         </ng-container>
 
         <ng-container matColumnDef="photoUrl">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Photo Url </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@photourl"> Photo Url </th>
             <td mat-cell *matCellDef="let element"> {{element.photoUrl}} </td>
         </ng-container>
 
         <ng-container matColumnDef="emailAddress">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Email Address </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@emailaddress"> Email Address </th>
             <td mat-cell *matCellDef="let element"> {{element.emailAddress}} </td>
         </ng-container>
 
         <ng-container matColumnDef="addressLine1">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Address Line1 </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@addressline1"> Address Line1 </th>
             <td mat-cell *matCellDef="let element"> {{element.addressLine1}} </td>
         </ng-container>
 
         <ng-container matColumnDef="addressLine2">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Address Line2 </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@addressline2"> Address Line2 </th>
             <td mat-cell *matCellDef="let element"> {{element.addressLine2}} </td>
         </ng-container>
 
         <ng-container matColumnDef="notes">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Notes </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@notes"> Notes </th>
             <td mat-cell *matCellDef="let element"> {{element.notes}} </td>
         </ng-container>
 
         <ng-container matColumnDef="roles">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Roles </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@roles"> Roles </th>
             <td mat-cell *matCellDef="let element"> {{element.privileges | flatten: 'name'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="createdBy">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Created By </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@createdby"> Created By </th>
             <td mat-cell *matCellDef="let element"> {{element.createdBy}} </td>
         </ng-container>
 
         <ng-container matColumnDef="createdOn">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Created On </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@createdon"> Created On </th>
             <td mat-cell *matCellDef="let element"> {{element.createdOn | date:'short'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="updatedBy">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Updated By </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@updatedby"> Updated By </th>
             <td mat-cell *matCellDef="let element"> {{element.updatedBy}} </td>
         </ng-container>
 
         <ng-container matColumnDef="updatedOn">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Updated On </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@updatedon"> Updated On </th>
             <td mat-cell *matCellDef="let element"> {{element.updatedOn | date:'short'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef i18n> Actions </th>
+            <th mat-header-cell *matHeaderCellDef i18n="@@actions"> Actions </th>
             <td mat-cell *matCellDef="let element">
                 <button mat-icon-button (click)="openDialogEditing(element)">
                     <mat-icon color="accent">edit</mat-icon>
