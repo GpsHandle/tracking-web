@@ -8,7 +8,9 @@ import {
     ViewChild
 } from '@angular/core';
 import { DeviceReportService } from 'app/services/device-report.service';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { DeviceSpeeedReport } from 'app/models/device-speeed.report';
 
 import { merge, of as observableOf} from 'rxjs';

@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsageComponent } from './usage/usage.component';
 import { HelpRoutingModule } from 'app/main/help/help-routing.module';
-import { MatListModule, MatSidenavModule } from '@angular/material';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { HelpComponent } from './help.component';
 
 @NgModule({

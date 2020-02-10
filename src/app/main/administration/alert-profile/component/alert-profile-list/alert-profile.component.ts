@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatPaginator, MatSort } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { AddEditAlertProfileComponent } from 'app/main/administration/alert-profile/component/add-edit-alert-profile/add-edit-alert-profile.component';
 import { AlertProfileRequest } from 'app/models/request/alert-profile.request';
 import { AlertProfileService } from 'app/services/alert-profile.service';

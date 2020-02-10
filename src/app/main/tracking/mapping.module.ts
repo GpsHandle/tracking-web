@@ -11,7 +11,7 @@ import { PopupService } from 'app/main/tracking/live/popup/popup.service';
 import { PopupComponent } from 'app/main/tracking/live/popup/popup.component';
 import { SpeedChartComponent } from 'app/main/tracking/live/speed-chart/speed-chart.component';
 import { CommandComponent } from './live/command/command.component';
-import { MatBottomSheet, MatBottomSheetContainer } from '@angular/material';
+import { MatBottomSheet, MatBottomSheetContainer } from '@angular/material/bottom-sheet';
 import { CustomPipeModule } from 'app/pipes/custom-pipe.module';
 
 

@@ -9,7 +9,7 @@ import { EventData } from 'app/models/event-data';
 
 import * as _ from 'lodash';
 import { Polyline } from 'leaflet';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
 
 import * as d3 from 'd3';
 import * as c3 from 'c3';

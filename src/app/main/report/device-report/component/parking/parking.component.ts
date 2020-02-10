@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChange } from '@angular/core';
 import { DeviceReportService } from 'app/services/device-report.service';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
 import { ReplaySubject, Subject } from 'rxjs';
 import { DeviceParkingReport } from 'app/models/device-parking.report';
 import {merge, Observable, of as observableOf} from 'rxjs';

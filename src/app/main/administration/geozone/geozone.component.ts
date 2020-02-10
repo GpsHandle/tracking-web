@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GeozoneService } from 'app/services/geozone.service';
 import { Geozone } from 'app/models/geozone';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 import * as _ from 'lodash';
 import * as L from 'leaflet';

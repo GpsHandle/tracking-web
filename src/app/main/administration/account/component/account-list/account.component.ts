@@ -8,7 +8,10 @@ import {
 } from '@angular/core';
 import { AccountService } from 'app/services/account.service';
 import { Account } from 'app/models/account';
-import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { AddEditAccountComponent } from 'app/main/administration/account/component/add-edit-account/add-edit-account.component';
 import { OptionalColumnAccountComponent } from '../optional-column-account/optional-column-account.component';
 import { ApplicationContext } from 'app/application-context';

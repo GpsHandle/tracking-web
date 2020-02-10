@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {AuthResponse} from 'app/models/auth.response';
 import * as jwt from 'jwt-decode';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Privilege } from 'app/models/privilege';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';

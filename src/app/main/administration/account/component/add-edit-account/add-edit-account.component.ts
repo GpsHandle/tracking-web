@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import { Component, OnInit, Inject, AfterViewInit } from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 
 import { FormControl } from '@angular/forms';
 import { Privilege } from 'app/models/privilege';

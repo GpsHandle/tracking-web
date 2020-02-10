@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { CommonModule} from '@angular/common';
+import {CommonModule, registerLocaleData} from '@angular/common';
 import { LoginComponent} from 'app/pages/login/login.component';
 import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
@@ -22,7 +22,6 @@ import { LogoutComponent } from './pages/logout/logout.component';
 import { WINDOW_PROVIDERS } from 'app/shared/window-provider';
 import { DemoComponent } from './pages/demo/demo.component';
 import { CustomDirectivesModule } from 'app/directives/custom-directives.module';
-import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
 
 @NgModule({
     declarations: [
@@ -55,7 +54,7 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
             useClass: AuthInterceptor,
             multi: true
         },
-        WINDOW_PROVIDERS,
+        WINDOW_PROVIDERS
     ],
     entryComponents: [
         SpinnerComponent

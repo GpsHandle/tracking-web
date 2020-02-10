@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DeviceLittle } from 'app/models/little/device.little';
-import { MatDialog, MatDrawer, MatTabChangeEvent} from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatDrawer } from '@angular/material/sidenav';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 import { DeviceService } from 'app/services/device.service';
 import { ApplicationContext } from 'app/application-context';
 import { DeviceReportService } from 'app/services/device-report.service';

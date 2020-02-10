@@ -68,3 +68,15 @@ Import into the project via .angular-cli.json
 ### work with custom-theme
 
 Create a theme call app-theme.scss
+
+### Internationalization
+```shell script
+ng xi18n --output-path
+ng xi18n --output-path src/locale
+```
+
+
+###Angular Universal
+```shell script
+npm run build:ssr && npm run serve:ssr
+```

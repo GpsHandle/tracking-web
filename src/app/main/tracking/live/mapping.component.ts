@@ -17,7 +17,7 @@ import { StatusPieChart } from 'app/models/status-pie-chart';
 import { PopupService } from 'app/main/tracking/live/popup/popup.service';
 import { MappingUtils } from 'app/main/tracking/live/mapping-utils';
 import { CircleMarker } from 'leaflet';
-import { MatBottomSheet } from '@angular/material';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { CommandComponent } from 'app/main/tracking/live/command/command.component';
 import { ApplicationContext } from 'app/application-context';
 import { Device } from 'app/models/device';

@@ -7,6 +7,12 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
+      "i18n": {
+        "locales": {
+          "vi": "src/locale/messages.vi.xlf"
+        }
+      },
+
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -17,6 +23,7 @@
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
+            "i18nMissingTranslation": "warning",
             "assets": [
               "src/assets",
               "src/favicon.ico"
@@ -53,12 +60,16 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
+              "localize": true,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
               ]
+            },
+            "vi": {
+              "localize": ["vi"]
             }
           }
         },
@@ -71,6 +82,9 @@
           "configurations": {
             "production": {
               "browserTarget": "ng-client:build:production"
+            },
+            "vi": {
+              "browserTarget": "ng-client:build:vi"
             }
           }
         },

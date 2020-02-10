@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ApplicationContext } from 'app/application-context';
 import { AlertType } from 'app/models/enums/alert-type.enum';
 import { Weekday } from 'app/shared/scheduler/weekday/weekday';
