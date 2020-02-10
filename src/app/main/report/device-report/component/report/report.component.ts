@@ -33,7 +33,7 @@ export class ReportComponent implements OnInit {
     distance: number;
     totalEvents: number;
 
-    @ViewChild(EventLineChartComponent, {static: false})
+    @ViewChild(EventLineChartComponent)
     private chartComponent: EventLineChartComponent;
 
 

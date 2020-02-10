@@ -11,6 +11,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -37,6 +38,12 @@
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -123,10 +130,7 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": {
-                "scripts": false,
-                "styles": true
-              }
+              "optimization": true
             }
           }
         }
@@ -165,5 +169,8 @@
     "@schematics/angular:directive": {
       "prefix": "app"
     }
+  },
+  "cli": {
+    "analytics": "a14d6a03-4581-4c28-9844-8ca869d6afe9"
   }
 }
