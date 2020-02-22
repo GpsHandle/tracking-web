@@ -23,6 +23,10 @@ export class LoginComponent implements OnInit {
         }
     }
 
+    hl(lang: string): void {
+        this.applicationContext.navigate(['/login'], {queryParams: {hl: lang}});
+    }
+
     login(): void {
         this.applicationContext.spin(true);
         this.auth.login(this.model.username, this.model.password).subscribe(

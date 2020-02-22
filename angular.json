@@ -9,7 +9,10 @@
       "projectType": "application",
       "i18n": {
         "locales": {
-          "vi": "src/locale/messages.vi.xlf"
+          "vi": "src/locale/messages.vi.xlf",
+          "en": "src/locale/messages.en.xlf",
+          "pt": "src/locale/messages.pt.xlf",
+          "pl": "src/locale/messages.pl.xlf"
         }
       },
 
@@ -70,6 +73,15 @@
             },
             "vi": {
               "localize": ["vi"]
+            },
+            "en": {
+              "localize": ["en"]
+            },
+            "pt": {
+              "localize": ["pt"]
+            },
+            "pl": {
+              "localize": ["pl"]
             }
           }
         },
@@ -85,6 +97,15 @@
             },
             "vi": {
               "browserTarget": "ng-client:build:vi"
+            },
+            "en": {
+              "browserTarget": "ng-client:build:en"
+            },
+            "pt": {
+              "browserTarget": "ng-client:build:pt"
+            },
+            "pl": {
+              "browserTarget": "ng-client:build:pl"
             }
           }
         },

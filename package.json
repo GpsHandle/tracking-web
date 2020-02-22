@@ -6,7 +6,7 @@
   "description": "Gps Tracking System of Vu.",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --live-reload --watch",
+    "start": "ng serve --live-reload --watch --configuration=pl",
     "build": "ng build --prod --aot",
     "test": "ng test",
     "lint": "ng lint",

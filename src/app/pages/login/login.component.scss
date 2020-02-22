@@ -9,7 +9,10 @@
     max-width: 50%;
     width: 450px;
     padding: 16px;
-    //border: 1px solid mat-color($primary);
+
+    mat-icon {
+      color: gray;
+    }
 
     .l-button {
       display: flex;
@@ -21,5 +24,24 @@
       margin-top: 16px;
       float: right;
     }
+    .l-ac1 {
+      width: 100%;
+      height: 60px;
+    }
+    .lang-switch {
+      width: 100%;
+      height: 25px;
+      img {
+        height: 24px;
+        margin-right: 8px;
+        border: 1px solid white;
+        &:hover {
+          background: lightgray;
+          border: 1px solid lightblue;
+          opacity: 0.8;
+        }
+      }
+    }
+
   }
 }

@@ -1,5 +1,5 @@
 <div matDialogTitle>
-    <span i18n>Select columns to show</span>
+    <span i18n="@@selectColumnToShow">Select columns to show</span>
     <span class="x-dialog-close-btn">
         <button mat-icon-button (click)="cancel()">
             <mat-icon>cancel</mat-icon>
@@ -9,77 +9,77 @@
 <div mat-dialog-content>
     <mat-list>
         <mat-list-item>
-            <span matLine i18n>ID</span>
+            <span matLine i18n="@@id">ID</span>
             <mat-checkbox [(ngModel)]="data.id.selected"></mat-checkbox>
         </mat-list-item>
         <mat-list-item>
-            <span matLine i18n>Account ID</span>
+            <span matLine i18n="@@accountId">Account ID</span>
             <mat-checkbox [(ngModel)]="data.accountId.selected"></mat-checkbox>
         </mat-list-item>
         <mat-list-item>
-            <span matLine i18n>First Name</span>
+            <span matLine i18n="@@firstName">First Name</span>
             <mat-checkbox [(ngModel)]="data.firstName.selected"></mat-checkbox>
         </mat-list-item>
         <mat-list-item>
-            <span matLine i18n>Last Name</span>
+            <span matLine i18n="@@lastName">Last Name</span>
             <mat-checkbox [(ngModel)]="data.lastName.selected"></mat-checkbox>
         </mat-list-item>
         <mat-list-item>
-            <span matLine i18n>Status</span>
+            <span matLine i18n="@@status">Status</span>
             <mat-checkbox [(ngModel)]="data.status.selected"></mat-checkbox>
         </mat-list-item>
         <mat-list-item>
-            <span matLine i18n>Phone Number</span>
+            <span matLine i18n="@@phoneNumber">Phone Number</span>
             <mat-checkbox [(ngModel)]="data.phoneNumber.selected"></mat-checkbox>
         </mat-list-item>
         <mat-list-item>
-            <span matLine i18n>Photo Url</span>
+            <span matLine i18n="@@photUrl">Photo Url</span>
             <mat-checkbox [(ngModel)]="data.photoUrl.selected"></mat-checkbox>
         </mat-list-item>
         <mat-list-item>
-            <span matLine i18n>Email Address</span>
+            <span matLine i18n="@@emailAddress">Email Address</span>
             <mat-checkbox [(ngModel)]="data.emailAddress.selected"></mat-checkbox>
         </mat-list-item>
         <mat-list-item>
-            <span matLine i18n>Address Line1</span>
+            <span matLine i18n="@@addressLine1">Address Line1</span>
             <mat-checkbox [(ngModel)]="data.addressLine1.selected"></mat-checkbox>
         </mat-list-item>
         <mat-list-item>
-            <span matLine i18n>Address Line2</span>
+            <span matLine i18n="@@addressLine2">Address Line2</span>
             <mat-checkbox [(ngModel)]="data.addressLine2.selected"></mat-checkbox>
         </mat-list-item>
         <mat-list-item>
-            <span matLine i18n>Notes</span>
+            <span matLine i18n="@@notes">Notes</span>
             <mat-checkbox [(ngModel)]="data.notes.selected"></mat-checkbox>
         </mat-list-item>
         <mat-list-item>
-            <span matLine i18n>Roles</span>
+            <span matLine i18n="@@roles">Roles</span>
             <mat-checkbox [(ngModel)]="data.roles.selected"></mat-checkbox>
         </mat-list-item>
         <mat-list-item>
-            <span matLine i18n>Created By</span>
+            <span matLine i18n="@@createdBy">Created By</span>
             <mat-checkbox [(ngModel)]="data.createdBy.selected"></mat-checkbox>
         </mat-list-item>
         <mat-list-item>
-            <span matLine i18n>Created On</span>
+            <span matLine i18n="@@createdOn">Created On</span>
             <mat-checkbox [(ngModel)]="data.createdOn.selected"></mat-checkbox>
         </mat-list-item>
         <mat-list-item>
-            <span matLine i18n>Updated By</span>
+            <span matLine i18n="@@updatedBy">Updated By</span>
             <mat-checkbox [(ngModel)]="data.updatedBy.selected"></mat-checkbox>
         </mat-list-item>
         <mat-list-item>
-            <span matLine i18n>Updated On</span>
+            <span matLine i18n="@@updatedOn">Updated On</span>
             <mat-checkbox [(ngModel)]="data.updatedOn.selected"></mat-checkbox>
         </mat-list-item>
         <mat-list-item>
-            <span matLine i18n>Actions</span>
+            <span matLine i18n="@@actions">Actions</span>
             <mat-checkbox [(ngModel)]="data.actions.selected"></mat-checkbox>
         </mat-list-item>
     </mat-list>
 
 </div>
 <div mat-dialog-actions align="end">
-    <button mat-button (click)="onSave()" i18n>Save</button>
-    <button mat-button (click)="cancel()" i18n>Cancel</button>
+    <button mat-button (click)="onSave()" i18n="@@save">Save</button>
+    <button mat-button (click)="cancel()" i18n="@@cancel">Cancel</button>
 </div>

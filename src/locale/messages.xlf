@@ -2,21 +2,114 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="660a1c390f53875a8f7ec81614ce6f876cfc9d26" datatype="html">
+      <trans-unit id="yourUsername" datatype="html">
+        <source>Your Usermame</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/login.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="yourPassword" datatype="html">
+        <source>Your Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/login.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login" datatype="html">
+        <source>Login</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/login.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="demo" datatype="html">
+        <source>Demo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/login.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="register" datatype="html">
+        <source>Register</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/login.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="forgotPassword" datatype="html">
+        <source>Forgot Password ?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/login.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="notFoundPageText" datatype="html">
+        <source>
+        Sorry! The page you requested does not exist. Please click <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>here<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> to go to home page.
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/not-found/not-found.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="enterYourAccountId" datatype="html">
         <source>Enter your account Id</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/forgot-password/forgot-password.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="528cf52ffd8f711880a8f0c664a12cf4c297bd8f" datatype="html">
+      <trans-unit id="submit" datatype="html">
+        <source>Submit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/forgot-password/forgot-password.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="backToLogin" datatype="html">
+        <source>Back to login</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/forgot-password/forgot-password.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="accountId" datatype="html">
         <source>Account Id</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/register/register.component.html</context>
           <context context-type="linenumber">6</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/add-edit-account/add-edit-account.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/optional-column-account/optional-column-account.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-edit/edit-account.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-update/account-update.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
       </trans-unit>
-      <trans-unit id="c32ef07f8803a223a83ed17024b38e8d82292407" datatype="html">
+      <trans-unit id="password" datatype="html">
         <source>Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/register/register.component.html</context>
@@ -39,14 +132,26 @@
           <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="745412299d2dadb1c8c162db203b195720372bff" datatype="html">
+      <trans-unit id="rePassword" datatype="html">
         <source>Re Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/register/register.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/add-edit-account/add-edit-account.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/change-password-dialog/change-password-dialog.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-update/account-update.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
       </trans-unit>
-      <trans-unit id="c83b838d845690bcb897f775f53b5316535306dc" datatype="html">
+      <trans-unit id="firstName" datatype="html">
         <source>First Name</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/register/register.component.html</context>
@@ -61,6 +166,10 @@
           <context context-type="linenumber">20</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/account-edit/edit-account.component.html</context>
           <context context-type="linenumber">38</context>
         </context-group>
@@ -68,20 +177,8 @@
           <context context-type="sourcefile">app/main/administration/account/component/account-update/account-update.component.html</context>
           <context context-type="linenumber">35</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/driver/component/add-edit-driver/add-edit-driver.component.html</context>
-          <context context-type="linenumber">20</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/driver/component/driver-add/driver-add.component.html</context>
-          <context context-type="linenumber">20</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/driver/component/driver-view-edit/driver-view-edit.component.html</context>
-          <context context-type="linenumber">20</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="166b2cc65003221ff5f3ec05d5baca41e6821396" datatype="html">
+      <trans-unit id="lastName" datatype="html">
         <source>Last Name</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/register/register.component.html</context>
@@ -96,6 +193,10 @@
           <context context-type="linenumber">24</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/account-edit/edit-account.component.html</context>
           <context context-type="linenumber">43</context>
         </context-group>
@@ -103,51 +204,19 @@
           <context context-type="sourcefile">app/main/administration/account/component/account-update/account-update.component.html</context>
           <context context-type="linenumber">40</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/driver/component/add-edit-driver/add-edit-driver.component.html</context>
-          <context context-type="linenumber">30</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/driver/component/driver-add/driver-add.component.html</context>
-          <context context-type="linenumber">30</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/driver/component/driver-view-edit/driver-view-edit.component.html</context>
-          <context context-type="linenumber">30</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="db654f91d847f34e71ffb99268ff3a1807913421" datatype="html">
+      <trans-unit id="phoneName" datatype="html">
         <source>Phone Number</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/register/register.component.html</context>
-          <context context-type="linenumber">29</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/add-edit-account/add-edit-account.component.html</context>
-          <context context-type="linenumber">68</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/optional-column-account/optional-column-account.component.html</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
-          <context context-type="linenumber">150</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-edit/edit-account.component.html</context>
-          <context context-type="linenumber">73</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-update/account-update.component.html</context>
-          <context context-type="linenumber">68</context>
+          <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="ec984ab36f1da5f75ba43f9bd4b866ca9c7e6493" datatype="html">
+      <trans-unit id="emailAddress" datatype="html">
         <source>Email Address</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/register/register.component.html</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">31</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/add-edit-account/add-edit-account.component.html</context>
@@ -158,31 +227,19 @@
           <context context-type="linenumber">40</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-edit/edit-account.component.html</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">55</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/account-update/account-update.component.html</context>
           <context context-type="linenumber">73</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="729754dd19eb9ce0670b0aeb5a6ae60574c2c563" datatype="html">
+      <trans-unit id="address" datatype="html">
         <source>Address</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/register/register.component.html</context>
-          <context context-type="linenumber">35</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/tracking/live/popup/popup.component.html</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/driver/component/driver-add/driver-add.component.html</context>
-          <context context-type="linenumber">39</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/driver/component/driver-view-edit/driver-view-edit.component.html</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ca4a5672c7325fc9e73d88aff9c1f320573f9f20" datatype="html">
@@ -236,10 +293,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/tracking/history/history.component.html</context>
           <context context-type="linenumber">70</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/optional-column-account/optional-column-account.component.html</context>
-          <context context-type="linenumber">28</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
@@ -301,6 +354,21 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/report/device-report/component/alert-logs/alert-logs.component.html</context>
           <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="729754dd19eb9ce0670b0aeb5a6ae60574c2c563" datatype="html">
+        <source>Address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/tracking/live/popup/popup.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/driver/component/driver-add/driver-add.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/driver/component/driver-view-edit/driver-view-edit.component.html</context>
+          <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e5ca65a0c23607cdd274cab3883f60cde4520545" datatype="html">
@@ -422,59 +490,82 @@
           <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="997d2f87bd3d3ef1a29af1477b0955600d6d6564" datatype="html">
+      <trans-unit id="modifyingAccount" datatype="html">
         <source>Modifying Account</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/add-edit-account/add-edit-account.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="89d0373c576c984630f7f2ef92c7762b0c178ce7" datatype="html">
+      <trans-unit id="creatingAccount" datatype="html">
         <source>Creating Account</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/add-edit-account/add-edit-account.component.html</context>
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="bc53583e9b147e117be82c6bbec021d66ea8b549" datatype="html">
-        <source>Account ID</source>
+      <trans-unit id="roles" datatype="html">
+        <source>Roles</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/add-edit-account/add-edit-account.component.html</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">46</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/optional-column-account/optional-column-account.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">56</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
-          <context context-type="linenumber">119</context>
+          <context context-type="linenumber">75</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/account-edit/edit-account.component.html</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">51</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/account-update/account-update.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="181566918bbf327ebf74641865de6f9166d82e6e" datatype="html">
-        <source>Re-type Password</source>
+      <trans-unit id="status" datatype="html">
+        <source>Status</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/add-edit-account/add-edit-account.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">56</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/change-password-dialog/change-password-dialog.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="sourcefile">app/main/administration/account/component/optional-column-account/optional-column-account.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">40</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/account-update/account-update.component.html</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">55</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="2535c2e45fbacb93f349549769d72d3c96324d4f" datatype="html">
+      <trans-unit id="phoneNumber" datatype="html">
+        <source>Phone Number</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/add-edit-account/add-edit-account.component.html</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/optional-column-account/optional-column-account.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-update/account-update.component.html</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="addressLine1" datatype="html">
         <source>Address Line1</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/add-edit-account/add-edit-account.component.html</context>
@@ -485,15 +576,15 @@
           <context context-type="linenumber">44</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-edit/edit-account.component.html</context>
-          <context context-type="linenumber">83</context>
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">60</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/account-update/account-update.component.html</context>
           <context context-type="linenumber">78</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="94f202bc11d30de53e9294d90b59f29885169ec4" datatype="html">
+      <trans-unit id="addressLine2" datatype="html">
         <source>Address Line2</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/add-edit-account/add-edit-account.component.html</context>
@@ -504,15 +595,15 @@
           <context context-type="linenumber">48</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-edit/edit-account.component.html</context>
-          <context context-type="linenumber">86</context>
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">65</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/account-update/account-update.component.html</context>
           <context context-type="linenumber">81</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="fcde58253a4cfd52c228eebdae74e1be7a1ab714" datatype="html">
+      <trans-unit id="notes" datatype="html">
         <source>Notes</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/add-edit-account/add-edit-account.component.html</context>
@@ -523,15 +614,15 @@
           <context context-type="linenumber">52</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-edit/edit-account.component.html</context>
-          <context context-type="linenumber">90</context>
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">70</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/account-update/account-update.component.html</context>
           <context context-type="linenumber">85</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="52c9a103b812f258bcddc3d90a6e3f46871d25fe" datatype="html">
+      <trans-unit id="save" datatype="html">
         <source>Save</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/add-edit-account/add-edit-account.component.html</context>
@@ -550,31 +641,19 @@
           <context context-type="linenumber">80</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
-          <context context-type="linenumber">104</context>
+          <context context-type="sourcefile">app/main/administration/account/component/account-edit/edit-account.component.html</context>
+          <context context-type="linenumber">10</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/device/component/add-edit-device/add-edit-device.component.html</context>
-          <context context-type="linenumber">141</context>
+          <context context-type="sourcefile">app/main/administration/account/component/account-update/account-update.component.html</context>
+          <context context-type="linenumber">6</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/driver/component/add-edit-driver/add-edit-driver.component.html</context>
-          <context context-type="linenumber">104</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/geozone/geozone.component.html</context>
-          <context context-type="linenumber">43</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/alert-profile/component/add-edit-alert-profile/add-edit-alert-profile.component.html</context>
-          <context context-type="linenumber">168</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/unknown-device/add-new-device/add-new-device.component.html</context>
-          <context context-type="linenumber">144</context>
+          <context context-type="sourcefile">app/main/administration/account/component/account-update/account-update.component.html</context>
+          <context context-type="linenumber">133</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="d7b35c384aecd25a516200d6921836374613dfe7" datatype="html">
+      <trans-unit id="cancel" datatype="html">
         <source>Cancel</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/add-edit-account/add-edit-account.component.html</context>
@@ -597,149 +676,102 @@
           <context context-type="linenumber">81</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
-          <context context-type="linenumber">105</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/device/component/add-edit-device/add-edit-device.component.html</context>
-          <context context-type="linenumber">142</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/device/component/delete-device/delete-device.component.html</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/driver/component/add-edit-driver/add-edit-driver.component.html</context>
-          <context context-type="linenumber">105</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/geozone/geozone.component.html</context>
-          <context context-type="linenumber">44</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/alert-profile/component/add-edit-alert-profile/add-edit-alert-profile.component.html</context>
-          <context context-type="linenumber">169</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/alert-profile/component/delete-alert-profile/delete-alert-profile.component.html</context>
+          <context context-type="sourcefile">app/main/administration/account/component/account-edit/edit-account.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/unknown-device/add-new-device/add-new-device.component.html</context>
-          <context context-type="linenumber">145</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="5b6e9e4e7c73d1bc66ff339f9868b2443fc911d5" datatype="html">
+      <trans-unit id="selectColumnToShow" datatype="html">
         <source>Select columns to show</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/optional-column-account/optional-column-account.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="45cc8ca94b5a50842a9a8ef804a5ab089a38ae5c" datatype="html">
+      <trans-unit id="id" datatype="html">
         <source>ID</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/optional-column-account/optional-column-account.component.html</context>
           <context context-type="linenumber">12</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
-          <context context-type="linenumber">14</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/driver/component/driver-list/driver.component.html</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="80b2bb540f3370e0c705f5b05dfed586e39498b3" datatype="html">
+      <trans-unit id="photUrl" datatype="html">
         <source>Photo Url</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/optional-column-account/optional-column-account.component.html</context>
           <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="9610487cbeb5796d34d8601b5ac0c0a65f9e1d19" datatype="html">
-        <source>Roles</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/optional-column-account/optional-column-account.component.html</context>
-          <context context-type="linenumber">56</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="b08fd1a3c2375182a832e6e697d867815e3931e0" datatype="html">
+      <trans-unit id="createdBy" datatype="html">
         <source>Created By</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/optional-column-account/optional-column-account.component.html</context>
           <context context-type="linenumber">60</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">80</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="ca5f52f1dad1f8a54935512271342eb73f803b5d" datatype="html">
+      <trans-unit id="createdOn" datatype="html">
         <source>Created On</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/optional-column-account/optional-column-account.component.html</context>
           <context context-type="linenumber">64</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">85</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="b3db26442abc191a44f5306615a32b9cdb6f017f" datatype="html">
+      <trans-unit id="updatedBy" datatype="html">
         <source>Updated By</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/optional-column-account/optional-column-account.component.html</context>
           <context context-type="linenumber">68</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
-          <context context-type="linenumber">86</context>
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">90</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="958360cc42e8792bb56ee8d7f8561d23e9e3a1b0" datatype="html">
+      <trans-unit id="updatedOn" datatype="html">
         <source>Updated On</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/optional-column-account/optional-column-account.component.html</context>
           <context context-type="linenumber">72</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
-          <context context-type="linenumber">90</context>
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">95</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="030b4423b92167200e39519599f9b863b4f7c62c" datatype="html">
+      <trans-unit id="actions" datatype="html">
         <source>Actions</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/optional-column-account/optional-column-account.component.html</context>
           <context context-type="linenumber">76</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
-          <context context-type="linenumber">94</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="84830c3ffe2764e5b1e151fa887f96aec2359a0e" datatype="html">
+      <trans-unit id="deletingAccount" datatype="html">
         <source>Deleting Account <x id="INTERPOLATION" equiv-text="{{data.accountId}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/delete-account/delete-account.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="826b25211922a1b46436589233cb6f1a163d89b7" datatype="html">
+      <trans-unit id="delete" datatype="html">
         <source>Delete</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/delete-account/delete-account.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/device/component/delete-device/delete-device.component.html</context>
-          <context context-type="linenumber">14</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/alert-profile/component/delete-alert-profile/delete-alert-profile.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">194</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7e892ba15f2c6c17e83510e273b3e10fc32ea016" datatype="html">
@@ -761,123 +793,25 @@
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="id" datatype="html">
-        <source> ID </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
-          <context context-type="linenumber">20</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="accountId" datatype="html">
-        <source> Account ID </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
-          <context context-type="linenumber">25</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="firstname" datatype="html">
-        <source> First Name </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
-          <context context-type="linenumber">30</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="lastname" datatype="html">
-        <source> Last Name </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
-          <context context-type="linenumber">35</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="status" datatype="html">
-        <source> Status </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
-          <context context-type="linenumber">40</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="phonenumber" datatype="html">
-        <source> Phone Number </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
-          <context context-type="linenumber">45</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="photourl" datatype="html">
+      <trans-unit id="photoUrl" datatype="html">
         <source> Photo Url </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
           <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="emailaddress" datatype="html">
-        <source> Email Address </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
-          <context context-type="linenumber">55</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="addressline1" datatype="html">
-        <source> Address Line1 </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
-          <context context-type="linenumber">60</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="addressline2" datatype="html">
-        <source> Address Line2 </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
-          <context context-type="linenumber">65</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="notes" datatype="html">
-        <source> Notes </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
-          <context context-type="linenumber">70</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="roles" datatype="html">
-        <source> Roles </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
-          <context context-type="linenumber">75</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="createdby" datatype="html">
-        <source> Created By </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
-          <context context-type="linenumber">80</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="createdon" datatype="html">
-        <source> Created On </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
-          <context context-type="linenumber">85</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="updatedby" datatype="html">
-        <source> Updated By </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
-          <context context-type="linenumber">90</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="updatedon" datatype="html">
-        <source> Updated On </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
-          <context context-type="linenumber">95</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="actions" datatype="html">
+      <trans-unit id="Actions" datatype="html">
         <source> Actions </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
           <context context-type="linenumber">100</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bc53583e9b147e117be82c6bbec021d66ea8b549" datatype="html">
+        <source>Account ID</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">119</context>
         </context-group>
       </trans-unit>
       <trans-unit id="484b0e541230d60ddb5fbd771a34a5c8d90e7a57" datatype="html">
@@ -892,6 +826,17 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
           <context context-type="linenumber">134</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="db654f91d847f34e71ffb99268ff3a1807913421" datatype="html">
+        <source>Phone Number</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">150</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-edit/edit-account.component.html</context>
+          <context context-type="linenumber">73</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8502d27dd88a78fc04325ba54ee723906d82c961" datatype="html">
@@ -915,77 +860,124 @@
           <context context-type="linenumber">176</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="a877a8ef2141a05edc631dcab5879b9a1323144d" datatype="html">
+      <trans-unit id="edit" datatype="html">
+        <source>Edit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">190</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-edit/edit-account.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="thereAreNoSubAccount" datatype="html">
+        <source>There are no sub-account under the account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-list/account.component.html</context>
+          <context context-type="linenumber">213</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="changePassword" datatype="html">
         <source>Change password </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/change-password-dialog/change-password-dialog.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-edit/edit-account.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
       </trans-unit>
-      <trans-unit id="523d406b65f9a74934e76d6246602a0d68f12542" datatype="html">
+      <trans-unit id="addANewSmtpServer" datatype="html">
         <source>Add a new SMTP server</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/smtp-dialog/smtp-dialog.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="fe22ca53e651df951dac25b67c17894b0980f767" datatype="html">
+      <trans-unit id="host" datatype="html">
         <source>Host</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/smtp-dialog/smtp-dialog.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="cb2741a46e3560f6bc6dfd99d385e86b08b26d72" datatype="html">
+      <trans-unit id="port" datatype="html">
         <source>Port</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/smtp-dialog/smtp-dialog.component.html</context>
           <context context-type="linenumber">21</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
-          <context context-type="linenumber">38</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/device/component/add-edit-device/add-edit-device.component.html</context>
-          <context context-type="linenumber">59</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/device/component/device-list/device.component.html</context>
-          <context context-type="linenumber">55</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/device/component/device-add/device-add.component.html</context>
-          <context context-type="linenumber">58</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/device/component/device-view-edit/device-view-edit.component.html</context>
-          <context context-type="linenumber">68</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/unknown-device/add-new-device/add-new-device.component.html</context>
-          <context context-type="linenumber">62</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="08c74dc9762957593b91f6eb5d65efdfc975bf48" datatype="html">
+      <trans-unit id="userName" datatype="html">
         <source>Username</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/smtp-dialog/smtp-dialog.component.html</context>
           <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="fe12d8b6583883f824157f3e26178557d563bac2" datatype="html">
+      <trans-unit id="maxSizeAttachment" datatype="html">
         <source>Max size attachment</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/smtp-dialog/smtp-dialog.component.html</context>
           <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4cf0728fcf2b0af16de94c2f57dafddcc0ff1a59" datatype="html">
+      <trans-unit id="unit" datatype="html">
         <source>Unit</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/account/component/smtp-dialog/smtp-dialog.component.html</context>
           <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authentication" datatype="html">
+        <source>Authentication</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/smtp-dialog/smtp-dialog.component.html</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="startTLS" datatype="html">
+        <source>Start TLS</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/smtp-dialog/smtp-dialog.component.html</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ec984ab36f1da5f75ba43f9bd4b866ca9c7e6493" datatype="html">
+        <source>Email Address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-edit/edit-account.component.html</context>
+          <context context-type="linenumber">78</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2535c2e45fbacb93f349549769d72d3c96324d4f" datatype="html">
+        <source>Address Line1</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-edit/edit-account.component.html</context>
+          <context context-type="linenumber">83</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="94f202bc11d30de53e9294d90b59f29885169ec4" datatype="html">
+        <source>Address Line2</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-edit/edit-account.component.html</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fcde58253a4cfd52c228eebdae74e1be7a1ab714" datatype="html">
+        <source>Notes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-edit/edit-account.component.html</context>
+          <context context-type="linenumber">90</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="smtpServers" datatype="html">
+        <source>SMTP Servers</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/account/component/account-update/account-update.component.html</context>
+          <context context-type="linenumber">118</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f213beae8b35cb0e436c380d998628cc9ccecd02" datatype="html">
@@ -993,6 +985,17 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
           <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="45cc8ca94b5a50842a9a8ef804a5ab089a38ae5c" datatype="html">
+        <source>ID</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/driver/component/driver-list/driver.component.html</context>
+          <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html">
@@ -1096,6 +1099,33 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/unknown-device/add-new-device/add-new-device.component.html</context>
           <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cb2741a46e3560f6bc6dfd99d385e86b08b26d72" datatype="html">
+        <source>Port</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/device/component/add-edit-device/add-edit-device.component.html</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/device/component/device-list/device.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/device/component/device-add/device-add.component.html</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/device/component/device-view-edit/device-view-edit.component.html</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/unknown-device/add-new-device/add-new-device.component.html</context>
+          <context context-type="linenumber">62</context>
         </context-group>
       </trans-unit>
       <trans-unit id="acc04ca445d64958d843622f9ce95c0378198c24" datatype="html">
@@ -1243,6 +1273,103 @@
           <context context-type="linenumber">74</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="b08fd1a3c2375182a832e6e697d867815e3931e0" datatype="html">
+        <source>Created By</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
+          <context context-type="linenumber">78</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ca5f52f1dad1f8a54935512271342eb73f803b5d" datatype="html">
+        <source>Created On</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b3db26442abc191a44f5306615a32b9cdb6f017f" datatype="html">
+        <source>Updated By</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="958360cc42e8792bb56ee8d7f8561d23e9e3a1b0" datatype="html">
+        <source>Updated On</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
+          <context context-type="linenumber">90</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="030b4423b92167200e39519599f9b863b4f7c62c" datatype="html">
+        <source>Actions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
+          <context context-type="linenumber">94</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="52c9a103b812f258bcddc3d90a6e3f46871d25fe" datatype="html">
+        <source>Save</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/device/component/add-edit-device/add-edit-device.component.html</context>
+          <context context-type="linenumber">141</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/driver/component/add-edit-driver/add-edit-driver.component.html</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/geozone/geozone.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/alert-profile/component/add-edit-alert-profile/add-edit-alert-profile.component.html</context>
+          <context context-type="linenumber">168</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/unknown-device/add-new-device/add-new-device.component.html</context>
+          <context context-type="linenumber">144</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d7b35c384aecd25a516200d6921836374613dfe7" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/device/component/optional-column-device/optional-column-device.component.html</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/device/component/add-edit-device/add-edit-device.component.html</context>
+          <context context-type="linenumber">142</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/device/component/delete-device/delete-device.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/driver/component/add-edit-driver/add-edit-driver.component.html</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/geozone/geozone.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/alert-profile/component/add-edit-alert-profile/add-edit-alert-profile.component.html</context>
+          <context context-type="linenumber">169</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/alert-profile/component/delete-alert-profile/delete-alert-profile.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/unknown-device/add-new-device/add-new-device.component.html</context>
+          <context context-type="linenumber">145</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="35bef1f06a630f686893c189299fb8e8164521fa" datatype="html">
         <source>Modifying Device</source>
         <context-group purpose="location">
@@ -1304,6 +1431,17 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/device/component/delete-device/delete-device.component.html</context>
           <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="826b25211922a1b46436589233cb6f1a163d89b7" datatype="html">
+        <source>Delete</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/device/component/delete-device/delete-device.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/alert-profile/component/delete-alert-profile/delete-alert-profile.component.html</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6ddd111adc65ea7a206f01264da2c8a94adfef52" datatype="html">
@@ -1433,6 +1571,36 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/driver/component/add-edit-driver/add-edit-driver.component.html</context>
           <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c83b838d845690bcb897f775f53b5316535306dc" datatype="html">
+        <source>First Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/driver/component/add-edit-driver/add-edit-driver.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/driver/component/driver-add/driver-add.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/driver/component/driver-view-edit/driver-view-edit.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="166b2cc65003221ff5f3ec05d5baca41e6821396" datatype="html">
+        <source>Last Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/driver/component/add-edit-driver/add-edit-driver.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/driver/component/driver-add/driver-add.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/administration/driver/component/driver-view-edit/driver-view-edit.component.html</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8314d3a36da2092565b9b0a429b5335542e6c8dd" datatype="html">

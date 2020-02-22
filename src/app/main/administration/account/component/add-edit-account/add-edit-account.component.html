@@ -1,6 +1,6 @@
 <div mat-dialog-title>
-    <span *ngIf="isEditing" i18n>Modifying Account</span>
-    <span *ngIf="!isEditing" i18n>Creating Account</span>
+    <span *ngIf="isEditing" i18n="@@modifyingAccount">Modifying Account</span>
+    <span *ngIf="!isEditing" i18n="@@creatingAccount">Creating Account</span>
     <span> #{{data.accountId}}</span>
     <span class="x-dialog-close-btn">
         <button mat-icon-button (click)="cancel()">
@@ -12,17 +12,17 @@
 <div mat-dialog-content>
     <div fxLayout="column">
         <mat-form-field class="full-width">
-            <input matInput i18n-placeholder placeholder="Account ID" name="acc-account-id" [(ngModel)]="data.accountId" required [disabled]="isEditing">
+            <input matInput i18n-placeholder="@@accountId" placeholder="Account ID" name="acc-account-id" [(ngModel)]="data.accountId" required [disabled]="isEditing">
         </mat-form-field>
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxLayoutGap.xs="0px">
             <div fxFlex="50">
                 <mat-form-field class="full-width">
-                    <input type="password" matInput i18n-placeholder placeholder="Password" name="acc-password" [(ngModel)]="password">
+                    <input type="password" matInput i18n-placeholder="@@password" placeholder="Password" name="acc-password" [(ngModel)]="password">
                 </mat-form-field>
             </div>
             <div fxFlex="50">
                 <mat-form-field class="full-width">
-                    <input type="password" matInput i18n-placeholder placeholder="Re-type Password" name="acc-re-password" [(ngModel)]="re_password">
+                    <input type="password" matInput i18n-placeholder="@@rePassword" placeholder="Re-type Password" name="acc-re-password" [(ngModel)]="re_password">
                 </mat-form-field>
             </div>
         </div>
@@ -30,12 +30,12 @@
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxLayoutGap.xs="0px">
             <div fxFlex="50">
                 <mat-form-field class="full-width">
-                    <input matInput i18n-placeholder placeholder="First Name" name="acc-first-name" [(ngModel)]="data.firstName">
+                    <input matInput i18n-placeholder="@@firstName" placeholder="First Name" name="acc-first-name" [(ngModel)]="data.firstName">
                 </mat-form-field>
             </div>
             <div fxFlex="50">
                 <mat-form-field class="full-width">
-                    <input matInput i18n-placeholder placeholder="Last Name" name="acc-last-name" [(ngModel)]="data.lastName">
+                    <input matInput i18n-placeholder="@@lastName" placeholder="Last Name" name="acc-last-name" [(ngModel)]="data.lastName">
                 </mat-form-field>
             </div>
         </div>
@@ -43,7 +43,7 @@
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
                 <mat-form-field class="full-width">
-                    <mat-select matInput placeholder="Roles" [(ngModel)]="data.privilege">
+                    <mat-select matInput i18n-placeholder="@@roles" placeholder="Roles" [(ngModel)]="data.privilege">
                         <mat-option *ngFor="let pri of privilegeList" [value]="pri.id">{{pri.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -53,7 +53,7 @@
 
 
         <mat-form-field class="full-width">
-            <input type="text"  placeholder="Status" aria-label="Status" matInput [formControl]="statusControl" [matAutocomplete]="autoStatus">
+            <input type="text" i18n-placeholder="@@status" placeholder="Status" aria-label="Status" matInput [formControl]="statusControl" [matAutocomplete]="autoStatus">
             <mat-autocomplete #autoStatus="matAutocomplete">
                 <mat-option *ngFor="let status of filteredStatus | async" [value]="status">
                     {{status}}
@@ -65,29 +65,29 @@
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
                 <mat-form-field class="full-width">
-                    <input matInput i18n-placeholder placeholder="Phone Number" name="acc-phone-number" [(ngModel)]="data.phoneNumber">
+                    <input matInput i18n-placeholder="@@phoneNumber" placeholder="Phone Number" name="acc-phone-number" [(ngModel)]="data.phoneNumber">
                 </mat-form-field>
             </div>
             <div fxFlex="50">
                 <mat-form-field class="full-width">
-                    <input matInput i18n-placeholder placeholder="Email Address" name="acc-email-address" [(ngModel)]="data.emailAddress" required>
+                    <input matInput i18n-placeholder="@@emailAddress" placeholder="Email Address" name="acc-email-address" [(ngModel)]="data.emailAddress" required>
                 </mat-form-field>
             </div>
         </div>
         <mat-form-field class="full-width">
-            <input matInput i18n-placeholder placeholder="Address Line1" name="acc-address-line1" [(ngModel)]="data.addressLine1">
+            <input matInput i18n-placeholder="@@addressLine1" placeholder="Address Line1" name="acc-address-line1" [(ngModel)]="data.addressLine1">
         </mat-form-field>
         <mat-form-field class="full-width">
-            <input matInput i18n-placeholder placeholder="Address Line2" name="acc-address-line2" [(ngModel)]="data.addressLine2">
+            <input matInput i18n-placeholder="@@addressLine2" placeholder="Address Line2" name="acc-address-line2" [(ngModel)]="data.addressLine2">
         </mat-form-field>
 
         <mat-form-field class="full-width">
-            <input matInput i18n-placeholder placeholder="Notes" name="acc-notes" [(ngModel)]="data.notes">
+            <input matInput i18n-placeholder="@@notes" placeholder="Notes" name="acc-notes" [(ngModel)]="data.notes">
         </mat-form-field>
 
     </div>
 </div>
 <div mat-dialog-actions align="end">
-    <button mat-button (click)="onSave()" i18n>Save</button>
-    <button mat-button (click)="cancel()" i18n>Cancel</button>
+    <button mat-button (click)="onSave()" i18n="@@save">Save</button>
+    <button mat-button (click)="cancel()" i18n="@@cancel">Cancel</button>
 </div>

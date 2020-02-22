@@ -1,5 +1,5 @@
 <div mat-dialog-title>
-    <span i18n>Add a new SMTP server</span>
+    <span i18n="@@addANewSmtpServer">Add a new SMTP server</span>
     <span class="x-dialog-close-btn">
         <button mat-icon-button (click)="cancel()">
             <mat-icon>cancel</mat-icon>
@@ -11,14 +11,14 @@
                     <div fxFlex.gt-sm="80" fxFlex.lt-sm="100">
                         <mat-form-field class="full-width">
                             <label>
-                                <input matInput i18n-placeholder placeholder="Host" name="smtp-host" [(ngModel)]="data.host">
+                                <input matInput i18n-placeholder="@@host" placeholder="Host" name="smtp-host" [(ngModel)]="data.host">
                             </label>
                         </mat-form-field>
                     </div>
                     <div fxFlex.gt-sm="20" fxFlex.lt-sm="100">
                         <mat-form-field class="full-width">
                             <label>
-                                <input matInput i18n-placeholder placeholder="Port" name="smtp-port" [(ngModel)]="data.port">
+                                <input matInput i18n-placeholder="@@port" placeholder="Port" name="smtp-port" [(ngModel)]="data.port">
                             </label>
                         </mat-form-field>
                     </div>
@@ -27,14 +27,14 @@
                     <div fxFlex="50">
                         <mat-form-field class="full-width">
                             <label>
-                                <input matInput i18n-placeholder placeholder="Username" name="smtp-username" [(ngModel)]="data.username">
+                                <input matInput i18n-placeholder="@@userName" placeholder="Username" name="smtp-username" [(ngModel)]="data.username">
                             </label>
                         </mat-form-field>
                     </div>
                     <div fxFlex="50">
                         <mat-form-field class="full-width">
                             <label>
-                                <input matInput i18n-placeholder placeholder="Password" name="smtp-password" [(ngModel)]="data.password">
+                                <input matInput i18n-placeholder="@@password" placeholder="Password" name="smtp-password" [(ngModel)]="data.password">
                             </label>
                         </mat-form-field>
                     </div>
@@ -44,24 +44,24 @@
                     <div fxFlex.gt-sm="80">
                         <mat-form-field class="full-width">
                             <label>
-                                <input matInput i18n-placeholder type="number" placeholder="Max size attachment" name="smtp-max-size-attachment" [(ngModel)]="data.maxSizeAttachment">
+                                <input matInput i18n-placeholder="@@maxSizeAttachment" type="number" placeholder="Max size attachment" name="smtp-max-size-attachment" [(ngModel)]="data.maxSizeAttachment">
                             </label>
                         </mat-form-field>
                     </div>
                     <div fxFlex.gt-sm="20">
                         <mat-form-field class="full-width">
                             <label>
-                                <input matInput i18n-placeholder placeholder="Unit" name="max-size-unit" value="MB" disabled>
+                                <input matInput i18n-placeholder="@@unit" placeholder="Unit" name="max-size-unit" value="MB" disabled>
                             </label>
                         </mat-form-field>
                     </div>
                 </div>
                 <div fxLayoutGap.gt-sm="row" fxLayoutGap="16px">
                     <div fxFlex.gt-sm="50">
-                        <mat-checkbox [(ngModel)]="data.auth">Authentication</mat-checkbox>
+                        <mat-checkbox [(ngModel)]="data.auth" i18n="@@authentication">Authentication</mat-checkbox>
                     </div>
                     <div fxFlex.gt-sm="50">
-                        <mat-checkbox [(ngModel)]="data.startTls">Start TLS</mat-checkbox>
+                        <mat-checkbox [(ngModel)]="data.startTls" i18n="@@startTLS">Start TLS</mat-checkbox>
                     </div>
                 </div>
             </div>
@@ -77,6 +77,6 @@
 <!--                <button *ngIf="isAddNewSmtp" mat-flat-button color="warn" (click)="cancelNewSmtpServer()">Cancel</button>-->
 <!--            </div>-->
             <div mat-dialog-actions align="end">
-                <button mat-button (click)="save()" i18n>Save</button>
-                <button mat-button (click)="cancel()" i18n>Cancel</button>
+                <button mat-button (click)="save()" i18n="@@save">Save</button>
+                <button mat-button (click)="cancel()" i18n="@@cancel">Cancel</button>
             </div>

@@ -25,15 +25,15 @@ import * as proxy from 'http-proxy-middleware';
 const domino = require('domino');
 const fs = require('fs');
 const path = require('path');
-const template = fs.readFileSync('./dist/browser/index.html').toString();
+const template = fs.readFileSync('./dist/browser/en/index.html').toString();
 const win = domino.createWindow(template);
 global['window'] = win;
 global['document'] = win.document;
 
 // Express server
 const app = express();
-const api = proxy('/api', {target: 'http://dev.gpshandle.com', changeOrigin: true});
-const oauth = proxy('/oauth', {target: 'http://dev.gpshandle.com', changeOrigin: true});
+const api = proxy('/api', {target: 'https://dashboard.gpshandle.com', changeOrigin: true});
+const oauth = proxy('/oauth', {target: 'https://dashboard.gpshandle.com', changeOrigin: true});
 
 app.use('/api', api);
 app.use('/oauth', oauth);
@@ -67,12 +67,9 @@ app.get('*', (req, res) => {
   //this is for i18n
   const supportedLocales = ['en', 'vi'];
   const defaultLocale = 'en';
-  const matches = req.url.match(/^\/([a-z]{2}(?:-[A-Z]{2})?)\//);
-  //check if the requested url has a correct format '/locale' and matches any of the supportedLocales
+  const matches = req.query.hl ? req.query.hl : req.url.match(/^\/([a-z]{2}(?:-[A-Z]{2})?)\//);
   const locale = (matches && supportedLocales.indexOf(matches[1]) !== -1) ? matches[1] : defaultLocale;
-
-  res.render("${locale}/index", {req});
-  // res.render('index', { req });
+  res.render(`${locale}/index`, {req});
 });
 
 // Start up the Node server

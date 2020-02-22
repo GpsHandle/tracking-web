@@ -3,15 +3,15 @@
     <span class="fill-remain-space"></span>
     <button *ngIf="!isEditing" mat-flat-button color="primary" (click)="editThisAccount()">
         <mat-icon>edit</mat-icon>
-        <span>Edit</span>
+        <span i18n="@@edit">Edit</span>
     </button>
     <button *ngIf="isEditing" mat-flat-button color="accent" (click)="saveEditedAccount()" class="margin-righ-16">
         <mat-icon>save</mat-icon>
-        <span>Save</span>
+        <span i18n="@@save">Save</span>
     </button>
     <button *ngIf="isEditing" mat-flat-button color="warn" (click)="cancelEditedAccount()">
         <mat-icon>cancel</mat-icon>
-        <span>Cancel</span>
+        <span i18n="@@cancel">Cancel</span>
     </button>
 </mat-toolbar>
 
@@ -24,23 +24,23 @@
             <div fxLayout="row" fxLayoutGap="16px">
                 <div fxFlex="50">
                     <mat-form-field class="full-width">
-                        <input matInput i18n-placeholder placeholder="Account ID" name="acc-account-id" [(ngModel)]="account.accountId" required [disabled]="!isEditing">
+                        <input matInput i18n-placeholder="@@accountId" placeholder="Account ID" name="acc-account-id" [(ngModel)]="account.accountId" required [disabled]="!isEditing">
                     </mat-form-field>
                 </div>
                 <div fxFlex="50">
-                        <button mat-button color="primary" class="btn-change-password" (click)="openChangePasswdDialog()">Change password</button>
+                        <button mat-button color="primary" class="btn-change-password" (click)="openChangePasswdDialog()" i18n="@@changePassword">Change password</button>
                 </div>
             </div>
 
             <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxLayoutGap.xs="0px">
                 <div fxFlex="50">
                     <mat-form-field class="full-width">
-                        <input matInput i18n-placeholder placeholder="First Name" name="acc-first-name" [(ngModel)]="account.firstName" [disabled]="!isEditing">
+                        <input matInput i18n-placeholder="@@firstName" placeholder="First Name" name="acc-first-name" [(ngModel)]="account.firstName" [disabled]="!isEditing">
                     </mat-form-field>
                 </div>
                 <div fxFlex="50">
                     <mat-form-field class="full-width">
-                        <input matInput i18n-placeholder placeholder="Last Name" name="acc-last-name" [(ngModel)]="account.lastName" [disabled]="!isEditing">
+                        <input matInput i18n-placeholder="@@lastName" placeholder="Last Name" name="acc-last-name" [(ngModel)]="account.lastName" [disabled]="!isEditing">
                     </mat-form-field>
                 </div>
             </div>
@@ -48,7 +48,7 @@
             <div fxLayout="row" fxLayoutGap="16px">
                 <div fxFlex="50">
                     <mat-form-field class="full-width">
-                        <mat-select matInput placeholder="Roles" [(ngModel)]="account.privilege" [disabled]="!isEditing">
+                        <mat-select matInput i18n-placeholder="@@roles" placeholder="Roles" [(ngModel)]="account.privilege" [disabled]="!isEditing">
                             <mat-option *ngFor="let pri of privilegeList" [value]="pri.name">{{pri.name}}</mat-option>
                         </mat-select>
                     </mat-form-field>

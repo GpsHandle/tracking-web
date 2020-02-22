@@ -3,43 +3,42 @@
         <mat-card>
             <div fxLayout="column">
                 <mat-form-field>
-                    <input type="text" matInput i18n-placeholder placeholder="Account Id" required>
+                    <input type="text" matInput i18n-placeholder="@@accountId" placeholder="Account Id" required>
                 </mat-form-field>
 
                 <div fxLayout="row" fxLayoutGap="16px">
                     <mat-form-field class="full-width">
-                        <input type="text" matInput i18n-placeholder placeholder="Password" required>
+                        <input type="text" matInput i18n-placeholder="@@password" placeholder="Password" required>
                     </mat-form-field>
                     <mat-form-field class="full-width">
-                        <input type="text" matInput i18n-placeholder placeholder="Re Password" required>
+                        <input type="text" matInput i18n-placeholder="@@rePassword" placeholder="Re Password" required>
                     </mat-form-field>
                 </div>
 
                 <div fxLayout="row" fxLayoutGap="16px">
                     <mat-form-field class="full-width">
-                        <input type="text" matInput i18n-placeholder placeholder="First Name">
+                        <input type="text" matInput i18n-placeholder="@@firstName" placeholder="First Name">
                     </mat-form-field>
                     <mat-form-field class="full-width">
-                        <input type="text" matInput i18n-placeholder placeholder="Last Name">
+                        <input type="text" matInput i18n-placeholder="@@lastName" placeholder="Last Name">
                     </mat-form-field>
                 </div>
 
-
                 <mat-form-field>
-                    <input type="text" matInput i18n-placeholder placeholder="Phone Number">
+                    <input type="text" matInput i18n-placeholder="@@phoneName" placeholder="Phone Number">
                 </mat-form-field>
                 <mat-form-field>
-                    <input type="text" matInput i18n-placeholder placeholder="Email Address" required>
+                    <input type="text" matInput i18n-placeholder="@@emailAddress" placeholder="Email Address" required>
                 </mat-form-field>
                 <mat-form-field>
-                    <input type="text" matInput i18n-placeholder placeholder="Address">
+                    <input type="text" matInput i18n-placeholder="@@address" placeholder="Address">
                 </mat-form-field>
 
             </div>
 
             <mat-card-actions align="end">
-                <button mat-flat-button color="primary">Register</button>
-                <button mat-button color="primary" routerLink="/login">Back to login</button>
+                <button mat-flat-button color="primary" i18n="@@register">Register</button>
+                <button mat-button color="primary" routerLink="/login" i18n="@@backToLogin">Back to login</button>
             </mat-card-actions>
 
 
