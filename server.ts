@@ -65,7 +65,7 @@ app.get('*.*', express.static(DIST_FOLDER, {
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
   //this is for i18n
-  const supportedLocales = ['en', 'vi'];
+  const supportedLocales = ['en', 'en-US', 'vi', 'pl', 'pt'];
   const defaultLocale = 'en';
   const matches = req.query.hl ? req.query.hl : req.url.match(/^\/([a-z]{2}(?:-[A-Z]{2})?)\//);
   const locale = (matches && supportedLocales.indexOf(matches[1]) !== -1) ? matches[1] : defaultLocale;
