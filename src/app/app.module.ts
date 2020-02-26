@@ -22,7 +22,7 @@ import { LogoutComponent } from './pages/logout/logout.component';
 import { WINDOW_PROVIDERS } from 'app/shared/window-provider';
 import { DemoComponent } from './pages/demo/demo.component';
 import { CustomDirectivesModule } from 'app/directives/custom-directives.module';
-import { RootStoreModule } from './root-store/root-store.module';
+import { RootStoreModule } from './stores/root-store.module';
 
 @NgModule({
     declarations: [

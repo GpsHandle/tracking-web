@@ -6,8 +6,7 @@
   $foreground: map-get($theme, foreground);
 
   .l-form {
-    max-width: 50%;
-    width: 450px;
+    min-width: 300px;
     padding: 16px;
 
     mat-icon {

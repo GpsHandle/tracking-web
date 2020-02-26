@@ -1,62 +1,24 @@
 <div class="main">
     <mat-toolbar color="primary" class="header mat-elevation-z3">
         <button mat-icon-button>
-            <mat-icon>home</mat-icon>
+            <mat-icon>{{(isHandset$ | async) ? 'menu' : 'home'}}</mat-icon>
         </button>
-        <!--button mat-button routerLink="report">
-            <mat-icon>map</mat-icon>
-            <span i18n>Dashboard</span>
-        </button-->
-
         <button mat-button routerLink="tracking">
             <mat-icon>geozone</mat-icon>
-            <span i18n>Tracking</span>
+            <span *ngIf="!(isHandset$ | async)" i18n="@@tracking">Tracking</span>
         </button>
 
         <button mat-button [routerLink]="['report']">
         <mat-icon>report</mat-icon>
-        <span i18n>Reports</span>
+        <span *ngIf="!(isHandset$ | async)" i18n="@@reports">Reports</span>
         </button>
-
-        <!--button mat-button [matMenuTriggerFor]="menuReport">
-            <mat-icon>report</mat-icon>
-            <span i18n>Reports</span>
-        </button>
-        <mat-menu #menuReport="matMenu" overlapTrigger="false">
-            <button mat-menu-item routerLink="report/device">
-                <mat-icon>report</mat-icon>
-                <span i18n>Device Report</span>
-            </button>
-            <button mat-menu-item routerLink="report/account">
-                <mat-icon>report</mat-icon>
-                <span i18n>Account Report</span>
-            </button>
-            <button mat-menu-item routerLink="report/driver">
-                <mat-icon>report</mat-icon>
-                <span i18n>Driver Report</span>
-            </button>
-            <button mat-menu-item routerLink="report/shipment">
-                <mat-icon>report</mat-icon>
-                <span i18n>Shipment Report</span>
-            </button>
-        </mat-menu-->
-
 
         <button mat-button routerLink="admin/account">
             <mat-icon>setting</mat-icon>
-            <span i18n>Administration</span>
+            <span  *ngIf="!(isHandset$ | async)" i18n="@@administration">Administration</span>
         </button>
 
-        <!--a mat-button routerLink="help">
-            <mat-icon>help</mat-icon>
-            <span i18n>Help</span>
-        </a-->
-
         <span class="fill-remain-space"></span>
-
-        <!--<a mat-icon-button [routerLink]="['mail']">-->
-            <!--<mat-icon matBadge="15" matBadgeColor="warn">mail</mat-icon>-->
-        <!--</a>-->
 
         <button mat-button [matMenuTriggerFor]="menuProfile">
             <span>{{accountName}}</span>

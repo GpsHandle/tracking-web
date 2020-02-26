@@ -14,7 +14,6 @@ import { EventService } from 'app/services/event.service';
     imports: [
         CommonModule,
         ReportRoutingModule,
-
         MaterialShared
     ],
     providers: [

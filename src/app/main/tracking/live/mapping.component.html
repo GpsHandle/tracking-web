@@ -1,9 +1,12 @@
 <mat-sidenav-container class="side-nav-container">
-    <mat-sidenav mode="side" [opened]="true" position="end" [disableClose]="true">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport
+                 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+                 [mode]="(isHandset$ | async) ? 'over' : 'side'"
+                 [opened]="(isHandset$ | async) === false">
         <div class="m-dev">
             <div class="m-dev-header">
                 <mat-form-field class="m-dev-filter">
-                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Devices Filter">
+                    <input matInput (keyup)="applyFilter($event.target.value)" i18n-placeholder="@@devicesFilter" placeholder="Devices Filter">
 
                         <a mat-icon-button
                            matSuffix
@@ -21,7 +24,7 @@
 
                     <div>
                         <span mat-line>{{device.name || device.deviceId}}</span>
-                        <span mat-line>Speed {{device.speedKph}} km/h {{device.lastUpdateTimeInWords}}</span>
+                        <span mat-line i18n="@@liveTrackingSpeed">Speed {{device.speedKph}} km/h {{device.lastUpdateTimeInWords}}</span>
                     </div>
 
                     <div class="right">
@@ -39,9 +42,6 @@
             </mat-nav-list>
 
             <mat-divider></mat-divider>
-            <!--div class="chart-overview">
-                <svg width="200" height="120" id="chart"></svg>
-            </div-->
             <div id="chart0"></div>
         </div>
 
@@ -51,7 +51,7 @@
     <mat-sidenav-content class="mat-elevation-z6">
         <div class="sidenav-content">
             <!--mapping-->
-            <div id="map-id" class="main-map"></div>
+            <div id="map1" class="main-map"></div>
 
             <!--details-->
             <div class="m-comm" *ngIf="selectedDevice">

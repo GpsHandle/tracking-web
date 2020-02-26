@@ -7,7 +7,6 @@ import { MainStoreModule } from './main-store/main-store.module';
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
     MainStoreModule
   ]
 })
