@@ -1,37 +1,37 @@
 <table>
     <tr>
-        <td class="popup-title" i18n>DeviceID</td>
+        <td class="popup-title" i18n="@@deviceId">DeviceID</td>
         <td>{{deviceId}}</td>
     </tr>
     <tr>
-        <td class="popup-title" i18n>Status</td>
+        <td class="popup-title" i18n="@@status">Status</td>
         <td>{{status}}</td>
     </tr>
     <tr>
-        <td class="popup-title" i18n>SpeedKPH</td>
+        <td class="popup-title" i18n="@@speedKph">SpeedKPH</td>
         <td>{{speedKph}} km/h</td>
     </tr>
     <tr>
-        <td class="popup-title" i18n>Time</td>
+        <td class="popup-title" i18n="@@time">Time</td>
         <td>{{timestamp}}</td>
     </tr>
     <tr>
-        <td class="popup-title" i18n>Lat/Lng</td>
+        <td class="popup-title" i18n="@@latlon">Lat/Lng</td>
         <td>{{latlng}}</td>
     </tr>
     <tr>
-        <td class="popup-title" i18n>Address</td>
+        <td class="popup-title" i18n="@@address">Address</td>
         <td>{{address}}</td>
     </tr>
     <tr>
         <td colspan="2" class="text-warn">
-            <span>The device has been staying here for</span>
+            <span i18n="@@theDeviceHasBeenStayingHereFor">The device has been staying here for</span>
             <span> {{stayedTimeInWords}}</span>
         </td>
     </tr>
     <tr>
         <td colspan="2">
-            <a [routerLink]="['main', 'tracking', 'history', devId]"> history >></a>
+            <a [routerLink]="['main', 'tracking', 'history', devId]" i18n="@@history"> history >></a>
         </td>
     </tr>
 </table>

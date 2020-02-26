@@ -18,79 +18,79 @@
            multiTemplateDataRows>
 
         <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>ID</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@id">ID</th>
             <td mat-cell *matCellDef="let el">{{el.id}}</td>
         </ng-container>
 
         <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Driver's Name</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@driverName">Driver's Name</th>
             <td mat-cell *matCellDef="let el">{{el.firstName + " " + el.lastName}}</td>
         </ng-container>
 
         <ng-container matColumnDef="dateOfBirth">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Date of Birth</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@dateOfBirth">Date of Birth</th>
             <td mat-cell *matCellDef="let el">{{el.dateOfBirth | date:'shortDate'}}</td>
         </ng-container>
 
         <ng-container matColumnDef="driverExperiencesMonths">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>License Expired in Months</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@licenseExpiredInMonths">License Expired in Months</th>
             <td mat-cell *matCellDef="let el">{{el.driverExperiencesMonths}}</td>
         </ng-container>
 
         <ng-container matColumnDef="typeOfVehicleExperienced">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Type Of Vehicle Experienced</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@typeOfVehicleExperienced">Type Of Vehicle Experienced</th>
             <td mat-cell *matCellDef="let el">{{el.typeOfVehicleExperienced}}</td>
         </ng-container>
 
         <ng-container matColumnDef="driverLicenseNumber">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Driver License Number</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@driverLicenseNumber">Driver License Number</th>
             <td mat-cell *matCellDef="let el">{{el.driverLicenseNumber}}</td>
         </ng-container>
 
         <ng-container matColumnDef="driverLicenseType">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Driver License Type</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@driverLicenseType">Driver License Type</th>
             <td mat-cell *matCellDef="let el">{{el.driverLicenseType}}</td>
         </ng-container>
 
         <ng-container matColumnDef="driverLicenseTypeDescription">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Driver License Type Description</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@driverLicenseTypeDescription">Driver License Type Description</th>
             <td mat-cell *matCellDef="let el">{{el.driverLicenseTypeDescription}}</td>
         </ng-container>
 
         <ng-container matColumnDef="driverLicenseIssueDate">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Driver License Issued Date</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@driverLicenseIssuedDate">Driver License Issued Date</th>
             <td mat-cell *matCellDef="let el">{{el.driverLicenseIssueDate | date: 'shortDate'}}</td>
         </ng-container>
 
         <ng-container matColumnDef="driverLicenseExpiredDate">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Driver License Expired Date</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@driverLicenseexpiredDate">Driver License Expired Date</th>
             <td mat-cell *matCellDef="let el">{{el.driverLicenseExpiredDate | date: 'shortDate'}}</td>
         </ng-container>
 
         <!--//-->
         <ng-container matColumnDef="createdBy">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Created By </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@createdBy"> Created By </th>
             <td mat-cell *matCellDef="let el"> {{el.createdBy}} </td>
         </ng-container>
 
         <ng-container matColumnDef="createdOn">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Created On </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@createdOn"> Created On </th>
             <td mat-cell *matCellDef="let el"> {{el.createdOn | date:'short'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="updatedBy">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Updated By </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@updatedBy"> Updated By </th>
             <td mat-cell *matCellDef="let el"> {{el.updatedBy}} </td>
         </ng-container>
 
         <ng-container matColumnDef="updatedOn">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Updated On </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@updatedOn"> Updated On </th>
             <td mat-cell *matCellDef="let el"> {{el.updatedOn | date:'short'}} </td>
         </ng-container>
 
         <!--//-->
         <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef i18n> Actions </th>
+            <th mat-header-cell *matHeaderCellDef i18n="@@actions"> Actions </th>
             <td mat-cell *matCellDef="let el">
                 <button mat-icon-button>
                     <mat-icon color="accent">edit</mat-icon>
@@ -111,11 +111,11 @@
                             <div>
                                 <button mat-button [routerLink]="el.id">
                                     <mat-icon color="accent">edit</mat-icon>
-                                    <span>Edit</span>
+                                    <span i18n="@@edit">Edit</span>
                                 </button>
                                 <button mat-button (click)="dialogDeleteDriver(el)">
                                     <mat-icon color="warn">delete</mat-icon>
-                                    <span>Delete</span>
+                                    <span i18n="@@delete">Delete</span>
                                 </button>
                             </div>
                         </div>

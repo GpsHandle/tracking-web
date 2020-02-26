@@ -6,13 +6,13 @@
         <mat-toolbar>
             <mat-form-field>
                 <mat-select [(value)]="timerange" (selectionChange)="timeDistanceChange()">
-                    <mat-option value="1">Last 1 hour</mat-option>
-                    <mat-option value="2">Last 2 hours</mat-option>
-                    <mat-option value="8">Last 8 hours</mat-option>
-                    <mat-option value="24">Last 1 day</mat-option>
-                    <mat-option value="48">Last 2 days</mat-option>
-                    <mat-option value="72">Last 3 days</mat-option>
-                    <mat-option value="custom">custom</mat-option>
+                    <mat-option value="1" i18n="@@last1Hours">Last 1 hour</mat-option>
+                    <mat-option value="2" i18n="@@last2Hours">Last 2 hours</mat-option>
+                    <mat-option value="8" i18n="@@last8Hours">Last 8 hours</mat-option>
+                    <mat-option value="24" i18n="@@last24Hours">Last 1 day</mat-option>
+                    <mat-option value="48" i18n="@@last2days">Last 2 days</mat-option>
+                    <mat-option value="72" i18n="@@last3days">Last 3 days</mat-option>
+                    <mat-option value="custom" i18n="@@customRange">custom</mat-option>
                 </mat-select>
             </mat-form-field>
             <div class="his-dev-name">

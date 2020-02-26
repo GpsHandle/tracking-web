@@ -1,7 +1,7 @@
 <div class="x-container">
     <div class="x-header">
         <mat-form-field>
-            <input matInput i18n-placeholder placeholder="Search" (keyup)="applyFilter($event.target.value)">
+            <input matInput i18n-placeholder="@@search" placeholder="Search" (keyup)="applyFilter($event.target.value)">
         </mat-form-field>
         <span class="fill-remain-space"></span>
         <button mat-icon-button (click)="openDialogColumnOptions()">
@@ -116,14 +116,14 @@
                         <div fxFlex="50">
                             <mat-form-field class="full-width">
                                 <input type="text" matInput
-                                       i18n-placeholder placeholder="Account ID"
+                                       i18n-placeholder="@@accountId" placeholder="Account ID"
                                        [value]="element.accountId" disabled>
                             </mat-form-field>
                         </div>
                         <div fxFlex="50">
                             <mat-form-field class="full-width">
                                 <input type="text" matInput
-                                       i18n-placeholder placeholder="Full Name"
+                                       i18n-placeholder="@@fullName" placeholder="Full Name"
                                        [value]="element.firstName + ' ' + element.lastName" disabled>
                             </mat-form-field>
                         </div>
@@ -131,7 +131,7 @@
                         <div fxFlex="50">
                             <mat-form-field class="full-width">
                                 <input type="text" matInput
-                                       i18n-placeholder placeholder="Role"
+                                       i18n-placeholder="@@role" placeholder="Role"
                                        [value]="element.privilege"
                                        disabled>
                             </mat-form-field>
@@ -139,7 +139,7 @@
                         <div fxFlex="50">
                             <mat-form-field class="full-width">
                                 <input type="text" matInput
-                                       i18n-placeholder placeholder="Status"
+                                       i18n-placeholder="@@status" placeholder="Status"
                                        [value]="element.status"
                                        disabled>
                             </mat-form-field>
@@ -147,7 +147,7 @@
                         <div fxFlex="50">
                             <mat-form-field class="full-width">
                                 <input type="tel" matInput
-                                       i18n-placeholder placeholder="Phone Number"
+                                       i18n-placeholder="@@phoneNumber" placeholder="Phone Number"
                                        [value]="element.phoneNumber"
                                        disabled>
                             </mat-form-field>
@@ -155,7 +155,7 @@
                         <div fxFlex="50">
                             <mat-form-field class="full-width">
                                 <input type="text" matInput
-                                       i18n-placeholder placeholder="Email Adress"
+                                       i18n-placeholder="@@emailAddress" placeholder="Email Adress"
                                        [value]="element.emailAddress"
                                        disabled>
                             </mat-form-field>
@@ -165,7 +165,7 @@
                         <div fxFlex="50">
                             <mat-form-field class="full-width">
                                 <input type="text" matInput
-                                       i18n-placeholder placeholder="Adress Line 1"
+                                       i18n-placeholder="@@addressLine1" placeholder="Adress Line 1"
                                        [value]="element.addressLine1"
                                        disabled>
                             </mat-form-field>
@@ -173,7 +173,7 @@
                         <div fxFlex="50">
                             <mat-form-field class="full-width">
                                 <input type="text" matInput
-                                       i18n-placeholder placeholder="Adress Line 2"
+                                       i18n-placeholder="@@addressLine2" placeholder="Adress Line 2"
                                        [value]="element.addressLine2"
                                        disabled>
                             </mat-form-field>

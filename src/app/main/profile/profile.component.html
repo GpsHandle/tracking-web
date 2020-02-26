@@ -3,62 +3,62 @@
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
                 <mat-form-field class="full-width">
-                    <input matInput placeholder="Account ID" [disabled]="!isEditting" [value]="accountId">
+                    <input matInput i18n-placeholder="@@accountId" placeholder="Account ID" [disabled]="!isEditting" [value]="accountId">
                 </mat-form-field>
             </div>
             <div fxFlex="50">
                 <mat-form-field class="full-width">
-                    <input matInput placeholder="Account Name" [disabled]="!isEditting" [value]="accountName">
+                    <input matInput i18n-placeholder="@@accountName" placeholder="Account Name" [disabled]="!isEditting" [value]="accountName">
                 </mat-form-field>
             </div>
         </div>
 
         <mat-form-field>
-            <input matInput placeholder="First Page URL" [disabled]="!isEditting" [value]="firstPageUrl">
+            <input matInput i18n-placeholder="@@firstPageUrl" placeholder="First Page URL" [disabled]="!isEditting" [value]="firstPageUrl">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Redirect URL" [disabled]="!isEditting" [value]="redirectURL">
+            <input matInput i18n-placeholder="@@redirectUrl" placeholder="Redirect URL" [disabled]="!isEditting" [value]="redirectURL">
         </mat-form-field>
 
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
                 <mat-form-field class="full-width">
-                    <input matInput placeholder="Token Type" disabled [value]="token_type">
+                    <input matInput i18n-placeholder="@@tokenType" placeholder="Token Type" disabled [value]="token_type">
                 </mat-form-field>
             </div>
             <div fxFlex="50">
                 <mat-form-field class="full-width">
-                    <input matInput placeholder="Expired In" disabled [value]="expires_in">
+                    <input matInput i18n-placeholder="@@expiredIn" placeholder="Expired In" disabled [value]="expires_in">
                 </mat-form-field>
             </div>
         </div>
 
 
         <mat-form-field>
-            <input matInput placeholder="JTI" disabled [value]="jti">
+            <input matInput  i18n-placeholder="@@jti" placeholder="JTI" disabled [value]="jti">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Scope" disabled [value]="scope">
+            <input matInput i18n-placeholder="@@scope" placeholder="Scope" disabled [value]="scope">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Authorities" disabled [value]="authorities">
+            <input matInput i18n-placeholder="@@authorities" placeholder="Authorities" disabled [value]="authorities">
         </mat-form-field>
 
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
                 <mat-form-field class="full-width">
-                    <input matInput placeholder="Language" disabled [value]="">
+                    <input matInput i18n-placeholder="@@language" placeholder="Language" disabled [value]="">
                 </mat-form-field>
             </div>
             <div fxFlex="50">
                 <mat-form-field class="full-width">
-                    <input matInput placeholder="Timezone" disabled [value]="">
+                    <input matInput i18n-placeholder="@@timezone" placeholder="Timezone" disabled [value]="">
                 </mat-form-field>
             </div>
         </div>
 
         <mat-form-field>
-            <textarea matInput rows="5" placeholder="Access Token" disabled [value]="access_token"></textarea>
+            <textarea matInput rows="5" i18n-placeholder="@@accessToken" placeholder="Access Token" disabled [value]="access_token"></textarea>
         </mat-form-field>
     </form>
 </div>

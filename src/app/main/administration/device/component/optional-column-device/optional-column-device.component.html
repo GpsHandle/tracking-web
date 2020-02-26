@@ -1,5 +1,5 @@
 <div matDialogTitle>
-    <span i18n>Select columns to show# </span>
+    <span i18n="@@selectColumnsToShow">Select columns to show# </span>
     <span class="x-dialog-close-btn">
         <button mat-icon-button (click)="cancel()">
             <mat-icon>cancel</mat-icon>
@@ -11,39 +11,39 @@
         <div fxFlex="50">
             <mat-list>
                 <mat-list-item>
-                    <span matLine i18n>ID</span>
+                    <span matLine i18n="@@id">ID</span>
                     <mat-checkbox [(ngModel)]="data.id.selected"></mat-checkbox>
                 </mat-list-item>
                 <mat-list-item>
-                    <span matLine i18n>Name</span>
+                    <span matLine i18n="@@name">Name</span>
                     <mat-checkbox [(ngModel)]="data.name.selected"></mat-checkbox>
                 </mat-list-item>
                 <mat-list-item>
-                    <span matLine i18n>Device ID</span>
+                    <span matLine i18n="@@deviceId">Device ID</span>
                     <mat-checkbox [(ngModel)]="data.deviceId.selected"></mat-checkbox>
                 </mat-list-item>
                 <mat-list-item>
-                    <span matLine i18n>Vehicle ID</span>
+                    <span matLine i18n="@@vehicleId">Vehicle ID</span>
                     <mat-checkbox [(ngModel)]="data.vehicleId.selected"></mat-checkbox>
                 </mat-list-item>
                 <mat-list-item>
-                    <span matLine i18n>Vehicle Name</span>
+                    <span matLine i18n="@@vehicleName">Vehicle Name</span>
                     <mat-checkbox [(ngModel)]="data.vehicleName.selected"></mat-checkbox>
                 </mat-list-item>
                 <mat-list-item>
-                    <span matLine i18n>IP Address</span>
+                    <span matLine i18n="@@ipAddress">IP Address</span>
                     <mat-checkbox [(ngModel)]="data.ipAddress.selected"></mat-checkbox>
                 </mat-list-item>
                 <mat-list-item>
-                    <span matLine i18n>Port</span>
+                    <span matLine i18n="@@port">Port</span>
                     <mat-checkbox [(ngModel)]="data.port.selected"></mat-checkbox>
                 </mat-list-item>
                 <mat-list-item>
-                    <span matLine i18n>Protocol</span>
+                    <span matLine i18n="@@protocol">Protocol</span>
                     <mat-checkbox [(ngModel)]="data.protocol.selected"></mat-checkbox>
                 </mat-list-item>
                 <mat-list-item>
-                    <span matLine i18n>Status</span>
+                    <span matLine i18n="@@status">Status</span>
                     <mat-checkbox [(ngModel)]="data.status.selected"></mat-checkbox>
                 </mat-list-item>
             </mat-list>
@@ -51,47 +51,47 @@
         <div fxFlex="50">
             <mat-list>
                 <mat-list-item>
-                    <span matLine i18n>Expired On</span>
+                    <span matLine i18n-@@expiredOn>Expired On</span>
                     <mat-checkbox [(ngModel)]="data.expiredOn.selected"></mat-checkbox>
                 </mat-list-item>
                 <mat-list-item>
-                    <span matLine i18n>Serial Number</span>
+                    <span matLine i18n="@@serialNumber">Serial Number</span>
                     <mat-checkbox [(ngModel)]="data.serialNumber.selected"></mat-checkbox>
                 </mat-list-item>
                 <mat-list-item>
-                    <span matLine i18n>Model Name</span>
+                    <span matLine i18n="@@modelName">Model Name</span>
                     <mat-checkbox [(ngModel)]="data.modelName.selected"></mat-checkbox>
                 </mat-list-item>
                 <mat-list-item>
-                    <span matLine i18n>Manufacturer Name</span>
+                    <span matLine i18n="@@manufacturerName">Manufacturer Name</span>
                     <mat-checkbox [(ngModel)]="data.manufacturerName.selected"></mat-checkbox>
                 </mat-list-item>
                 <mat-list-item>
-                    <span matLine i18n>Firmware Version</span>
+                    <span matLine i18n="@@firmwareVersion">Firmware Version</span>
                     <mat-checkbox [(ngModel)]="data.firmwareVersion.selected"></mat-checkbox>
                 </mat-list-item>
                 <mat-list-item>
-                    <span matLine i18n>Orginal Country</span>
+                    <span matLine i18n="@@originalContry">Orginal Country</span>
                     <mat-checkbox [(ngModel)]="data.originalCountry.selected"></mat-checkbox>
                 </mat-list-item>
                 <mat-list-item>
-                    <span matLine i18n>Created By</span>
+                    <span matLine i18n="@@createdBy">Created By</span>
                     <mat-checkbox [(ngModel)]="data.createdBy.selected"></mat-checkbox>
                 </mat-list-item>
                 <mat-list-item>
-                    <span matLine i18n>Created On</span>
+                    <span matLine i18n="@@createdOn">Created On</span>
                     <mat-checkbox [(ngModel)]="data.createdOn.selected"></mat-checkbox>
                 </mat-list-item>
                 <mat-list-item>
-                    <span matLine i18n>Updated By</span>
+                    <span matLine i18n="@@updatedBy">Updated By</span>
                     <mat-checkbox [(ngModel)]="data.updatedBy.selected"></mat-checkbox>
                 </mat-list-item>
                 <mat-list-item>
-                    <span matLine i18n>Updated On</span>
+                    <span matLine i18n="@@updatedOn">Updated On</span>
                     <mat-checkbox [(ngModel)]="data.updatedOn.selected"></mat-checkbox>
                 </mat-list-item>
                 <mat-list-item>
-                    <span matLine i18n>Actions</span>
+                    <span matLine i18n="@@actions">Actions</span>
                     <mat-checkbox [(ngModel)]="data.actions.selected"></mat-checkbox>
                 </mat-list-item>
             </mat-list>
@@ -101,6 +101,6 @@
 
 </div>
 <div mat-dialog-actions align="end">
-    <button mat-button (click)="onSave()" i18n>Save</button>
-    <button mat-button (click)="cancel()" i18n>Cancel</button>
+    <button mat-button (click)="onSave()" i18n="@@save">Save</button>
+    <button mat-button (click)="cancel()" i18n="@@cancel">Cancel</button>
 </div>

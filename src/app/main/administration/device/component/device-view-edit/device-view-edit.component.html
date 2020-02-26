@@ -3,15 +3,15 @@
     <span class="fill-remain-space"></span>
     <button *ngIf="!isEditing" mat-flat-button color="primary" (click)="edit()">
         <mat-icon>edit</mat-icon>
-        <span>Edit</span>
+        <ng-container i18n="@@edit">Edit</ng-container>
     </button>
     <button *ngIf="isEditing" mat-flat-button color="primary" (click)="save()" class="margin-righ-16">
         <mat-icon>c-save</mat-icon>
-        <span>Save</span>
+        <ng-container i18n="@@save">Save</ng-container>
     </button>
     <button *ngIf="isEditing" mat-flat-button color="warn" (click)="cancel()">
         <mat-icon>cancel</mat-icon>
-        <span>Cancel</span>
+        <ng-container i18n="@@cancel">Cancel</ng-container>
     </button>
 </mat-toolbar>
 
@@ -23,7 +23,7 @@
                     <div fxFlex="50">
                         <mat-form-field class="full-width">
                             <input matInput
-                                   i18n-placeholder
+                                   i18n-placeholder="@@name"
                                    placeholder="Name"
                                    name="dev-name"
                                    [disabled]="!isEditing"
@@ -32,7 +32,8 @@
                     </div>
                     <div fxFlex="50">
                         <mat-form-field class="full-width">
-                            <input matInput i18n-placeholder placeholder="Device ID" name="dev-device-id" [(ngModel)]="data.deviceId" [disabled]="data.id">
+                            <input matInput i18n-placeholder="@@deviceId"
+                                   placeholder="Device ID" name="dev-device-id" [(ngModel)]="data.deviceId" [disabled]="data.id">
                         </mat-form-field>
                     </div>
                 </div>
@@ -41,6 +42,7 @@
                     <div fxFlex="80">
                         <mat-form-field class="full-width">
                             <mat-select [multiple]="true"
+                                        i18n-placeholder="@@accounts"
                                         placeholder="Accounts"
                                         [(ngModel)]="accountIds"
                                         [disabled]="!isEditing"
@@ -54,18 +56,21 @@
                 </div>
 
                 <mat-form-field class="full-width">
-                    <input matInput i18n-placeholder placeholder="Vehicle" name="dev-vehicle-id" [(ngModel)]="data.vehicleId" [disabled]="!isEditing">
+                    <input matInput i18n-placeholder="@@vehicle"
+                           placeholder="Vehicle" name="dev-vehicle-id" [(ngModel)]="data.vehicleId" [disabled]="!isEditing">
                 </mat-form-field>
 
                 <div fxLayout="row" fxLayoutGap="16px">
                     <div fxFlex="50">
                         <mat-form-field class="full-width">
-                            <input matInput i18n-placeholder placeholder="IP Address" name="dev-ip-address" [(ngModel)]="data.ipAddress" [disabled]="!isEditing">
+                            <input matInput i18n-placeholder="@@ipAddress"
+                                   placeholder="IP Address" name="dev-ip-address" [(ngModel)]="data.ipAddress" [disabled]="!isEditing">
                         </mat-form-field>
                     </div>
                     <div fxFlex="50">
                         <mat-form-field class="full-width">
-                            <input matInput i18n-placeholder placeholder="Port" name="dev-port" [(ngModel)]="data.port" [disabled]="!isEditing">
+                            <input matInput i18n-placeholder="@@port"
+                                   placeholder="Port" name="dev-port" [(ngModel)]="data.port" [disabled]="!isEditing">
                         </mat-form-field>
                     </div>
                 </div>
@@ -73,12 +78,14 @@
                 <div fxLayout="row" fxLayoutGap="16px">
                     <div fxFlex="50">
                         <mat-form-field class="full-width">
-                            <input matInput i18n-placeholder placeholder="Protocol" name="dev-port" [(ngModel)]="data.protocol" [disabled]="!isEditing">
+                            <input matInput i18n-placeholder="@@protocol"
+                                   placeholder="Protocol" name="dev-port" [(ngModel)]="data.protocol" [disabled]="!isEditing">
                         </mat-form-field>
                     </div>
                     <div fxFlex="50">
                         <mat-form-field class="full-width">
-                            <input type="text" i18n-placeholder placeholder="Status" aria-label="Status" matInput [formControl]="statusControl" [matAutocomplete]="autoStatus">
+                            <input type="text" i18n-placeholder="@@status"
+                                   placeholder="Status" aria-label="Status" matInput [formControl]="statusControl" [matAutocomplete]="autoStatus">
                             <mat-autocomplete #autoStatus="matAutocomplete">
                                 <mat-option *ngFor="let status of filteredStatus | async" [value]="status">
                                     {{status}}
@@ -91,6 +98,7 @@
                         <mat-form-field>
                             <input matInput
                                    [matDatepicker]="picker"
+                                   i18n-placeholder="@@expiredOn"
                                    placeholder="Expired On"
                                    [(ngModel)]="dateExpired"
                                    [disabled]="!isEditing"
@@ -104,17 +112,20 @@
                 <div fxLayout="row" fxLayoutGap="16px">
                     <div fxFlex="50">
                         <mat-form-field class="full-width">
-                            <input matInput i18n-placeholder placeholder="Serial Number" name="dev-serial-number" [(ngModel)]="data.serialNumber" [disabled]="!isEditing">
+                            <input matInput i18n-placeholder="@@serialNumber"
+                                   placeholder="Serial Number" name="dev-serial-number" [(ngModel)]="data.serialNumber" [disabled]="!isEditing">
                         </mat-form-field>
                     </div>
                     <div fxFlex="50">
                         <mat-form-field class="full-width">
-                            <input matInput i18n-placeholder placeholder="Model Name" name="dev-model-name" [(ngModel)]="data.modelName" [disabled]="!isEditing">
+                            <input matInput i18n-placeholder="@@modelName"
+                                   placeholder="Model Name" name="dev-model-name" [(ngModel)]="data.modelName" [disabled]="!isEditing">
                         </mat-form-field>
                     </div>
                     <div fxFlex="50">
                         <mat-form-field class="full-width">
-                            <input matInput i18n-placeholder placeholder="Firmware Version" name="dev-firmware-version" [(ngModel)]="data.firmwareVersion" [disabled]="!isEditing">
+                            <input matInput i18n-placeholder="@@firmwareVersion"
+                                   placeholder="Firmware Version" name="dev-firmware-version" [(ngModel)]="data.firmwareVersion" [disabled]="!isEditing">
                         </mat-form-field>
                     </div>
                 </div>
@@ -122,12 +133,14 @@
                 <div fxLayout="row" fxLayoutGap="16px">
                     <div fxFlex="50">
                         <mat-form-field class="full-width">
-                            <input matInput i18n-placeholder placeholder="Manufacturer Name" name="dev-manufacturer-name" [(ngModel)]="data.manufacturerName" [disabled]="!isEditing">
+                            <input matInput i18n-placeholder="@@manufacturerName"
+                                   placeholder="Manufacturer Name" name="dev-manufacturer-name" [(ngModel)]="data.manufacturerName" [disabled]="!isEditing">
                         </mat-form-field>
                     </div>
                     <div fxFlex="50">
                         <mat-form-field class="full-width">
-                            <input matInput i18n-placeholder placeholder="Original Country" name="dev-original-country" [(ngModel)]="data.originalCountry" [disabled]="!isEditing">
+                            <input matInput i18n-placeholder="@@originalContry"
+                                   placeholder="Original Country" name="dev-original-country" [(ngModel)]="data.originalCountry" [disabled]="!isEditing">
                         </mat-form-field>
                     </div>
                 </div>
@@ -137,6 +150,7 @@
             <mat-divider></mat-divider>
             <mat-form-field class="full-width">
                 <mat-select [multiple]="true"
+                            i18n-placeholder="alerts"
                             placeholder="Alerts"
                             [disabled]="!isEditing"
                             [(ngModel)]="alertIds" name="Alert List">

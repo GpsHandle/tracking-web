@@ -1,5 +1,5 @@
 <div mat-dialog-title>
-    <span i18n>Driver #</span>
+    <span i18n="@@driver">Driver #</span>
     <span class="x-dialog-close-btn">
         <button mat-icon-button mat-dialog-close [tabIndex]="-1">
             <mat-icon>cancel</mat-icon>
@@ -16,7 +16,7 @@
                     <mat-form-field class="full-width">
                         <input type="text"
                                matInput
-                               i18n-placeholder
+                               i18n-placeholder="@@firstName"
                                placeholder="First Name"
                                name="driver-first-name"
                                [(ngModel)]="data.firstName">
@@ -26,7 +26,7 @@
                     <mat-form-field class="full-width">
                         <input type="text"
                                matInput
-                               i18n-placeholder
+                               i18n-placeholder="@@lastName"
                                placeholder="Last Name"
                                name="driver-last-name"
                                [(ngModel)]="data.lastName">
@@ -38,7 +38,7 @@
                 <input matInput
                        [matDatepicker]="dateOfBirth"
                        [(ngModel)]="data.dateOfBirth"
-                       i18n-placeholder
+                       i18n-placeholder="@@dateOfBirth"
                        name="driver-date-of-birth"
                        placeholder="Date of Birth">
                 <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
@@ -51,7 +51,7 @@
                            matInput
                            name="driver-license-number"
                            [(ngModel)]="data.driverLicenseNumber"
-                           i18n-placeholder
+                           i18n-placeholder="@@licenseNumber"
                            placeholder="License Number">
                 </mat-form-field>
                 <mat-form-field fxFlex="50">
@@ -59,7 +59,7 @@
                            matInput
                            name="driver-license-type"
                            [(ngModel)]="data.driverLicenseType"
-                           i18n-placeholder
+                           i18n-placeholder="@@licenseType"
                            placeholder="License Type">
                 </mat-form-field>
             </div>
@@ -69,7 +69,7 @@
                        matInput
                        name="driver-license-type-description"
                        [(ngModel)]="data.driverLicenseTypeDescription"
-                       i18n-placeholder
+                       i18n-placeholder="@@licenseTypeDescription"
                        placeholder="License Type Description">
             </mat-form-field>
 
@@ -79,7 +79,7 @@
                            [matDatepicker]="issuedDate"
                            [(ngModel)]="data.driverLicenseIssueDate"
                            name="driver-license-issue-date"
-                           i18n-placeholder
+                           i18n-placeholder="@@issuedDate"
                            placeholder="Issued Date">
                     <mat-datepicker-toggle matSuffix [for]="issuedDate"></mat-datepicker-toggle>
                     <mat-datepicker #issuedDate></mat-datepicker>
@@ -89,7 +89,7 @@
                            [matDatepicker]="expiredDate"
                            [(ngModel)]="data.driverLicenseExpiredDate"
                            name="driver-license-expire-date"
-                           i18n-placeholder
+                           i18n-placeholder="@@expiredDate"
                            placeholder="Expired Date">
                     <mat-datepicker-toggle matSuffix [for]="expiredDate"></mat-datepicker-toggle>
                     <mat-datepicker #expiredDate></mat-datepicker>
@@ -101,6 +101,6 @@
 
 <!--//-->
 <div mat-dialog-actions align="end">
-    <button mat-flat-button mat-dialog-close="true" i18n>Save</button>
-    <button mat-button mat-dialog-close i18n>Cancel</button>
+    <button mat-flat-button mat-dialog-close="true" i18n="@@save">Save</button>
+    <button mat-button mat-dialog-close i18n="@@cancel">Cancel</button>
 </div>

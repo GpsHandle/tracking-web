@@ -2,8 +2,8 @@
     <button mat-icon-button arial-label="Back to account list" [routerLink]="['/main/admin/alert']"><mat-icon>back</mat-icon></button>
     <span class="fill-remain-space"></span>
     <button *ngIf="!isEditing" mat-flat-button color="primary" (click)="edit()">Edit</button>
-    <button *ngIf="isEditing" mat-flat-button color="accent" (click)="save()" class="margin-righ-16">Save</button>
-    <button *ngIf="isEditing" mat-flat-button color="warn" (click)="cancel()">Cancel</button>
+    <button *ngIf="isEditing" mat-flat-button color="accent" (click)="save()" class="margin-righ-16" i18n="@@save">Save</button>
+    <button *ngIf="isEditing" mat-flat-button color="warn" (click)="cancel()" i18n="@@cabcel">Cancel</button>
 </mat-toolbar>
 
 <div class="alert-profile-add">
@@ -11,14 +11,14 @@
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
                 <mat-form-field class="full-width">
-                    <mat-select i18n-placeholder
+                    <mat-select i18n-placeholder="@@selectATypeOfAlert"
                                 placeholder="Select a type of Alert"
                                 name="catalog-alert"
                                 [(ngModel)]="data.catalog"
                                 [disabled]="!isEditing"
                                 required>
-                        <mat-option value="EVENTUALLY">Eventual</mat-option>
-                        <mat-option value="INTERVAL">Interval</mat-option>
+                        <mat-option value="EVENTUALLY" i18n="@@eventual">Eventual</mat-option>
+                        <mat-option value="INTERVAL" i18n="@@interval">Interval</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -26,7 +26,7 @@
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
                 <mat-form-field class="full-width">
-                    <mat-select i18n-placeholder
+                    <mat-select i18n-placeholder="@@type"
                                 placeholder="Type"
                                 aria-label="Type of alert"
                                 required
@@ -41,12 +41,12 @@
             </div>
             <div fxFlex="50" class="flex-center">
                 <mat-slide-toggle [(ngModel)]="data.active" [disabled]="!isEditing"
-                                  name="Active">Active/Inactive</mat-slide-toggle>
+                                  name="Active" i18n="@@activeInactive">Active/Inactive</mat-slide-toggle>
             </div>
         </div>
         <mat-form-field class="full-width">
             <input type="text" matInput
-                   i18n-placeholder
+                   i18n-placeholder="@@name"
                    placeholder="Name"
                    aria-label="Nam Of Alert"
                    [(ngModel)]="data.name"
@@ -56,7 +56,7 @@
         </mat-form-field>
         <mat-form-field class="full-width">
             <input type="text" matInput
-                   i18n-placeholder
+                   i18n-placeholder="@@description"
                    placeholder="Description"
                    aria-label="Alert Description"
                    [disabled]="!isEditing"
@@ -67,7 +67,7 @@
             <div fxFlex="25">
                 <mat-form-field class="full-width">
                     <input type="text" matInput
-                           i18n-placeholder
+                           i18n-placeholder="@@speedKph"
                            placeholder="Speed KPH"
                            aria-label="Speed KPH"
                            [disabled]="!isEditing"
@@ -77,7 +77,7 @@
             </div>
             <div fxFlex="25">
                 <mat-form-field class="full-width">
-                    <mat-select i18n-placeholder
+                    <mat-select i18n-placeholder="@@zone"
                                 placeholder="Zone"
                                 aria-label="Geozone"
                                 name="Geozone"
@@ -92,7 +92,7 @@
             <div fxFlex="25">
                 <mat-form-field class="full-width">
                     <input type="text" matInput
-                           i18n-placeholder
+                           i18n-placeholder="@@params1"
                            placeholder="Param1"
                            aria-label="Param 1"
                            [disabled]="!isEditing"
@@ -103,7 +103,7 @@
             <div fxFlex="25">
                 <mat-form-field class="full-width">
                     <input type="text" matInput
-                           i18n-placeholder
+                           i18n-placeholder="@@params"
                            placeholder="Param2"
                            aria-label="Param2"
                            [disabled]="!isEditing"
@@ -126,21 +126,21 @@
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50" class="flex-center">
                 <mat-checkbox [(ngModel)]="data.alertEmail" [disabled]="!isEditing"
-                              name="ALert to email">Alert to email</mat-checkbox>
+                              name="ALert to email" i18n="@@alertToEmail">Alert to email</mat-checkbox>
             </div>
             <div fxFlex="50" class="flex-center">
                 <mat-checkbox [(ngModel)]="data.alertSms" [disabled]="!isEditing"
-                              name="ALert to sms">Alert to Sms</mat-checkbox>
+                              name="ALert to sms" i18n="@@alertToEmail">Alert to sms</mat-checkbox>
             </div>
             <div fxFlex="50" class="flex-center">
                 <mat-checkbox [(ngModel)]="data.alertApp" [disabled]="!isEditing"
-                              name="ALert to app">Alert to App</mat-checkbox>
+                              name="ALert to app" i18n="@@alertToEmail">Alert to app</mat-checkbox>
             </div>
         </div>
 
         <mat-form-field class="full-width">
             <input type="text" matInput
-                   i18n-placeholder
+                   i18n-placeholder="@@action"
                    placeholder="Action"
                    aria-label="External Actions"
                    name="external action"
@@ -150,7 +150,7 @@
 
         <mat-form-field class="full-width">
             <input type="text" matInput
-                   i18n-placeholder
+                   i18n-placeholder="@@text"
                    placeholder="Subject"
                    aria-label="Subject of message"
                    name="Subject of message"
@@ -159,7 +159,7 @@
         </mat-form-field>
         <mat-form-field class="full-width">
             <input type="text" matInput
-                   i18n-placeholder
+                   i18n-placeholder="@@text"
                    placeholder="Text"
                    aria-label="Text of message"
                    name="Text of message"
@@ -168,7 +168,7 @@
         </mat-form-field>
         <mat-form-field class="full-width">
             <input type="text" matInput
-                   i18n-placeholder
+                   i18n-placeholder="@@templateId"
                    placeholder="TemplateId"
                    aria-label="Template of message"
                    name="Template of message"

@@ -11,11 +11,11 @@
                 <div fxLayout="row" fxLayoutGap="16px" class="rpt-board-timepicker">
                     <mat-form-field (click)="$event.stopPropagation();">
                         <mat-select [(value)]="timerange" (selectionChange)="timerangeChange()">
-                            <mat-option value="2">Last 2 hours</mat-option>
-                            <mat-option value="8">Last 8 hours</mat-option>
-                            <mat-option value="24">Last 1 day</mat-option>
-                            <mat-option value="72">Last 3 days</mat-option>
-                            <mat-option value="custom" disabled>Custom range</mat-option>
+                            <mat-option value="2" i18n="@@last2Hours">Last 2 hours</mat-option>
+                            <mat-option value="8" i18n="@@last8Hours">Last 8 hours</mat-option>
+                            <mat-option value="24" i18n="@@last24Hours">Last 1 day</mat-option>
+                            <mat-option value="72" i18n="@@last72Hours">Last 3 days</mat-option>
+                            <mat-option value="custom" disabled i18n="@@customRange">Custom range</mat-option>
                         </mat-select>
                     </mat-form-field>
 
@@ -33,23 +33,23 @@
                 <div fxFlex="20" class="d-rp-stat">
                     <table>
                         <tr>
-                            <td>Distant</td>
+                            <td i18n="@@distance">Distant</td>
                             <td>{{distance}}</td>
                         </tr>
                         <tr>
-                            <td>Total Events</td>
+                            <td i18n="@@totalEvents">Total Events</td>
                             <td>{{totalEvents}}</td>
                         </tr>
                         <tr>
-                            <td>Fuel consumed</td>
+                            <td i18n="@@fuelConsumed">Fuel consumed</td>
                             <td>0</td>
                         </tr>
                         <tr>
-                            <td>Battery consumed</td>
+                            <td i18n="@@batteryConsumed">Battery consumed</td>
                             <td>0</td>
                         </tr>
                         <tr>
-                            <td>Average speed</td>
+                            <td i18n="@@averageSpeed">Average speed</td>
                             <td>0</td>
                         </tr>
                     </table>

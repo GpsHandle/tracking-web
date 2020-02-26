@@ -1,6 +1,6 @@
 <div class="x-panel-container">
     <div class="x-panel-header">
-        <span>Sending command to device: {{deviceName}}</span>
+        <span i18n="@@sendingCommandToDevice">Sending command to device: {{deviceName}}</span>
         <span class="fill-remain-space"></span>
         <button mat-icon-button class="btn-close small" (click)="cancel()">
             <mat-icon>close</mat-icon>
@@ -9,11 +9,11 @@
     <mat-divider></mat-divider>
     <form>
         <mat-form-field class="full-width">
-            <input type="text" matInput placeholder="Command to send" [(ngModel)]="cmdStr" name="cmd-str">
+            <input type="text" matInput i18n-placeholder="@@commandToSend" placeholder="Command to send" [(ngModel)]="cmdStr" name="cmd-str">
         </mat-form-field>
         <div align="end">
-            <button mat-flat-button (click)="send()">Send</button>
-            <button mat-button (click)="cancel()">Cancel</button>
+            <button mat-flat-button (click)="send()" i18n="@@send">Send</button>
+            <button mat-button (click)="cancel()" i18n="@@cancel">Cancel</button>
         </div>
     </form>
 </div>

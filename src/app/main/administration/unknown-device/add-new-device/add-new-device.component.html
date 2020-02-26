@@ -1,5 +1,5 @@
 <div mat-dialog-title>
-    <span i18n>Creating Device</span>
+    <span i18n="@@creatingDevice">Creating Device</span>
     <span> #{{data.deviceId}}</span>
     <span class="x-dialog-close-btn">
         <button mat-icon-button (click)="cancel()">
@@ -15,7 +15,7 @@
                 <div fxFlex="50">
                     <mat-form-field class="full-width">
                         <input matInput
-                               i18n-placeholder
+                               i18n-placeholder="@@name"
                                placeholder="Name"
                                name="dev-name"
                                [(ngModel)]="data.name">
@@ -23,7 +23,7 @@
                 </div>
                 <div fxFlex="50">
                     <mat-form-field class="full-width">
-                        <input matInput i18n-placeholder
+                        <input matInput i18n-placeholder="@@deviceId"
                                placeholder="Device ID"
                                name="dev-device-id"
                                [(ngModel)]="data.deviceId"
@@ -36,6 +36,7 @@
                 <div fxFlex="80">
                     <mat-form-field class="full-width">
                         <mat-select [multiple]="true"
+                                    i18n-placeholder="accounts"
                                     placeholder="Accounts"
                                     [(ngModel)]="accountIds"
                                     name="Account List">
@@ -48,18 +49,20 @@
             </div>
 
             <mat-form-field class="full-width">
-                <input matInput i18n-placeholder placeholder="Vehicle" name="dev-vehicle-id" [(ngModel)]="data.vehicleId">
+                <input matInput i18n-placeholder="@@vehicle"
+                       placeholder="Vehicle" name="dev-vehicle-id" [(ngModel)]="data.vehicleId">
             </mat-form-field>
 
             <div fxLayout="row" fxLayoutGap="16px">
                 <div fxFlex="50">
                     <mat-form-field class="full-width">
-                        <input matInput i18n-placeholder placeholder="IP Address" name="dev-ip-address" [(ngModel)]="data.ipAddress">
+                        <input matInput i18n-placeholder="@@ipAddress"
+                               placeholder="IP Address" name="dev-ip-address" [(ngModel)]="data.ipAddress">
                     </mat-form-field>
                 </div>
                 <div fxFlex="50">
                     <mat-form-field class="full-width">
-                        <input matInput i18n-placeholder placeholder="Port" name="dev-port" [(ngModel)]="data.port">
+                        <input matInput i18n-placeholder="@@port" placeholder="Port" name="dev-port" [(ngModel)]="data.port">
                     </mat-form-field>
                 </div>
             </div>
@@ -67,12 +70,13 @@
             <div fxLayout="row" fxLayoutGap="16px">
                 <div fxFlex="50">
                     <mat-form-field class="full-width">
-                        <input matInput i18n-placeholder placeholder="Protocol" name="dev-port" [(ngModel)]="data.protocol">
+                        <input matInput i18n-placeholder="@@protocol" placeholder="Protocol" name="dev-port" [(ngModel)]="data.protocol">
                     </mat-form-field>
                 </div>
                 <div fxFlex="50">
                     <mat-form-field class="full-width">
-                        <input type="text" i18n-placeholder placeholder="Status" aria-label="Status" matInput [formControl]="statusControl" [matAutocomplete]="autoStatus">
+                        <input type="text" i18n-placeholder="@@status"
+                               placeholder="Status" aria-label="Status" matInput [formControl]="statusControl" [matAutocomplete]="autoStatus">
                         <mat-autocomplete #autoStatus="matAutocomplete">
                             <mat-option *ngFor="let status of filteredStatus | async" [value]="status">
                                 {{status}}
@@ -86,6 +90,7 @@
                         <input matInput
                                [matDatepicker]="picker"
                                placeholder="Expired On"
+                               i18n-placeholder="@@expiredOn"
                                [(ngModel)]="dateExpired"
                                name="Expired On">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -97,17 +102,17 @@
             <div fxLayout="row" fxLayoutGap="16px">
                 <div fxFlex="50">
                     <mat-form-field class="full-width">
-                        <input matInput i18n-placeholder placeholder="Serial Number" name="dev-serial-number" [(ngModel)]="data.serialNumber">
+                        <input matInput i18n-placeholder="@@serialNumber" placeholder="Serial Number" name="dev-serial-number" [(ngModel)]="data.serialNumber">
                     </mat-form-field>
                 </div>
                 <div fxFlex="50">
                     <mat-form-field class="full-width">
-                        <input matInput i18n-placeholder placeholder="Model Name" name="dev-model-name" [(ngModel)]="data.modelName">
+                        <input matInput i18n-placeholder="@@modelName" placeholder="Model Name" name="dev-model-name" [(ngModel)]="data.modelName">
                     </mat-form-field>
                 </div>
                 <div fxFlex="50">
                     <mat-form-field class="full-width">
-                        <input matInput i18n-placeholder placeholder="Firmware Version" name="dev-firmware-version" [(ngModel)]="data.firmwareVersion">
+                        <input matInput i18n-placeholder="@@firmwareVersion" placeholder="Firmware Version" name="dev-firmware-version" [(ngModel)]="data.firmwareVersion">
                     </mat-form-field>
                 </div>
             </div>
@@ -115,12 +120,12 @@
             <div fxLayout="row" fxLayoutGap="16px">
                 <div fxFlex="50">
                     <mat-form-field class="full-width">
-                        <input matInput i18n-placeholder placeholder="Manufacturer Name" name="dev-manufacturer-name" [(ngModel)]="data.manufacturerName">
+                        <input matInput i18n-placeholder="@@manufacturerName" placeholder="Manufacturer Name" name="dev-manufacturer-name" [(ngModel)]="data.manufacturerName">
                     </mat-form-field>
                 </div>
                 <div fxFlex="50">
                     <mat-form-field class="full-width">
-                        <input matInput i18n-placeholder placeholder="Original Country" name="dev-original-country" [(ngModel)]="data.originalCountry">
+                        <input matInput i18n-placeholder="@@originalContry" placeholder="Original Country" name="dev-original-country" [(ngModel)]="data.originalCountry">
                     </mat-form-field>
                 </div>
             </div>
@@ -130,6 +135,7 @@
         <mat-divider></mat-divider>
         <mat-form-field class="full-width">
             <mat-select [multiple]="true"
+                        i18n-placeholder="@@alerts"
                         placeholder="Alerts"
                         [(ngModel)]="alertIds" name="Alert List">
                 <mat-option *ngFor="let alert of alertProfileList | async"
@@ -141,6 +147,6 @@
 </div>
 
 <div mat-dialog-actions align="end">
-    <button mat-button (click)="onSave()" i18n>Save</button>
-    <button mat-button (click)="cancel()" i18n>Cancel</button>
+    <button mat-button (click)="onSave()" i18n="@@save">Save</button>
+    <button mat-button (click)="cancel()" i18n="@@cancel">Cancel</button>
 </div>

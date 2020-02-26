@@ -3,10 +3,10 @@
       <span class="fill-remain-space"></span>
     <button mat-button (click)="addAllUknDevices()">
       <mat-icon>add</mat-icon>
-      <span>Add Selected</span></button>
+      <span i18n="@@addSelected">Add Selected</span></button>
     <button mat-button (click)="deleteAllUknDevices()">
       <mat-icon>delete</mat-icon>
-      <span>Delete Selected</span>
+      <span i18n="@@deleteSelected">Delete Selected</span>
     </button>
   </div>
 
@@ -29,27 +29,27 @@
         </ng-container>
 
         <ng-container matColumnDef="uniqueId">
-            <th mat-header-cell *matHeaderCellDef>Unique ID</th>
+            <th mat-header-cell *matHeaderCellDef i18n="@@uniqueId">Unique ID</th>
             <td mat-cell *matCellDef="let element">{{element.uniqueId}}</td>
         </ng-container>
 
         <ng-container matColumnDef="remoteIpAddress">
-            <th mat-header-cell *matHeaderCellDef>Remote Address</th>
+            <th mat-header-cell *matHeaderCellDef i18n="@@remoteAddress">Remote Address</th>
             <td mat-cell *matCellDef="let element">{{element.remoteIpAddress}}</td>
         </ng-container>
 
         <ng-container matColumnDef="port">
-            <th mat-header-cell *matHeaderCellDef>Port</th>
+            <th mat-header-cell *matHeaderCellDef i18n="@@port">Port</th>
             <td mat-cell *matCellDef="let element">{{element.port}}</td>
         </ng-container>
 
         <ng-container matColumnDef="createdOn">
-            <th mat-header-cell *matHeaderCellDef>Created On</th>
+            <th mat-header-cell *matHeaderCellDef i18n="@@createdOn">Created On</th>
             <td mat-cell *matCellDef="let element">{{element.createdOn | date: 'short'}}</td>
         </ng-container>
 
         <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef i18n> Actions </th>
+            <th mat-header-cell *matHeaderCellDef i18n="@@actions"> Actions </th>
             <td mat-cell *matCellDef="let element">
                 <button mat-flat-button (click)="addNewDevice(element)">
                     <mat-icon>add</mat-icon>

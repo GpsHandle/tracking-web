@@ -1,7 +1,7 @@
 <div class="x-container">
     <div class="x-header">
         <mat-form-field>
-            <input matInput i18n-placeholder placeholder="Search" (keyup)="applyFilter($event.target.value)">
+            <input matInput i18n-placeholder="@@search" placeholder="Search" (keyup)="applyFilter($event.target.value)">
         </mat-form-field>
         <span class="fill-remain-space"></span>
         <button mat-icon-button (click)="openDialogColumnOptions()">
@@ -15,59 +15,59 @@
     <mat-table [dataSource]="dataSource" matSort multiTemplateDataRows>
 
         <ng-container matColumnDef="toggle">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n>#</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@#">#</mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <mat-slide-toggle [checked]="checkStatus(element)" (change)="toggleStatus(element)"></mat-slide-toggle>
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n> ID </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@id"> ID </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n> Name </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@name"> Name </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="deviceId">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n> Device ID</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@deviceId"> Device ID</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.deviceId}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="vehicleId">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n> Vehicle ID </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@vehicleId"> Vehicle ID </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.vehicleId}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="vehicleName">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n>Vehicle Name</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@vehicleName">Vehicle Name</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.vehicleName}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="ipAddress">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n>IP Address</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@ipAddress">IP Address</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.ipAddress}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="port">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n>Port</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@port">Port</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.port}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="protocol">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n>Protocol</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@protocol">Protocol</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.protocol}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="status">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n>Status</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@status">Status</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="lastEventTime">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n>Last Event Time</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@lastEventTime">Last Event Time</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.lastEventTime | timeDistance}} </mat-cell>
         </ng-container>
 
@@ -77,52 +77,52 @@
         </ng-container>
 
         <ng-container matColumnDef="serialNumber">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n>Serial Number</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@serialNumber">Serial Number</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.serialNumber}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="modelName">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n>Model Name</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@modelName">Model Name</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.modelName}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="manufacturerName">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n> Manufacturer Name </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@manufacturerName"> Manufacturer Name </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.manufacturerName}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="firmwareVersion">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n> Firmware Version </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@firmwareVersion"> Firmware Version </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.firmwareVersion}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="originalCountry">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n> Original Country </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@originalContry"> Original Country </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.originalCountry}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="createdBy">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n> Created By </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@createdBy"> Created By </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.createdBy}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="createdOn">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n> Created On </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@createdOn"> Created On </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.createdOn | date:'short'}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="updatedBy">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n> Updated By </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@updateBy"> Updated By </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.updatedBy}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="updatedOn">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n> Updated On </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@updatedOne"> Updated On </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.updatedOn | date:'short'}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef i18n> Actions </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef i18n="@@actions"> Actions </mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <button mat-icon-button [routerLink]="[element.id]">
                     <mat-icon color="accent">edit</mat-icon>
