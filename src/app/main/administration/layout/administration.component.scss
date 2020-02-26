@@ -2,6 +2,7 @@
 @mixin main-admin-component($theme) {
     .mat-sidenav {
         width: $side-nav-width;
+        top: 64px!important;
         max-width: 350px;
         .side-nav-menu {
             overflow-y: auto;

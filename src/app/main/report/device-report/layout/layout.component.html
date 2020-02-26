@@ -1,5 +1,8 @@
-<mat-drawer-container class="side-nav-container">
-    <mat-drawer mode="side" [opened]="true" class="mat-elevation-z3">
+<mat-sidenav-container class="side-nav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport
+                 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+                 [mode]="(isHandset$ | async) ? 'over' : 'side'"
+                 [opened]="(isHandset$ | async) === false">
         <div class="rpt-nav-device" id = "deviceList">
             <mat-form-field class="rpt-device-filter">
                 <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Device Filter">
@@ -12,8 +15,8 @@
                 </mat-list-item>
             </mat-nav-list>
         </div>
-    </mat-drawer>
-    <mat-drawer-content>
+    </mat-sidenav>
+    <mat-sidenav-content class="mat-elevation-z6">
         <router-outlet></router-outlet>
-    </mat-drawer-content>
-</mat-drawer-container>
+    </mat-sidenav-content>
+</mat-sidenav-container>

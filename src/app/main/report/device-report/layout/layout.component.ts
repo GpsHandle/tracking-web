@@ -1,23 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DeviceLittle } from 'app/models/little/device.little';
-import { MatDialog } from '@angular/material/dialog';
 import { MatDrawer } from '@angular/material/sidenav';
-import { MatTabChangeEvent } from '@angular/material/tabs';
 import { DeviceService } from 'app/services/device.service';
 import { ApplicationContext } from 'app/application-context';
-import { DeviceReportService } from 'app/services/device-report.service';
-import { DeviceReportCustomTimeComponent } from 'app/main/report/device-report/component/custom-timerange-dialog/device-report-custom-time.component';
-import { EventService } from 'app/services/event.service';
-import { EventData } from 'app/models/event-data';
-import { merge, Observable, of as observableOf, ReplaySubject, Subject } from 'rxjs';
-import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import {map, shareReplay, startWith} from 'rxjs/operators';
 
-import { saveAs } from 'file-saver';
-import { ActivatedRoute } from '@angular/router';
-import * as _ from 'lodash';
 import { DeviceReportCommService } from 'app/main/report/device-report/service/device-report-comm.service';
 import { Device } from 'app/models/device';
 import { DashboardService } from 'app/main/report/device-report/service/dashboard.service';
+import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 
 @Component({
     selector: 'app-report',
@@ -25,13 +17,19 @@ import { DashboardService } from 'app/main/report/device-report/service/dashboar
     styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
+    isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+        .pipe(
+            map(result => result.matches),
+            shareReplay()
+        );
+
     deviceList: Device[];
     selected: DeviceLittle | any;
     from: number = 0;
     to: number = 0;
 
     @ViewChild(MatDrawer, { static: true }) sideNav: MatDrawer;
-    constructor(
+    constructor( private breakpointObserver: BreakpointObserver,
         private deviceService: DeviceService,
         private dashboardService: DashboardService,
         private deviceReportCommService: DeviceReportCommService,

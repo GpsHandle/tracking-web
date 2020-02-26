@@ -1,5 +1,8 @@
 <mat-sidenav-container fullscreen>
-    <mat-sidenav mode="side" opened="true" class="mat-elevation-z3">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport
+                 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+                 [mode]="(isHandset$ | async) ? 'over' : 'side'"
+                 [opened]="(isHandset$ | async) === false">
         <mat-nav-list role="list">
             <mat-list-item role="listitem">
                 <mat-icon matListIcon>account</mat-icon>
