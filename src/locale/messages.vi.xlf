@@ -644,14 +644,7 @@
           <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="theDeviceHasBeenStayinghereFor" datatype="html">
-        <source>The device has been staying here for</source>
-        <target state="translated">Phương tiện này đã ở đây khoảng</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/tracking/live/popup/popup.component.html</context>
-          <context context-type="linenumber">28</context>
-        </context-group>
-      </trans-unit>
+
       <trans-unit id="history" datatype="html">
         <source> history &gt;&gt;</source>
         <target state="translated">Lịch sử &gt;&gt;</target>
@@ -890,78 +883,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/report/device-report/component/report/report.component.html</context>
           <context context-type="linenumber">18</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="e5ca65a0c23607cdd274cab3883f60cde4520545" datatype="html">
-        <source> Device Name </source>
-        <target state="translated">Tên thiết bị</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/tracking/history/history.component.html</context>
-          <context context-type="linenumber">40</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6761cb8c8009dad33287cf1cfa0cdc40ce986761" datatype="html">
-        <source> Location </source>
-        <target state="translated">Vị trí</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/tracking/history/history.component.html</context>
-          <context context-type="linenumber">44</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="82e91dd31d3c8156619b62a8819d09d5e3f9e7b7" datatype="html">
-        <source> Altitude </source>
-        <target state="translated">Độ cao </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/tracking/history/history.component.html</context>
-          <context context-type="linenumber">52</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="e7510f245ea136f08e5dafb0eaa974c0da2de9c6" datatype="html">
-        <source> Heading </source>
-        <target state="translated">Hướng</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/tracking/history/history.component.html</context>
-          <context context-type="linenumber">56</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="552a1ced9eb9624bfee56a46167e2146c0c8496a" datatype="html">
-        <source> SpeedKPH </source>
-        <target state="translated">Tốc độ km/h</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/tracking/history/history.component.html</context>
-          <context context-type="linenumber">61</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="e9ded9ddc67d3d863a5484c81550ee0de9b0ff04" datatype="html">
-        <source> Address </source>
-        <target state="translated">Địa chỉ</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/tracking/history/history.component.html</context>
-          <context context-type="linenumber">65</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="81b97b8ea996ad1e4f9fca8415021850214884b1" datatype="html">
-        <source>Status</source>
-        <target state="translated">Trạng thái</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/tracking/history/history.component.html</context>
-          <context context-type="linenumber">70</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="f8f97ba506d89ca722ec73667d530a6d9e4234d1" datatype="html">
-        <source> Date/Time </source>
-        <target state="translated">Ngày/giờ</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/tracking/history/history.component.html</context>
-          <context context-type="linenumber">75</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="c7683fd7443a90e86b57c9d6c62b2255364487a4" datatype="html">
-        <source> Age </source>
-        <target state="translated">Tuổi </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/tracking/history/history.component.html</context>
-          <context context-type="linenumber">80</context>
         </context-group>
       </trans-unit>
       <trans-unit id="id" datatype="html">
@@ -1286,30 +1207,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/report/device-report/component/report/report.component.html</context>
           <context context-type="linenumber">52</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5531a96367145ded807c9b24ca0d6155936656be" datatype="html">
-        <source>Parking Report</source>
-        <target state="translated">Báo cáo dừng đỗ</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/report/device-report/component/report/report.component.html</context>
-          <context context-type="linenumber">68</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="c21a5b28628b75c8ad64f9905571e9feda2cfe61" datatype="html">
-        <source>Speed Report</source>
-        <target state="translated">Báo cáo vận tốc</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/report/device-report/component/report/report.component.html</context>
-          <context context-type="linenumber">71</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="b8ddb4167459893ad86322664ceb75965a039458" datatype="html">
-        <source>Alert History</source>
-        <target state="translated">Lịch sử cảnh báo</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/report/device-report/component/report/report.component.html</context>
-          <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="account" datatype="html">
@@ -2360,14 +2257,6 @@
           <context context-type="linenumber">70</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3bcb4302c6d0a9382197051d2a12efddd223a5a6" datatype="html">
-        <source>Expired On</source>
-        <target state="translated">Hết hạn</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/device/component/device-list/device.component.html</context>
-          <context context-type="linenumber">75</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="updateBy" datatype="html">
         <source> Updated By </source>
         <target state="translated">Cập nhật </target>
@@ -2503,18 +2392,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/driver/component/driver-view-edit/driver-view-edit.component.html</context>
           <context context-type="linenumber">100</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="7e892ba15f2c6c17e83510e273b3e10fc32ea016" datatype="html">
-        <source>Search</source>
-        <target state="translated">Tìm</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/driver/component/driver-list/driver.component.html</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/alert-profile/component/alert-profile-list/alert-profile.component.html</context>
-          <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="driverName" datatype="html">
@@ -2675,14 +2552,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/administration/geozone/geozone.component.html</context>
           <context context-type="linenumber">110</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="0cad586a5f42b89e0ab3fdd8cb881a7d5b745a4e" datatype="html">
-        <source>Select time</source>
-        <target state="translated">Chọn thời gian</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/scheduler/daytime/daytime.html</context>
-          <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="modifyOrCreateAlertProfile" datatype="html">
@@ -2958,15 +2827,7 @@
           <context context-type="linenumber">107</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4fe84c1d0eef5726c017f64c691145db7a61f879" datatype="html">
-        <source>Accounts</source>
-        <target state="translated">Tài khoản</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/unknown-device/add-new-device/add-new-device.component.html</context>
-          <context context-type="linenumber">40</context>
-        </context-group>
-        <note priority="1" from="description">accounts</note>
-      </trans-unit>
+
       <trans-unit id="addSelected" datatype="html">
         <source>Add Selected</source>
         <target state="translated">Thêm đã chọn</target>

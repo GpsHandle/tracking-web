@@ -72,7 +72,7 @@
         </ng-container>
 
         <ng-container matColumnDef="expiredOn">
-            <mat-header-cell *matHeaderCellDef mat-sort-header i18n>Expired On</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@expiredOn">Expired On</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.expiredOn | date:'shortDate'}} </mat-cell>
         </ng-container>
 

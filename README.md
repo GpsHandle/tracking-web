@@ -79,3 +79,9 @@ ng xi18n --output-path locale
 ```shell script
 npm run build:ssr && npm run serve:ssr
 ```
+
+
+###Internationlize
+```html
+https://osv9cuz.oneskyapp.com/admin/project/dashboard/project/356085
+```
