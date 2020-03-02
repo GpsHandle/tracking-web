@@ -153,7 +153,7 @@ export class ReportComponent implements OnInit {
     }
 
     onTabChanged(event: MatTabChangeEvent) {
-        switch (event.index) {
+        switch (event && event.index) {
             case 0:
                 this.selectedTab = Tabs.SPEED_REPORT;
                 break;

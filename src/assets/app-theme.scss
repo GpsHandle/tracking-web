@@ -1,4 +1,6 @@
-@import '../../node_modules/@angular/material/theming';
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+@import '~@angular/material/theming';
 @import "../app/main/main.module";
 @import "../app/pages/login/login.component";
 @import "global";

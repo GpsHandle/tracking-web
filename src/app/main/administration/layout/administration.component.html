@@ -1,41 +1,41 @@
-<mat-sidenav-container fullscreen>
-    <mat-sidenav #drawer class="sidenav" fixedInViewport
-                 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-                 [mode]="(isHandset$ | async) ? 'over' : 'side'"
-                 [opened]="(isHandset$ | async) === false">
-        <mat-nav-list role="list">
-            <mat-list-item role="listitem">
-                <mat-icon matListIcon>account</mat-icon>
-                <a matLine routerLink="account" i18n="@@account">Account</a>
-            </mat-list-item>
+<!--<mat-sidenav-container fullscreen>-->
+<!--    <mat-sidenav #drawer class="sidenav" fixedInViewport-->
+<!--                 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"-->
+<!--                 [mode]="(isHandset$ | async) ? 'over' : 'side'"-->
+<!--                 [opened]="(isHandset$ | async) === false">-->
+<!--        <mat-nav-list role="list">-->
+<!--            <mat-list-item role="listitem">-->
+<!--                <mat-icon matListIcon>account</mat-icon>-->
+<!--                <a matLine routerLink="account" i18n="@@account">Account</a>-->
+<!--            </mat-list-item>-->
 
-            <mat-list-item role="listitem">
-                <mat-icon matListIcon>vehicle</mat-icon>
-                <a matLine routerLink="device" i18n="@@manageDevices">Manage Devices</a>
-            </mat-list-item>
-            <mat-list-item role="listitem">
-                <mat-icon matListIcon>account</mat-icon>
-                <a matLine routerLink="driver" i18n="@@manageDriver">Manage Driver</a>
-            </mat-list-item>
-            <mat-list-item role="listitem">
-                <mat-icon matListIcon>geozone</mat-icon>
-                <a matLine routerLink="geozone" i18n="@@geozone">Geozone</a>
-            </mat-list-item>
-            <mat-list-item role="listitem">
-                <mat-icon matListIcon>bell</mat-icon>
-                <a matLine routerLink="alert" i18n="@@alertProfile">Alert Profile</a>
-            </mat-list-item>
+<!--            <mat-list-item role="listitem">-->
+<!--                <mat-icon matListIcon>vehicle</mat-icon>-->
+<!--                <a matLine routerLink="device" i18n="@@manageDevices">Manage Devices</a>-->
+<!--            </mat-list-item>-->
+<!--            <mat-list-item role="listitem">-->
+<!--                <mat-icon matListIcon>account</mat-icon>-->
+<!--                <a matLine routerLink="driver" i18n="@@manageDriver">Manage Driver</a>-->
+<!--            </mat-list-item>-->
+<!--            <mat-list-item role="listitem">-->
+<!--                <mat-icon matListIcon>geozone</mat-icon>-->
+<!--                <a matLine routerLink="geozone" i18n="@@geozone">Geozone</a>-->
+<!--            </mat-list-item>-->
+<!--            <mat-list-item role="listitem">-->
+<!--                <mat-icon matListIcon>bell</mat-icon>-->
+<!--                <a matLine routerLink="alert" i18n="@@alertProfile">Alert Profile</a>-->
+<!--            </mat-list-item>-->
 
-            <mat-divider></mat-divider>
-            <!--SystemAdmin-->
-            <mat-list-item role="listitem" *showIfRole="'super'">
-                <mat-icon matListIcon>unknown</mat-icon>
-                <a matLine routerLink="unknown-device" i18n="@@unknownDevices">Unknown Devices</a>
-            </mat-list-item>
-        </mat-nav-list>
-    </mat-sidenav>
+<!--            <mat-divider></mat-divider>-->
+<!--            &lt;!&ndash;SystemAdmin&ndash;&gt;-->
+<!--            <mat-list-item role="listitem" *showIfRole="'super'">-->
+<!--                <mat-icon matListIcon>unknown</mat-icon>-->
+<!--                <a matLine routerLink="unknown-device" i18n="@@unknownDevices">Unknown Devices</a>-->
+<!--            </mat-list-item>-->
+<!--        </mat-nav-list>-->
+<!--    </mat-sidenav>-->
+<!--</mat-sidenav-container>-->
 
-    <mat-sidenav-content>
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+<ng-container>
+    <router-outlet></router-outlet>
+</ng-container>

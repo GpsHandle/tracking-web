@@ -5,11 +5,11 @@ import { DeviceService } from 'app/services/device.service';
 import { ApplicationContext } from 'app/application-context';
 import { Observable } from 'rxjs';
 import {map, shareReplay, startWith} from 'rxjs/operators';
-
 import { DeviceReportCommService } from 'app/main/report/device-report/service/device-report-comm.service';
 import { Device } from 'app/models/device';
 import { DashboardService } from 'app/main/report/device-report/service/dashboard.service';
-import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {MainFacade} from '../../../../stores/root-store.facade';
 
 @Component({
     selector: 'app-report',
@@ -25,23 +25,19 @@ export class LayoutComponent implements OnInit {
 
     deviceList: Device[];
     selected: DeviceLittle | any;
-    from: number = 0;
-    to: number = 0;
-
+    from = 0;
+    to = 0;
+    sidenavOpened$: Observable<boolean>;
+    sidenavMode$: Observable<string>;
     @ViewChild(MatDrawer, { static: true }) sideNav: MatDrawer;
     constructor( private breakpointObserver: BreakpointObserver,
         private deviceService: DeviceService,
+        private mainFacade: MainFacade,
         private dashboardService: DashboardService,
         private deviceReportCommService: DeviceReportCommService,
         private applicationContext: ApplicationContext) {
-
-        this.deviceReportCommService.command$.subscribe(
-            (command : string) => {
-                if (command === 'TOGGLE_SIDE_NAV') {
-                    this.sideNav.toggle();
-                }
-            }
-        )
+        this.sidenavMode$ = this.mainFacade.sidenavMode$;
+        this.sidenavOpened$ = this.mainFacade.sidenavOpened$;
     }
 
     ngOnInit() {

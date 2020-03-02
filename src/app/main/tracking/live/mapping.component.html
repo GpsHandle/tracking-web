@@ -1,13 +1,11 @@
 <mat-sidenav-container class="side-nav-container">
     <mat-sidenav #drawer class="sidenav" fixedInViewport
-                 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-                 [mode]="(isHandset$ | async) ? 'over' : 'side'"
-                 [opened]="(isHandset$ | async) === false">
+                 mode="{{sidenavMode$ | async}}"
+                 opened="{{sidenavOpened$ | async}}">
         <div class="m-dev">
             <div class="m-dev-header">
                 <mat-form-field class="m-dev-filter">
                     <input matInput (keyup)="applyFilter($event.target.value)" i18n-placeholder="@@devicesFilter" placeholder="Devices Filter">
-
                         <a mat-icon-button
                            matSuffix
                            color="primary"
@@ -39,10 +37,11 @@
                     </div>
                     <mat-divider></mat-divider>
                 </mat-list-item>
-            </mat-nav-list>
 
+            </mat-nav-list>
             <mat-divider></mat-divider>
             <div id="chart0"></div>
+
         </div>
 
     </mat-sidenav>
