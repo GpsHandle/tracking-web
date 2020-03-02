@@ -1,8 +1,8 @@
 <mat-sidenav-container class="side-nav-container">
     <mat-sidenav #drawer class="sidenav" fixedInViewport
                  [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-                 [mode]="(isHandset$ | async) ? 'over' : 'side'"
-                 [opened]="(isHandset$ | async) === false">
+                 mode="{{sidenavMode$ | async}}"
+                 opened="{{sidenavOpened$ | async}}">
         <div class="rpt-nav-device" id = "deviceList">
             <mat-form-field class="rpt-device-filter">
                 <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Device Filter">

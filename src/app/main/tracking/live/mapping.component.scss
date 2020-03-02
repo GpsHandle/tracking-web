@@ -3,6 +3,7 @@
 @import "speed-chart/speed-chart.component";
 
 @mixin map-component($theme) {
+
   .side-nav-container {
     height: 100%;
   }
@@ -19,7 +20,7 @@
       display: flex;
       flex-direction: row;
       overflow-y: hidden;
-      height: 220px;
+      height: 500px;
       font-size: 14px;
       justify-content: space-between;
 
@@ -56,6 +57,32 @@
     max-width: $side-nav-width;
     top: 64px!important;
   }
+
+    @media (min-width: 481px) and (max-width: 767px) {
+
+        .side-nav-container mat-sidenav {
+            overflow-y: hidden;
+            width: 70%;
+            max-width: $side-nav-width;
+            top: 64px!important;
+        }
+
+    }
+
+    /*
+      ##Device = Most of the Smartphones Mobiles (Portrait)
+      ##Screen = B/w 320px to 479px
+    */
+
+    @media (min-width: 320px) and (max-width: 480px) {
+
+        .side-nav-container mat-sidenav {
+            overflow-y: hidden;
+            width: 70%;
+            max-width: $side-nav-width;
+            top: 64px!important;
+        }
+    }
 
   .m-dev {
     height: 100%;

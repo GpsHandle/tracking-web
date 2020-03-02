@@ -26,6 +26,7 @@ import {catchError, map, shareReplay, startWith, switchMap, take, takeUntil} fro
 import { ChartAPI } from 'c3';
 import { PrimitiveArray } from 'c3';
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
+import {MainFacade} from '../../../stores/root-store.facade';
 
 const TILE_OSM = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
 const TILE_MAPBOX = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
@@ -64,14 +65,19 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     selectedDevice: Device | any;
     selectedMarker: CircleMarker;
     currentMarker: L.Marker;
-
+    sidenavOpened$: Observable<boolean>;
+    sidenavMode$: Observable<string>;
     private notifier = new Subject<void>();
 
     constructor(private breakpointObserver: BreakpointObserver, private deviceService: DeviceService,
                 private eventService: EventService,
+                private mainFacade: MainFacade,
                 private applicationContext: ApplicationContext,
                 private popupLink: PopupService,
-                private bottomSheet: MatBottomSheet) { }
+                private bottomSheet: MatBottomSheet) {
+        this.sidenavMode$ = this.mainFacade.sidenavMode$;
+        this.sidenavOpened$ = this.mainFacade.sidenavOpened$;
+    }
 
     ngOnInit() {
         this.numberOfLoad = 0;
