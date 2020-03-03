@@ -1,7 +1,11 @@
 @import "../../assets/variables";
+
 @mixin main-component($theme) {
     .menu-spacer {
         flex: 1 1 auto;
+    }
+    mat-icon-button {
+        margin: 50px;
     }
 
 
@@ -27,5 +31,25 @@
     .main-progress-bar {
         height: 5px;
         z-index: 100;
+    }
+
+    @media (min-width: 481px) and (max-width: 767px) {
+        .mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
+            min-width: 50px !important;
+            padding: 0 !important;
+        }
+
+    }
+
+    /*
+      ##Device = Most of the Smartphones Mobiles (Portrait)
+      ##Screen = B/w 320px to 479px
+    */
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        .mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
+            min-width: 50px !important;
+            padding: 0 !important;
+        }
     }
 }

@@ -56,11 +56,20 @@ export class MainComponent implements OnInit, OnDestroy {
     }
 
     openSideNavForTracking() {
-        return this.mainFacade.openSideNav();
     }
 
     openSideNavForReport() {
-        return this.mainFacade.openSideNav();
+    }
+
+    openSideNavOnMobile() {
+        const urlRoute = this.router.url;
+        if (urlRoute.includes('tracking')) {
+            return this.mainFacade.openSideNav();
+        }
+        if (urlRoute.includes('report')) {
+            return this.mainFacade.openSideNav();
+
+        }
     }
 
 }

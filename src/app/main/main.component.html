@@ -39,11 +39,11 @@
 
     <mat-toolbar color="primary">
         <mat-toolbar-row>
-            <!--            <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>-->
-            <!--                <mat-icon>menu</mat-icon>-->
-            <!--            </button>-->
+                        <button (click)="openSideNavOnMobile()" mat-icon-button fxShow="true" fxHide.gt-sm>
+                            <mat-icon>menu</mat-icon>
+                        </button>
             <span>
-                <button mat-icon-button>
+                <button mat-icon-button fxHide.lt-lg>
                             <mat-icon>home</mat-icon>
                         </button>
             </span>
@@ -59,7 +59,7 @@
                 </a>
 
                 <button mat-button [matMenuTriggerFor]="menuAdministration">
-                    <mat-icon>setting</mat-icon>
+                    <mat-icon >setting</mat-icon>
                     <span i18n="@@administration" fxHide.lt-md>Administration</span>
                 </button>
                 <mat-menu #menuAdministration="matMenu" overlapTrigger="false">
