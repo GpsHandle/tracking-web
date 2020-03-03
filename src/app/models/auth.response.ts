@@ -9,6 +9,7 @@ export class AuthResponse {
     private _firstPageUrl: string;
     private _scope: string;
     private _token_type: string;
+    private _lang: string;
 
     get firstPageUrl(): string {
         return this._firstPageUrl;
@@ -81,5 +82,13 @@ export class AuthResponse {
 
     set token_type(value: string) {
         this._token_type = value;
+    }
+
+    get lang(): string {
+        return this._lang;
+    }
+
+    set lang(value: string) {
+        this.lang = value;
     }
 }

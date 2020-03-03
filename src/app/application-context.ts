@@ -13,7 +13,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Privilege } from 'app/models/privilege';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { ComponentPortal, DomPortalHost } from '@angular/cdk/portal';
+import {ComponentPortal, DomPortalHost, DomPortalOutlet} from '@angular/cdk/portal';
 import { SpinnerComponent } from 'app/pages/spinner/spinner.component';
 
 import { NavigationExtras } from '@angular/router/router';
@@ -28,7 +28,8 @@ const DEFAULT_REDIRECT_URL = '/main/tracking';
 export class ApplicationContext implements OnInit, OnDestroy {
 
     private readonly holderPortal: ComponentPortal<SpinnerComponent>;
-    private bodyPortal: DomPortalHost;
+    // private bodyPortal: DomPortalHost;
+    private bodyPortal: DomPortalOutlet;
 
     //------------------------------------------------------------------------------------------------------------------
     //--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--
@@ -43,6 +44,7 @@ export class ApplicationContext implements OnInit, OnDestroy {
     private _scope: string;
     private _token_type: string;
     private _firstPageUrl: string;
+    private _lang: string;
     //------------------------------------------------------------------------------------------------------------------
     //~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~
     //------------------------------------------------------------------------------------------------------------------
@@ -78,7 +80,7 @@ export class ApplicationContext implements OnInit, OnDestroy {
         this.populate();
 
         this.holderPortal = new ComponentPortal<SpinnerComponent>(SpinnerComponent);
-        this.bodyPortal = new DomPortalHost(
+        this.bodyPortal = new DomPortalOutlet(
             document.body,
             this.factoryResolver,
             this.appRef,
@@ -126,6 +128,7 @@ export class ApplicationContext implements OnInit, OnDestroy {
         if (result) {
             this.access_token       = result.access_token;
             this.accountId          = result.accountId;
+            this.lang               = result.lang;
             this.accountName        = result.accountName;
             this.authorities        = result.authorities;
             this.expires_in         = result.expires_in;
@@ -137,6 +140,7 @@ export class ApplicationContext implements OnInit, OnDestroy {
 
         this.myStorage.setItem('ACCESS_TOKEN', this.access_token);
         this.myStorage.setItem('ACCOUNT_ID', String(this.accountId));
+        this.myStorage.setItem('LANG', String(this.lang));
         this.myStorage.setItem('ACCOUNT_NAME', this.accountName);
         this.myStorage.setItem('AUTHORITIES', JSON.stringify(this.authorities));
         this.myStorage.setItem('EXPIRES_IN', String(this.expires_in));
@@ -152,6 +156,7 @@ export class ApplicationContext implements OnInit, OnDestroy {
         try {
             this.access_token       = this.myStorage.getItem('ACCESS_TOKEN');
             this.accountId          = parseInt(this.myStorage.getItem('ACCOUNT_ID'), 10);
+            this.lang               = this.myStorage.getItem('LANG');
             this.accountName        = this.myStorage.getItem('ACCOUNT_NAME');
             try {
                 this.authorities        = JSON.parse(this.myStorage.getItem('AUTHORITIES'));
@@ -167,31 +172,13 @@ export class ApplicationContext implements OnInit, OnDestroy {
 
             this.redirectURL = this.myStorage.getItem(redirectUrl);
         } catch (e) {
-            console.log(e);
+            // console.log(e);
         }
 
     }
 
     clear(): void {
-        this.access_token       = null;
-        this.accountId          = null;
-        this.accountName        = null;
-        this.authorities        = null;
-        this.expires_in         = null;
-        this.jti                = null;
-        this.scope              = null;
-        this.token_type         = null;
-        this.firstPageUrl       = null;
-
-        this.myStorage.setItem('ACCESS_TOKEN', this.access_token);
-        this.myStorage.setItem('ACCOUNT_ID', String(this.accountId));
-        this.myStorage.setItem('ACCOUNT_NAME', this.accountName);
-        this.myStorage.setItem('AUTHORITIES', JSON.stringify(this.authorities));
-        this.myStorage.setItem('EXPIRES_IN', String(this.expires_in));
-        this.myStorage.setItem('JTI', String(this.jti));
-        this.myStorage.setItem('SCOPE', this.scope);
-        this.myStorage.setItem('TOKEN_TYPE', this.token_type);
-        this.myStorage.setItem('FIRST_PAGE_URL', this.firstPageUrl);
+        this.myStorage.clearAll();
     }
 
     getRedirectURL() {
@@ -220,6 +207,10 @@ export class ApplicationContext implements OnInit, OnDestroy {
         return this.accountId;
     }
 
+    getLang(): string {
+        return this.lang ? this.lang : 'en';
+    }
+
     //------------------------------------------------------------------------------------------------------------------
     //~~
     //------------------------------------------------------------------------------------------------------------------
@@ -240,6 +231,8 @@ export class ApplicationContext implements OnInit, OnDestroy {
             return false;
         }
     }
+
+
 
     ngOnDestroy(): void {
         this.store()
@@ -311,6 +304,14 @@ export class ApplicationContext implements OnInit, OnDestroy {
 
     set accountId(value: number) {
         this._accountId = value;
+    }
+
+    get lang(): string {
+        return this._lang;
+    }
+
+    set lang(value: string) {
+        this._lang = value;
     }
 
     get accountName(): string {
