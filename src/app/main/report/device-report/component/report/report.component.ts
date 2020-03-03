@@ -22,7 +22,6 @@ import { EventLineChartComponent } from 'app/cutom-component/event-line-chart/ev
 export class ReportComponent implements OnInit {
     selectedTab: Tabs;
     selectedName: string;
-    tIcon: string = 'back';
 
     timerange: any;
     from: number = 0;
@@ -86,13 +85,6 @@ export class ReportComponent implements OnInit {
             this.dataChange.next(1);
         });
 
-    }
-
-    tonggleSidebar(e: any) {
-        e.stopPropagation();
-        this.deviceReportCommService.toggleSideNav();
-        this.tIcon = this.tIcon === 'sub-menu' ? 'back' : 'sub-menu';
-        this.dataChange.next(1);
     }
 
     timerangeChange() {

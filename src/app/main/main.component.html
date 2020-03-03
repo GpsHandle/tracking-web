@@ -86,9 +86,9 @@
                     </button>
 
                     <!--SystemAdmin-->
-                    <button mat-menu-item *showIfRole="'super'">
+                    <button mat-menu-item *showIfRole="'super'" routerLink="admin/unknown-device">
                         <mat-icon matListIcon>unknown</mat-icon>
-                        <a matLine routerLink="unknown-device" i18n="@@unknownDevices">Unknown Devices</a>
+                        <a matLine i18n="@@unknownDevices">Unknown Devices</a>
                     </button>
 
                 </mat-menu>

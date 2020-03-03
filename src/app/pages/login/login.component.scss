@@ -9,6 +9,20 @@
     min-width: 300px;
     padding: 16px;
 
+    .greetingLabel {
+      background-color: mat-color($primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: -16px -16px 16px;
+      line-height: 60px;
+      height: 60px;
+      font-size: 30px;
+      font-weight: 600;
+
+      color: white;
+    }
+
     mat-icon {
       color: gray;
     }

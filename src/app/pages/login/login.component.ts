@@ -4,6 +4,7 @@ import { AuthService } from 'app/services/auth.service';
 import { ApplicationContext} from 'app/application-context';
 import { AuthResponse } from 'app/models/auth.response';
 import { HttpErrorResponse } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'login',
@@ -12,19 +13,23 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
     model: any = {};
-
+    lang: string;
     constructor(private auth: AuthService,
                 private applicationContext: ApplicationContext) {}
 
     ngOnInit() {
-        if (this.applicationContext.isLoggedIn()) {
+        if (environment.production) {
+            if (this.applicationContext.isLoggedIn()) {
+                const redirectUrl = this.applicationContext.getRedirectURL();
+                this.applicationContext.navigate([redirectUrl]);
+            } else {
+                this.lang = this.applicationContext.getLang();
+                this.applicationContext.navigate([this.lang, 'login']);
+            }
+        } else if (this.applicationContext.isLoggedIn()) {
             const redirectUrl = this.applicationContext.getRedirectURL();
             this.applicationContext.navigate([redirectUrl]);
         }
-    }
-
-    hl(lang: string): void {
-        this.applicationContext.navigate(['/login'], {queryParams: {hl: lang}});
     }
 
     login(): void {

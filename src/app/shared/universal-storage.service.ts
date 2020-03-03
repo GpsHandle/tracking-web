@@ -23,6 +23,12 @@ export class UniversalStorage {
         }
     }
 
+    clearAll() {
+        if (this.isBrowser) {
+            localStorage.clear();
+        }
+    }
+
     isPlatformBrowser(): boolean {
         return this.isBrowser;
     }

@@ -2,9 +2,6 @@
     <mat-expansion-panel [expanded]="true" [hideToggle]="true">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                <button mat-icon-button (click)="tonggleSidebar($event)">
-                    <mat-icon>{{tIcon}}</mat-icon>
-                </button>
                 <span>{{selectedName}}</span>
             </mat-panel-title>
             <mat-panel-description>
@@ -29,8 +26,8 @@
         <mat-divider></mat-divider>
 
         <ng-template matExpansionPanelContent>
-            <div fxLayout="row" fxLayoutGap="16px">
-                <div fxFlex="20" class="d-rp-stat">
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
+                <div fxFlex.gt-xs="20" class="d-rp-stat">
                     <table>
                         <tr>
                             <td i18n="@@distance">Distant</td>
@@ -54,7 +51,7 @@
                         </tr>
                     </table>
                 </div>
-                <div fxFlex="80">
+                <div fxFlex.gt-xs="80">
                     <event-line-chart [eventList]="eventList"></event-line-chart>
                 </div>
             </div>

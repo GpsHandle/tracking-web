@@ -102,7 +102,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
 
                 layers: [
                     L.tileLayer(TILE_MAPBOX, {
-                        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>',
+                        attribution: '&copy; <a href="https://gpshandle.com">gpshandle.com</a>',
                         //id: 'mapbox.streets',
                         //accessToken: 'pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA'
                     })]

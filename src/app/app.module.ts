@@ -28,6 +28,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {environment} from '../environments/environment';
 import {storeFreeze} from 'ngrx-store-freeze';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {UniversalInterceptor} from "./interceptors/universal-interceptor";
 
 @NgModule({
     declarations: [
@@ -52,7 +53,8 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
         StoreModule.forRoot({}, {
             metaReducers: !environment.production ? [storeFreeze] : []
         }),
-        EffectsModule.forRoot([]), CustomDirectivesModule,
+        EffectsModule.forRoot([]),
+        CustomDirectivesModule,
         StoreDevtoolsModule.instrument({
             maxAge: 25 // Retains last 25 states
         }),
@@ -65,6 +67,11 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
         {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: UniversalInterceptor,
             multi: true
         },
         WINDOW_PROVIDERS
