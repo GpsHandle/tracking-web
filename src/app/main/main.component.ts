@@ -13,8 +13,8 @@ import {MainFacade} from '../stores/root-store.facade';
 })
 export class MainComponent implements OnInit, OnDestroy {
     accountName: string;
-    sidenavOpened$: Observable<boolean>;
-    sidenavMode$: Observable<string>;
+    // sidenavOpened$: Observable<boolean>;
+    // sidenavMode$: Observable<string>;
     isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
         .pipe(
             map(result => result.matches),
@@ -43,8 +43,8 @@ export class MainComponent implements OnInit, OnDestroy {
             this.mainFacade.setSideNavForMobile();
         }
 
-        this.sidenavMode$ = this.mainFacade.sidenavMode$;
-        this.sidenavOpened$ = this.mainFacade.sidenavOpened$;
+        // this.sidenavMode$ = this.mainFacade.sidenavMode$;
+        // this.sidenavOpened$ = this.mainFacade.sidenavOpened$;
     }
 
     ngOnDestroy(): void {

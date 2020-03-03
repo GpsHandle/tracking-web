@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { ChartAPI, PrimitiveArray } from 'c3';
+import {Component, OnInit} from '@angular/core';
+import {ChartAPI, PrimitiveArray} from 'c3';
 import * as c3 from 'c3';
 import * as d3 from 'd3';
-import { StatusPieChart } from 'app/models/status-pie-chart';
-import { DashboardService } from 'app/main/report/device-report/service/dashboard.service';
-import { Device } from 'app/models/device';
+import {StatusPieChart} from 'app/models/status-pie-chart';
+import {DashboardService} from 'app/main/report/device-report/service/dashboard.service';
+import {Device} from 'app/models/device';
 import * as _ from 'lodash';
-import { MappingUtils } from 'app/main/tracking/live/mapping-utils';
+import {MappingUtils} from 'app/main/tracking/live/mapping-utils';
 
 @Component({
     selector: 'app-dashboard',
@@ -17,13 +17,14 @@ export class DashboardComponent implements OnInit {
     private chart0: ChartAPI;
     private deviceList: Device[];
     private totalDevice: number;
-    private liveDev = new StatusPieChart(1,"Live", 0);
-    private idleDev = new StatusPieChart(2,"Idle", 0);
-    private stopDev = new StatusPieChart(3,"Stop", 0);
-    private deadDev = new StatusPieChart(3,"Dead", 0);
+    private liveDev = new StatusPieChart(1, 'Live', 0);
+    private idleDev = new StatusPieChart(2, 'Idle', 0);
+    private stopDev = new StatusPieChart(3, 'Stop', 0);
+    private deadDev = new StatusPieChart(3, 'Dead', 0);
 
 
-    constructor(private dashboardService: DashboardService) { }
+    constructor(private dashboardService: DashboardService) {
+    }
 
     ngOnInit() {
         this.dashboardService.deviceList$.subscribe(devices => {
@@ -53,7 +54,9 @@ export class DashboardComponent implements OnInit {
                 return device;
             });
 
-            this.draw();
+            setTimeout(() => {
+                this.draw();
+            })
         });
     }
 
@@ -77,10 +80,10 @@ export class DashboardComponent implements OnInit {
             },
             data: {
                 columns: [
-                    ['Live',    this.liveDev.count],
-                    ['IDLE',    this.idleDev.count],
+                    ['Live', this.liveDev.count],
+                    ['IDLE', this.idleDev.count],
                     ['Stopped', this.stopDev.count],
-                    ['Dead',    this.deadDev.count],
+                    ['Dead', this.deadDev.count],
                 ],
                 colors: {
                     Live: '#00e80e',
@@ -98,7 +101,7 @@ export class DashboardComponent implements OnInit {
             tooltip: {
                 format: {
                     value: function (value, ratio, id, index) {
-                        return value + "(" + d3.format(".0%")(ratio) + ")";
+                        return value + '(' + d3.format('.0%')(ratio) + ')';
                     }
                 }
             },
@@ -123,10 +126,10 @@ export class DashboardComponent implements OnInit {
 
     private updatePie() {
         const columns: Array<[string, ...PrimitiveArray]> = [
-            ['Live',    this.liveDev.count],
-            ['IDLE',    this.idleDev.count],
+            ['Live', this.liveDev.count],
+            ['IDLE', this.idleDev.count],
             ['Stopped', this.stopDev.count],
-            ['Dead',    this.deadDev.count],
+            ['Dead', this.deadDev.count],
         ];
         const cols = {
             columns: columns

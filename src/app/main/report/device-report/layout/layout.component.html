@@ -1,6 +1,5 @@
 <mat-sidenav-container class="side-nav-container">
     <mat-sidenav #drawer class="sidenav" fixedInViewport
-                 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                  mode="{{sidenavMode$ | async}}"
                  opened="{{sidenavOpened$ | async}}">
         <div class="rpt-nav-device" id = "deviceList">

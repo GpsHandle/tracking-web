@@ -4,7 +4,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { DeviceService } from 'app/services/device.service';
 import { ApplicationContext } from 'app/application-context';
 import { Observable } from 'rxjs';
-import {map, shareReplay, startWith} from 'rxjs/operators';
+import {map, shareReplay, startWith, tap} from 'rxjs/operators';
 import { DeviceReportCommService } from 'app/main/report/device-report/service/device-report-comm.service';
 import { Device } from 'app/models/device';
 import { DashboardService } from 'app/main/report/device-report/service/dashboard.service';
@@ -45,11 +45,13 @@ export class LayoutComponent implements OnInit {
             startWith([]),
             map(value => {
                 return value;
+            }),
+            tap((d) => {
+                this.dashboardService.cacheDevices(d);
             })
         ).subscribe(
             devices => {
                 this.deviceList = devices;
-                this.dashboardService.cacheDevices(devices);
             }
         );
 
