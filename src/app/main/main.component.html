@@ -1,53 +1,15 @@
 <div class="main">
-    <!--    <mat-toolbar color="primary" class="header mat-elevation-z3">-->
-    <!--        <button mat-icon-button>-->
-    <!--            <mat-icon>{{(isHandset$ | async) ? 'menu' : 'home'}}</mat-icon>-->
-    <!--        </button>-->
-    <!--        <button mat-button routerLink="tracking">-->
-    <!--            <mat-icon>geozone</mat-icon>-->
-    <!--            <span *ngIf="!(isHandset$ | async)" i18n="@@tracking">Tracking</span>-->
-    <!--        </button>-->
-
-    <!--        <button mat-button [routerLink]="['report']">-->
-    <!--        <mat-icon>report</mat-icon>-->
-    <!--        <span *ngIf="!(isHandset$ | async)" i18n="@@reports">Reports</span>-->
-    <!--        </button>-->
-
-    <!--        <button mat-button routerLink="admin/account">-->
-    <!--            <mat-icon>setting</mat-icon>-->
-    <!--            <span  *ngIf="!(isHandset$ | async)" i18n="@@administration">Administration</span>-->
-    <!--        </button>-->
-
-    <!--        <span class="fill-remain-space"></span>-->
-
-    <!--        <button mat-button [matMenuTriggerFor]="menuProfile">-->
-    <!--            <span>{{accountName}}</span>-->
-    <!--            <mat-icon>profile</mat-icon>-->
-    <!--        </button>-->
-    <!--        <mat-menu #menuProfile="matMenu" overlapTrigger="false">-->
-    <!--            <button mat-menu-item routerLink="profile">-->
-    <!--                <mat-icon>setting</mat-icon>-->
-    <!--                <span i18n="@@preferences">Preferences</span>-->
-    <!--            </button>-->
-    <!--            <button mat-menu-item (click)="logout()">-->
-    <!--                <mat-icon>logout</mat-icon>-->
-    <!--                <span i18n="@@logout">Logout</span>-->
-    <!--            </button>-->
-    <!--        </mat-menu>-->
-
-    <!--    </mat-toolbar>-->
-
     <mat-toolbar color="primary">
         <mat-toolbar-row>
-            <!--            <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>-->
-            <!--                <mat-icon>menu</mat-icon>-->
-            <!--            </button>-->
+                    <button (click)="openSideNavOnMobile()" mat-icon-button fxShow="true" fxHide.gt-sm>
+                        <mat-icon>menu</mat-icon>
+                    </button>
             <span>
-                <button mat-icon-button>
+                <button mat-icon-button fxHide.lt-lg>
                             <mat-icon>home</mat-icon>
                         </button>
             </span>
-            <span class="menu-spacer"></span>
+            <span class="fill-remain-space"></span>
             <div fxShow="true">
                 <a mat-button routerLink="tracking" (click)="openSideNavForTracking()">
                     <mat-icon>geozone</mat-icon>
@@ -59,7 +21,7 @@
                 </a>
 
                 <button mat-button [matMenuTriggerFor]="menuAdministration">
-                    <mat-icon>setting</mat-icon>
+                    <mat-icon >setting</mat-icon>
                     <span i18n="@@administration" fxHide.lt-md>Administration</span>
                 </button>
                 <mat-menu #menuAdministration="matMenu" overlapTrigger="false">
