@@ -15,40 +15,40 @@ export class LoginComponent implements OnInit {
     model: any = {};
     lang: string;
     constructor(private auth: AuthService,
-                private applicationContext: ApplicationContext) {}
+                private appCtx: ApplicationContext) {}
 
     ngOnInit() {
         if (environment.production) {
-            if (this.applicationContext.isLoggedIn()) {
-                const redirectUrl = this.applicationContext.getRedirectURL();
-                this.applicationContext.navigate([redirectUrl]);
+            if (this.appCtx.isLoggedIn()) {
+                const redirectUrl = this.appCtx.getRedirectURL();
+                this.appCtx.navigate([redirectUrl]);
             } else {
-                this.lang = this.applicationContext.getLang();
-                this.applicationContext.navigate([this.lang, 'login']);
+                this.lang = this.appCtx.getLang();
+                this.appCtx.navigate(['login']);
             }
-        } else if (this.applicationContext.isLoggedIn()) {
-            const redirectUrl = this.applicationContext.getRedirectURL();
-            this.applicationContext.navigate([redirectUrl]);
+        } else if (this.appCtx.isLoggedIn()) {
+            const redirectUrl = this.appCtx.getRedirectURL();
+            this.appCtx.navigate([redirectUrl]);
         }
     }
 
     login(): void {
-        this.applicationContext.spin(true);
+        this.appCtx.spin(true);
         this.auth.login(this.model.username, this.model.password).subscribe(
             (result: AuthResponse) => {
-                this.applicationContext.spin(false);
-                this.applicationContext.store(result);
-                const redirectUrl = this.applicationContext.getRedirectURL();
-                this.applicationContext.navigate([redirectUrl]);
+                this.appCtx.spin(false);
+                this.appCtx.store(result);
+                const redirectUrl = this.appCtx.getRedirectURL();
+                this.appCtx.navigate([redirectUrl]);
             },
             (err: any) => {
                 if (err instanceof HttpErrorResponse) {
-                    this.applicationContext.error(err.error.error_description || err.message);
+                    this.appCtx.error(err.error.error_description || err.message);
                 } else {
-                    this.applicationContext.error(err);
+                    this.appCtx.error(err);
                 }
 
-                this.applicationContext.spin(false);
+                this.appCtx.spin(false);
             },
             () => {}
         );
