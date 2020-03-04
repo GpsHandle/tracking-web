@@ -10,7 +10,6 @@ export class UniversalInterceptor implements HttpInterceptor {
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log('Interceptor ...');
         let serverReq: HttpRequest<any> = req;
         if (this.request) {
             let newUrl = `${this.request.protocol}://${this.request.get('host')}`;

@@ -217,6 +217,15 @@ export class ApplicationContext implements OnInit, OnDestroy {
     logout() {
         this.redirectURL = '';
         this.clear();
+        this.access_token       = null;
+        this.accountId          = null;
+        this.accountName        = null;
+        this.authorities        = null;
+        this.expires_in         = null;
+        this.jti                = null;
+        this.scope              = null;
+        this.token_type         = null;
+        this.firstPageUrl       = null;
     }
 
     navigate(commands: any[], extras?: NavigationExtras) {
@@ -225,7 +234,7 @@ export class ApplicationContext implements OnInit, OnDestroy {
 
     isLoggedIn(): boolean {
         try {
-            const decoded: any = jwt(this._access_token);
+            const decoded: any = jwt(this.access_token);
             return decoded.exp > Date.now()/1000;
         } catch (e) {
             return false;

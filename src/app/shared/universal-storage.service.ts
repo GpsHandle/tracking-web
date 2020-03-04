@@ -7,6 +7,7 @@ import { isPlatformBrowser } from '@angular/common';
 export class UniversalStorage {
 
     private isBrowser: boolean;
+    private keys = [];
     constructor(@Inject(PLATFORM_ID) private platformId: Object) {
         this.isBrowser = isPlatformBrowser(this.platformId);
     }
@@ -14,6 +15,7 @@ export class UniversalStorage {
     setItem(k: string, v: string) {
         if (this.isBrowser) {
             localStorage.setItem(k, v);
+            this.keys.push(k);
         }
     }
 
@@ -24,9 +26,7 @@ export class UniversalStorage {
     }
 
     clearAll() {
-        if (this.isBrowser) {
-            localStorage.clear();
-        }
+        localStorage.clear();
     }
 
     isPlatformBrowser(): boolean {
