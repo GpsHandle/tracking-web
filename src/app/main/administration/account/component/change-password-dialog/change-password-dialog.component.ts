@@ -3,7 +3,7 @@ import {ApplicationContext} from "../../../../../application-context";
 import {Account} from "../../../../../models/account";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {AccountService} from "../../../../../services/account.service";
-import {AccountRequest} from "../../../../../models/request/account.request";
+import {ChangePasswdRequest} from "../../../../../models/change-passwd.request";
 
 @Component({
     selector: 'app-change-password-dialog',
@@ -13,7 +13,7 @@ import {AccountRequest} from "../../../../../models/request/account.request";
 export class ChangePasswordDialogComponent implements OnInit {
     password: string;
     re_password: string;
-    constructor(private applicationContext: ApplicationContext,
+    constructor(private appCtx: ApplicationContext,
                 private accountService: AccountService,
                 public dialogRef: MatDialogRef<ChangePasswordDialogComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: Account | any) { }
@@ -22,13 +22,13 @@ export class ChangePasswordDialogComponent implements OnInit {
     }
 
     onSave() {
-        const acct = new AccountRequest();
-        acct.id = this.data.id;
-        acct.password = this.data.password;
-        this.data.password = this.password;
-        this.accountService.update(this.data.id, acct).subscribe(
+        const request = new ChangePasswdRequest();
+        request.id = this.data.id;
+        request.password = this.password;
+        request.rePassword = this.re_password;
+        this.accountService.changePassword(request).subscribe(
             data => {
-                this.applicationContext.info("Password was updated successful");
+                this.appCtx.info("Password was updated successful");
                 this.dialogRef.close();
             }
         );

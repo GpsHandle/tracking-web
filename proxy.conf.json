@@ -1,13 +1,13 @@
 {
   "/oauth": {
-    "target": "https://dashboard.gpshandle.com",
+    "target": "http://localhost:8081",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "info"
   },
 
   "/api": {
-    "target": "https://dashboard.gpshandle.com",
+    "target": "http://localhost:8081",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "info"

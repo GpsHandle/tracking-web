@@ -6,6 +6,7 @@ import { AbstractService } from 'app/services/abstract.service';
 import { AccountRequest } from 'app/models/request/account.request';
 import { Observable } from 'rxjs';
 import {SmtpProperties} from "../models/smtp-properties";
+import {ChangePasswdRequest} from "../models/change-passwd.request";
 
 export const ACCOUNT_API_URL = '/api/account';
 
@@ -18,6 +19,11 @@ export class AccountService extends AbstractService<AccountRequest, Account> {
     getAllStatus(): Observable<string[]> {
         const url = ACCOUNT_API_URL + '/status';
         return this.http.get<string[]>(url);
+    }
+
+    changePassword(model: ChangePasswdRequest): Observable<void> {
+        const url = ACCOUNT_API_URL + '/changePasswd';
+        return this.http.put<void>(url, model);
     }
 
     createNewSmtp(accountId: number, aNewSmtpServer: SmtpProperties) {

@@ -2,39 +2,46 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="greetingLabel" datatype="html">
+        <source>Tracking Made Simple</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/login.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="yourUsername" datatype="html">
         <source>Your Usermame</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/login/login.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="yourPassword" datatype="html">
         <source>Your Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/login/login.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login" datatype="html">
         <source>Login</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/login/login.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="demo" datatype="html">
         <source>Demo</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/login/login.component.html</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="register" datatype="html">
         <source>Register</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/login/login.component.html</context>
-          <context context-type="linenumber">20</context>
+          <context context-type="linenumber">21</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/register/register.component.html</context>
@@ -45,7 +52,7 @@
         <source>Forgot Password ?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/login/login.component.html</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="notFoundPageText" datatype="html">
@@ -287,7 +294,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/tracking/live/mapping.component.html</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">81</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/tracking/history/history.component.html</context>
@@ -322,35 +329,77 @@
         <source>Tracking</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/main.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports" datatype="html">
         <source>Reports</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/main.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="administration" datatype="html">
         <source>Administration</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/main.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="account" datatype="html">
+        <source>Account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="manageDevices" datatype="html">
+        <source>Manage Devices</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="manageDriver" datatype="html">
+        <source>Manage Driver</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="geozone" datatype="html">
+        <source>Geozone</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="alertProfile" datatype="html">
+        <source>Alert Profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unknownDevices" datatype="html">
+        <source>Unknown Devices</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="preferences" datatype="html">
         <source>Preferences</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/main.component.html</context>
-          <context context-type="linenumber">30</context>
+          <context context-type="linenumber">67</context>
         </context-group>
       </trans-unit>
       <trans-unit id="logout" datatype="html">
         <source>Logout</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/main.component.html</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">71</context>
         </context-group>
       </trans-unit>
       <trans-unit id="accountName" datatype="html">
@@ -438,7 +487,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/tracking/live/mapping.component.html</context>
-          <context context-type="linenumber">62</context>
+          <context context-type="linenumber">61</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/report/device-report/component/speed/speed.component.html</context>
@@ -552,7 +601,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/tracking/live/mapping.component.html</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">77</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/tracking/history/history.component.html</context>
@@ -602,7 +651,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/tracking/live/mapping.component.html</context>
-          <context context-type="linenumber">70</context>
+          <context context-type="linenumber">69</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/report/device-report/component/speed/speed.component.html</context>
@@ -625,7 +674,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/tracking/live/mapping.component.html</context>
-          <context context-type="linenumber">87</context>
+          <context context-type="linenumber">86</context>
         </context-group>
       </trans-unit>
       <trans-unit id="history" datatype="html">
@@ -739,42 +788,42 @@
         <source>Devices Filter</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/tracking/live/mapping.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="liveTrackingSpeed" datatype="html">
         <source>Speed <x id="INTERPOLATION" equiv-text="{{device.speedKph}}"/> km/h <x id="INTERPOLATION_1" equiv-text="{{device.lastUpdateTimeInWords}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/tracking/live/mapping.component.html</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="lastEvent" datatype="html">
         <source>Last Event</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/tracking/live/mapping.component.html</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">73</context>
         </context-group>
       </trans-unit>
       <trans-unit id="viewDeviceHistory" datatype="html">
         <source>View Device History</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/tracking/live/mapping.component.html</context>
-          <context context-type="linenumber">97</context>
+          <context context-type="linenumber">96</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sendCommand" datatype="html">
         <source>Send Command</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/tracking/live/mapping.component.html</context>
-          <context context-type="linenumber">101</context>
+          <context context-type="linenumber">100</context>
         </context-group>
       </trans-unit>
       <trans-unit id="viewDeviceReport" datatype="html">
         <source>View Device Report</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/tracking/live/mapping.component.html</context>
-          <context context-type="linenumber">105</context>
+          <context context-type="linenumber">104</context>
         </context-group>
       </trans-unit>
       <trans-unit id="last1Hours" datatype="html">
@@ -792,7 +841,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/report/device-report/component/report/report.component.html</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="last8Hours" datatype="html">
@@ -803,7 +852,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/report/device-report/component/report/report.component.html</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="last24Hours" datatype="html">
@@ -814,7 +863,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/report/device-report/component/report/report.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="last2days" datatype="html">
@@ -839,7 +888,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/report/device-report/component/report/report.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="deviceName" datatype="html">
@@ -1133,105 +1182,56 @@
         <source>Last 3 days</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/report/device-report/component/report/report.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="distance" datatype="html">
         <source>Distant</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/report/device-report/component/report/report.component.html</context>
-          <context context-type="linenumber">36</context>
+          <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="totalEvents" datatype="html">
         <source>Total Events</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/report/device-report/component/report/report.component.html</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="fuelConsumed" datatype="html">
         <source>Fuel consumed</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/report/device-report/component/report/report.component.html</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="batteryConsumed" datatype="html">
         <source>Battery consumed</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/report/device-report/component/report/report.component.html</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="averageSpeed" datatype="html">
         <source>Average speed</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/report/device-report/component/report/report.component.html</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="parkingReport" datatype="html">
         <source>Parking Report</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/report/device-report/component/report/report.component.html</context>
-          <context context-type="linenumber">68</context>
+          <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="speedReport" datatype="html">
         <source>Speed Report</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/main/report/device-report/component/report/report.component.html</context>
-          <context context-type="linenumber">71</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="alertHistory" datatype="html">
-        <source>Alert History</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/report/device-report/component/report/report.component.html</context>
-          <context context-type="linenumber">77</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="account" datatype="html">
-        <source>Account</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/layout/administration.component.html</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="manageDevices" datatype="html">
-        <source>Manage Devices</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/layout/administration.component.html</context>
-          <context context-type="linenumber">14</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="manageDriver" datatype="html">
-        <source>Manage Driver</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/layout/administration.component.html</context>
-          <context context-type="linenumber">18</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="geozone" datatype="html">
-        <source>Geozone</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/layout/administration.component.html</context>
-          <context context-type="linenumber">22</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="alertProfile" datatype="html">
-        <source>Alert Profile</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/layout/administration.component.html</context>
-          <context context-type="linenumber">26</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="unknownDevices" datatype="html">
-        <source>Unknown Devices</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/main/administration/layout/administration.component.html</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit>
       <trans-unit id="modifyingAccount" datatype="html">

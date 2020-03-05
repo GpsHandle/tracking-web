@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from 'app/main/administration/account/component/account-list/account.component';
 import {EditAccountComponent} from "./component/account-edit/edit-account.component";
 import {AuthGuard} from "../../../guards/auth.guard";
-import {AccountUpdateComponent} from "./component/account-update/account-update.component";
+import {AccountUpdateComponent} from "./component/account-add/account-update.component";
 
 const routes: Routes = [
     {
