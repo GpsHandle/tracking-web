@@ -21,6 +21,8 @@ export class MainComponent implements OnInit, OnDestroy {
             shareReplay()
         );
 
+    oldScreenWidth: number;
+
     constructor(private ngZone: NgZone,
                 private mainFacade: MainFacade,
                 private breakpointObserver: BreakpointObserver,
@@ -35,18 +37,26 @@ export class MainComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.accountName = this.app.accountName;
+        this.oldScreenWidth = window.innerWidth;
         this.handleResizeWindow(window.innerWidth);
     }
 
     private handleResizeWindow(screenWidth: number) {
-        if (800 < screenWidth) {
+        console.log('change Size ...', this.oldScreenWidth, screenWidth)
+        if (!this.isMobile(screenWidth)) {
             this.mainFacade.setSideNavForPc();
-        } else {
+            this.oldScreenWidth = screenWidth;
+        } else if (!this.isMobile(this.oldScreenWidth)) {
             this.mainFacade.setSideNavForMobile();
+            this.oldScreenWidth = screenWidth;
         }
 
         // this.sidenavMode$ = this.mainFacade.sidenavMode$;
         // this.sidenavOpened$ = this.mainFacade.sidenavOpened$;
+    }
+
+    private isMobile(screenWidth: number): boolean {
+        return screenWidth < 800;
     }
 
     ngOnDestroy(): void {

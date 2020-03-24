@@ -5,12 +5,12 @@
         <div class="m-dev">
             <div class="m-dev-header">
                 <mat-form-field class="m-dev-filter">
-                    <input matInput (keyup)="applyFilter($event.target.value)" i18n-placeholder="@@devicesFilter" placeholder="Devices Filter">
+                    <input matInput [(ngModel)]="deviceFilterText" i18n-placeholder="@@devicesFilter" placeholder="Devices Filter" #deviceFilter>
                         <a mat-icon-button
                            matSuffix
                            color="primary"
-                           [routerLink]="['/', 'main', 'admin', 'device', 'add']">
-                            <mat-icon>add</mat-icon>
+                           (click)="searchDeviceList()">
+                            <mat-icon>search</mat-icon>
                         </a>
                 </mat-form-field>
             </div>

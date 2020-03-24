@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import * as d3 from 'd3';
 import * as c3 from 'c3';
-import { Component, OnDestroy, OnInit, AfterViewInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, AfterViewInit, ViewChild} from '@angular/core';
 
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
@@ -27,6 +27,7 @@ import { ChartAPI } from 'c3';
 import { PrimitiveArray } from 'c3';
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {MainFacade} from '../../../stores/root-store.facade';
+import {MatInput} from "@angular/material/input";
 
 const TILE_OSM = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
 const TILE_MAPBOX = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
@@ -37,18 +38,13 @@ const TILE_MAPBOX = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.
     styleUrls: ['./mapping.component.scss']
 })
 export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
-    isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-        .pipe(
-            map(result => result.matches),
-            shareReplay()
-        );
     // liveEvents: EventData[];
     customDefault: L.Icon;
     map: L.Map;
 
     numberOfLoad: number = 0;
     markersCluster: MarkerClusterGroup;
-
+    deviceFilterText: string;
     deviceList: Device[];
     allDeviceList: Device[];
 
@@ -175,8 +171,16 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                 if (this.numberOfLoad === 1) {
                     this.applicationContext.spin(false);
                 }
-                this.deviceList = _.filter(this.allDeviceList, (d) => {
-                    return true;
+
+                this.deviceList = _.filter(this.allDeviceList, (dev: Device) => {
+                    if (this.deviceFilterText) {
+                        return (dev.name && _.includes(dev.name, this.deviceFilterText)) ||
+                            (dev.deviceId && _.includes(dev.deviceId, this.deviceFilterText)) ||
+                            (dev.lastAddress && _.includes(dev.lastAddress, this.deviceFilterText));
+                    } else {
+                        return true;
+                    }
+
                 });
 
                 data.forEach((device, index) => {
@@ -268,14 +272,6 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
         return popup;
     }
 
-    applyFilter(filterValue: string) {
-        filterValue = filterValue.trim(); // Remove whitespace
-        this.deviceList = _.filter(this.allDeviceList, (dev: Device) => {
-            return (dev.name && _.includes(dev.name, filterValue)) ||
-                (dev.deviceId && _.includes(dev.deviceId, filterValue)) ||
-                (dev.lastAddress && _.includes(dev.lastAddress, filterValue));
-        });
-    }
 
     //--
     selectThisDevice(event: any, device: Device | any): void {
@@ -402,5 +398,16 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
         d3.select('#chart0 .c3-chart-arcs-title')
             .attr('font-size', '2em')
             .text(() => this.totalDevice);
+    }
+
+
+
+    searchDeviceList() {
+        this.deviceFilterText = this.deviceFilterText.trim(); // Remove whitespace
+        this.deviceList = _.filter(this.allDeviceList, (dev: Device) => {
+            return (dev.name && _.includes(dev.name, this.deviceFilterText)) ||
+                (dev.deviceId && _.includes(dev.deviceId, this.deviceFilterText)) ||
+                (dev.lastAddress && _.includes(dev.lastAddress, this.deviceFilterText));
+        });
     }
 }

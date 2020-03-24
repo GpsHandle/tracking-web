@@ -23,12 +23,16 @@ export class CommandComponent implements OnInit {
     }
 
     send() {
-        this.deviceService.sendCommand(this.data.id, this.cmdStr).subscribe(
-            response => {
-                this.bottomSheetRef.dismiss();
-                this.applicationContext.info('Command sent!');
-            }
-        )
+        if (!!this.cmdStr) {
+            this.deviceService.sendCommand(this.data.id, this.cmdStr).subscribe(
+                response => {
+                    this.bottomSheetRef.dismiss();
+                    this.applicationContext.info('Command sent!');
+                }
+            )
+        } else {
+            this.applicationContext.error('Please enter cmd string!');
+        }
     }
 
     cancel() {

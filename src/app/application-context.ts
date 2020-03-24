@@ -252,12 +252,12 @@ export class ApplicationContext implements OnInit, OnDestroy {
     //-- toast
     //------------------------------------------------------------------------------------------------------------------
     info(message: string): void {
-        const config = this._createConfig(false);
+        const config = ApplicationContext._createConfig(false);
         this.snackBar.open(message, null, config);
     }
 
     error(message: string | HttpErrorResponse): void {
-        const config = this._createConfig(true);
+        const config = ApplicationContext._createConfig(true);
 
         if (message instanceof HttpErrorResponse) {
             this.snackBar.open(message.error.message || message.message, null, config);
@@ -266,7 +266,7 @@ export class ApplicationContext implements OnInit, OnDestroy {
         }
     }
 
-    private _createConfig(isError?: boolean) {
+    private static _createConfig(isError?: boolean) {
         const config = new MatSnackBarConfig();
         config.verticalPosition = 'bottom';
         config.horizontalPosition = 'right';
