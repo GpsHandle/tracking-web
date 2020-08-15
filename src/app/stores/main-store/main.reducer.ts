@@ -1,4 +1,4 @@
-import {SideNavState} from './main.models';
+import {SideNavState} from './main.state';
 import {Action, createReducer, on} from '@ngrx/store';
 import * as SideNavActions from './main.actions';
 

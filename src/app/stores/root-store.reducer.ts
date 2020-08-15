@@ -1,4 +1,4 @@
-import {SideNavState} from './main-store/main.models';
+import {SideNavState} from './main-store/main.state';
 import {
     initialState as sideNavInitialState, reducerSideNav,
 } from './main-store/main.reducer'
