@@ -55,7 +55,7 @@ export class AddEditAlertProfileComponent implements OnInit {
         );
 
         if (!this.data.name) {
-            this.data.catalog = 'eventual';
+            this.data.catalog = 'EVENTUALLY';
             this.data.type = AlertType.ALERT_GEOFENCE_IN;
             this.data.active = true;
         }
