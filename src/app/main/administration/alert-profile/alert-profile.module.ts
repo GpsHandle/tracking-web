@@ -11,6 +11,7 @@ import { DeleteAlertProfileComponent } from './component/delete-alert-profile/de
 import { GeozoneService } from 'app/services/geozone.service';
 import { AlertProfileEditComponent } from './component/alert-profile-edit/alert-profile-edit.component';
 import { AlertProfileAddComponent } from './component/alert-profile-add/alert-profile-add.component';
+import { AssignToDeviceComponent } from './component/assign-to-device/assign-to-device.component';
 
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import { AlertProfileAddComponent } from './component/alert-profile-add/alert-pr
         AddEditAlertProfileComponent,
         DeleteAlertProfileComponent,
         AlertProfileEditComponent,
-        AlertProfileAddComponent
+        AlertProfileAddComponent,
+        AssignToDeviceComponent
     ],
     entryComponents: [
         AddEditAlertProfileComponent,

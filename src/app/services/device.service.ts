@@ -9,7 +9,10 @@ import { DeviceLittle } from 'app/models/little/device.little';
 
 const API_DEVICE_PATH = '/api/device';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
+
 export class DeviceService extends AbstractService<DeviceRequest, Device> {
     constructor(private http: HttpClient, private router: Router) {
         super(http, router, API_DEVICE_PATH);

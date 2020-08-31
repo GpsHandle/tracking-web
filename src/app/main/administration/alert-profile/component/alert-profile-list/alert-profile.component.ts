@@ -6,13 +6,16 @@ import { AddEditAlertProfileComponent } from 'app/main/administration/alert-prof
 import { AlertProfileRequest } from 'app/models/request/alert-profile.request';
 import { AlertProfileService } from 'app/services/alert-profile.service';
 import { ApplicationContext } from 'app/application-context';
-import { ReplaySubject } from 'rxjs';
+import {forkJoin, ReplaySubject} from 'rxjs';
 import { AlertProfile } from 'app/models/alert-profile';
 import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { DeleteAlertProfileComponent } from 'app/main/administration/alert-profile/component/delete-alert-profile/delete-alert-profile.component';
 import { PageableCommonResponse } from 'app/models/pageable-common.response';
+import {AssignToDeviceComponent} from "../assign-to-device/assign-to-device.component";
+import {DeviceService} from "../../../../../services/device.service";
+import {Device} from "../../../../../models/device";
 
 @Component({
     selector: 'app-alert-profile',
@@ -29,6 +32,7 @@ import { PageableCommonResponse } from 'app/models/pageable-common.response';
 export class AlertProfileComponent implements OnInit {
 
     constructor(public dialog: MatDialog,
+                private deviceService: DeviceService,
                 private applicationContext: ApplicationContext,
                 private alertProfileService: AlertProfileService) { }
 
@@ -43,7 +47,17 @@ export class AlertProfileComponent implements OnInit {
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
 
+    devices: Device[];
+
     ngOnInit() {
+        // prepare data
+        forkJoin([
+            this.deviceService.getAll()
+        ]).subscribe(results => {
+            this.devices = results[0];
+        });
+
+
         this.change = new ReplaySubject(1);
         this.sort.sortChange.subscribe(() => {
             this.paginator.pageIndex = 0;
@@ -171,5 +185,18 @@ export class AlertProfileComponent implements OnInit {
 
     applyFilter(value: string) {
 
+    }
+
+    dialogAssignToDevice(alertProfile: AlertProfile): void {
+        const dialogRef = this.dialog.open(AssignToDeviceComponent, {
+            minWidth: 400,
+            data: {
+                alert: alertProfile,
+                devices: this.devices
+            }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('result', result);
+        });
     }
 }
