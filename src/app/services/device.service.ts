@@ -32,4 +32,9 @@ export class DeviceService extends AbstractService<DeviceRequest, Device> {
         const url = API_DEVICE_PATH + '/' + id + '/cmd';
         return this.http.post(url, cmdStr);
     }
+
+    toggleAlertProfile(params: any): Observable<any> {
+        const url = API_DEVICE_PATH + '/toggle-alert';
+        return this.http.post(url, params);
+    }
 }

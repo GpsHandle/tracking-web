@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Device} from "../../../../../models/device";
 import {map, startWith, switchMap} from "rxjs/operators";
 import {ApplicationContext} from "../../../../../application-context";
@@ -14,6 +14,10 @@ import * as _ from "lodash";
 import {AccountLittle} from "../../../../../models/little/account.little";
 import {AlertProfileLittle} from "../../../../../models/little/alert-profile.little";
 import {DeviceRequest} from "../../../../../models/request/device.request";
+import {MatTableDataSource} from "@angular/material/table";
+import {SelectionModel} from "@angular/cdk/collections";
+import {MatPaginator} from "@angular/material/paginator";
+import {MatSort} from "@angular/material/sort";
 
 @Component({
     selector: 'app-device-view-edit',
@@ -33,6 +37,15 @@ export class DeviceViewEditComponent implements OnInit {
     statusControl: FormControl = new FormControl();
     accountList: Observable<Account[]>;
     alertProfileList: Observable<AlertProfile[]>;
+    displayedColumns: string[] = [
+        'toggle', 'name', 'description', 'category'
+    ];
+    @ViewChild('paginator', {read: MatPaginator, static: true}) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
+    selection = new SelectionModel<number>(true, []);
+
+    resultsLength = 0;
+    dataSource: MatTableDataSource<Device> | null;
     constructor(private applicationContext: ApplicationContext,
                 private route: ActivatedRoute, private deviceService: DeviceService,
                 private accountService: AccountService,
@@ -54,6 +67,9 @@ export class DeviceViewEditComponent implements OnInit {
             });
 
             this.alertIds = _.map(this.data.alertProfiles, (alert: AlertProfileLittle) => alert.id);
+            _.forEach(this.data.alertProfiles, x => {
+                this.selection.select(x.id)
+            });
             this.dateExpired = this.data.expiredOn ? new Date(this.data.expiredOn) : null;
         });
 
@@ -98,5 +114,28 @@ export class DeviceViewEditComponent implements OnInit {
 
     cancel() {
 
+    }
+
+    checkStatus(element: any) {
+        
+    }
+
+    toggleAlertProfile(row: AlertProfile) {
+        this.selection.toggle(row.id);
+        let params: any = {
+            deviceId: this.deviceId,
+            alertProfileId: row.id,
+        };
+        if (this.selection.isSelected(row.id)) {
+            params.action = 'add';
+        } else {
+            params.action = 'delete';
+        }
+        this.deviceService.toggleAlertProfile(params).subscribe(data => console.log('Changed alertProfile'));
+    }
+
+    /** The label for the checkbox on the passed row */
+    checkboxLabel(row?: AlertProfile): string {
+        return `${this.selection.isSelected(row.id) ? 'deselect' : 'select'} row ${row.id}`;
     }
 }
