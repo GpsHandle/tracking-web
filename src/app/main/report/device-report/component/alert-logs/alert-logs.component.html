@@ -62,7 +62,7 @@
         </ng-container>
 
         <ng-container matColumnDef="cannedAction">
-            <th mat-header-cell * i18n="@@cannedAction">Canned Action</th>
+            <th mat-header-cell *matHeaderCellDef i18n="@@cannedAction">Canned Action</th>
             <td mat-cell *matCellDef="let row">{{ row.cannedAction }}</td>
         </ng-container>
 
@@ -86,9 +86,11 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
     <ng-container *ngIf="ngNoData | async" class="no-records">
         <p i18n="@@thereIsNoData">There is no data</p>
     </ng-container>
+
     <mat-paginator [length]="resultsLength" [pageSize]="30">
     </mat-paginator>
 </div>

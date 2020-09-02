@@ -44,7 +44,7 @@ export class DeviceReportService {
 
     getAlertLogs(device: number, from: number, to: number, page: number, size: number, sort: string, order: string): Observable<PageableCommonResponse<AlertEventLog>> {
         let url = API_REPORT_ALERT_PATH + device;
-
+        console.log("Come Here!", url);
         let params = new HttpParams();
         params = params.append('from', String(from));
         params = params.append('to', String(to));

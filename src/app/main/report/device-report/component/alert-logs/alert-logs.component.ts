@@ -13,7 +13,7 @@ import { PageableCommonResponse } from 'app/models/pageable-common.response';
     templateUrl: './alert-logs.component.html',
     styleUrls: ['./alert-logs.component.scss']
 })
-export class AlertLogsComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy {
+export class AlertLogsComponent implements OnChanges, OnInit, AfterViewInit {
     private _device: number;
     private _from: number;
     private _to: number;
@@ -21,9 +21,9 @@ export class AlertLogsComponent implements OnChanges, OnInit, AfterViewInit, OnD
     dataSource: MatTableDataSource<AlertEventLog>;
     resultsLength: number;
     dataChange: ReplaySubject<number>;
-    private unsubscribe$ = new Subject<void>();
 
     displayedColumns = [
+        'id',
         'alertName',
         'alertDescription',
         'latlng',
@@ -84,17 +84,21 @@ export class AlertLogsComponent implements OnChanges, OnInit, AfterViewInit, OnD
     }
 
     ngAfterViewInit(): void {
+        console.log("Come Here!");
         this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
         merge(this.sort.sortChange, this.paginator.page, this.dataChange)
         .pipe(
-            takeUntil(this.unsubscribe$),
             startWith([]),
             switchMap(() => {
                 if (!this.device) {
                     return observableOf([]);
                 }
-                return this.deviceReportService!.getAlertLogs(this.device, this.from, this.to,
-                    this.paginator.pageIndex, this.paginator.pageSize,this.sort.active, this.sort.direction);
+                return this.deviceReportService.getAlertLogs(
+                    this.device, this.from, this.to,
+                    this.paginator.pageIndex,
+                    this.paginator.pageSize,
+                    this.sort.active,
+                    this.sort.direction);
             }),
             map((data: PageableCommonResponse<AlertEventLog>) => {
                 this.resultsLength = data.totalElements;
@@ -106,10 +110,5 @@ export class AlertLogsComponent implements OnChanges, OnInit, AfterViewInit, OnD
         ).subscribe(
             data => {this.dataSource.data = data;}
         );
-    }
-
-    ngOnDestroy(): void {
-        this.unsubscribe$.next();
-        this.unsubscribe$.complete();
     }
 }
