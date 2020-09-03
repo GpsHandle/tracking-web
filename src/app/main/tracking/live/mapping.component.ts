@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import * as d3 from 'd3';
 import * as c3 from 'c3';
-import {Component, OnDestroy, OnInit, AfterViewInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, AfterViewInit} from '@angular/core';
 
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
@@ -21,13 +21,12 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { CommandComponent } from 'app/main/tracking/live/command/command.component';
 import { ApplicationContext } from 'app/application-context';
 import { Device } from 'app/models/device';
-import {Observable, of as observableOf, Subject, timer} from 'rxjs';
-import {catchError, map, shareReplay, startWith, switchMap, take, takeUntil} from 'rxjs/operators';
+import {Observable, of as observableOf, Subject} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
 import { ChartAPI } from 'c3';
 import { PrimitiveArray } from 'c3';
-import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
+import {BreakpointObserver} from "@angular/cdk/layout";
 import {MainFacade} from '../../../stores/root-store.facade';
-import {MatInput} from "@angular/material/input";
 
 const TILE_OSM = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
 const TILE_MAPBOX = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
@@ -63,7 +62,8 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     currentMarker: L.Marker;
     sidenavOpened$: Observable<boolean>;
     sidenavMode$: Observable<string>;
-    private notifier = new Subject<void>();
+
+    private interval: any;
 
     constructor(private breakpointObserver: BreakpointObserver, private deviceService: DeviceService,
                 private eventService: EventService,
@@ -77,7 +77,9 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
 
     ngOnInit() {
         this.numberOfLoad = 0;
+
         this.loadLivesEvent();
+        this.interval = setInterval(() => this.loadLivesEvent(), 10000);
     }
 
     ngAfterViewInit(): void {
@@ -111,8 +113,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     ngOnDestroy(): void {
-        this.notifier.next();
-        this.notifier.complete();
+        clearInterval(this.interval);
     }
 
     loadLivesEvent(): void {
@@ -120,10 +121,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
             this.applicationContext.spin(true);
         }
 
-        timer(0,10 * 1000).pipe(
-            switchMap(() => {
-                return this.deviceService.getAllDevice();
-            }),
+        this.deviceService.getAllDevice().pipe(
             map(data => {
                 this.stats = [];
                 this.liveDev.reset();
@@ -165,72 +163,72 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
             }),
             catchError(error => {
                 return observableOf([]);
-            }), takeUntil(this.notifier))
+            }))
             .subscribe(
-            (data: Device[]) => {
-                if (this.numberOfLoad === 1) {
-                    this.applicationContext.spin(false);
-                }
-
-                this.deviceList = _.filter(this.allDeviceList, (dev: Device) => {
-                    if (this.deviceFilterText) {
-                        return (dev.name && _.includes(dev.name, this.deviceFilterText)) ||
-                            (dev.deviceId && _.includes(dev.deviceId, this.deviceFilterText)) ||
-                            (dev.lastAddress && _.includes(dev.lastAddress, this.deviceFilterText));
-                    } else {
-                        return true;
-                    }
-
-                });
-
-                data.forEach((device, index) => {
-                    if (device.lastLatitude && device.lastLongitude) {
-                        let marker = this.buildMarker(device);
-                        this.popupLink.register(marker, device, (_smarker) => {this.currentMarker = _smarker});
-                        if (this.currentMarker && !this.currentMarker.isPopupOpen()) {
-                            this.currentMarker.togglePopup();
-                        }
-                        this.markersCluster.addLayer(marker);
-                        marker.on('click', () => {
-                            this.selectedDevice = device;
-                            //circle around marker
-                            if (this.selectedMarker) {
-                                this.selectedMarker.removeFrom(this.map);
-                            }
-                            let center = L.latLng(this.selectedDevice.lastLatitude, this.selectedDevice.lastLongitude);
-                            this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
-                        });
-                    }
-                });
-
-                if (this.selectedDevice) {
-                    let center = L.latLng(this.selectedDevice.lastLatitude, this.selectedDevice.lastLongitude);
-                    let oldZoom = this.map.getZoom();
-                    this.map.setView(center, oldZoom);
-
-                    //circle around marker
-                    if (this.selectedMarker) {
-                        this.selectedMarker.removeFrom(this.map);
-                    }
-                    this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
-                } else if (this.deviceList.length > 0 ) {
-                    this.map.addLayer(this.markersCluster);
+                (data: Device[]) => {
                     if (this.numberOfLoad === 1) {
                         this.applicationContext.spin(false);
-                        let bounds: LatLngBounds = this.markersCluster.getBounds();
-                        if (bounds.isValid()) {
-                            this.map.fitBounds(bounds);
+                    }
+
+                    this.deviceList = _.filter(this.allDeviceList, (dev: Device) => {
+                        if (this.deviceFilterText) {
+                            return (dev.name && _.includes(dev.name, this.deviceFilterText)) ||
+                                (dev.deviceId && _.includes(dev.deviceId, this.deviceFilterText)) ||
+                                (dev.lastAddress && _.includes(dev.lastAddress, this.deviceFilterText));
+                        } else {
+                            return true;
+                        }
+
+                    });
+
+                    data.forEach((device, index) => {
+                        if (device.lastLatitude && device.lastLongitude) {
+                            let marker = this.buildMarker(device);
+                            this.popupLink.register(marker, device, (_smarker) => {this.currentMarker = _smarker});
+                            if (this.currentMarker && !this.currentMarker.isPopupOpen()) {
+                                this.currentMarker.togglePopup();
+                            }
+                            this.markersCluster.addLayer(marker);
+                            marker.on('click', () => {
+                                this.selectedDevice = device;
+                                //circle around marker
+                                if (this.selectedMarker) {
+                                    this.selectedMarker.removeFrom(this.map);
+                                }
+                                let center = L.latLng(this.selectedDevice.lastLatitude, this.selectedDevice.lastLongitude);
+                                this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
+                            });
+                        }
+                    });
+
+                    if (this.selectedDevice) {
+                        let center = L.latLng(this.selectedDevice.lastLatitude, this.selectedDevice.lastLongitude);
+                        let oldZoom = this.map.getZoom();
+                        this.map.setView(center, oldZoom);
+
+                        //circle around marker
+                        if (this.selectedMarker) {
+                            this.selectedMarker.removeFrom(this.map);
+                        }
+                        this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
+                    } else if (this.deviceList.length > 0 ) {
+                        this.map.addLayer(this.markersCluster);
+                        if (this.numberOfLoad === 1) {
+                            this.applicationContext.spin(false);
+                            let bounds: LatLngBounds = this.markersCluster.getBounds();
+                            if (bounds.isValid()) {
+                                this.map.fitBounds(bounds);
+                            }
+
+                        }
+
+                        if (this.selectedMarker) {
+                            this.selectedMarker.removeFrom(this.map);
                         }
 
                     }
-
-                    if (this.selectedMarker) {
-                        this.selectedMarker.removeFrom(this.map);
-                    }
-
+                    this.draw();
                 }
-                this.draw();
-            }
         );
     }
 
