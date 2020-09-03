@@ -1,6 +1,6 @@
 import { Account } from 'app/models/account';
 import { Role } from 'app/models/role';
-import {SmtpProperties} from "../smtp-properties";
+import {MailProperties} from "../mail-properties";
 
 export class AccountRequest {
     id: number;
@@ -16,7 +16,7 @@ export class AccountRequest {
     addressLine1: string;
     addressLine2: string;
     notes: string;
-    smtpPropertiesIds: Array<number>;
+    mailProperties: MailProperties;
 
 
     constructor(account? : Account) {
@@ -33,6 +33,7 @@ export class AccountRequest {
             this.addressLine1 = account.addressLine1;
             this.addressLine2 = account.addressLine2;
             this.notes = account.notes;
+            this.mailProperties = account.mailProperties;
         }
     }
 }

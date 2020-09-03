@@ -1,5 +1,5 @@
 import { Role } from 'app/models/role';
-import {SmtpProperties} from "./smtp-properties";
+import {MailProperties} from "./mail-properties";
 
 export class Account {
     private _id: number;
@@ -20,8 +20,12 @@ export class Account {
     private _createdOn: Date;
     private _updatedOn: Date;
 
-    smtpProperties: SmtpProperties[];
+    public mailProperties: MailProperties;
 
+
+    constructor() {
+        this.mailProperties = new MailProperties();
+    }
 
     get id(): number {
         return this._id ? this._id : this._rId;

@@ -6,7 +6,7 @@ import {Account} from "../../../../../models/account";
 import {Privilege} from "../../../../../models/privilege";
 import {FormControl} from "@angular/forms";
 import {Observable} from "rxjs";
-import {SmtpProperties} from "../../../../../models/smtp-properties";
+import {MailProperties} from "../../../../../models/mail-properties";
 import {AccountRequest} from "../../../../../models/request/account.request";
 import {map, startWith} from "rxjs/operators";
 import {MatDialog} from "@angular/material/dialog";
@@ -33,12 +33,6 @@ export class AccountUpdateComponent implements OnInit {
     privilegeList: Array<Privilege>;
     statusControl: FormControl = new FormControl();
     filteredStatus: Observable<string[]>;
-    aNewSmtpServer: SmtpProperties;
-    columnsToDisplay = ['host', 'port'];
-    expandedElement: SmtpProperties | null;
-    isAddNewSmtp: boolean;
-    smtpServerList: Array<SmtpProperties>;
-    smtpServers: FormControl;
 
     constructor(private applicationContext: ApplicationContext,
                 private route: ActivatedRoute,
@@ -47,7 +41,7 @@ export class AccountUpdateComponent implements OnInit {
 
     ngOnInit() {
         this.account = new Account();
-        this.smtpServers = new FormControl();
+        this.account.mailProperties.protocol = 'smtp';
 
         this.privilegeList = this.applicationContext.getPrivileges();
         this.filteredStatus = this.statusControl.valueChanges.pipe(
@@ -56,34 +50,12 @@ export class AccountUpdateComponent implements OnInit {
                 return this.applicationContext.statusList.filter(opt => opt.toLowerCase().indexOf(value.toLowerCase()) === 0);
             })
         );
-
-        this.accountService.getAllSmtpServer().subscribe(
-            data => {
-                console.log('Data', data);
-                this.smtpServerList = data;
-            }
-        )
-    }
-
-    newSmtpServer() {
-        this.isAddNewSmtp = true;
-        this.aNewSmtpServer = {} as SmtpProperties;
-    }
-
-    saveNewSmtpServer() {
-
-    }
-
-    cancelNewSmtpServer() {
-        this.isAddNewSmtp = false;
-        this.aNewSmtpServer = null;
     }
 
     save() {
         this.account.status = this.statusControl.value;
-        const accountr = new AccountRequest(this.account);
-        accountr.smtpPropertiesIds = _.map(this.account.smtpProperties, x => x.id);
-        this.accountService.create(accountr).subscribe(
+        const accountreq = new AccountRequest(this.account);
+        this.accountService.create(accountreq).subscribe(
             data => {
                 console.log('data', data);
                 this.applicationContext.info("An account was created successfully!");
@@ -95,30 +67,5 @@ export class AccountUpdateComponent implements OnInit {
             () => {
             }
         );
-    }
-
-    openDialogNewSmtp(event?: Event) {
-        if (event) {
-            event.stopPropagation()
-        }
-
-        const dialogRef = this.dialog.open(SmtpDialogComponent, {
-            width: '800px',
-            disableClose: true,
-            data: null
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                console.log('result', result);
-                const accountId = this.applicationContext.getAccountId();
-                this.accountService.createNewSmtp(accountId, result).subscribe(
-                    data => {
-                        this.applicationContext.info("A SMTP server was created!");
-                        this.smtpServerList.push(data);
-                    }
-                );
-            }
-        });
     }
 }

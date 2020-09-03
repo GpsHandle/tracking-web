@@ -1,4 +1,4 @@
-export class SmtpProperties {
+export class MailProperties {
     id: number;
     accountId: number;
     protocol: string; //smtp, http, sms

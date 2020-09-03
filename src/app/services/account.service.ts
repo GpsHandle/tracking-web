@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import { AbstractService } from 'app/services/abstract.service';
 import { AccountRequest } from 'app/models/request/account.request';
 import { Observable } from 'rxjs';
-import {SmtpProperties} from "../models/smtp-properties";
+import {MailProperties} from "../models/mail-properties";
 import {ChangePasswdRequest} from "../models/change-passwd.request";
 
 export const ACCOUNT_API_URL = '/api/account';
@@ -26,13 +26,13 @@ export class AccountService extends AbstractService<AccountRequest, Account> {
         return this.http.put<void>(url, model);
     }
 
-    createNewSmtp(accountId: number, aNewSmtpServer: SmtpProperties) {
+    createNewSmtp(accountId: number, aNewSmtpServer: MailProperties) {
         const url = ACCOUNT_API_URL + '/smtp/' + accountId ;
-        return this.http.post<SmtpProperties>(url, aNewSmtpServer)
+        return this.http.post<MailProperties>(url, aNewSmtpServer)
     }
 
-    getAllSmtpServer(accountId?: number): Observable<Array<SmtpProperties>> {
+    getAllSmtpServer(accountId?: number): Observable<Array<MailProperties>> {
         const url = accountId ? ACCOUNT_API_URL + '/smtp/' + accountId : ACCOUNT_API_URL + '/smtp';
-        return this.http.get<Array<SmtpProperties>>(url);
+        return this.http.get<Array<MailProperties>>(url);
     }
 }

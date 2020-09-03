@@ -7,7 +7,7 @@ import {Account} from "../../../../../models/account";
 import {Privilege} from "../../../../../models/privilege";
 import {ApplicationContext} from "../../../../../application-context";
 import {FormControl} from "@angular/forms";
-import {SmtpProperties} from "../../../../../models/smtp-properties";
+import {MailProperties} from "../../../../../models/mail-properties";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import * as _ from 'lodash';
 import {AccountRequest} from "../../../../../models/request/account.request";
@@ -41,11 +41,11 @@ export class EditAccountComponent implements OnInit {
 
     isAddNewSmtp: boolean;
 
-    aNewSmtpServer: SmtpProperties;
+    aNewSmtpServer: MailProperties;
     columnsToDisplay = ['host', 'port'];
-    expandedElement: SmtpProperties | null;
+    expandedElement: MailProperties | null;
     smtpServers: FormControl;
-    smtpServerList: Array<SmtpProperties>;
+    smtpServerList: Array<MailProperties>;
     constructor(private applicationContext: ApplicationContext,
                 private route: ActivatedRoute,
                 private accountService: AccountService,
@@ -107,7 +107,7 @@ export class EditAccountComponent implements OnInit {
     }
 
     addNewSmtpServer() {
-        this.aNewSmtpServer = new SmtpProperties();
+        this.aNewSmtpServer = new MailProperties();
         this.isAddNewSmtp = true;
     }
 
@@ -132,7 +132,6 @@ export class EditAccountComponent implements OnInit {
     saveEditedAccount() {
         this.account.status = this.statusControl.value;
         const accountR = new AccountRequest(this.account);
-        accountR.smtpPropertiesIds = _.map(this.account.smtpProperties, x => x.id);
         this.accountService.update(this.accountId, accountR).subscribe(
             data => {
                 this.applicationContext.info("An account was updated successfully!");

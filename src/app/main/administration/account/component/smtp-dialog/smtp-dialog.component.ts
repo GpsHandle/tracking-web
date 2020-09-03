@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {SmtpProperties} from "../../../../../models/smtp-properties";
+import {MailProperties} from "../../../../../models/mail-properties";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
@@ -10,10 +10,10 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 export class SmtpDialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<SmtpDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: SmtpProperties | any) { }
+              @Inject(MAT_DIALOG_DATA) public data: MailProperties | any) { }
 
   ngOnInit() {
-      this.data = {} as SmtpProperties;
+      this.data = {} as MailProperties;
   }
 
     save() {
