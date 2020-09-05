@@ -13,7 +13,8 @@
         <div fxLayout="column">
             <div fxLayout="row" fxLayoutGap="16px">
                 <div fxFlex="50">
-                    <mat-form-field class="full-width">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="@@firstName">First Name</mat-label>
                         <input type="text"
                                matInput
                                i18n-placeholder="@@firstName"
@@ -23,7 +24,8 @@
                     </mat-form-field>
                 </div>
                 <div fxFlex="50">
-                    <mat-form-field class="full-width">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="@@lastName">Last Name</mat-label>
                         <input type="text"
                                matInput
                                i18n-placeholder="@@lastName"
@@ -34,14 +36,8 @@
                 </div>
             </div>
 
-            <mat-form-field>
-                <label>
-                    <input matInput i18n-placeholder="@@address"
-                           placeholder="Address" [(ngModel)]="data.address" name="driver-address">
-                </label>
-            </mat-form-field>
-
-            <mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label i18n="@@dateOfBirth">Date of Birth</mat-label>
                 <input matInput
                        [matDatepicker]="dateOfBirth"
                        [(ngModel)]="data.dateOfBirth"
@@ -53,7 +49,8 @@
             </mat-form-field>
 
             <div fxLayout="row" fxLayoutGap="16px">
-                <mat-form-field fxFlex="50">
+                <mat-form-field appearance="outline" fxFlex="50">
+                    <mat-label i18n="@@licenseNumber">License Number</mat-label>
                     <input type="text"
                            matInput
                            name="driver-license-number"
@@ -61,7 +58,8 @@
                            i18n-placeholder="@@licenseNumber"
                            placeholder="License Number">
                 </mat-form-field>
-                <mat-form-field fxFlex="50">
+                <mat-form-field appearance="outline" fxFlex="50">
+                    <mat-label i18n="@@licenseType">License Type</mat-label>
                     <input type="text"
                            matInput
                            name="driver-license-type"
@@ -71,7 +69,8 @@
                 </mat-form-field>
             </div>
 
-            <mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label i18n="@@licenseTypeDescription">License Type Description</mat-label>
                 <input type="text"
                        matInput
                        name="driver-license-type-description"
@@ -81,7 +80,8 @@
             </mat-form-field>
 
             <div fxLayout="row" fxLayoutGap="16px">
-                <mat-form-field fxFlex="50">
+                <mat-form-field appearance="outline" fxFlex="50">
+                    <mat-label i18n="@@issuedDate">Issued Date</mat-label>
                     <input matInput
                            [matDatepicker]="issuedDate"
                            [(ngModel)]="data.driverLicenseIssueDate"
@@ -91,7 +91,8 @@
                     <mat-datepicker-toggle matSuffix [for]="issuedDate"></mat-datepicker-toggle>
                     <mat-datepicker #issuedDate></mat-datepicker>
                 </mat-form-field>
-                <mat-form-field fxFlex="50">
+                <mat-form-field appearance="outline" fxFlex="50">
+                    <mat-label i18n="@@expiredDate">Expired Date</mat-label>
                     <input matInput
                            [matDatepicker]="expiredDate"
                            [(ngModel)]="data.driverLicenseExpiredDate"

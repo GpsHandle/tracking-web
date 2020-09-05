@@ -10,7 +10,6 @@ import {MailProperties} from "../../../../../models/mail-properties";
 import {AccountRequest} from "../../../../../models/request/account.request";
 import {map, startWith} from "rxjs/operators";
 import {MatDialog} from "@angular/material/dialog";
-import {SmtpDialogComponent} from "../smtp-dialog/smtp-dialog.component";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import * as _ from "lodash";
 

@@ -14,7 +14,8 @@
         <div fxLayout="column">
             <div fxLayout="row" fxLayoutGap="16px">
                 <div fxFlex="50">
-                    <mat-form-field class="full-width">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="@@name">Name</mat-label>
                         <input matInput
                                i18n-placeholder="@@name"
                                placeholder="Name"
@@ -23,7 +24,8 @@
                     </mat-form-field>
                 </div>
                 <div fxFlex="50">
-                    <mat-form-field class="full-width">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="@@deviceId">Device ID</mat-label>
                         <input matInput i18n-placeholder="@@deviceId"
                                placeholder="Device ID" name="dev-device-id" [(ngModel)]="data.deviceId" [disabled]="data.id">
                     </mat-form-field>
@@ -32,7 +34,8 @@
 
             <div fxLayout="row" fxLayoutGap="16px">
                 <div fxFlex="80">
-                    <mat-form-field class="full-width">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="@@accounts">Accounts</mat-label>
                         <mat-select [multiple]="true"
                                     i18n-placeholder="@@accounts"
                                     placeholder="Accounts"
@@ -46,18 +49,21 @@
                 </div>
             </div>
 
-            <mat-form-field class="full-width">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label i18n="@@vehicle">Vehicle</mat-label>
                 <input matInput i18n-placeholder="@@vehicle" placeholder="Vehicle" name="dev-vehicle-id" [(ngModel)]="data.vehicleId">
             </mat-form-field>
 
             <div fxLayout="row" fxLayoutGap="16px">
                 <div fxFlex="50">
-                    <mat-form-field class="full-width">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="@@ipAddress">IP Address</mat-label>
                         <input matInput i18n-placeholder="@@ipAddress" placeholder="IP Address" name="dev-ip-address" [(ngModel)]="data.ipAddress">
                     </mat-form-field>
                 </div>
                 <div fxFlex="50">
-                    <mat-form-field class="full-width">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="@@port">Port</mat-label>
                         <input matInput i18n-placeholder="@@port" placeholder="Port" name="dev-port" [(ngModel)]="data.port">
                     </mat-form-field>
                 </div>
@@ -65,12 +71,14 @@
 
             <div fxLayout="row" fxLayoutGap="16px">
                 <div fxFlex="50">
-                    <mat-form-field class="full-width">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="@@protocol">Protocol</mat-label>
                         <input matInput i18n-placeholder="@@protocol" placeholder="Protocol" name="dev-port" [(ngModel)]="data.protocol">
                     </mat-form-field>
                 </div>
                 <div fxFlex="50">
-                    <mat-form-field class="full-width">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="@@status">Status</mat-label>
                         <input type="text" i18n-placeholder="@@status" placeholder="Status" aria-label="Status"
                                matInput [formControl]="statusControl" [matAutocomplete]="autoStatus">
                         <mat-autocomplete #autoStatus="matAutocomplete">
@@ -97,17 +105,20 @@
 
             <div fxLayout="row" fxLayoutGap="16px">
                 <div fxFlex="50">
-                    <mat-form-field class="full-width">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="@@serialNumber">Serial Number</mat-label>
                         <input matInput i18n-placeholder="@@serialNumber" placeholder="Serial Number" name="dev-serial-number" [(ngModel)]="data.serialNumber">
                     </mat-form-field>
                 </div>
                 <div fxFlex="50">
-                    <mat-form-field class="full-width">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="@@modelName">Model Name</mat-label>
                         <input matInput i18n-placeholder="@@modelName" placeholder="Model Name" name="dev-model-name" [(ngModel)]="data.modelName">
                     </mat-form-field>
                 </div>
                 <div fxFlex="50">
-                    <mat-form-field class="full-width">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="@@firmwareVersion">Firmware Version</mat-label>
                         <input matInput i18n-placeholder="@@firmwareVersion" placeholder="Firmware Version" name="dev-firmware-version" [(ngModel)]="data.firmwareVersion">
                     </mat-form-field>
                 </div>
@@ -115,12 +126,14 @@
 
             <div fxLayout="row" fxLayoutGap="16px">
                 <div fxFlex="50">
-                    <mat-form-field class="full-width">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="@@manufacturerName">Manufacturer Name</mat-label>
                         <input matInput i18n-placeholder="@@manufacturerName" placeholder="Manufacturer Name" name="dev-manufacturer-name" [(ngModel)]="data.manufacturerName">
                     </mat-form-field>
                 </div>
                 <div fxFlex="50">
-                    <mat-form-field class="full-width">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="@@originCountry">Original Country</mat-label>
                         <input matInput i18n-placeholder="@@originCountry" placeholder="Original Country" name="dev-original-country" [(ngModel)]="data.originalCountry">
                     </mat-form-field>
                 </div>
@@ -129,7 +142,8 @@
 
 
         <mat-divider></mat-divider>
-        <mat-form-field class="full-width">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label i18n="@@alerts">Alerts</mat-label>
             <mat-select [multiple]="true"
                         i18n-placeholder="@@alerts"
                         placeholder="Alerts"

@@ -13,7 +13,6 @@ import { AccountService } from 'app/services/account.service';
 import { EditAccountComponent } from './component/account-edit/edit-account.component';
 import { AccountUpdateComponent } from './component/account-add/account-update.component';
 import { ChangePasswordDialogComponent } from './component/change-password-dialog/change-password-dialog.component';
-import { SmtpDialogComponent } from './component/smtp-dialog/smtp-dialog.component';
 import {SharedModule} from "../../../shared/shared.module";
 
 @NgModule({
@@ -34,15 +33,13 @@ import {SharedModule} from "../../../shared/shared.module";
         DeleteAccountComponent,
         EditAccountComponent,
         AccountUpdateComponent,
-        ChangePasswordDialogComponent,
-        SmtpDialogComponent
+        ChangePasswordDialogComponent
     ],
     entryComponents: [
         AddEditAccountComponent,
         OptionalColumnAccountComponent,
         DeleteAccountComponent,
-        ChangePasswordDialogComponent,
-        SmtpDialogComponent
+        ChangePasswordDialogComponent
     ],
     providers: [
         AccountService

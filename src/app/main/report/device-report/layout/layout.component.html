@@ -3,8 +3,9 @@
                  mode="{{sidenavMode$ | async}}"
                  opened="{{sidenavOpened$ | async}}">
         <div class="rpt-nav-device" id = "deviceList">
-            <mat-form-field class="rpt-device-filter">
-                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Device Filter">
+            <mat-form-field appearance="outline" class="rpt-device-filter">
+                <mat-label i18n="@@deviceFilter">Device Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event.target.value)" i18n-placeholder="@@deviceFilter" placeholder="Device Filter">
             </mat-form-field>
             <mat-nav-list class="rpt-list-device">
                 <mat-list-item *ngFor="let device of deviceList; trackBy: trackByFn" [routerLink]="device.id">

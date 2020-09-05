@@ -4,7 +4,8 @@
                  opened="{{sidenavOpened$ | async}}">
         <div class="m-dev">
             <div class="m-dev-header">
-                <mat-form-field class="m-dev-filter">
+                <mat-form-field appearance="outline" class="m-dev-filter">
+                    <mat-label i18n="@@devicesFilter">Devices Filter</mat-label>
                     <input matInput [(ngModel)]="deviceFilterText" i18n-placeholder="@@devicesFilter" placeholder="Devices Filter" #deviceFilter>
                         <a mat-icon-button
                            matSuffix

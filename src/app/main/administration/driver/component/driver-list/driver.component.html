@@ -1,6 +1,7 @@
 <div class="x-container">
     <div class="x-header">
-        <mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label i18n="@@search">Search</mat-label>
             <input matInput i18n-placeholder="@@search" placeholder="Search" (keyup)="applyFilter($event.target.value)">
         </mat-form-field>
         <span class="fill-remain-space"></span>

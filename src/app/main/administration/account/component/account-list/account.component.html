@@ -1,6 +1,7 @@
 <div class="x-container">
     <div class="x-header">
-        <mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label i18n="@@search">Search</mat-label>
             <input matInput i18n-placeholder="@@search" placeholder="Search" (keyup)="applyFilter($event.target.value)">
         </mat-form-field>
         <span class="fill-remain-space"></span>
@@ -23,7 +24,7 @@
 
         <ng-container matColumnDef="accountId">
             <th *matHeaderCellDef i18n="@@accountId" mat-header-cell mat-sort-header> Account ID </th>
-            <td mat-cell *matCellDef="let element"> {{element.accountId}} </td>
+            <td mat-cell *matCellDef="let element" class="text-bold"> {{element.accountId}} </td>
         </ng-container>
 
         <ng-container matColumnDef="firstName">
@@ -114,14 +115,16 @@
                 <div fxLayout="column" class="element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
                     <div fxLayout="row" fxLayoutGap="16px" class="full-width">
                         <div fxFlex="50">
-                            <mat-form-field class="full-width">
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-label i18n="@@accountId">Account ID</mat-label>
                                 <input type="text" matInput
                                        i18n-placeholder="@@accountId" placeholder="Account ID"
                                        [value]="element.accountId" disabled>
                             </mat-form-field>
                         </div>
                         <div fxFlex="50">
-                            <mat-form-field class="full-width">
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-label i18n="@@fullName">Full Name</mat-label>
                                 <input type="text" matInput
                                        i18n-placeholder="@@fullName" placeholder="Full Name"
                                        [value]="element.firstName + ' ' + element.lastName" disabled>
@@ -129,7 +132,8 @@
                         </div>
 
                         <div fxFlex="50">
-                            <mat-form-field class="full-width">
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-label i18n="@@role">Role</mat-label>
                                 <input type="text" matInput
                                        i18n-placeholder="@@role" placeholder="Role"
                                        [value]="element.privilege"
@@ -137,7 +141,8 @@
                             </mat-form-field>
                         </div>
                         <div fxFlex="50">
-                            <mat-form-field class="full-width">
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-label i18n="@@status">Status</mat-label>
                                 <input type="text" matInput
                                        i18n-placeholder="@@status" placeholder="Status"
                                        [value]="element.status"
@@ -145,7 +150,8 @@
                             </mat-form-field>
                         </div>
                         <div fxFlex="50">
-                            <mat-form-field class="full-width">
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-label i18n="@@phoneNumber">Phone Number</mat-label>
                                 <input type="tel" matInput
                                        i18n-placeholder="@@phoneNumber" placeholder="Phone Number"
                                        [value]="element.phoneNumber"
@@ -153,7 +159,8 @@
                             </mat-form-field>
                         </div>
                         <div fxFlex="50">
-                            <mat-form-field class="full-width">
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-label i18n="@@emailAddress">Email Adress</mat-label>
                                 <input type="text" matInput
                                        i18n-placeholder="@@emailAddress" placeholder="Email Adress"
                                        [value]="element.emailAddress"
@@ -163,7 +170,8 @@
                     </div>
                     <div fxLayout="row" fxLayoutGap="16px" class="full-width">
                         <div fxFlex="50">
-                            <mat-form-field class="full-width">
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-label i18n="@@addressLine1">Adress Line 1</mat-label>
                                 <input type="text" matInput
                                        i18n-placeholder="@@addressLine1" placeholder="Adress Line 1"
                                        [value]="element.addressLine1"
@@ -171,7 +179,8 @@
                             </mat-form-field>
                         </div>
                         <div fxFlex="50">
-                            <mat-form-field class="full-width">
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-label i18n="@@addressLine2">Adress Line 2</mat-label>
                                 <input type="text" matInput
                                        i18n-placeholder="@@addressLine2" placeholder="Adress Line 2"
                                        [value]="element.addressLine2"

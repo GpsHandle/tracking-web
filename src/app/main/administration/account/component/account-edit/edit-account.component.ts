@@ -13,7 +13,6 @@ import * as _ from 'lodash';
 import {AccountRequest} from "../../../../../models/request/account.request";
 import {MatDialog} from "@angular/material/dialog";
 import {ChangePasswordDialogComponent} from "../change-password-dialog/change-password-dialog.component";
-import {SmtpDialogComponent} from "../smtp-dialog/smtp-dialog.component";
 
 @Component({
     selector: 'app-edit-account',
@@ -79,31 +78,6 @@ export class EditAccountComponent implements OnInit {
                 this.smtpServerList = data;
             }
         )
-    }
-
-    openDialogNewSmtp(event?: Event) {
-        if (event) {
-            event.stopPropagation()
-        }
-
-        const dialogRef = this.dialog.open(SmtpDialogComponent, {
-            width: '800px',
-            disableClose: true,
-            data: null
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                console.log('result', result);
-                const accountId = this.applicationContext.getAccountId();
-                this.accountService.createNewSmtp(accountId, result).subscribe(
-                    data => {
-                        this.applicationContext.info("A SMTP server was created!");
-                        this.smtpServerList.push(data);
-                    }
-                );
-            }
-        });
     }
 
     addNewSmtpServer() {

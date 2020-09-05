@@ -11,17 +11,20 @@
 
 <div mat-dialog-content>
     <div fxLayout="column">
-        <mat-form-field class="full-width">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label i18n="@@accountId">Account ID</mat-label>
             <input matInput i18n-placeholder="@@accountId" placeholder="Account ID" name="acc-account-id" [(ngModel)]="data.accountId" required [disabled]="isEditing">
         </mat-form-field>
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxLayoutGap.xs="0px">
             <div fxFlex="50">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@password">Password</mat-label>
                     <input type="password" matInput i18n-placeholder="@@password" placeholder="Password" name="acc-password" [(ngModel)]="password">
                 </mat-form-field>
             </div>
             <div fxFlex="50">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@rePassword">Re-type Password</mat-label>
                     <input type="password" matInput i18n-placeholder="@@rePassword" placeholder="Re-type Password" name="acc-re-password" [(ngModel)]="re_password">
                 </mat-form-field>
             </div>
@@ -29,12 +32,14 @@
 
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxLayoutGap.xs="0px">
             <div fxFlex="50">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@firstName">First Name</mat-label>
                     <input matInput i18n-placeholder="@@firstName" placeholder="First Name" name="acc-first-name" [(ngModel)]="data.firstName">
                 </mat-form-field>
             </div>
             <div fxFlex="50">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@lastName">Last Name</mat-label>
                     <input matInput i18n-placeholder="@@lastName" placeholder="Last Name" name="acc-last-name" [(ngModel)]="data.lastName">
                 </mat-form-field>
             </div>
@@ -42,7 +47,8 @@
 
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@roles">Roles</mat-label>
                     <mat-select matInput i18n-placeholder="@@roles" placeholder="Roles" [(ngModel)]="data.privilege">
                         <mat-option *ngFor="let pri of privilegeList" [value]="pri.id">{{pri.name}}</mat-option>
                     </mat-select>
@@ -52,7 +58,8 @@
 
 
 
-        <mat-form-field class="full-width">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label i18n="@@status">Status</mat-label>
             <input type="text" i18n-placeholder="@@status" placeholder="Status" aria-label="Status" matInput [formControl]="statusControl" [matAutocomplete]="autoStatus">
             <mat-autocomplete #autoStatus="matAutocomplete">
                 <mat-option *ngFor="let status of filteredStatus | async" [value]="status">
@@ -64,24 +71,29 @@
 
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@phoneNumber">Phone Number</mat-label>
                     <input matInput i18n-placeholder="@@phoneNumber" placeholder="Phone Number" name="acc-phone-number" [(ngModel)]="data.phoneNumber">
                 </mat-form-field>
             </div>
             <div fxFlex="50">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@emailAddress">Email Address</mat-label>
                     <input matInput i18n-placeholder="@@emailAddress" placeholder="Email Address" name="acc-email-address" [(ngModel)]="data.emailAddress" required>
                 </mat-form-field>
             </div>
         </div>
-        <mat-form-field class="full-width">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label i18n="@@addressLine1">Address Line1</mat-label>
             <input matInput i18n-placeholder="@@addressLine1" placeholder="Address Line1" name="acc-address-line1" [(ngModel)]="data.addressLine1">
         </mat-form-field>
-        <mat-form-field class="full-width">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label i18n="@@addressLine2">Address Line2</mat-label>
             <input matInput i18n-placeholder="@@addressLine2" placeholder="Address Line2" name="acc-address-line2" [(ngModel)]="data.addressLine2">
         </mat-form-field>
 
-        <mat-form-field class="full-width">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label i18n="@@notes">Notes</mat-label>
             <input matInput i18n-placeholder="@@notes" placeholder="Notes" name="acc-notes" [(ngModel)]="data.notes">
         </mat-form-field>
 

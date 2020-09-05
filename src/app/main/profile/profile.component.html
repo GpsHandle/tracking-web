@@ -2,62 +2,74 @@
     <form class="mat-elevation-z3 form-profile" fxLayout="column">
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@accountId">Account ID</mat-label>
                     <input matInput i18n-placeholder="@@accountId" placeholder="Account ID" [disabled]="!isEditting" [value]="accountId">
                 </mat-form-field>
             </div>
             <div fxFlex="50">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@accountName">Account Name</mat-label>
                     <input matInput i18n-placeholder="@@accountName" placeholder="Account Name" [disabled]="!isEditting" [value]="accountName">
                 </mat-form-field>
             </div>
         </div>
 
-        <mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label i18n="@@firstPageUrl">First Page URL</mat-label>
             <input matInput i18n-placeholder="@@firstPageUrl" placeholder="First Page URL" [disabled]="!isEditting" [value]="firstPageUrl">
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label i18n="@@redirectUrl">Redirect URL</mat-label>
             <input matInput i18n-placeholder="@@redirectUrl" placeholder="Redirect URL" [disabled]="!isEditting" [value]="redirectURL">
         </mat-form-field>
 
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@tokenType">Token Type</mat-label>
                     <input matInput i18n-placeholder="@@tokenType" placeholder="Token Type" disabled [value]="token_type">
                 </mat-form-field>
             </div>
             <div fxFlex="50">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@expiredIn">Expired In</mat-label>
                     <input matInput i18n-placeholder="@@expiredIn" placeholder="Expired In" disabled [value]="expires_in">
                 </mat-form-field>
             </div>
         </div>
 
 
-        <mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label i18n="@@jti">JTI</mat-label>
             <input matInput  i18n-placeholder="@@jti" placeholder="JTI" disabled [value]="jti">
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label i18n="@@scope">Scope</mat-label>
             <input matInput i18n-placeholder="@@scope" placeholder="Scope" disabled [value]="scope">
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label i18n="@@authorities">Authorities</mat-label>
             <input matInput i18n-placeholder="@@authorities" placeholder="Authorities" disabled [value]="authorities">
         </mat-form-field>
 
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@language">Language</mat-label>
                     <input matInput i18n-placeholder="@@language" placeholder="Language" disabled [value]="">
                 </mat-form-field>
             </div>
             <div fxFlex="50">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@timezone">Timezone</mat-label>
                     <input matInput i18n-placeholder="@@timezone" placeholder="Timezone" disabled [value]="">
                 </mat-form-field>
             </div>
         </div>
 
-        <mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label i18n="@@accessToken">Access Token</mat-label>
             <textarea matInput rows="5" i18n-placeholder="@@accessToken" placeholder="Access Token" disabled [value]="access_token"></textarea>
         </mat-form-field>
     </form>

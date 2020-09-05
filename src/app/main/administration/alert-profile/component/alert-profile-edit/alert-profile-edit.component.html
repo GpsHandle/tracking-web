@@ -10,12 +10,12 @@
     <form class="">
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@selectATypeOfAlert">Select a type of Alert</mat-label>
                     <mat-select i18n-placeholder="@@selectATypeOfAlert"
                                 placeholder="Select a type of Alert"
                                 name="catalog-alert"
                                 [(ngModel)]="data.catalog"
-                                [disabled]="!isEditing"
                                 required>
                         <mat-option value="EVENTUALLY" i18n="@@eventual">Eventual</mat-option>
                         <mat-option value="INTERVAL" i18n="@@interval">Interval</mat-option>
@@ -25,13 +25,13 @@
         </div>
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@type">Type of alert</mat-label>
                     <mat-select i18n-placeholder="@@type"
                                 placeholder="Type"
                                 aria-label="Type of alert"
                                 required
                                 [(ngModel)]="data.type"
-                                [disabled]="!isEditing"
                                 name="type-of-alert">
                         <mat-option *ngFor="let type of types" [value]="type">
                             {{type}}
@@ -40,48 +40,48 @@
                 </mat-form-field>
             </div>
             <div fxFlex="50" class="flex-center">
-                <mat-slide-toggle [(ngModel)]="data.active" [disabled]="!isEditing"
+                <mat-slide-toggle [(ngModel)]="data.active"
                                   name="Active" i18n="@@activeInactive">Active/Inactive</mat-slide-toggle>
             </div>
         </div>
-        <mat-form-field class="full-width">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label i18n="@@name">Name</mat-label>
             <input type="text" matInput
                    i18n-placeholder="@@name"
                    placeholder="Name"
                    aria-label="Nam Of Alert"
                    [(ngModel)]="data.name"
-                   [disabled]="!isEditing"
                    required
                    name="name of alert-profile">
         </mat-form-field>
-        <mat-form-field class="full-width">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label i18n="@@description">Description</mat-label>
             <input type="text" matInput
                    i18n-placeholder="@@description"
                    placeholder="Description"
                    aria-label="Alert Description"
-                   [disabled]="!isEditing"
                    [(ngModel)]="data.description" name="Description of alert">
         </mat-form-field>
 
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="25">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@speedKph">Speed KPH</mat-label>
                     <input type="text" matInput
                            i18n-placeholder="@@speedKph"
                            placeholder="Speed KPH"
                            aria-label="Speed KPH"
-                           [disabled]="!isEditing"
                            [(ngModel)]="data.speedKph"
                            name="Speed KPH">
                 </mat-form-field>
             </div>
             <div fxFlex="25">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@zone">Zone</mat-label>
                     <mat-select i18n-placeholder="@@zone"
                                 placeholder="Zone"
                                 aria-label="Geozone"
                                 name="Geozone"
-                                [disabled]="!isEditing"
                                 [(ngModel)]="data.zoneId">
                         <mat-option *ngFor="let zone of zoneList" [value]="zone.id">
                             {{zone.name}}
@@ -90,23 +90,23 @@
                 </mat-form-field>
             </div>
             <div fxFlex="25">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@params1">Param1</mat-label>
                     <input type="text" matInput
                            i18n-placeholder="@@params1"
                            placeholder="Param1"
                            aria-label="Param 1"
-                           [disabled]="!isEditing"
                            [(ngModel)]="data.params1"
                            name="Param1">
                 </mat-form-field>
             </div>
             <div fxFlex="25">
-                <mat-form-field class="full-width">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@params2">Param2</mat-label>
                     <input type="text" matInput
-                           i18n-placeholder="@@params"
+                           i18n-placeholder="@@params2"
                            placeholder="Param2"
                            aria-label="Param2"
-                           [disabled]="!isEditing"
                            [(ngModel)]="data.params2"
                            name="Param2">
                 </mat-form-field>
@@ -114,65 +114,63 @@
         </div>
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50">
-                <weekday type="short" [data]="data.weekDays"
-                         [editMode]="isEditing"></weekday>
+                <weekday type="short" [editMode]="true" [data]="data.weekDays"></weekday>
             </div>
             <div fxFlex="50">
-                <daytime [data]="data.dayTime"
-                         [editMode]="isEditing"></daytime>
+                <daytime [editMode]="true" [data]="data.dayTime"></daytime>
             </div>
         </div>
 
         <div fxLayout="row" fxLayoutGap="16px">
             <div fxFlex="50" class="flex-center">
-                <mat-checkbox [(ngModel)]="data.alertEmail" [disabled]="!isEditing"
+                <mat-checkbox [(ngModel)]="data.alertEmail"
                               name="ALert to email" i18n="@@alertToEmail">Alert to email</mat-checkbox>
             </div>
             <div fxFlex="50" class="flex-center">
-                <mat-checkbox [(ngModel)]="data.alertSms" [disabled]="!isEditing"
-                              name="ALert to sms" i18n="@@alertToEmail">Alert to sms</mat-checkbox>
+                <mat-checkbox [(ngModel)]="data.alertSms"
+                              name="ALert to sms" i18n="@@alertToSms">Alert to Sms</mat-checkbox>
             </div>
             <div fxFlex="50" class="flex-center">
-                <mat-checkbox [(ngModel)]="data.alertApp" [disabled]="!isEditing"
-                              name="ALert to app" i18n="@@alertToEmail">Alert to app</mat-checkbox>
+                <mat-checkbox [(ngModel)]="data.alertApp"
+                              name="ALert to app" i18n="@@alertToApp">Alert to App</mat-checkbox>
             </div>
         </div>
 
-        <mat-form-field class="full-width">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label i18n="@@action">Action</mat-label>
             <input type="text" matInput
                    i18n-placeholder="@@action"
                    placeholder="Action"
                    aria-label="External Actions"
                    name="external action"
-                   [disabled]="!isEditing"
                    [(ngModel)]="data.cannedAction">
         </mat-form-field>
 
-        <mat-form-field class="full-width">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label i18n="@@subject">Subject</mat-label>
             <input type="text" matInput
-                   i18n-placeholder="@@text"
+                   i18n-placeholder="@subject"
                    placeholder="Subject"
                    aria-label="Subject of message"
                    name="Subject of message"
-                   [disabled]="!isEditing"
                    [(ngModel)]="data.subject">
         </mat-form-field>
-        <mat-form-field class="full-width">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label i18n="@@text">Text</mat-label>
             <input type="text" matInput
                    i18n-placeholder="@@text"
                    placeholder="Text"
                    aria-label="Text of message"
                    name="Text of message"
-                   [disabled]="!isEditing"
                    [(ngModel)]="data.text">
         </mat-form-field>
-        <mat-form-field class="full-width">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label i18n="@@templateId">TemplateId</mat-label>
             <input type="text" matInput
                    i18n-placeholder="@@templateId"
                    placeholder="TemplateId"
                    aria-label="Template of message"
                    name="Template of message"
-                   [disabled]="!isEditing"
                    [(ngModel)]="data.templateId">
         </mat-form-field>
     </form>
