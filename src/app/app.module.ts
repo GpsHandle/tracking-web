@@ -29,6 +29,7 @@ import {environment} from '../environments/environment';
 import {storeFreeze} from 'ngrx-store-freeze';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {UniversalInterceptor} from "./interceptors/universal-interceptor";
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
     declarations: [
@@ -58,7 +59,8 @@ import {UniversalInterceptor} from "./interceptors/universal-interceptor";
         StoreDevtoolsModule.instrument({
             maxAge: 25 // Retains last 25 states
         }),
-        RootStoreModule
+        RootStoreModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
     providers: [
         AuthService,
