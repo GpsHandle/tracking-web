@@ -18,115 +18,127 @@
 <div class="center">
     <img src="" width="200" height="200"/>
 </div>
-<div fxLayout="row" fxLayoutGap="16px" class="padding-16">
-    <div fxFlex="67">
-        <div fxLayout="column">
-            <div fxLayout="row" fxLayoutGap="16px">
-                <div fxFlex="50">
-                    <mat-form-field appearance="outline" class="full-width">
-                        <mat-label i18n="@@accountId">Account ID</mat-label>
-                        <input matInput i18n-placeholder="@@accountId" placeholder="Account ID" name="acc-account-id" [(ngModel)]="account.accountId" required [disabled]="!isEditing">
-                    </mat-form-field>
-                </div>
-                <div fxFlex="50">
+    <div fxLayout="row" fxLayoutGap="16px" class="padding-16">
+        <div fxFlex="67">
+            <div fxLayout="column">
+                <div fxLayout="row" fxLayoutGap="16px">
+                    <div fxFlex="50">
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label i18n="@@accountId">Account ID</mat-label>
+                            <input matInput i18n-placeholder="@@accountId" placeholder="Account ID" name="acc-account-id" [(ngModel)]="account.accountId" required [disabled]="!isEditing">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50">
                         <button mat-button color="primary" class="btn-change-password" (click)="openChangePasswdDialog()" i18n="@@changePassword">Change password</button>
+                    </div>
                 </div>
+
+                <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxLayoutGap.xs="0px">
+                    <div fxFlex="50">
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label i18n="@@firstName">First Name</mat-label>
+                            <input matInput i18n-placeholder="@@firstName" placeholder="First Name" name="acc-first-name" [(ngModel)]="account.firstName" [disabled]="!isEditing">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50">
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label i18n="@@lastName">Last Name</mat-label>
+                            <input matInput i18n-placeholder="@@lastName" placeholder="Last Name" name="acc-last-name" [(ngModel)]="account.lastName" [disabled]="!isEditing">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutGap="16px">
+                    <div fxFlex="50">
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label i18n="@@roles">Roles</mat-label>
+                            <mat-select matInput i18n-placeholder="@@roles" placeholder="Roles" [(ngModel)]="account.privilege" [disabled]="!isEditing">
+                                <mat-option *ngFor="let pri of privilegeList" [value]="pri.name">{{pri.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@status">Status</mat-label>
+                    <input type="text" i18n-placeholder="@@status" placeholder="Status" aria-label="Status" matInput [formControl]="statusControl" [matAutocomplete]="autoStatus">
+                    <mat-autocomplete #autoStatus="matAutocomplete">
+                        <mat-option *ngFor="let status of filteredStatus | async" [value]="status">
+                            {{status}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+
+                <div fxLayout="row" fxLayoutGap="16px">
+                    <div fxFlex="50">
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label i18n="@@phoneNumber">Phone Number</mat-label>
+                            <input matInput i18n-placeholder="@@phoneNumber" placeholder="Phone Number" name="acc-phone-number" [(ngModel)]="account.phoneNumber" [disabled]="!isEditing">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50">
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label i18n="@@emailAddress">Email Address</mat-label>
+                            <input matInput i18n-placeholder="@@emailAddress" placeholder="Email Address" name="acc-email-address" [(ngModel)]="account.emailAddress" required [disabled]="!isEditing">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@addressLine1">Address Line1</mat-label>
+                    <input matInput i18n-placeholder="@@addressLine1" placeholder="Address Line1" name="acc-address-line1" [(ngModel)]="account.addressLine1" [disabled]="!isEditing">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@addressLine2">Address Line2</mat-label>
+                    <input matInput i18n-placeholder="@@addressLine2" placeholder="Address Line2" name="acc-address-line2" [(ngModel)]="account.addressLine2" [disabled]="!isEditing">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@notes">Notes</mat-label>
+                    <input matInput i18n-placeholder="@@notes" placeholder="Notes" name="acc-notes" [(ngModel)]="account.notes" [disabled]="!isEditing">
+                </mat-form-field>
+
             </div>
-
-            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxLayoutGap.xs="0px">
-                <div fxFlex="50">
-                    <mat-form-field appearance="outline" class="full-width">
-                        <mat-label i18n="@@firstName">First Name</mat-label>
-                        <input matInput i18n-placeholder="@@firstName" placeholder="First Name" name="acc-first-name" [(ngModel)]="account.firstName" [disabled]="!isEditing">
-                    </mat-form-field>
-                </div>
-                <div fxFlex="50">
-                    <mat-form-field appearance="outline" class="full-width">
-                        <mat-label i18n="@@lastName">Last Name</mat-label>
-                        <input matInput i18n-placeholder="@@lastName" placeholder="Last Name" name="acc-last-name" [(ngModel)]="account.lastName" [disabled]="!isEditing">
-                    </mat-form-field>
-                </div>
-            </div>
-
-            <div fxLayout="row" fxLayoutGap="16px">
-                <div fxFlex="50">
-                    <mat-form-field appearance="outline" class="full-width">
-                        <mat-label i18n="@@roles">Roles</mat-label>
-                        <mat-select matInput i18n-placeholder="@@roles" placeholder="Roles" [(ngModel)]="account.privilege" [disabled]="!isEditing">
-                            <mat-option *ngFor="let pri of privilegeList" [value]="pri.name">{{pri.name}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
-
-
-
-            <mat-form-field appearance="outline" class="full-width">
-                <mat-label i18n="@@status">Status</mat-label>
-                <input type="text" i18n-placeholder="@@status" placeholder="Status" aria-label="Status" matInput [formControl]="statusControl" [matAutocomplete]="autoStatus">
-                <mat-autocomplete #autoStatus="matAutocomplete">
-                    <mat-option *ngFor="let status of filteredStatus | async" [value]="status">
-                        {{status}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-
-
-            <div fxLayout="row" fxLayoutGap="16px">
-                <div fxFlex="50">
-                    <mat-form-field appearance="outline" class="full-width">
-                        <mat-label i18n="@@phoneNumber">Phone Number</mat-label>
-                        <input matInput i18n-placeholder="@@phoneNumber" placeholder="Phone Number" name="acc-phone-number" [(ngModel)]="account.phoneNumber" [disabled]="!isEditing">
-                    </mat-form-field>
-                </div>
-                <div fxFlex="50">
-                    <mat-form-field appearance="outline" class="full-width">
-                        <mat-label i18n="@@emailAddress">Email Address</mat-label>
-                        <input matInput i18n-placeholder="@@emailAddress" placeholder="Email Address" name="acc-email-address" [(ngModel)]="account.emailAddress" required [disabled]="!isEditing">
-                    </mat-form-field>
-                </div>
-            </div>
-            <mat-form-field appearance="outline" class="full-width">
-                <mat-label i18n="@@addressLine1">Address Line1</mat-label>
-                <input matInput i18n-placeholder="@@addressLine1" placeholder="Address Line1" name="acc-address-line1" [(ngModel)]="account.addressLine1" [disabled]="!isEditing">
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="full-width">
-                <mat-label i18n="@@addressLine2">Address Line2</mat-label>
-                <input matInput i18n-placeholder="@@addressLine2" placeholder="Address Line2" name="acc-address-line2" [(ngModel)]="account.addressLine2" [disabled]="!isEditing">
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="full-width">
-                <mat-label i18n="@@notes">Notes</mat-label>
-                <input matInput i18n-placeholder="@@notes" placeholder="Notes" name="acc-notes" [(ngModel)]="account.notes" [disabled]="!isEditing">
-            </mat-form-field>
-
+        </div>
+        <div fxFlex="33">
+            <form>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@mailProtocol">Mail Protocol</mat-label>
+                    <input matInput i18n-placeholder="@@mailProtocol" placeholder="Mail Protocol" name="mail-protocol" disabled [(ngModel)]="account.mailProperties.protocol">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@mailHost">Mail Host</mat-label>
+                    <input matInput i18n-placeholder="@@mailHost" placeholder="Mail Host" name="mail-host" [(ngModel)]="account.mailProperties.host">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@mailPort">Mail Port</mat-label>
+                    <input type="number" matInput i18n-placeholder="@@mailPort" placeholder="Mail Port" name="mail-port" [(ngModel)]="account.mailProperties.port">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@mailUsername">Mail Username</mat-label>
+                    <input matInput i18n-placeholder="@@mailUsername" placeholder="Mail Username" name="mail-username" [(ngModel)]="account.mailProperties.username">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@mailPassword">Mail Password</mat-label>
+                    <input matInput i18n-placeholder="@@mailPassword" placeholder="Mail Password" name="mail-password" [(ngModel)]="account.mailProperties.password">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@mailAuth">Mail Auth</mat-label>
+                    <input matInput i18n-placeholder="@@mailAuth" placeholder="Mail Auth" name="mail-auth" [(ngModel)]="account.mailProperties.auth">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@mailStartTls">Mail Start TLS</mat-label>
+                    <input matInput i18n-placeholder="@@mailStartTls" placeholder="Mail Start TLS" name="mail-starttls" [(ngModel)]="account.mailProperties.startTls">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label i18n="@@maxSizeAttachment">Max size attachment</mat-label>
+                    <input type="number" matInput i18n-placeholder="@@maxSizeAttachment" placeholder="Max size attachment"
+                           name="max-size-attachment" [(ngModel)]="account.mailProperties.maxSizeAttachment">
+                </mat-form-field>
+            </form>
         </div>
     </div>
-    <div fxFlex="33">
-        <mat-accordion>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title i18n="@@smtpServerDetails">SMTP Server Details</mat-panel-title>
-                    <mat-panel-description i18n="@@smtpServer">SMTP SERVER</mat-panel-description>
-                </mat-expansion-panel-header>
-                <mat-form-field>
-                    <mat-label i18n="@@host">Host</mat-label>
-                    <input matInput i18n-placeholder="@@smtpHost" placeholder="SMTP Host">
-                </mat-form-field>
-            </mat-expansion-panel>
-<!--            -->
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title i18n="@@httpServerDetails">Http</mat-panel-title>
-                    <mat-panel-description i18n="@@smtpServer">HTTP SERVER</mat-panel-description>
-                </mat-expansion-panel-header>
-                <mat-form-field>
-                    <mat-label i18n="@@host">Host</mat-label>
-                    <input matInput i18n-placeholder="@@smtpHost" placeholder="SMTP Host">
-                </mat-form-field>
-            </mat-expansion-panel>
-        </mat-accordion>
-    </div>
-</div>
 
 

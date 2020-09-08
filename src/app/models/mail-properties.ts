@@ -9,4 +9,9 @@ export class MailProperties {
     auth: boolean;
     startTls: boolean;
     maxSizeAttachment: number;
+
+
+    constructor() {
+        this.protocol = "smtp";
+    }
 }
