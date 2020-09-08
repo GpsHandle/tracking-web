@@ -106,36 +106,43 @@
             <form>
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label i18n="@@mailProtocol">Mail Protocol</mat-label>
-                    <input matInput i18n-placeholder="@@mailProtocol" placeholder="Mail Protocol" name="mail-protocol" disabled [(ngModel)]="account.mailProperties.protocol">
+                    <input matInput i18n-placeholder="@@mailProtocol" placeholder="Mail Protocol"
+                           name="mail-protocol" disabled [(ngModel)]="account.mailProperties.mailProtocol">
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label i18n="@@mailHost">Mail Host</mat-label>
-                    <input matInput i18n-placeholder="@@mailHost" placeholder="Mail Host" name="mail-host" [(ngModel)]="account.mailProperties.host">
+                    <input matInput i18n-placeholder="@@mailHost" placeholder="Mail Host"
+                           name="mail-host" [(ngModel)]="account.mailProperties.mailHost" [disabled]="!isEditing">
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label i18n="@@mailPort">Mail Port</mat-label>
-                    <input type="number" matInput i18n-placeholder="@@mailPort" placeholder="Mail Port" name="mail-port" [(ngModel)]="account.mailProperties.port">
+                    <input type="number" matInput i18n-placeholder="@@mailPort" placeholder="Mail Port"
+                           name="mail-port" [(ngModel)]="account.mailProperties.mailPort" [disabled]="!isEditing">
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label i18n="@@mailUsername">Mail Username</mat-label>
-                    <input matInput i18n-placeholder="@@mailUsername" placeholder="Mail Username" name="mail-username" [(ngModel)]="account.mailProperties.username">
+                    <input matInput i18n-placeholder="@@mailUsername" placeholder="Mail Username"
+                           name="mail-username" [(ngModel)]="account.mailProperties.mailUsername" [disabled]="!isEditing">
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label i18n="@@mailPassword">Mail Password</mat-label>
-                    <input matInput i18n-placeholder="@@mailPassword" placeholder="Mail Password" name="mail-password" [(ngModel)]="account.mailProperties.password">
+                    <input matInput i18n-placeholder="@@mailPassword" placeholder="Mail Password"
+                           name="mail-password" [(ngModel)]="account.mailProperties.mailPassword" [disabled]="!isEditing">
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label i18n="@@mailAuth">Mail Auth</mat-label>
-                    <input matInput i18n-placeholder="@@mailAuth" placeholder="Mail Auth" name="mail-auth" [(ngModel)]="account.mailProperties.auth">
+                    <input matInput i18n-placeholder="@@mailAuth" placeholder="Mail Auth"
+                           name="mail-auth" [(ngModel)]="account.mailProperties.mailAuth" [disabled]="!isEditing">
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label i18n="@@mailStartTls">Mail Start TLS</mat-label>
-                    <input matInput i18n-placeholder="@@mailStartTls" placeholder="Mail Start TLS" name="mail-starttls" [(ngModel)]="account.mailProperties.startTls">
+                    <input matInput i18n-placeholder="@@mailStartTls" placeholder="Mail Start TLS"
+                           name="mail-starttls" [(ngModel)]="account.mailProperties.mailStartTls" [disabled]="!isEditing">
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label i18n="@@maxSizeAttachment">Max size attachment</mat-label>
                     <input type="number" matInput i18n-placeholder="@@maxSizeAttachment" placeholder="Max size attachment"
-                           name="max-size-attachment" [(ngModel)]="account.mailProperties.maxSizeAttachment">
+                           name="max-size-attachment" [(ngModel)]="account.mailProperties.mailMaxSizeAttachment" [disabled]="!isEditing">
                 </mat-form-field>
             </form>
         </div>

@@ -1,17 +1,15 @@
 export class MailProperties {
-    id: number;
-    accountId: number;
-    protocol: string; //smtp, http, sms
-    host: string;
-    port: number;
-    username: string;
-    password: string;
-    auth: boolean;
-    startTls: boolean;
-    maxSizeAttachment: number;
+    mailProtocol: string; //smtp, http, sms
+    mailHost: string;
+    mailPort: number;
+    mailUsername: string;
+    mailPassword: string;
+    mailAuth: boolean;
+    mailStartTls: boolean;
+    mailMaxSizeAttachment: number;
 
 
     constructor() {
-        this.protocol = "smtp";
+        this.mailProtocol = "smtp";
     }
 }

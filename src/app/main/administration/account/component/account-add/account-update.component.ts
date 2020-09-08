@@ -40,7 +40,7 @@ export class AccountUpdateComponent implements OnInit {
 
     ngOnInit() {
         this.account = new Account();
-        this.account.mailProperties.protocol = 'smtp';
+        this.account.mailProperties.mailProtocol = 'smtp';
 
         this.privilegeList = this.applicationContext.getPrivileges();
         this.filteredStatus = this.statusControl.valueChanges.pipe(
