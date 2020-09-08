@@ -1,41 +1,67 @@
 <div class="page-register">
     <div class="page-register-center">
         <mat-card>
-            <div fxLayout="column">
-                <mat-form-field>
-                    <input type="text" matInput i18n-placeholder="@@accountId" placeholder="Account Id" required>
-                </mat-form-field>
+            <mat-card-title>Register a new Account</mat-card-title>
+            <mat-card-content>
+                <form [formGroup]="registerFormGroup">
+                    <div fxLayout="column">
+                        <mat-form-field appearance="outline">
+                            <mat-label i18n="@@accountId">Account Id</mat-label>
+                            <input type="text" matInput i18n-placeholder="@@accountId"
+                                   formControlName="accountId"
+                                   placeholder="Account Id" required>
+                        </mat-form-field>
 
-                <div fxLayout="row" fxLayoutGap="16px">
-                    <mat-form-field class="full-width">
-                        <input type="text" matInput i18n-placeholder="@@password" placeholder="Password" required>
-                    </mat-form-field>
-                    <mat-form-field class="full-width">
-                        <input type="text" matInput i18n-placeholder="@@rePassword" placeholder="Re Password" required>
-                    </mat-form-field>
-                </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-label i18n="@@password">Password</mat-label>
+                                <input type="password" matInput i18n-placeholder="@@password"
+                                       formControlName="password"
+                                       placeholder="Password" autocomplete="off" required>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-label i18n="@@rePassword">Re Password</mat-label>
+                                <input type="text" matInput i18n-placeholder="@@rePassword"
+                                       formControlName="rePassword"
+                                       placeholder="Re Password" autocomplete="off" required>
+                            </mat-form-field>
+                        </div>
 
-                <div fxLayout="row" fxLayoutGap="16px">
-                    <mat-form-field class="full-width">
-                        <input type="text" matInput i18n-placeholder="@@firstName" placeholder="First Name">
-                    </mat-form-field>
-                    <mat-form-field class="full-width">
-                        <input type="text" matInput i18n-placeholder="@@lastName" placeholder="Last Name">
-                    </mat-form-field>
-                </div>
+                        <div fxLayout="row" fxLayoutGap="16px">
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-label i18n="@@firstName">First Name</mat-label>
+                                <input type="text" matInput i18n-placeholder="@@firstName"
+                                       formControlName="firstName"
+                                       placeholder="First Name">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-label i18n="@@lastName">Last Name</mat-label>
+                                <input type="text" matInput i18n-placeholder="@@lastName"
+                                       formControlName="lastName"
+                                       placeholder="Last Name">
+                            </mat-form-field>
+                        </div>
 
-                <mat-form-field>
-                    <input type="text" matInput i18n-placeholder="@@phoneName" placeholder="Phone Number">
-                </mat-form-field>
-                <mat-form-field>
-                    <input type="text" matInput i18n-placeholder="@@emailAddress" placeholder="Email Address" required>
-                </mat-form-field>
-                <mat-form-field>
-                    <input type="text" matInput i18n-placeholder="@@address" placeholder="Address">
-                </mat-form-field>
-
-            </div>
-
+                        <mat-form-field appearance="outline">
+                            <mat-label i18n="@@phoneNumber">Phone Number</mat-label>
+                            <input type="text" matInput i18n-placeholder="@@phoneNumber"
+                                   formControlName="phoneNumber"
+                                   placeholder="Phone Number">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label i18n="@@emailAddress">Email Address</mat-label>
+                            <input type="text" matInput i18n-placeholder="@@emailAddress"
+                                   formControlName="emailAddress"
+                                   placeholder="Email Address" required>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label i18n="@@address">Address</mat-label>
+                            <input type="text" matInput i18n-placeholder="@@address"
+                                   formControlName="address" placeholder="Address">
+                        </mat-form-field>
+                    </div>
+                </form>
+            </mat-card-content>
             <mat-card-actions align="end">
                 <button mat-flat-button color="primary" i18n="@@register">Register</button>
                 <button mat-button color="primary" routerLink="/login" i18n="@@backToLogin">Back to login</button>

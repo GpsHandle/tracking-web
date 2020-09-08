@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {LOCALE_ID, NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule, registerLocaleData} from '@angular/common';
 import {LoginComponent} from 'app/pages/login/login.component';
@@ -60,7 +60,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
             maxAge: 25 // Retains last 25 states
         }),
         RootStoreModule,
-        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+        ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+        ReactiveFormsModule
     ],
     providers: [
         AuthService,

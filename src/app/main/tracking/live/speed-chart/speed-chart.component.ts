@@ -151,7 +151,7 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
     loading: boolean = false;
     opac: number = 1;
 
-    private unsubscribe$ = new Subject<void>();
+    private interval: any;
     //-------------------------------------------------------------------------
     constructor(private eventService: EventService,
                 private cdRef : ChangeDetectorRef) {
@@ -168,8 +168,7 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
     }
 
     ngOnDestroy(): void {
-        this.unsubscribe$.next();
-        this.unsubscribe$.complete();
+        clearInterval(this.interval)
     }
 
     ngAfterViewInit(): void {
@@ -227,13 +226,11 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
     }
 
     private intervalUpdate() {
-        interval(10 * 1000).subscribe(
-            () => {
-                this.to = Date.now();
-                this.from = this.to - this.period * 60 * 60 * 1000; // 6 hours
-                this.dataChange.next(101);
-            }
-        );
+        this.interval = setInterval(() => {
+            this.to = Date.now();
+            this.from = this.to - this.period * 60 * 60 * 1000; // 6 hours
+            this.dataChange.next(101);
+        }, 10*1000);
     }
 
     private draw() {
