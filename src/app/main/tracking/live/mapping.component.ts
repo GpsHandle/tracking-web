@@ -28,6 +28,8 @@ import { PrimitiveArray } from 'c3';
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {MainFacade} from '../../../stores/root-store.facade';
 
+import * as _ from 'lodash';
+
 const TILE_OSM = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
 const TILE_MAPBOX = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
 
@@ -133,6 +135,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.allDeviceList = _.map(data, (device: Device) => {
                     device.lastUpdateTimeInWords = formatDistanceToNow(device.lastEventTime) + ' ago';
                     device.stayedTimeInWords = formatDistanceToNow(device.stayedTime);
+                    device.marker = this.buildMarker(device);
 
                     const status = MappingUtils.getStatus(device.lastEventTime);
                     switch (status) {
@@ -180,53 +183,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                         }
 
                     });
-
-                    data.forEach((device, index) => {
-                        if (device.lastLatitude && device.lastLongitude) {
-                            let marker = this.buildMarker(device);
-                            this.popupLink.register(marker, device, (_smarker) => {this.currentMarker = _smarker});
-                            if (this.currentMarker && !this.currentMarker.isPopupOpen()) {
-                                this.currentMarker.togglePopup();
-                            }
-                            this.markersCluster.addLayer(marker);
-                            marker.on('click', () => {
-                                this.selectedDevice = device;
-                                //circle around marker
-                                if (this.selectedMarker) {
-                                    this.selectedMarker.removeFrom(this.map);
-                                }
-                                let center = L.latLng(this.selectedDevice.lastLatitude, this.selectedDevice.lastLongitude);
-                                this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
-                            });
-                        }
-                    });
-
-                    if (this.selectedDevice) {
-                        let center = L.latLng(this.selectedDevice.lastLatitude, this.selectedDevice.lastLongitude);
-                        let oldZoom = this.map.getZoom();
-                        this.map.setView(center, oldZoom);
-
-                        //circle around marker
-                        if (this.selectedMarker) {
-                            this.selectedMarker.removeFrom(this.map);
-                        }
-                        this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
-                    } else if (this.deviceList.length > 0 ) {
-                        this.map.addLayer(this.markersCluster);
-                        if (this.numberOfLoad === 1) {
-                            this.applicationContext.spin(false);
-                            let bounds: LatLngBounds = this.markersCluster.getBounds();
-                            if (bounds.isValid()) {
-                                this.map.fitBounds(bounds);
-                            }
-
-                        }
-
-                        if (this.selectedMarker) {
-                            this.selectedMarker.removeFrom(this.map);
-                        }
-
-                    }
+                    this.updateMap();
                     this.draw();
                 }
         );
@@ -279,17 +236,8 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
             this.selectedDevice.selected = false;
         }
         device.selected = !device.selected;
-
-        const center = L.latLng(device.lastLatitude, device.lastLongitude);
-        if (center) {
-            this.map.setView(center, 15);
-            this.selectedDevice = device;
-            //circle around marker
-            if (this.selectedMarker) {
-                this.selectedMarker.removeFrom(this.map);
-            }
-            this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
-        }
+        this.selectedDevice = device;
+        this.xUpdate();
     }
 
     closePanelDetails() {
@@ -316,6 +264,42 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
 
     requestLocationUpdate(event: Event) {
         event.stopPropagation();
+    }
+
+    private updateMap() {
+        let dataMarker: L.Marker[] = _.filter(this.deviceList, x => (x.lastLatitude && x.lastLongitude)).map(x1 => x1.marker);
+        this.markersCluster.addLayers(dataMarker);
+        _.forEach(this.deviceList, dl => {
+            this.popupLink.register(dl.marker, dl, (_sdevice, _smarker) => {
+                this.currentMarker = _smarker;
+                this.selectedDevice = _sdevice;
+                this.xUpdate();
+            });
+        });
+        this.xUpdate();
+    }
+
+    private xUpdate() {
+        //circle around marker
+        if (this.selectedMarker) {
+            this.selectedMarker.removeFrom(this.map);
+        }
+
+        if (this.selectedDevice) {
+            let center = L.latLng(this.selectedDevice.lastLatitude, this.selectedDevice.lastLongitude);
+            this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
+            let oldZoom = this.map.getZoom();
+            this.map.setView(center, oldZoom);
+        } else if (this.deviceList.length > 0 ) {
+            this.map.addLayer(this.markersCluster);
+            if (this.numberOfLoad === 1) {
+                this.applicationContext.spin(false);
+                let bounds: LatLngBounds = this.markersCluster.getBounds();
+                if (bounds.isValid()) {
+                    this.map.fitBounds(bounds);
+                }
+            }
+        }
     }
 
     private draw() {

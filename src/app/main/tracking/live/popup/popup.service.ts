@@ -1,14 +1,11 @@
 import * as L from 'leaflet';
 import {
     ApplicationRef,
-    Component,
     ComponentFactoryResolver,
     Injectable,
-    InjectionToken,
     Injector
 } from '@angular/core';
-import { LeafletMouseEvent } from 'leaflet';
-import { ComponentPortal, PortalHost, DomPortalHost, PortalInjector } from '@angular/cdk/portal';
+import {ComponentPortal, DomPortalOutlet, PortalInjector, PortalOutlet} from '@angular/cdk/portal';
 import { CONTAINER_DATA, PopupComponent } from 'app/main/tracking/live/popup/popup.component';
 
 
@@ -16,7 +13,10 @@ import { CONTAINER_DATA, PopupComponent } from 'app/main/tracking/live/popup/pop
 @Injectable()
 export class PopupService {
     private portalHolder: ComponentPortal<PopupComponent>;
-    private bodyPortal: PortalHost;
+    private bodyPortal: PortalOutlet;
+
+    private sMarker: any;
+    private sData: any;
 
     constructor(private cfr: ComponentFactoryResolver,
                 private injector: Injector,
@@ -27,31 +27,43 @@ export class PopupService {
     register(marker: L.Marker, data: any, fn?: Function): void  {
         marker.on('click', ($event: L.LeafletMouseEvent)  => {
             if (fn) {
-                fn(marker);
+                fn(data, marker);
             }
-            this.popup($event, data);
+            this.sMarker = <L.Marker>$event.target;
+            this.sData = data;
+            this.popup();
         } );
     }
 
-    popup(event: L.LeafletMouseEvent, data: any) {
-        //console.log('Event: ', event);
-        let marker: L.Marker = <L.Marker>event.target;
-        marker.togglePopup();
-        const elMarker = <HTMLElement> marker.getPopup().getContent();
-        this.portalHolder = new ComponentPortal<PopupComponent>(PopupComponent, null, this.createInjector(marker, data));
+    setMarker(marker: any): void {
+        this.sMarker = marker;
+    }
 
-        if (this.bodyPortal && this.bodyPortal.hasAttached()) {
-            this.bodyPortal.detach();
+    setData(data: any): void {
+        this.sData = data;
+    }
+
+    popup() {
+        console.log('...poping');
+        if (this.sData && this.sMarker) {
+            const elMarker = <HTMLElement> this.sMarker.getPopup().getContent();
+            this.portalHolder = new ComponentPortal<PopupComponent>(PopupComponent, null, this.createInjector(this.sMarker, this.sData));
+
+            if (this.bodyPortal && this.bodyPortal.hasAttached()) {
+                this.bodyPortal.detach();
+                this.bodyPortal.dispose();
+            }
+            this.bodyPortal = new DomPortalOutlet(
+                elMarker,
+                this.cfr,
+                this.appRef,
+                this.injector
+            );
+
+            this.bodyPortal.attach(this.portalHolder);
+
         }
-        this.bodyPortal = new DomPortalHost(
-            elMarker,
-            this.cfr,
-            this.appRef,
-            this.injector
-        );
-
-        this.bodyPortal.attach(this.portalHolder);
-        //marker.togglePopup();
+        console.log('___poping');
     }
 
     createInjector(marker: L.Marker, data: any): PortalInjector {

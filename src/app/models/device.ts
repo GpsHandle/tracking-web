@@ -50,4 +50,6 @@ export class Device {
     public stayedTimeInWords: string;
     public selected: boolean;
     public state: number; //stopped, living, idle
+
+    public marker: L.Marker;
 }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Inject, InjectionToken, OnInit } from '@angular/core';
+import {AfterViewInit, Component, Inject, InjectionToken, OnDestroy, OnInit} from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Device } from 'app/models/device';
 export const CONTAINER_DATA = new InjectionToken<{}>('CONTAINER_DATA');
@@ -7,7 +7,7 @@ export const CONTAINER_DATA = new InjectionToken<{}>('CONTAINER_DATA');
     templateUrl: './popup.component.html',
     styleUrls: ['./popup.component.scss']
 })
-export class PopupComponent implements OnInit, AfterViewInit {
+export class PopupComponent implements OnInit, AfterViewInit, OnDestroy {
     private dev : Device;
 
     constructor(@Inject(CONTAINER_DATA) public data: any, private _datePipe: DatePipe) { }
@@ -19,7 +19,8 @@ export class PopupComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.data.marker.togglePopup();
+        console.log('AfterViewInit ~ Popup.component');
+        this.data.marker.openPopup();
     }
 
     get deviceId(): string {
@@ -56,6 +57,13 @@ export class PopupComponent implements OnInit, AfterViewInit {
 
     get devId(): number {
         return this.dev ? this.dev.id : 0;
+    }
+
+    ngOnDestroy(): void {
+        console.log('Destroy ...');
+        if (this.data && this.data.marker) {
+            this.data.marker.closePopup();
+        }
     }
 }
 
