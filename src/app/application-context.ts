@@ -233,12 +233,7 @@ export class ApplicationContext implements OnInit, OnDestroy {
     }
 
     isLoggedIn(): boolean {
-        try {
-            const decoded: any = jwt(this.access_token);
-            return decoded.exp > Date.now()/1000;
-        } catch (e) {
-            return false;
-        }
+        return !!this.access_token;
     }
 
 

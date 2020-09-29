@@ -10,7 +10,7 @@
     padding: 16px;
 
     .greetingLabel {
-      background-color: mat-color($primary);
+      background-color: mat-color($accent);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -62,5 +62,9 @@
     bottom: 0;
     background-color: #313131;
     width: 100%;
+  }
+
+  .explore-more {
+    padding-top: 32px;
   }
 }

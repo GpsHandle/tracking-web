@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
                 this.appCtx.spin(false);
                 this.appCtx.store(result);
                 const redirectUrl = this.appCtx.getRedirectURL();
+                console.log('redirectUrl', redirectUrl);
                 this.appCtx.navigate([redirectUrl]);
             },
             (err: any) => {

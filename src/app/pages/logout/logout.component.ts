@@ -12,7 +12,7 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit() {
       this.applicationContext.logout();
-      this.applicationContext.navigate(['/login']);
+      this.applicationContext.navigate(['/home']);
   }
 
 }

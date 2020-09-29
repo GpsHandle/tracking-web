@@ -13,7 +13,8 @@ import { LogoutComponent } from 'app/pages/logout/logout.component';
 
 
 const routes: Routes = [
-    { path: '', redirectTo: '/login', pathMatch: 'full'},
+    { path: '', redirectTo: 'home', pathMatch: 'full'},
+    { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
     { path: 'login',    component: LoginComponent },
     { path: 'logout',   component: LogoutComponent },
     {
@@ -26,7 +27,7 @@ const routes: Routes = [
     { path: 'forgot-password',  pathMatch: 'full', component: ForgotPasswordComponent },
     { path: 'register',         pathMatch: 'full', component: RegisterComponent },
     { path: 'not-found',        pathMatch: 'full', component: NotFoundComponent },
-    { path: '**',               pathMatch: 'full', component: NotFoundComponent }
+    { path: '**',               pathMatch: 'full', redirectTo: 'not-found' }
 ];
 
 @NgModule({

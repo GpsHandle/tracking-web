@@ -28,8 +28,6 @@ import { PrimitiveArray } from 'c3';
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {MainFacade} from '../../../stores/root-store.facade';
 
-import * as _ from 'lodash';
-
 const TILE_OSM = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
 const TILE_MAPBOX = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
 
@@ -267,9 +265,10 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     private updateMap() {
-        let dataMarker: L.Marker[] = _.filter(this.deviceList, x => (x.lastLatitude && x.lastLongitude)).map(x1 => x1.marker);
-        this.markersCluster.addLayers(dataMarker);
         _.forEach(this.deviceList, dl => {
+            if (dl.lastLatitude && dl.lastLongitude) {
+                this.markersCluster.addLayer(dl.marker);
+            }
             this.popupLink.register(dl.marker, dl, (_sdevice, _smarker) => {
                 this.currentMarker = _smarker;
                 this.selectedDevice = _sdevice;
