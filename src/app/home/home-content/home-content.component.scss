@@ -14,7 +14,7 @@ $main-color: #F85E6A;
     text-align: center;
     transition: all .3s ease-in-out;
     &>ul>li {
-      list-style: nonexz;
+      list-style: none;
     }
     &:nth-child(even) {
       margin: 0 1%;
