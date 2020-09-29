@@ -7,14 +7,17 @@ $main-color: #F85E6A;
   display: table;
   width: 100%;
   .pricing-option {
-    width: 28%;
+    width: 21%;
     background:white;
     float: left;
-    padding: 2%;
+    padding: 1%;
     text-align: center;
     transition: all .3s ease-in-out;
+    &>ul>li {
+      list-style: nonexz;
+    }
     &:nth-child(even) {
-      margin: 0 2%;
+      margin: 0 1%;
     }
     &:hover {
       cursor: pointer;
