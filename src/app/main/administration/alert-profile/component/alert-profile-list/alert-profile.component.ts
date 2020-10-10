@@ -2,20 +2,20 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { AddEditAlertProfileComponent } from 'app/main/administration/alert-profile/component/add-edit-alert-profile/add-edit-alert-profile.component';
-import { AlertProfileRequest } from 'app/models/request/alert-profile.request';
-import { AlertProfileService } from 'app/services/alert-profile.service';
-import { ApplicationContext } from 'app/application-context';
 import {forkJoin, ReplaySubject} from 'rxjs';
-import { AlertProfile } from 'app/models/alert-profile';
 import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { DeleteAlertProfileComponent } from 'app/main/administration/alert-profile/component/delete-alert-profile/delete-alert-profile.component';
-import { PageableCommonResponse } from 'app/models/pageable-common.response';
 import {AssignToDeviceComponent} from "../assign-to-device/assign-to-device.component";
 import {DeviceService} from "../../../../../services/device.service";
 import {Device} from "../../../../../models/device";
+import {AddEditAlertProfileComponent} from "../add-edit-alert-profile/add-edit-alert-profile.component";
+import {ApplicationContext} from "../../../../../application-context";
+import {DeleteAlertProfileComponent} from "../delete-alert-profile/delete-alert-profile.component";
+import {PageableCommonResponse} from "../../../../../models/pageable-common.response";
+import {AlertProfileService} from "../../../../../services/alert-profile.service";
+import {AlertProfileRequest} from "../../../../../models/request/alert-profile.request";
+import {AlertProfile} from "../../../../../models/alert-profile";
 
 @Component({
     selector: 'app-alert-profile',

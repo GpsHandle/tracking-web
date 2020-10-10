@@ -1,4 +1,4 @@
-import { Geozone } from 'app/models/geozone';
+import {Geozone} from "../geozone";
 
 export class GeozoneRequest {
     accountIds: Array<number>;

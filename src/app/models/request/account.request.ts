@@ -1,6 +1,6 @@
-import { Account } from 'app/models/account';
-import { Role } from 'app/models/role';
 import {MailProperties} from "../mail-properties";
+import {Role} from "../role";
+import {Account} from "../account";
 
 export class AccountRequest {
     id: number;

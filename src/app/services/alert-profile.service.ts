@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AbstractService } from 'app/services/abstract.service';
-import { AlertProfileRequest } from 'app/models/request/alert-profile.request';
-import { AlertProfile } from 'app/models/alert-profile';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import {AlertProfile} from "../models/alert-profile";
+import {AbstractService} from "./abstract.service";
+import {AlertProfileRequest} from "../models/request/alert-profile.request";
 
 export const API_URL = '/api/alert';
 @Injectable({

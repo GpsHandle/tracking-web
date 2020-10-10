@@ -1,0 +1,168 @@
+server{
+    listen 80;
+    server_name nz.gpshandle.com;
+    location /.well-known {
+        root /usr/share/nginx;
+    }
+    location / {
+        rewrite        ^ https://$server_name$request_uri? permanent;
+    }
+}
+server{
+    listen              443 ssl;
+    server_name nz.gpshandle.com;
+    ssl_certificate      /etc/letsencrypt/live/nz.gpshandle.com/fullchain.pem;
+    ssl_certificate_key  /etc/letsencrypt/live/nz.gpshandle.com/privkey.pem;
+    ssl_protocols       SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers         HIGH:!aNULL:!MD5;
+    access_log /var/log/nginx/access_gpshandle.log;
+
+    location / {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;
+
+	proxy_cookie_path / "/; secure; HttpOnly; SameSite=none";
+
+        proxy_pass http://127.0.0.1:6969;
+        proxy_redirect off;
+    }
+}
+
+server {
+        listen 80;
+        server_name dashboard.gpshandle.com;
+        location / {
+               rewrite        ^ https://$server_name$request_uri? permanent;
+        }
+}
+
+server {
+        listen 443 ssl;
+	server_name dashboard.gpshandle.com;
+#        root /var/lib/gpshandle/dist/browser;
+
+        # Add index.php to the list if you are using PHP
+        index index.html index.htm index.nginx-debian.html;
+
+ #       try_files $uri $uri/ /index.html;
+
+    ssl_certificate      /etc/letsencrypt/live/dashboard.gpshandle.com/fullchain.pem;
+    ssl_certificate_key  /etc/letsencrypt/live/dashboard.gpshandle.com/privkey.pem;
+    ssl_protocols       SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers         HIGH:!aNULL:!MD5;
+    access_log /var/log/nginx/access_dashboard.log;
+
+    location / {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_pass http://127.0.0.1:4000;
+        proxy_redirect off;
+    }
+
+    location /oauth {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_pass http://127.0.0.1:8081/oauth;
+        proxy_redirect off;
+    }
+    location /tracker {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_pass http://127.0.0.1:8081/tracker;
+        proxy_redirect off;
+    }
+    location /local {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_pass http://127.0.0.1:8081/local;
+        proxy_redirect off;
+    }
+    location /api {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_pass http://127.0.0.1:8081/api;
+        proxy_redirect off;
+    }
+
+    location /v2/api-docs {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_pass http://127.0.0.1:8081/v2/api-docs;
+        proxy_redirect off;
+    }
+}
+
+# gpshandle.com
+server {
+    listen 80;
+    server_name gpshandle.com;
+    location / {
+        rewrite        ^ https://$server_name$request_uri? permanent;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name gpshandle.com;
+    # root /var/lib/gpshandle/dist/browser;
+
+    # Add index.php to the list if you are using PHP
+    index index.html index.htm index.nginx-debian.html;
+
+    #try_files $uri $uri/ /index.html;
+
+    ssl_certificate      /etc/letsencrypt/live/gpshandle.com/fullchain.pem;
+    ssl_certificate_key  /etc/letsencrypt/live/gpshandle.com/privkey.pem;
+    ssl_protocols       SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers         HIGH:!aNULL:!MD5;
+    access_log /var/log/nginx/gpshandle.log;
+
+    location / {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_pass http://127.0.0.1:4001;
+        proxy_redirect off;
+    }
+
+    location /tracker {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_pass http://127.0.0.1:8081/tracker;
+        proxy_redirect off;
+    }
+    location /local {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_pass http://127.0.0.1:8081/local;
+        proxy_redirect off;
+    }
+
+    location /v2/api-docs {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_pass http://127.0.0.1:8081/v2/api-docs;
+        proxy_redirect off;
+    }
+}

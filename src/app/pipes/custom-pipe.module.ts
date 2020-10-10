@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { FlattenPipe } from 'app/pipes/flatten.pipe';
-import { OrderBy } from 'app/pipes/order-by.pipe';
-import { FilterPipe } from 'app/pipes/filter.pipe';
 import { TimeDistancePipe } from './time-distance.pipe';
+import {OrderBy} from "./order-by.pipe";
+import {FilterPipe} from "./filter.pipe";
+import {FlattenPipe} from "./flatten.pipe";
 
 @NgModule({
     imports: [

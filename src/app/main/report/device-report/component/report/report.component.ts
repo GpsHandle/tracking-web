@@ -1,18 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DeviceReportCustomTimeComponent } from 'app/main/report/device-report/component/custom-timerange-dialog/device-report-custom-time.component';
 import { saveAs } from 'file-saver';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { merge, of as observableOf, ReplaySubject } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-import { EventData } from 'app/models/event-data';
 import { ActivatedRoute } from '@angular/router';
-import { DeviceService } from 'app/services/device.service';
-import { EventService } from 'app/services/event.service';
-import { DeviceReportService } from 'app/services/device-report.service';
-import { ApplicationContext } from 'app/application-context';
-import { DeviceReportCommService } from 'app/main/report/device-report/service/device-report-comm.service';
-import { EventLineChartComponent } from 'app/cutom-component/event-line-chart/event-line-chart.component';
+import {ApplicationContext} from "../../../../../application-context";
+import {DeviceReportCommService} from "../../service/device-report-comm.service";
+import {DeviceReportCustomTimeComponent} from "../custom-timerange-dialog/device-report-custom-time.component";
+import {EventLineChartComponent} from "../../../../../cutom-component/event-line-chart/event-line-chart.component";
+import {DeviceReportService} from "../../../../../services/device-report.service";
+import {DeviceService} from "../../../../../services/device.service";
+import {EventService} from "../../../../../services/event.service";
+import {EventData} from "../../../../../models/event-data";
 
 @Component({
     selector: 'app-dashboard',

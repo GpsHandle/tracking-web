@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { Router } from "@angular/router";
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { PageableCommonResponse } from 'app/models/pageable-common.response';
+import {PageableCommonResponse} from "../models/pageable-common.response";
 
 export class BaseService<T> {
     private _http: HttpClient;

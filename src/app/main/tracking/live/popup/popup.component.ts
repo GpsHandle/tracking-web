@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, Inject, InjectionToken, OnDestroy, OnInit} from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { Device } from 'app/models/device';
+import {Device} from "../../../../models/device";
+
 export const CONTAINER_DATA = new InjectionToken<{}>('CONTAINER_DATA');
 @Component({
     selector: 'app-popup',

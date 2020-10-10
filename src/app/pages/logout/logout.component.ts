@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApplicationContext } from 'app/application-context';
+import {ApplicationContext} from "../../application-context";
 
 @Component({
   selector: 'logout',
@@ -12,7 +12,7 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit() {
       this.applicationContext.logout();
-      this.applicationContext.navigate(['/home']);
+      this.applicationContext.navigate(['/web']);
   }
 
 }

@@ -1,5 +1,5 @@
-import { Role } from 'app/models/role';
 import {MailProperties} from "./mail-properties";
+import {Role} from "./role";
 
 export class Account {
     private _id: number;
@@ -18,7 +18,7 @@ export class Account {
     private _createdBy: string;
     private _updatedBy: string;
     private _createdOn: Date;
-    private _updatedOn: Date;
+    private _updatedOn: Date;F
 
     public mailProperties: MailProperties;
 

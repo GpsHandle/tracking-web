@@ -3,6 +3,7 @@ import 'zone.js/dist/zone-node';
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
 import { join } from 'path';
+import { createProxyMiddleware, Filter, Options, RequestHandler } from 'http-proxy-middleware';
 
 import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
@@ -13,6 +14,8 @@ export function app(): express.Express {
   const server = express();
   const distFolder = join(process.cwd(), 'dist/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
+  const supportedLocales = ['en', 'en-US', 'vi', 'pl', 'pt'];
+  const defaultLocale = existsSync(join(distFolder, 'en')) ? 'en' : '';
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
   server.engine('html', ngExpressEngine({
@@ -30,15 +33,30 @@ export function app(): express.Express {
   }));
 
   // All regular routes use the Universal engine
+  server.use('/api', createProxyMiddleware({
+    target: 'https://dashboard.gpshandle.com', secure: false, changeOrigin: true
+  }));
+
+  server.use('/oauth', createProxyMiddleware({
+    target: 'https://dashboard.gpshandle.com', secure: false, changeOrigin: true
+  }));
+
   server.get('*', (req, res) => {
-    res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+    // res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+
+    //this is for i18n
+    const matches = req.query.hl ? req.query.hl : req.url.match(/^\/([a-z]{2}(?:-[A-Z]{2})?)\//);
+    const locale = (matches && supportedLocales.indexOf(matches[1]) !== -1) ? matches[1] : defaultLocale;
+    const xIndex = locale ? locale + '/' + indexHtml : indexHtml;
+    res.render(xIndex, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+
   });
 
   return server;
 }
 
 function run(): void {
-  const port = process.env.PORT || 4000;
+  const port = process.env.PORT || 4001;
 
   // Start up the Node server
   const server = app();

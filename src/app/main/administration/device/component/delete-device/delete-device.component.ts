@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Device } from 'app/models/device';
+import {Device} from "../../../../../models/device";
 
 @Component({
   selector: 'app-delete-device',

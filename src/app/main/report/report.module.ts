@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { ReportRoutingModule } from 'app/main/report/report-routing.module';
-import { MaterialShared } from 'app/shared/material-shared';
-import { DeviceService } from 'app/services/device.service';
-import { AccountReportComponent } from 'app/main/report/account-report/account-report.component';
-import { DriverReportComponent } from 'app/main/report/driver-report/driver-report.component';
-import { ShipmentReportComponent } from 'app/main/report/shipment-report/shipment-report.component';
-import { AlertHistoryComponent } from 'app/main/report/alert-history/alert-history.component';
-import { EventService } from 'app/services/event.service';
+import {AlertHistoryComponent} from "./alert-history/alert-history.component";
+import {DeviceService} from "../../services/device.service";
+import {ReportRoutingModule} from "./report-routing.module";
+import {EventService} from "../../services/event.service";
+import {AccountReportComponent} from "./account-report/account-report.component";
+import {MaterialShared} from "../../shared/material-shared";
+import {ShipmentReportComponent} from "./shipment-report/shipment-report.component";
+import {DriverReportComponent} from "./driver-report/driver-report.component";
 
 @NgModule({
     imports: [

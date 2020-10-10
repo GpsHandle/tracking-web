@@ -1,9 +1,9 @@
-import { AbstractService } from 'app/services/abstract.service';
 import { Injectable } from '@angular/core';
-import { DcsRequest } from 'app/models/request/dcs.request';
-import { Dcs } from 'app/models/dcs';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import {Dcs} from "../models/dcs";
+import {AbstractService} from "./abstract.service";
+import {DcsRequest} from "../models/request/dcs.request";
 
 const API_DCS_PATH = '/api/dcs';
 

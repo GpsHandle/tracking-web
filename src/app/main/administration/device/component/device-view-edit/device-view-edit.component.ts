@@ -10,7 +10,6 @@ import {AlertProfile} from "../../../../../models/alert-profile";
 import {AccountService} from "../../../../../services/account.service";
 import {AlertProfileService} from "../../../../../services/alert-profile.service";
 import {FormControl} from "@angular/forms";
-import * as _ from "lodash";
 import {AccountLittle} from "../../../../../models/little/account.little";
 import {AlertProfileLittle} from "../../../../../models/little/alert-profile.little";
 import {DeviceRequest} from "../../../../../models/request/device.request";
@@ -18,6 +17,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {SelectionModel} from "@angular/cdk/collections";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {forEach, map as _map} from 'lodash-es';
 
 @Component({
     selector: 'app-device-view-edit',
@@ -62,12 +62,12 @@ export class DeviceViewEditComponent implements OnInit {
         ).subscribe(data => {
             this.data = data;
             this.statusControl.setValue(this.data.status);
-            this.accountIds = _.map(this.data.accounts, (acc: AccountLittle) => {
+            this.accountIds = _map(this.data.accounts, (acc: AccountLittle) => {
                 return acc.id;
             });
 
-            this.alertIds = _.map(this.data.alertProfiles, (alert: AlertProfileLittle) => alert.id);
-            _.forEach(this.data.alertProfiles, x => {
+            this.alertIds = _map(this.data.alertProfiles, (alert: AlertProfileLittle) => alert.id);
+            forEach(this.data.alertProfiles, x => {
                 this.selection.select(x.id)
             });
             this.dateExpired = this.data.expiredOn ? new Date(this.data.expiredOn) : null;

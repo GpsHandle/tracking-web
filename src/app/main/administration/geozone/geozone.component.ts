@@ -1,19 +1,17 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { GeozoneService } from 'app/services/geozone.service';
-import { Geozone } from 'app/models/geozone';
 import { MatDialog } from '@angular/material/dialog';
 
-import * as _ from 'lodash';
 import * as L from 'leaflet';
 import 'leaflet-editable';
 
-import { GeozoneRequest } from 'app/models/request/geozone.request';
-import { ApplicationContext } from 'app/application-context';
-import { GeoUtils } from 'app/main/administration/geozone/GeoUtils';
 import { LatLng } from 'leaflet';
-// import { LatLng} from 'leaflet';
-// import { FeatureGroup } from 'leaflet';
+import {forEach, remove, toLower} from "lodash-es";
+import {GeozoneService} from "../../../services/geozone.service";
+import {Geozone} from "../../../models/geozone";
+import {ApplicationContext} from "../../../application-context";
+import {GeozoneRequest} from "../../../models/request/geozone.request";
+import {GeoUtils} from "./GeoUtils";
 
 const TILE_OSM_URL = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
 const TILE_MAPBOX_URL = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
@@ -132,7 +130,7 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
 
     private drawGeofences(): void {
         if (this.geofenceList && this.geofenceList.length > 0) {
-            _.forEach(this.geofenceList, (g) => {
+            forEach(this.geofenceList, (g) => {
                 g = GeoUtils.convertGeofence(g);
                 let geometryObj = null;
                 if (g.geojson.properties.type === 'Circle') {
@@ -213,7 +211,7 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
                 this.showDetail(false);
 
                 this.applicationContext.info("Deleted geofence #" + geofence.name);
-                _.remove(this.geofenceList, (g) => {
+                remove(this.geofenceList, (g) => {
                     return (g.id === geofence.id);
                 });
                 this.editableLayers.removeLayer(this.geometryMap.get(geofence.name));
@@ -341,11 +339,11 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
 
     //-- check type of geometry
     public isCircle(): boolean {
-        return _.toLower(this.type) === 'circle';
+        return toLower(this.type) === 'circle';
     }
 
     public isPolygon(): boolean {
-        return (_.toLower(this.type) === 'rectangle') || (_.toLower(this.type) === 'polygon');
+        return (toLower(this.type) === 'rectangle') || (toLower(this.type) === 'polygon');
     }
 
     //-get-set
@@ -423,7 +421,7 @@ export class GeozoneComponent implements OnInit, AfterViewInit {
             return L.GeoJSON.coordsToLatLng(this.coordinates);
         } else {
             let abc = [];
-            _.forEach(this.coordinates, (coor: [number, number]) => {
+            forEach(this.coordinates, (coor: [number, number]) => {
                 abc.push(L.GeoJSON.coordsToLatLng(coor))
             });
 

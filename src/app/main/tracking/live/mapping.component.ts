@@ -1,32 +1,30 @@
-import * as _ from 'lodash';
+import {filter, forEach, includes, map as _map} from 'lodash-es';
 import * as d3 from 'd3';
 import * as c3 from 'c3';
-import {Component, OnDestroy, OnInit, AfterViewInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, AfterViewInit, Inject, PLATFORM_ID} from '@angular/core';
 
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import { LatLngBounds, MarkerClusterGroup } from 'leaflet';
 
 import { formatDistanceToNow } from 'date-fns';
-
-
-import {DeviceService} from 'app/services/device.service';
-import {EventService} from 'app/services/event.service';
-
-import { StatusPieChart } from 'app/models/status-pie-chart';
-import { PopupService } from 'app/main/tracking/live/popup/popup.service';
-import { MappingUtils } from 'app/main/tracking/live/mapping-utils';
 import { CircleMarker } from 'leaflet';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { CommandComponent } from 'app/main/tracking/live/command/command.component';
-import { ApplicationContext } from 'app/application-context';
-import { Device } from 'app/models/device';
 import {Observable, of as observableOf, Subject} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import { ChartAPI } from 'c3';
 import { PrimitiveArray } from 'c3';
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {MainFacade} from '../../../stores/root-store.facade';
+import {ApplicationContext} from "../../../application-context";
+import {Device} from "../../../models/device";
+import {DeviceService} from "../../../services/device.service";
+import {StatusPieChart} from "../../../models/status-pie-chart";
+import {EventService} from "../../../services/event.service";
+import {MappingUtils} from "./mapping-utils";
+import {PopupService} from "./popup/popup.service";
+import {CommandComponent} from "./command/command.component";
+import {isPlatformBrowser} from "@angular/common";
 
 const TILE_OSM = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
 const TILE_MAPBOX = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
@@ -70,7 +68,8 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                 private mainFacade: MainFacade,
                 private applicationContext: ApplicationContext,
                 private popupLink: PopupService,
-                private bottomSheet: MatBottomSheet) {
+                private bottomSheet: MatBottomSheet,
+                @Inject(PLATFORM_ID) private platformId: any) {
         this.sidenavMode$ = this.mainFacade.sidenavMode$;
         this.sidenavOpened$ = this.mainFacade.sidenavOpened$;
     }
@@ -130,7 +129,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.deadDev.reset();
 
                 this.markersCluster.clearLayers();
-                this.allDeviceList = _.map(data, (device: Device) => {
+                this.allDeviceList = _map(data, (device: Device) => {
                     device.lastUpdateTimeInWords = formatDistanceToNow(device.lastEventTime) + ' ago';
                     device.stayedTimeInWords = formatDistanceToNow(device.stayedTime);
                     device.marker = this.buildMarker(device);
@@ -171,11 +170,11 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                         this.applicationContext.spin(false);
                     }
 
-                    this.deviceList = _.filter(this.allDeviceList, (dev: Device) => {
+                    this.deviceList = filter(this.allDeviceList, (dev: Device) => {
                         if (this.deviceFilterText) {
-                            return (dev.name && _.includes(dev.name, this.deviceFilterText)) ||
-                                (dev.deviceId && _.includes(dev.deviceId, this.deviceFilterText)) ||
-                                (dev.lastAddress && _.includes(dev.lastAddress, this.deviceFilterText));
+                            return (dev.name && includes(dev.name, this.deviceFilterText)) ||
+                                (dev.deviceId && includes(dev.deviceId, this.deviceFilterText)) ||
+                                (dev.lastAddress && includes(dev.lastAddress, this.deviceFilterText));
                         } else {
                             return true;
                         }
@@ -218,11 +217,12 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     buildPopup(dev: Device): L.Popup {
-        let popup = L.popup();
-        popup.setContent(document.createElement('div'));
-        popup.options.offset = L.point(0, 0);
-
-        return popup;
+        if (isPlatformBrowser(this.platformId)) {
+            let popup = L.popup();
+            popup.setContent(document.createElement('div'));
+            popup.options.offset = L.point(0, 0);
+            return popup;
+        }
     }
 
 
@@ -265,7 +265,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     private updateMap() {
-        _.forEach(this.deviceList, dl => {
+        forEach(this.deviceList, dl => {
             if (dl.lastLatitude && dl.lastLongitude) {
                 this.markersCluster.addLayer(dl.marker);
             }
@@ -385,10 +385,10 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
 
     searchDeviceList() {
         this.deviceFilterText = this.deviceFilterText.trim(); // Remove whitespace
-        this.deviceList = _.filter(this.allDeviceList, (dev: Device) => {
-            return (dev.name && _.includes(dev.name, this.deviceFilterText)) ||
-                (dev.deviceId && _.includes(dev.deviceId, this.deviceFilterText)) ||
-                (dev.lastAddress && _.includes(dev.lastAddress, this.deviceFilterText));
+        this.deviceList = filter(this.allDeviceList, (dev: Device) => {
+            return (dev.name && includes(dev.name, this.deviceFilterText)) ||
+                (dev.deviceId && includes(dev.deviceId, this.deviceFilterText)) ||
+                (dev.lastAddress && includes(dev.lastAddress, this.deviceFilterText));
         });
     }
 }

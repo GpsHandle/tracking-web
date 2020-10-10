@@ -1,4 +1,4 @@
-import { AccountLittle } from 'app/models/little/account.little';
+import {AccountLittle} from "./little/account.little";
 
 export class GeoJsonInf {
     geometry: any;

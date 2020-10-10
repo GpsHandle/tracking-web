@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdministrationComponent } from 'app/main/administration/layout/administration.component';
-import { AdministrationRoutingModule} from 'app/main/administration/administration-routing.module';
-import { MaterialShared} from 'app/shared/material-shared';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { CustomDirectivesModule } from 'app/directives/custom-directives.module';
-import { CustomPipeModule } from 'app/pipes/custom-pipe.module';
+import {CustomPipeModule} from "../../pipes/custom-pipe.module";
+import {AdministrationRoutingModule} from "./administration-routing.module";
+import {AdministrationComponent} from "./layout/administration.component";
+import {CustomDirectivesModule} from "../../directives/custom-directives.module";
+import {MaterialShared} from "../../shared/material-shared";
 
 @NgModule({
     imports: [

@@ -1,7 +1,7 @@
 import { Observable, of } from 'rxjs';
 import { Router } from "@angular/router";
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { PageableCommonResponse } from 'app/models/pageable-common.response';
+import {PageableCommonResponse} from "../models/pageable-common.response";
 
 export class AbstractService<I, O> {
 

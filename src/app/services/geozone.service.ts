@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AbstractService } from 'app/services/abstract.service';
-import { GeozoneRequest } from 'app/models/request/geozone.request';
-import { Geozone } from 'app/models/geozone';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import {GeozoneRequest} from "../models/request/geozone.request";
+import {Geozone} from "../models/geozone";
+import {AbstractService} from "./abstract.service";
 
 const API_GEOZONE_PATH = "/api/geofence";
 

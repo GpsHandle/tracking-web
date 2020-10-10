@@ -1,5 +1,5 @@
-import {DaySelected, Weekday} from 'app/shared/scheduler/weekday/weekday';
-import { MyTime } from 'app/shared/scheduler/daytime/time-input';
+import {DaySelected} from "../shared/scheduler/weekday/weekday";
+import {MyTime} from "../shared/scheduler/daytime/time-input";
 
 export class AlertProfile {
     id: number;

@@ -1,15 +1,15 @@
 import { AfterViewChecked, AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { UnknownDevice } from 'app/models/unknown-device';
+import { SelectionModel } from '@angular/cdk/collections';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { UnknownDeviceService } from 'app/main/administration/unknown-device/service/unknown-device.service';
 import { merge, of as observableOf, ReplaySubject } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-import { ApplicationContext } from 'app/application-context';
-import { AddNewDeviceComponent } from 'app/main/administration/unknown-device/add-new-device/add-new-device.component';
-import { SelectionModel } from '@angular/cdk/collections';
+import {UnknownDevice} from "../../../models/unknown-device";
+import {UnknownDeviceService} from "./service/unknown-device.service";
+import {ApplicationContext} from "../../../application-context";
+import {AddNewDeviceComponent} from "./add-new-device/add-new-device.component";
 
 @Component({
     selector: 'app-unknown-device',
@@ -61,7 +61,7 @@ export class UnknownDeviceComponent implements OnInit, AfterViewInit, AfterViewC
                     return observableOf([]);
                 }))
             .subscribe(
-                data => {
+                (data: UnknownDevice[]) => {
                     this.dataSource.data = data;
                     this.applicationContext.spin(false);
                 });

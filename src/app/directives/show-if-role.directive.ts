@@ -1,7 +1,6 @@
 import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
-import { ApplicationContext } from 'app/application-context';
-
-import * as _ from 'lodash';
+import { ApplicationContext } from '../application-context';
+import {split, includes, toUpper} from 'lodash-es';
 
 @Directive({
   selector: '[showIfRole]'
@@ -32,12 +31,12 @@ export class ShowIfRoleDirective implements OnInit {
 
     isContainRole(authorities: string[], roles: string): boolean {
 
-        let rolesArray = _.split(roles, ',');
+        let rolesArray = split(roles, ',');
 
         if (rolesArray && rolesArray.length > 0) {
             for (let i = 0; i < rolesArray.length; i++) {
                 let role = ShowIfRoleDirective.normalize(rolesArray[i]);
-                if (_.includes(authorities, role)) {
+                if (includes(authorities, role)) {
                     return true;
                 }
             }
@@ -47,6 +46,6 @@ export class ShowIfRoleDirective implements OnInit {
 
     static normalize(role: string): string {
         //1. toUpper
-        return _.toUpper(role);
+        return toUpper(role);
     }
 }

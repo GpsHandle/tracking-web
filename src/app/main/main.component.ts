@@ -1,10 +1,10 @@
 import {Component, NgZone, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {ApplicationContext} from 'app/application-context';
 import {Observable} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map, shareReplay} from 'rxjs/operators';
 import {MainFacade} from '../stores/root-store.facade';
+import {ApplicationContext} from "../application-context";
 
 @Component({
     selector: 'app-main',
@@ -28,32 +28,32 @@ export class MainComponent implements OnInit, OnDestroy {
                 private breakpointObserver: BreakpointObserver,
                 private app: ApplicationContext,
                 private router: Router) {
-        window.onresize = (e) => {
-            ngZone.run(() => {
-                this.handleResizeWindow(window.innerWidth)
-            })
-        }
+        // window.onresize = (e) => {
+        //     ngZone.run(() => {
+        //         this.handleResizeWindow(window.innerWidth)
+        //     })
+        // }
     }
 
     ngOnInit() {
         this.accountName = this.app.accountName;
-        this.oldScreenWidth = window.innerWidth;
-        this.handleResizeWindow(window.innerWidth);
+        // this.oldScreenWidth = window.innerWidth;
+        // this.handleResizeWindow(window.innerWidth);
     }
 
-    private handleResizeWindow(screenWidth: number) {
-        console.log('change Size ...', this.oldScreenWidth, screenWidth)
-        if (!this.isMobile(screenWidth)) {
-            this.mainFacade.setSideNavForPc();
-            this.oldScreenWidth = screenWidth;
-        } else if (!this.isMobile(this.oldScreenWidth)) {
-            this.mainFacade.setSideNavForMobile();
-            this.oldScreenWidth = screenWidth;
-        }
-
-        // this.sidenavMode$ = this.mainFacade.sidenavMode$;
-        // this.sidenavOpened$ = this.mainFacade.sidenavOpened$;
-    }
+    // private handleResizeWindow(screenWidth: number) {
+    //     console.log('change Size ...', this.oldScreenWidth, screenWidth)
+    //     if (!this.isMobile(screenWidth)) {
+    //         this.mainFacade.setSideNavForPc();
+    //         this.oldScreenWidth = screenWidth;
+    //     } else if (!this.isMobile(this.oldScreenWidth)) {
+    //         this.mainFacade.setSideNavForMobile();
+    //         this.oldScreenWidth = screenWidth;
+    //     }
+    //
+    //     // this.sidenavMode$ = this.mainFacade.sidenavMode$;
+    //     // this.sidenavOpened$ = this.mainFacade.sidenavOpened$;
+    // }
 
     private isMobile(screenWidth: number): boolean {
         return screenWidth < 800;

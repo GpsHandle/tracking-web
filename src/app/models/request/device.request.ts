@@ -1,5 +1,5 @@
-import { Device } from 'app/models/device';
-import * as _ from 'lodash';
+import {map as _map} from 'lodash-es';
+import {Device} from "../device";
 
 export class DeviceRequest {
     id: number;
@@ -38,7 +38,7 @@ export class DeviceRequest {
             this.name = device.name;
             this.deviceId = device.deviceId;
             this.uniqueId = device.uniqueId;
-            this.accountIds = _.map(device.accounts, (acc) => {
+            this.accountIds = _map(device.accounts, (acc) => {
                 return acc.id;
             });
 

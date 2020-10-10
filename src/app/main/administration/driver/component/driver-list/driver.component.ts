@@ -1,17 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Driver } from 'app/models/driver';
-import { ApplicationContext } from 'app/application-context';
-import { DriverService } from 'app/services/driver.service';
 import { merge, of, ReplaySubject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-import { AddEditDriverComponent } from 'app/main/administration/driver/component/add-edit-driver/add-edit-driver.component';
-import { DeleteDriverComponent } from 'app/main/administration/driver/component/delete-driver/delete-driver.component';
-import { OptionalColumnDriverComponent } from 'app/main/administration/driver/component/optional-column-driver/optional-column-driver.component';
-import { DriverRequest } from 'app/models/request/driver.request';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import {DeleteDriverComponent} from "../delete-driver/delete-driver.component";
+import {OptionalColumnDriverComponent} from "../optional-column-driver/optional-column-driver.component";
+import {Driver} from "../../../../../models/driver";
+import {DriverRequest} from "../../../../../models/request/driver.request";
+import {AddEditDriverComponent} from "../add-edit-driver/add-edit-driver.component";
+import {ApplicationContext} from "../../../../../application-context";
+import {DriverService} from "../../../../../services/driver.service";
 
 @Component({
     selector: 'app-driver',

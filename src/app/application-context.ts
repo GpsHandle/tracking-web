@@ -7,19 +7,15 @@ import {
     OnDestroy,
     OnInit, PLATFORM_ID
 } from '@angular/core';
-import {AuthResponse} from 'app/models/auth.response';
-import * as jwt from 'jwt-decode';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { Privilege } from 'app/models/privilege';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
-import {ComponentPortal, DomPortalHost, DomPortalOutlet} from '@angular/cdk/portal';
-import { SpinnerComponent } from 'app/pages/spinner/spinner.component';
-
-import { NavigationExtras } from '@angular/router/router';
-import { WINDOW } from 'app/shared/window-provider';
-import { UniversalStorage } from 'app/shared/universal-storage.service';
-import { isPlatformBrowser } from '@angular/common';
+import {ComponentPortal, DomPortalHost, DomPortalOutlet} from "@angular/cdk/portal";
+import {SpinnerComponent} from "./pages/spinner/spinner.component";
+import {Privilege} from "./models/privilege";
+import {MatSnackBar, MatSnackBarConfig} from "@angular/material/snack-bar";
+import {NavigationExtras, Router} from "@angular/router";
+import {UniversalStorage} from "./shared/universal-storage.service";
+import {AuthResponse} from "./models/auth.response";
+import {HttpErrorResponse} from "@angular/common/http";
+import {isPlatformBrowser} from "@angular/common";
 
 export const redirectUrl = 'redirectUrl';
 const DEFAULT_REDIRECT_URL = '/main/tracking';
@@ -70,22 +66,24 @@ export class ApplicationContext implements OnInit, OnDestroy {
     //~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~//~~
     //------------------------------------------------------------------------------------------------------------------
 
-    constructor(@Inject(WINDOW) private window: Window, private snackBar: MatSnackBar,
+    constructor(private snackBar: MatSnackBar,
                 private router: Router,
                 private myStorage: UniversalStorage,
                 private factoryResolver: ComponentFactoryResolver,
                 private appRef: ApplicationRef,
-                private injector: Injector) {
+                private injector: Injector, @Inject(PLATFORM_ID) private platformId: any) {
 
         this.populate();
 
-        this.holderPortal = new ComponentPortal<SpinnerComponent>(SpinnerComponent);
-        this.bodyPortal = new DomPortalOutlet(
-            document.body,
-            this.factoryResolver,
-            this.appRef,
-            this.injector
-        )
+        if (isPlatformBrowser(platformId)) {
+            this.holderPortal = new ComponentPortal<SpinnerComponent>(SpinnerComponent);
+            this.bodyPortal = new DomPortalOutlet(
+                document.body,
+                this.factoryResolver,
+                this.appRef,
+                this.injector
+            )
+        }
     }
 
     ngOnInit(): void {
@@ -103,25 +101,27 @@ export class ApplicationContext implements OnInit, OnDestroy {
     }
 
     spinAt(id: string, shouldShow?: boolean,) {
-        let elPortal = this.portalMap.get(id);
-        if (!elPortal || !elPortal.hasAttached()) {
-            elPortal = new DomPortalHost(
-                document.getElementById(id),
-                this.factoryResolver,
-                this.appRef,
-                this.injector
-            );
-            this.portalMap.set(id, elPortal);
-        }
-
-        const holderPortal = this.holderPortal;
-        setTimeout(function () {
-            if (shouldShow && !elPortal.hasAttached()) {
-                elPortal.attach(holderPortal);
-            } else {
-                elPortal.detach();
+        if (isPlatformBrowser(this.platformId)) {
+            let elPortal = this.portalMap.get(id);
+            if (!elPortal || !elPortal.hasAttached()) {
+                elPortal = new DomPortalHost(
+                    document.getElementById(id),
+                    this.factoryResolver,
+                    this.appRef,
+                    this.injector
+                );
+                this.portalMap.set(id, elPortal);
             }
-        }, 0);
+
+            const holderPortal = this.holderPortal;
+            setTimeout(function () {
+                if (shouldShow && !elPortal.hasAttached()) {
+                    elPortal.attach(holderPortal);
+                } else {
+                    elPortal.detach();
+                }
+            }, 0);
+        }
     }
 
     store(result?: AuthResponse): void {

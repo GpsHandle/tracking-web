@@ -1,16 +1,13 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ApplicationContext } from 'app/application-context';
-import { AlertType } from 'app/models/enums/alert-type.enum';
-import { Weekday } from 'app/shared/scheduler/weekday/weekday';
-import { DayTime } from 'app/shared/scheduler/daytime/day-time';
-import { AlertProfile } from 'app/models/alert-profile';
-import { AlertProfileRequest } from 'app/models/request/alert-profile.request';
-
-import { merge, of, ReplaySubject } from 'rxjs';
-import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-import { Geozone } from 'app/models/geozone';
-import { GeozoneService } from 'app/services/geozone.service';
+import {AlertType} from "../../../../../models/enums/alert-type.enum";
+import {Weekday} from "../../../../../shared/scheduler/weekday/weekday";
+import {ApplicationContext} from "../../../../../application-context";
+import {AlertProfile} from "../../../../../models/alert-profile";
+import {DayTime} from "../../../../../shared/scheduler/daytime/day-time";
+import {AlertProfileRequest} from "../../../../../models/request/alert-profile.request";
+import {GeozoneService} from "../../../../../services/geozone.service";
+import {Geozone} from "../../../../../models/geozone";
 
 @Component({
     selector: 'add-edit-alert-profile',

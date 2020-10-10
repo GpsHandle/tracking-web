@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Device } from 'app/models/device';
 import { filter } from 'rxjs/operators';
+import {Device} from "../../../../models/device";
 
 @Injectable({
   providedIn: 'root'

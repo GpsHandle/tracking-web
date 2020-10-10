@@ -1,9 +1,9 @@
 ul {
+  display: table;
   list-style-type: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   overflow: hidden;
-
 }
 
 li {
@@ -15,7 +15,7 @@ li {
   }
 }
 
-.footer {
+.w-footer {
   background-color: gray;
   min-height: 136px;
 }

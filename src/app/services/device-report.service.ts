@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/index';
-import { PageableCommonResponse } from 'app/models/pageable-common.response';
-import { DeviceSpeeedReport } from 'app/models/device-speeed.report';
-import { DeviceParkingReport } from 'app/models/device-parking.report';
-import { AlertEventLog } from 'app/models/alert-event-log';
+import { Observable } from 'rxjs';
+import {AlertEventLog} from "../models/alert-event-log";
+import {PageableCommonResponse} from "../models/pageable-common.response";
+import {DeviceParkingReport} from "../models/device-parking.report";
+import {DeviceSpeeedReport} from "../models/device-speeed.report";
 
 const API_REPORT_DEVICE_PATH = '/api/r/device';
 const API_REPORT_ALERT_PATH = '/api/alert/r/';

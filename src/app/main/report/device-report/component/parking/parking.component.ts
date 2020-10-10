@@ -1,13 +1,13 @@
 import { AfterViewInit, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChange } from '@angular/core';
-import { DeviceReportService } from 'app/services/device-report.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { ReplaySubject, Subject } from 'rxjs';
-import { DeviceParkingReport } from 'app/models/device-parking.report';
 import {merge, Observable, of as observableOf} from 'rxjs';
 import { catchError, map, startWith, switchMap, takeUntil } from 'rxjs/operators';
-import { ApplicationContext } from 'app/application-context';
 
 import { formatDistance } from 'date-fns'
+import {ApplicationContext} from "../../../../../application-context";
+import {DeviceReportService} from "../../../../../services/device-report.service";
+import {DeviceParkingReport} from "../../../../../models/device-parking.report";
 
 @Component({
     selector: 'rpt-parking',

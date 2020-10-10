@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
-import { MappingRoutingModule } from 'app/main/tracking/mapping-routing.module';
-import { MappingComponent } from 'app/main/tracking/live/mapping.component';
 import { CommonModule, DatePipe} from "@angular/common";
-import { DeviceService} from 'app/services/device.service';
-import {EventService} from 'app/services/event.service';
-import { MaterialShared } from 'app/shared/material-shared';
 import { HistoryComponent } from './history/history.component';
-import { PopupService } from 'app/main/tracking/live/popup/popup.service';
-import { PopupComponent } from 'app/main/tracking/live/popup/popup.component';
-import { SpeedChartComponent } from 'app/main/tracking/live/speed-chart/speed-chart.component';
 import { CommandComponent } from './live/command/command.component';
 import { MatBottomSheet, MatBottomSheetContainer } from '@angular/material/bottom-sheet';
-import { CustomPipeModule } from 'app/pipes/custom-pipe.module';
-
+import {CustomPipeModule} from "../../pipes/custom-pipe.module";
+import {MappingComponent} from "./live/mapping.component";
+import {DeviceService} from "../../services/device.service";
+import {EventService} from "../../services/event.service";
+import {MaterialShared} from "../../shared/material-shared";
+import {SpeedChartComponent} from "./live/speed-chart/speed-chart.component";
+import {PopupService} from "./live/popup/popup.service";
+import {MappingRoutingModule} from "./mapping-routing.module";
+import {PopupComponent} from "./live/popup/popup.component";
 
 @NgModule({
     imports: [

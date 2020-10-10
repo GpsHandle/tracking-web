@@ -1,24 +1,22 @@
-import * as _ from 'lodash';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { Device } from 'app/models/device';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ApplicationContext } from 'app/application-context';
-import { DeviceService } from 'app/services/device.service';
-import { OptionalColumnDeviceComponent } from 'app/main/administration/device/component/optional-column-device/optional-column-device.component';
-import { AddEditDeviceComponent } from 'app/main/administration/device/component/add-edit-device/add-edit-device.component';
-import { DeleteEvent } from 'app/models/delete-event';
-import { DeviceRequest } from 'app/models/request/device.request';
-
 import { merge } from 'rxjs';
 import { of as observableOf } from 'rxjs';
 import { ReplaySubject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { DeleteDeviceComponent } from 'app/main/administration/device/component/delete-device/delete-device.component';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-import { UniversalStorage } from 'app/shared/universal-storage.service';
+import {forOwn, toLower} from "lodash-es";
+import {DeleteEvent} from "../../../../../models/delete-event";
+import {UniversalStorage} from "../../../../../shared/universal-storage.service";
+import {OptionalColumnDeviceComponent} from "../optional-column-device/optional-column-device.component";
+import {Device} from "../../../../../models/device";
+import {DeviceService} from "../../../../../services/device.service";
+import {DeleteDeviceComponent} from "../delete-device/delete-device.component";
+import {DeviceRequest} from "../../../../../models/request/device.request";
+import {ApplicationContext} from "../../../../../application-context";
 
 @Component({
     selector: 'applicationContext-device',
@@ -96,7 +94,7 @@ export class DeviceComponent implements OnInit, AfterViewInit {
                     this.applicationContext.spin(false);
                     return observableOf([]);
                 })
-            ).subscribe(data => {
+            ).subscribe((data: Device[]) => {
             this.dataSource.data = data;
         });
     }
@@ -118,7 +116,7 @@ export class DeviceComponent implements OnInit, AfterViewInit {
         }
 
         // 2. generate new columns
-        _.forOwn(this.columns, (value, key) => {
+        forOwn(this.columns, (value, key) => {
             if (this.displayedColumns.includes(key)) {
                 value.selected = true;
             }
@@ -133,7 +131,7 @@ export class DeviceComponent implements OnInit, AfterViewInit {
             result => {
                 if (result) {
                     this.displayedColumns = [];
-                    _.forOwn(this.columns, (value, key) => {
+                    forOwn(this.columns, (value, key) => {
                         if (value.selected) {
                             this.displayedColumns.push(key);
                         }
@@ -184,7 +182,7 @@ export class DeviceComponent implements OnInit, AfterViewInit {
     }
 
     checkStatus(device: Device): boolean {
-        return _.toLower(device.status) === 'enabled';
+        return toLower(device.status) === 'enabled';
     }
 
     toggleStatus(device: Device) {

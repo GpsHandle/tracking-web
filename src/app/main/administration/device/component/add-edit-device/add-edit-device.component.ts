@@ -1,18 +1,18 @@
-import * as _ from 'lodash';
+import {map as _map} from 'lodash-es';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { Account } from 'app/models/account';
-import { AccountLittle } from 'app/models/little/account.little';
-import { AccountService } from 'app/services/account.service';
-import { DeviceRequest } from 'app/models/request/device.request';
-import { DeviceService } from 'app/services/device.service';
-import { Device } from 'app/models/device';
-import { AlertProfile } from 'app/models/alert-profile';
-import { AlertProfileService } from 'app/services/alert-profile.service';
-import { AlertProfileLittle } from 'app/models/little/alert-profile.little';
 import { map, startWith } from 'rxjs/operators';
+import {Account} from "../../../../../models/account";
+import {AlertProfileLittle} from "../../../../../models/little/alert-profile.little";
+import {AlertProfile} from "../../../../../models/alert-profile";
+import {Device} from "../../../../../models/device";
+import {DeviceService} from "../../../../../services/device.service";
+import {AccountLittle} from "../../../../../models/little/account.little";
+import {AlertProfileService} from "../../../../../services/alert-profile.service";
+import {DeviceRequest} from "../../../../../models/request/device.request";
+import {AccountService} from "../../../../../services/account.service";
 
 @Component({
   selector: 'app-add-edit-device',
@@ -40,11 +40,11 @@ export class AddEditDeviceComponent implements OnInit {
                 @Inject(MAT_DIALOG_DATA) public data: Device | any) { }
 
     ngOnInit() {
-        this.accountIds = _.map(this.data.accounts, (acc: AccountLittle) => {
+        this.accountIds = _map(this.data.accounts, (acc: AccountLittle) => {
             return acc.id;
         });
 
-        this.alertIds = _.map(this.data.alertProfiles, (alert: AlertProfileLittle) => alert.id);
+        this.alertIds = _map(this.data.alertProfiles, (alert: AlertProfileLittle) => alert.id);
 
         this.statusControl.setValue(this.data.status);
 

@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {ChartAPI, PrimitiveArray} from 'c3';
 import * as c3 from 'c3';
 import * as d3 from 'd3';
-import {StatusPieChart} from 'app/models/status-pie-chart';
-import {DashboardService} from 'app/main/report/device-report/service/dashboard.service';
-import {Device} from 'app/models/device';
-import * as _ from 'lodash';
-import {MappingUtils} from 'app/main/tracking/live/mapping-utils';
+import {map as _map} from 'lodash-es';
+import {Device} from "../../../../../models/device";
+import {StatusPieChart} from "../../../../../models/status-pie-chart";
+import {DashboardService} from "../../service/dashboard.service";
+import {MappingUtils} from "../../../../tracking/live/mapping-utils";
 
 @Component({
     selector: 'app-dashboard',
@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
             this.totalDevice = devices.length;
             this.deviceList = devices;
 
-            this.deviceList = _.map(devices, (device) => {
+            this.deviceList = _map(devices, (device) => {
                 const status = MappingUtils.getStatus(device.lastEventTime);
                 switch (status) {
                     case 'live':

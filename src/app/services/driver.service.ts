@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AbstractService } from 'app/services/abstract.service';
-import { Driver } from 'app/models/driver';
-import { DriverRequest } from 'app/models/request/driver.request';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import {DriverRequest} from "../models/request/driver.request";
+import {Driver} from "../models/driver";
+import {AbstractService} from "./abstract.service";
 
 const API_DRIVER_PATH = '/api/driver';
 

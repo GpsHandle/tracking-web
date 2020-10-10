@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import { PageableCommonResponse } from 'app/models/pageable-common.response';
-import { UnknownDevice } from 'app/models/unknown-device';
-import { Device } from 'app/models/device';
-import { DeviceRequest } from 'app/models/request/device.request';
-
+import {UnknownDevice} from "../../../../models/unknown-device";
+import {Device} from "../../../../models/device";
+import {PageableCommonResponse} from "../../../../models/pageable-common.response";
+import {DeviceRequest} from "../../../../models/request/device.request";
 export const UNKNOWN_DEVICE = '/api/unknowndevice';
 
 @Injectable({

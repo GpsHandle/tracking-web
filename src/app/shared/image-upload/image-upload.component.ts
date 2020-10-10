@@ -1,8 +1,9 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, OnInit, Output, PLATFORM_ID} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpEventType, HttpRequest} from "@angular/common/http";
 import {catchError, last, map, tap} from "rxjs/operators";
 import {of, Subscription} from "rxjs";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {isPlatformBrowser} from "@angular/common";
 
 @Component({
   selector: 'image-upload',
@@ -25,7 +26,7 @@ export class ImageUploadComponent implements OnInit {
 
   @Input() width = 200;
   @Input() height = 200;
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient, @Inject(PLATFORM_ID) private platformId: any) { }
 
   /** Allow you to add handler after its completion. Bubble up response text from remote. */
   @Output() complete = new EventEmitter<string>();
@@ -34,13 +35,15 @@ export class ImageUploadComponent implements OnInit {
   }
 
     imgUpload() {
-      const fileUpload = document.getElementById('imgUpload') as HTMLInputElement;
-      fileUpload.onchange = () => {
+      if (isPlatformBrowser(this.platformId)) {
+        const fileUpload = document.getElementById('imgUpload') as HTMLInputElement;
+        fileUpload.onchange = () => {
           const file = fileUpload.files[0];
-        this.uploadFile({ data: file, state: 'in',
-          inProgress: false, progress: 0, canRetry: false, canCancel: true });
-      };
-      fileUpload.click();
+          this.uploadFile({ data: file, state: 'in',
+            inProgress: false, progress: 0, canRetry: false, canCancel: true });
+        };
+        fileUpload.click();
+      }
     }
 
   private uploadFile(file: FileUploadModel) {

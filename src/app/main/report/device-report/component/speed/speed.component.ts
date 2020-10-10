@@ -7,16 +7,15 @@ import {
     SimpleChange,
     ViewChild
 } from '@angular/core';
-import { DeviceReportService } from 'app/services/device-report.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { DeviceSpeeedReport } from 'app/models/device-speeed.report';
-
 import { merge, of as observableOf} from 'rxjs';
 import { catchError, map, startWith, switchMap} from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
-import { ApplicationContext } from 'app/application-context';
+import {ApplicationContext} from "../../../../../application-context";
+import {DeviceReportService} from "../../../../../services/device-report.service";
+import {DeviceSpeeedReport} from "../../../../../models/device-speeed.report";
 
 @Component({
     selector: 'rpt-speed',

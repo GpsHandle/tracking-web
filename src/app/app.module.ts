@@ -3,25 +3,23 @@ import {LOCALE_ID, NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule, registerLocaleData} from '@angular/common';
-import {LoginComponent} from 'app/pages/login/login.component';
+import {LoginComponent} from './pages/login/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
-import {MaterialShared} from 'app/shared/material-shared';
-import {AuthInterceptor} from 'app/interceptors/auth-interceptor';
-import {ApplicationContext} from 'app/application-context';
-import {AppComponent} from 'app/app.component';
-import {AppRoutingModule} from 'app/app-routing.module';
-import {AuthService} from 'app/services/auth.service';
-import {AuthGuard} from 'app/guards/auth.guard';
-import {NotFoundComponent} from 'app/pages/not-found/not-found.component';
+import {MaterialShared} from './shared/material-shared';
+import {AuthInterceptor} from './interceptors/auth-interceptor';
+import {ApplicationContext} from './application-context';
+import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AuthService} from './services/auth.service';
+import {AuthGuard} from './guards/auth.guard';
+import {NotFoundComponent} from './pages/not-found/not-found.component';
 import {SpinnerComponent} from './pages/spinner/spinner.component';
 import {ErrorComponent} from './layouts/error/error.component';
 import {ForgotPasswordComponent} from './pages/forgot-password/forgot-password.component';
 import {RegisterComponent} from './pages/register/register.component';
 import {LogoutComponent} from './pages/logout/logout.component';
-import {WINDOW_PROVIDERS} from 'app/shared/window-provider';
 import {DemoComponent} from './pages/demo/demo.component';
-import {CustomDirectivesModule} from 'app/directives/custom-directives.module';
 import {RootStoreModule} from './stores/root-store.module';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
@@ -30,6 +28,7 @@ import {storeFreeze} from 'ngrx-store-freeze';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {UniversalInterceptor} from "./interceptors/universal-interceptor";
 import { ServiceWorkerModule } from '@angular/service-worker';
+import {CustomDirectivesModule} from "./directives/custom-directives.module";
 
 @NgModule({
     declarations: [
@@ -77,7 +76,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
             useClass: UniversalInterceptor,
             multi: true
         },
-        WINDOW_PROVIDERS
+        // WINDOW_PROVIDERS
     ],
     entryComponents: [
         SpinnerComponent

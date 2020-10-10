@@ -6,9 +6,7 @@ import {
     Injector
 } from '@angular/core';
 import {ComponentPortal, DomPortalOutlet, PortalInjector, PortalOutlet} from '@angular/cdk/portal';
-import { CONTAINER_DATA, PopupComponent } from 'app/main/tracking/live/popup/popup.component';
-
-
+import {CONTAINER_DATA, PopupComponent} from "./popup.component";
 
 @Injectable()
 export class PopupService {

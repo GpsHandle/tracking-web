@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {Account} from 'app/models/account';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import { AbstractService } from 'app/services/abstract.service';
-import { AccountRequest } from 'app/models/request/account.request';
 import { Observable } from 'rxjs';
 import {MailProperties} from "../models/mail-properties";
 import {ChangePasswdRequest} from "../models/change-passwd.request";
+import {AccountRequest} from "../models/request/account.request";
+import {AbstractService} from "./abstract.service";
+import {Account} from "../models/account";
 
 export const ACCOUNT_API_URL = '/api/account';
 

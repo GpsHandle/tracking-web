@@ -1,6 +1,5 @@
 import {
     AfterViewChecked,
-    AfterViewInit,
     ChangeDetectorRef,
     Component,
     Input,
@@ -8,11 +7,11 @@ import {
     OnInit,
     SimpleChange
 } from '@angular/core';
-import { EventData } from 'app/models/event-data';
-import * as _ from 'lodash';
 import * as c3 from 'c3';
 import * as d3 from 'd3';
 import { AxisName, ChartAPI, ChartConfiguration, PrimitiveArray } from 'c3';
+import {forEach, uniqBy,} from 'lodash-es';
+import {EventData} from "../../models/event-data";
 
 @Component({
     selector: 'event-line-chart',
@@ -58,9 +57,9 @@ export class EventLineChartComponent implements OnInit, AfterViewChecked, OnChan
                 let F:[string, ...PrimitiveArray] = ['FuelLevel'];
                 let B:[string, ...PrimitiveArray] = ['Battery'];
 
-                const ta = _.uniqBy(this.eventList, 'timestamp');
+                const ta = uniqBy(this.eventList, 'timestamp');
                 if (ta && ta.length > 0) {
-                    _.forEach(ta, (d) => {
+                    forEach(ta, (d) => {
                         X.push(d.timestamp);
                         S.push(d.speedKPH);
                         F.push(d.fuelLevel);
@@ -79,9 +78,9 @@ export class EventLineChartComponent implements OnInit, AfterViewChecked, OnChan
                 let F:[string, ...PrimitiveArray] = ['FuelLevel'];
                 let B:[string, ...PrimitiveArray] = ['Battery'];
 
-                const ta = _.uniqBy(this.eventList, 'timestamp');
+                const ta = uniqBy(this.eventList, 'timestamp');
 
-                _.forEach(ta, (d) => {
+                forEach(ta, (d) => {
                     X.push(d.timestamp);
                     S.push(d.speedKPH);
                     F.push(d.fuelLevel);

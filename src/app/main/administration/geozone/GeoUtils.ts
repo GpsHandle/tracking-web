@@ -1,4 +1,4 @@
-import { Geozone } from 'app/models/geozone';
+import {Geozone} from "../../../models/geozone";
 
 export class GeoUtils {
     public static convertGeofence(data: Geozone): Geozone {

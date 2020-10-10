@@ -1,5 +1,5 @@
-import { AccountLittle } from 'app/models/little/account.little';
-import { AlertProfileLittle } from 'app/models/little/alert-profile.little';
+import {AccountLittle} from "./little/account.little";
+import {AlertProfileLittle} from "./little/alert-profile.little";
 
 export class Device {
     public id: number;

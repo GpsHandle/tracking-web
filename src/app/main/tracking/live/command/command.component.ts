@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef } from '@angular/material/bottom-sheet';
-import { CommandParcel } from 'app/main/tracking/live/model/CommandParcel';
-import { DeviceService } from 'app/services/device.service';
-import { ApplicationContext } from 'app/application-context';
+import {CommandParcel} from "../model/CommandParcel";
+import {ApplicationContext} from "../../../../application-context";
+import {DeviceService} from "../../../../services/device.service";
 
 @Component({
     selector: 'app-panel-command',

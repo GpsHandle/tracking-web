@@ -1,22 +1,19 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
+import { SelectionModel } from '@angular/cdk/collections';
+import {map, concat, forEach, head, last, reverse, uniqBy} from 'lodash-es';
+
 import * as L from 'leaflet';
 import 'leaflet-polylinedecorator';
 import 'leaflet-easybutton';
-
-import { EventService } from 'app/services/event.service';
-import { EventData } from 'app/models/event-data';
-
-import * as _ from 'lodash';
 import { Polyline } from 'leaflet';
-import { MatTableDataSource } from '@angular/material/table';
-
-import * as d3 from 'd3';
 import * as c3 from 'c3';
-
-import { SelectionModel } from '@angular/cdk/collections';
-import { ApplicationContext } from 'app/application-context';
+import * as d3 from 'd3';
 import { PrimitiveArray } from 'c3';
+import {EventData} from "../../../models/event-data";
+import {EventService} from "../../../services/event.service";
+import {ApplicationContext} from "../../../application-context";
 
 const TILE_OSM = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
 const TILE_MAPBOX = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
@@ -126,14 +123,14 @@ export class HistoryComponent implements OnInit, AfterViewInit {
             data => {
                 this.historyEvents = data;
 
-                let h = _.head(data);
-                let l = _.last(data);
+                let h = head(data);
+                let l = last(data);
                 if (h && l) {
                     h.timestamp -= 1;
                     h.speedKPH=0;
                     l.timestamp+=1;
                     l.speedKPH=0;
-                    this.historyEventsOptimizeForChart = _.concat(h, data, l);
+                    this.historyEventsOptimizeForChart = concat(h, data, l);
                     this._name = h.deviceName || h.deviceId;
                 } else {
                     this.historyEventsOptimizeForChart = data;
@@ -142,7 +139,7 @@ export class HistoryComponent implements OnInit, AfterViewInit {
 
                 this.dataSource.data = data;
                 let ahead = (new Date()).getTime();
-                _.forEach(this.dataSource.data, (d: EventData) => {
+                forEach(this.dataSource.data, (d: EventData) => {
                     //--
                     d.age = ahead - d.timestamp;
                     ahead = d.timestamp;
@@ -172,7 +169,7 @@ export class HistoryComponent implements OnInit, AfterViewInit {
             return;
         }
 
-        let latlngs = _.map(this.historyEvents, (event) => {
+        let latlngs = map(this.historyEvents, (event) => {
            return L.latLng([event.latitude, event.longitude]); //new LatLng(event.latitude, event.longitude);
         });
 
@@ -184,7 +181,7 @@ export class HistoryComponent implements OnInit, AfterViewInit {
             this.map.removeLayer(this.decor);
         }
 
-        this.polyline = L.polyline(_.reverse(latlngs), {color: 'red'}).addTo(this.map);
+        this.polyline = L.polyline(reverse(latlngs), {color: 'red'}).addTo(this.map);
         this.map.fitBounds(this.polyline.getBounds());
 
         this.decor = L.polylineDecorator(this.polyline, {
@@ -207,12 +204,12 @@ export class HistoryComponent implements OnInit, AfterViewInit {
 
     private draw() {
 
-        let uHist = _.uniqBy(this.historyEventsOptimizeForChart, 'timestamp');
+        let uHist = uniqBy(this.historyEventsOptimizeForChart, 'timestamp');
         this.timestampCol = ['timestamp'];
         this.speedKphCol = ['SpeedKPH'];
         this.fuelLevelCol = ['FuelLevel'];
 
-        _.forEach(uHist, (x) => {
+        forEach(uHist, (x) => {
             this.timestampCol.push(x.timestamp);
             this.speedKphCol.push(x.speedKPH);
             this.fuelLevelCol.push(x.fuelLevel);

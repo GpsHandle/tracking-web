@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AccountReportComponent } from 'app/main/report/account-report/account-report.component';
-import { AlertHistoryComponent } from 'app/main/report/alert-history/alert-history.component';
-import { DriverReportComponent } from 'app/main/report/driver-report/driver-report.component';
-import { ShipmentReportComponent } from 'app/main/report/shipment-report/shipment-report.component';
-import { AuthGuard } from 'app/guards/auth.guard';
+import {AlertHistoryComponent} from "./alert-history/alert-history.component";
+import {AccountReportComponent} from "./account-report/account-report.component";
+import {ShipmentReportComponent} from "./shipment-report/shipment-report.component";
+import {AuthGuard} from "../../guards/auth.guard";
+import {DriverReportComponent} from "./driver-report/driver-report.component";
 
 const routes: Routes = [
     // {
@@ -19,7 +19,7 @@ const routes: Routes = [
     },
     {
         path: 'device',
-        loadChildren: () => import('app/main/report/device-report/device-report.module').then(m => m.DeviceReportModule),
+        loadChildren: () => import('./device-report/device-report.module').then(m => m.DeviceReportModule),
         canActivate: [AuthGuard],
     },
     { path: 'account', component: AccountReportComponent },

@@ -1,10 +1,9 @@
 import { Component, OnInit} from '@angular/core';
-
-import { AuthService } from 'app/services/auth.service';
-import { ApplicationContext} from 'app/application-context';
-import { AuthResponse } from 'app/models/auth.response';
 import { HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import {AuthService} from "../../services/auth.service";
+import {ApplicationContext} from "../../application-context";
+import {AuthResponse} from "../../models/auth.response";
 
 @Component({
     selector: 'login',

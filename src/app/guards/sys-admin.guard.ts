@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanLoad, Route } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ApplicationContext } from 'app/application-context';
 
-import * as _ from 'lodash';
+import {includes} from 'lodash-es';
+import {ApplicationContext} from "../application-context";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class SysAdminGuard implements CanActivate, CanLoad {
     }
 
     private checkSystemRole(): boolean {
-        return (_.includes(this.applicationContext.authorities, 'SUPER') ||
-            _.includes(this.applicationContext.authorities, 'SYSADMIN'));
+        return (includes(this.applicationContext.authorities, 'SUPER') ||
+            includes(this.applicationContext.authorities, 'SYSADMIN'));
     }
 }

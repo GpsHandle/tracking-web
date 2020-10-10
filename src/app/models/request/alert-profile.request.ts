@@ -1,6 +1,6 @@
-import { DaySelected, Weekday } from 'app/shared/scheduler/weekday/weekday';
-import { AlertProfile } from 'app/models/alert-profile';
-import * as _ from 'lodash';
+import {AlertProfile} from "../alert-profile";
+import {DaySelected} from "../../shared/scheduler/weekday/weekday";
+
 export class AlertProfileRequest {
     name: string;
     description: string;

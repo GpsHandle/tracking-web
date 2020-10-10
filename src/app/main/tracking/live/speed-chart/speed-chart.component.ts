@@ -8,16 +8,15 @@ import {
     OnInit,
     SimpleChange
 } from '@angular/core';
-import { interval, ReplaySubject, Subject } from 'rxjs';
-import { EventService } from 'app/services/event.service';
-import { merge, of as observableOf } from 'rxjs/index';
-import { catchError, map, startWith, switchMap, takeUntil } from 'rxjs/operators';
+import { of as observableOf, ReplaySubject, merge } from 'rxjs';
+import { catchError, map, startWith, switchMap} from 'rxjs/operators';
 import * as d3 from 'd3';
 import * as c3 from 'c3';
-import { EventData } from 'app/models/event-data';
-import * as _ from 'lodash';
 import { ChartConfiguration, Data, PrimitiveArray } from 'c3';
 import { AxisName } from 'c3';
+import {concat, forEach, head, isEmpty, last, uniqBy} from "lodash-es";
+import {EventData} from "../../../../models/event-data";
+import {EventService} from "../../../../services/event.service";
 
 @Component({
     selector: 'speed-chart',
@@ -193,8 +192,8 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
                 })
             ).subscribe(
             (data: EventData[]) => {
-                let h = _.head(data);
-                let l = _.last(data);
+                let h = head(data);
+                let l = last(data);
                 if (h && l) {
                     h.timestamp = this.from;
                     h.speedKPH=0;
@@ -205,7 +204,7 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
                     l1.timestamp = this.to;
                     l1.speedKPH = 0;
 
-                    this.historyEventsOptimizeForChart = _.concat(h, data, l, l1);
+                    this.historyEventsOptimizeForChart = concat(h, data, l, l1);
                 } else {
                     this.historyEventsOptimizeForChart = data;
                 }
@@ -213,7 +212,7 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
                 this.loading = false;
                 this.opac = 1;
 
-                if (!_.isEmpty(this.historyEventsOptimizeForChart)) {
+                if (!isEmpty(this.historyEventsOptimizeForChart)) {
                     this.draw();
                 } else {
                     this.historyEventsOptimizeForChart = [];
@@ -240,8 +239,8 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
             let S:Array<any> = ['SpeedKPH'];
             let F:Array<any> = ['FuelLevel'];
 
-            const ta = _.uniqBy(this.historyEventsOptimizeForChart, 'timestamp');
-            _.forEach(ta, (d) => {
+            const ta = uniqBy(this.historyEventsOptimizeForChart, 'timestamp');
+            forEach(ta, (d) => {
                 X.push(d.timestamp);
                 S.push(d.speedKPH);
                 F.push(0);
@@ -258,9 +257,9 @@ export class SpeedChartComponent implements OnChanges, OnDestroy, OnInit, AfterV
             let S: [string, ...PrimitiveArray] = ['SpeedKPH'];
             let F: [string, ...PrimitiveArray] = ['FuelLevel'];
 
-            const ta = _.uniqBy(this.historyEventsOptimizeForChart, 'timestamp');
+            const ta = uniqBy(this.historyEventsOptimizeForChart, 'timestamp');
 
-            _.forEach(ta, (d) => {
+            forEach(ta, (d) => {
                 X.push(d.timestamp);
                 S.push(d.speedKPH);
                 F.push(0);

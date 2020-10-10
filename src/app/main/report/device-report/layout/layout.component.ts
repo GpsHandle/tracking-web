@@ -1,15 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DeviceLittle } from 'app/models/little/device.little';
 import { MatDrawer } from '@angular/material/sidenav';
-import { DeviceService } from 'app/services/device.service';
-import { ApplicationContext } from 'app/application-context';
 import { Observable } from 'rxjs';
 import {map, shareReplay, startWith, tap} from 'rxjs/operators';
-import { DeviceReportCommService } from 'app/main/report/device-report/service/device-report-comm.service';
-import { Device } from 'app/models/device';
-import { DashboardService } from 'app/main/report/device-report/service/dashboard.service';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {MainFacade} from '../../../../stores/root-store.facade';
+import {DeviceLittle} from "../../../../models/little/device.little";
+import {ApplicationContext} from "../../../../application-context";
+import {DeviceReportCommService} from "../service/device-report-comm.service";
+import {Device} from "../../../../models/device";
+import {DeviceService} from "../../../../services/device.service";
+import {DashboardService} from "../service/dashboard.service";
 
 @Component({
     selector: 'app-report',
@@ -50,7 +50,7 @@ export class LayoutComponent implements OnInit {
                 this.dashboardService.cacheDevices(d);
             })
         ).subscribe(
-            devices => {
+            (devices: Device[] ) => {
                 this.deviceList = devices;
             }
         );

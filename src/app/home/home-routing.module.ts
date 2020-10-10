@@ -6,7 +6,7 @@ import {AboutComponent} from "./about/about.component";
 import {HelpComponent} from "./help/help.component";
 import {TosComponent} from "./tos/tos.component";
 import {PrivacyPolicyComponent} from "./privacy-policy/privacy-policy.component";
-import {HomeContentComponent} from "./home-content/home-content.component";
+import {HomeContentComponent} from "./content/home-content.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'pages/main', pathMatch: 'full' },

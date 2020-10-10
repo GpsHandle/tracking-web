@@ -3,13 +3,13 @@
     "target": "https://dashboard.gpshandle.com",
     "secure": false,
     "changeOrigin": true,
-    "logLevel": "info"
+    "logLevel": "debug"
   },
 
   "/api": {
-    "target": "http://dashboard.gpshandle.com",
+    "target": "https://dashboard.gpshandle.com",
     "secure": false,
     "changeOrigin": true,
-    "logLevel": "info"
+    "logLevel": "debug"
   }
 }

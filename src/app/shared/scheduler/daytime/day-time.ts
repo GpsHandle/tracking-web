@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MyTime, TimeInput } from './time-input';
-import * as _ from 'lodash';
+import {padStart} from 'lodash-es';
 
 @Component({
   selector: 'daytime',
@@ -28,10 +28,10 @@ export class DayTime implements OnInit {
 
   @Input()
   set data(time: any) {
-      const fh = _.padStart(String(time.fromHour), 2, '0');
-      const fm = _.padStart(String(time.fromMinute), 2, '0');
-      const th = _.padStart(String(time.toHour), 2, '0');
-      const tm = _.padStart(String(time.toMinute), 2, '0');
+      const fh = padStart(String(time.fromHour), 2, '0');
+      const fm = padStart(String(time.fromMinute), 2, '0');
+      const th = padStart(String(time.toHour), 2, '0');
+      const tm = padStart(String(time.toMinute), 2, '0');
       this.scheduleTime = {fromHour: fh, fromMinute: fm, toHour: th, toMinute: tm};
   }
 

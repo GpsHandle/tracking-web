@@ -1,5 +1,3 @@
-import { AccountLittle } from 'app/models/little/account.little';
-
 export class Driver {
     id: number;
     firstName: string;

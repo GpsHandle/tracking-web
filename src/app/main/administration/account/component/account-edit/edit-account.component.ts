@@ -7,11 +7,11 @@ import {Account} from "../../../../../models/account";
 import {Privilege} from "../../../../../models/privilege";
 import {ApplicationContext} from "../../../../../application-context";
 import {FormControl} from "@angular/forms";
-import * as _ from 'lodash';
 import {AccountRequest} from "../../../../../models/request/account.request";
 import {MatDialog} from "@angular/material/dialog";
 import {ChangePasswordDialogComponent} from "../change-password-dialog/change-password-dialog.component";
 import {MailProperties} from "../../../../../models/mail-properties";
+import {lowerCase} from 'lodash-es'
 
 @Component({
     selector: 'app-edit-account',
@@ -38,11 +38,11 @@ export class EditAccountComponent implements OnInit {
     ngOnInit() {
         this.account = new Account();
         this.privilegeList = this.applicationContext.getPrivileges();
-        this.statusControl.disable()
+        this.statusControl.disable();
         this.filteredStatus = this.statusControl.valueChanges.pipe(
                 startWith(''),
                 map(value => {
-                    return this.applicationContext.statusList.filter(opt => _.lowerCase(opt).indexOf(_.lowerCase(value)) === 0);
+                    return this.applicationContext.statusList.filter(opt => lowerCase(opt).indexOf(lowerCase(value)) === 0);
                 })
             );
 
@@ -51,7 +51,7 @@ export class EditAccountComponent implements OnInit {
                 this.accountId = params['id'];
                 return this.accountService.getById(this.accountId)
             })
-        ).subscribe(data => {
+        ).subscribe((data: Account) => {
             this.account = data;
             if (this.account.mailProperties == null) {
                 this.account.mailProperties = new MailProperties();

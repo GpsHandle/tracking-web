@@ -1,4 +1,3 @@
-import * as _ from 'lodash';
 import {
     AfterViewChecked,
     AfterViewInit,
@@ -6,26 +5,27 @@ import {
     OnInit,
     ViewChild
 } from '@angular/core';
-import { AccountService } from 'app/services/account.service';
-import { Account } from 'app/models/account';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { AddEditAccountComponent } from 'app/main/administration/account/component/add-edit-account/add-edit-account.component';
 import { OptionalColumnAccountComponent } from '../optional-column-account/optional-column-account.component';
-import { ApplicationContext } from 'app/application-context';
 import { merge, Observable, Subject } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { startWith } from 'rxjs/operators';
 import { of as observableOf } from 'rxjs';
-import { AccountRequest } from 'app/models/request/account.request';
 import { ReplaySubject } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { DeleteAccountComponent } from 'app/main/administration/account/component/delete-account/delete-account.component';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { PageableCommonResponse } from 'app/models/pageable-common.response';
-import { UniversalStorage } from 'app/shared/universal-storage.service';
+import {forOwn, toLower} from "lodash-es";
+import {Account} from "../../../../../models/account";
+import {ApplicationContext} from "../../../../../application-context";
+import {AccountRequest} from "../../../../../models/request/account.request";
+import {UniversalStorage} from "../../../../../shared/universal-storage.service";
+import {PageableCommonResponse} from "../../../../../models/pageable-common.response";
+import {DeleteAccountComponent} from "../delete-account/delete-account.component";
+import {AccountService} from "../../../../../services/account.service";
+import {AddEditAccountComponent} from "../add-edit-account/add-edit-account.component";
 
 @Component({
     selector: 'applicationContext-account',
@@ -130,7 +130,7 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
         }
 
         // 2. generate new columns
-        _.forOwn(this.columns, (value, key) => {
+        forOwn(this.columns, (value, key) => {
             if (this.displayedColumns.includes(key)) {
                 value.selected = true;
             }
@@ -145,7 +145,7 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
             result => {
                 if (result) {
                     this.displayedColumns = [];
-                    _.forOwn(this.columns, (value, key) => {
+                    forOwn(this.columns, (value, key) => {
                         if (value.selected) {
                             this.displayedColumns.push(key);
                         }
@@ -253,7 +253,7 @@ export class AccountComponent implements OnInit, AfterViewInit, AfterViewChecked
     }
 
     checkStatus(account: Account): boolean {
-        return _.toLower(account.status) === 'activated';
+        return toLower(account.status) === 'activated';
     }
 
     toggleStatus(account: Account) {

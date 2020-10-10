@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GeozoneComponent } from 'app/main/administration/geozone/geozone.component';
+import {GeozoneComponent} from "./geozone.component";
 const routes: Routes = [
     {
         path: '',

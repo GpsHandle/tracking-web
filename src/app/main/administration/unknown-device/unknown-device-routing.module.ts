@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UnknownDeviceComponent } from 'app/main/administration/unknown-device/unknown-device.component';
+import {UnknownDeviceComponent} from "./unknown-device.component";
 
 const routes: Routes = [
     {

@@ -1,15 +1,11 @@
-import * as _ from 'lodash';
 import { Component, OnInit, Inject, AfterViewInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-
 import { FormControl } from '@angular/forms';
-import { Privilege } from 'app/models/privilege';
-
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
-import { AccountRequest } from 'app/models/request/account.request';
-import { Account } from 'app/models/account';
-import { ApplicationContext } from 'app/application-context';
 import { Observable } from 'rxjs';
+import {ApplicationContext} from "../../../../../application-context";
+import {AccountRequest} from "../../../../../models/request/account.request";
+import {Privilege} from "../../../../../models/privilege";
 
 @Component({
     selector: 'applicationContext-add-edit-account',

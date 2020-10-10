@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MailComponent } from './mail.component';
-import { MailRoutingModule } from 'app/main/mail/mail-routing.module';
-import { QuillEditorModule } from 'app/shared/quill-editor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialShared } from 'app/shared/material-shared';
+import {MailRoutingModule} from "./mail-routing.module";
+import {MaterialShared} from "../../shared/material-shared";
+import {QuillEditorModule} from "../../shared/quill-editor";
 
 @NgModule({
     imports: [

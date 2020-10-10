@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApplicationContext } from 'app/application-context';
+import {ApplicationContext} from "../../application-context";
 
 @Component({
     selector: 'app-profile',

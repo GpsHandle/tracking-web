@@ -2,14 +2,12 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
-import * as _ from 'lodash';
-import { UnknownDevice } from 'app/models/unknown-device';
-import { AccountService } from 'app/services/account.service';
-import { AlertProfileService } from 'app/services/alert-profile.service';
-import { DeviceService } from 'app/services/device.service';
-import { Account } from 'app/models/account';
-import { AlertProfile } from 'app/models/alert-profile';
-import { DeviceRequest } from 'app/models/request/device.request';
+import {UnknownDevice} from "../../../../models/unknown-device";
+import {AlertProfile} from "../../../../models/alert-profile";
+import {DeviceService} from "../../../../services/device.service";
+import {AlertProfileService} from "../../../../services/alert-profile.service";
+import {DeviceRequest} from "../../../../models/request/device.request";
+import {AccountService} from "../../../../services/account.service";
 
 @Component({
   selector: 'app-add-new-device',
@@ -37,11 +35,11 @@ export class AddNewDeviceComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data: UnknownDevice | any) { }
 
     ngOnInit() {
-        // this.accountIds = _.map(this.data.accounts, (acc: AccountLittle) => {
+        // this.accountIds = _map(this.data.accounts, (acc: AccountLittle) => {
         //     return acc.id;
         // });
         //
-        // this.alertIds = _.map(this.data.alertProfiles, (alert: AlertProfileLittle) => alert.id);
+        // this.alertIds = _map(this.data.alertProfiles, (alert: AlertProfileLittle) => alert.id);
         //
         // this.companyControl.setValue(this.data.company);
         // this.statusControl.setValue(this.data.status);
