@@ -7,12 +7,12 @@ import {LoginComponent} from './pages/login/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import {MaterialShared} from './shared/material-shared';
-import {AuthInterceptor} from './interceptors/auth-interceptor';
+import {AuthInterceptor} from './core/interceptors/auth-interceptor';
 import {ApplicationContext} from './application-context';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {AuthService} from './services/auth.service';
-import {AuthGuard} from './guards/auth.guard';
+import {AuthGuard} from './core/guards/auth.guard';
 import {NotFoundComponent} from './pages/not-found/not-found.component';
 import {SpinnerComponent} from './pages/spinner/spinner.component';
 import {ErrorComponent} from './layouts/error/error.component';
@@ -26,9 +26,9 @@ import {EffectsModule} from '@ngrx/effects';
 import {environment} from '../environments/environment';
 import {storeFreeze} from 'ngrx-store-freeze';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import {UniversalInterceptor} from "./interceptors/universal-interceptor";
+import {UniversalInterceptor} from "./core/interceptors/universal-interceptor";
 import { ServiceWorkerModule } from '@angular/service-worker';
-import {CustomDirectivesModule} from "./directives/custom-directives.module";
+import {CustomDirectivesModule} from "./core/directives/custom-directives.module";
 
 @NgModule({
     declarations: [
@@ -60,7 +60,7 @@ import {CustomDirectivesModule} from "./directives/custom-directives.module";
         }),
         RootStoreModule,
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-        ReactiveFormsModule
+        ReactiveFormsModule,
     ],
     providers: [
         AuthService,

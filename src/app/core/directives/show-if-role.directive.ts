@@ -1,5 +1,5 @@
 import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
-import { ApplicationContext } from '../application-context';
+import { ApplicationContext } from '../../application-context';
 import {split, includes, toUpper} from 'lodash-es';
 
 @Directive({

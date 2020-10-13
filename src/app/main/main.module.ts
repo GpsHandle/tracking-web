@@ -10,7 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {CustomDirectivesModule} from "../directives/custom-directives.module";
+import {CustomDirectivesModule} from "../core/directives/custom-directives.module";
 import {ProfileComponent} from "./profile/profile.component";
 import {MaterialShared} from "../shared/material-shared";
 

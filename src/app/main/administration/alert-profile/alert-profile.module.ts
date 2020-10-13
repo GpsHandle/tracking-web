@@ -9,7 +9,7 @@ import { AlertProfileAddComponent } from './component/alert-profile-add/alert-pr
 import { AssignToDeviceComponent } from './component/assign-to-device/assign-to-device.component';
 import {GeozoneService} from "../../../services/geozone.service";
 import {AlertProfileRoutingModule} from "./alert-profile-routing.module";
-import {CustomDirectivesModule} from "../../../directives/custom-directives.module";
+import {CustomDirectivesModule} from "../../../core/directives/custom-directives.module";
 import {MaterialShared} from "../../../shared/material-shared";
 import {SchedulerModule} from "../../../shared/scheduler/scheduler.module";
 

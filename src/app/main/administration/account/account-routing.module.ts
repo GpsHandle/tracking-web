@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {EditAccountComponent} from "./component/account-edit/edit-account.component";
-import {AuthGuard} from "../../../guards/auth.guard";
+import {AuthGuard} from "../../../core/guards/auth.guard";
 import {AccountUpdateComponent} from "./component/account-add/account-update.component";
 import {AccountComponent} from "./component/account-list/account.component";
 

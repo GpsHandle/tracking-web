@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {AlertHistoryComponent} from "./alert-history/alert-history.component";
 import {AccountReportComponent} from "./account-report/account-report.component";
 import {ShipmentReportComponent} from "./shipment-report/shipment-report.component";
-import {AuthGuard} from "../../guards/auth.guard";
+import {AuthGuard} from "../../core/guards/auth.guard";
 import {DriverReportComponent} from "./driver-report/driver-report.component";
 
 const routes: Routes = [

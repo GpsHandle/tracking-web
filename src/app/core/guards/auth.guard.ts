@@ -4,7 +4,7 @@ import {
     CanActivateChild, Router, NavigationExtras
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import {ApplicationContext} from "../application-context";
+import {ApplicationContext} from "../../application-context";
 
 
 @Injectable()

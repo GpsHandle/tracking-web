@@ -3,7 +3,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanLoad, Rout
 import { Observable } from 'rxjs';
 
 import {includes} from 'lodash-es';
-import {ApplicationContext} from "../application-context";
+import {ApplicationContext} from "../../application-context";
 
 @Injectable({
   providedIn: 'root'

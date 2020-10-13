@@ -7,11 +7,11 @@ import { GeozoneComponent } from './component/geozone/geozone.component';
 import { AlertLogsComponent } from './component/alert-logs/alert-logs.component';
 import { ReportComponent } from './component/report/report.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
-import {DeviceReportCommService} from "./service/device-report-comm.service";
-import {CustomComponentModule} from "../../../cutom-component/custom-component.module";
-import {DeviceReportRoutingModule} from "./device-report-routing.module";
-import {MaterialShared} from "../../../shared/material-shared";
-import {LayoutComponent} from "./layout/layout.component";
+import {DeviceReportCommService} from './service/device-report-comm.service';
+import {DeviceReportRoutingModule} from './device-report-routing.module';
+import {MaterialShared} from '../../../shared/material-shared';
+import {LayoutComponent} from './layout/layout.component';
+import { CustomComponentModule } from '../../../shared/cutom-component/custom-component.module';
 
 @NgModule({
     imports: [

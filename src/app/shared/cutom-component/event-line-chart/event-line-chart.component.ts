@@ -11,9 +11,10 @@ import * as c3 from 'c3';
 import * as d3 from 'd3';
 import { AxisName, ChartAPI, ChartConfiguration, PrimitiveArray } from 'c3';
 import {forEach, uniqBy,} from 'lodash-es';
-import {EventData} from "../../models/event-data";
+import {EventData} from '../../../models/event-data';
 
 @Component({
+    // tslint:disable-next-line: component-selector
     selector: 'event-line-chart',
     templateUrl: './event-line-chart.component.html',
     styleUrls: ['./event-line-chart.component.scss']

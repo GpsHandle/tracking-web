@@ -5,7 +5,7 @@ import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
 import { FlexLayoutServerModule } from '@angular/flex-layout/server';
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
-import {UniversalInterceptor} from "./interceptors/universal-interceptor";
+import {UniversalInterceptor} from "./core/interceptors/universal-interceptor";
 
 @NgModule({
     imports: [

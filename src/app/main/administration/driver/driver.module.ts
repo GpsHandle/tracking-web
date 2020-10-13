@@ -9,7 +9,7 @@ import { DriverAddComponent } from './component/driver-add/driver-add.component'
 import { DriverViewEditComponent } from './component/driver-view-edit/driver-view-edit.component';
 import {CustomPipeModule} from "../../../pipes/custom-pipe.module";
 import {MaterialShared} from "../../../shared/material-shared";
-import {CustomDirectivesModule} from "../../../directives/custom-directives.module";
+import {CustomDirectivesModule} from "../../../core/directives/custom-directives.module";
 import {DriverRoutingModule} from "./driver-routing.module";
 import {DriverService} from "../../../services/driver.service";
 

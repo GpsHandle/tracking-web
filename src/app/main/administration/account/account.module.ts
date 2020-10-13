@@ -8,7 +8,7 @@ import { ChangePasswordDialogComponent } from './component/change-password-dialo
 import {SharedModule} from "../../../shared/shared.module";
 import {CustomPipeModule} from "../../../pipes/custom-pipe.module";
 import {AccountComponent} from "./component/account-list/account.component";
-import {CustomDirectivesModule} from "../../../directives/custom-directives.module";
+import {CustomDirectivesModule} from "../../../core/directives/custom-directives.module";
 import {AccountRoutingModule} from "./account-routing.module";
 import {OptionalColumnAccountComponent} from "./component/optional-column-account/optional-column-account.component";
 import {MaterialShared} from "../../../shared/material-shared";

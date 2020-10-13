@@ -9,7 +9,7 @@ import {DeviceRoutingModule} from "./device-routing.module";
 import {DeviceComponent} from "./component/device-list/device.component";
 import {AddEditDeviceComponent} from "./component/add-edit-device/add-edit-device.component";
 import {OptionalColumnDeviceComponent} from "./component/optional-column-device/optional-column-device.component";
-import {CustomDirectivesModule} from "../../../directives/custom-directives.module";
+import {CustomDirectivesModule} from "../../../core/directives/custom-directives.module";
 import {DeviceService} from "../../../services/device.service";
 import {MaterialShared} from "../../../shared/material-shared";
 import {AccountService} from "../../../services/account.service";
