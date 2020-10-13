@@ -3,16 +3,11 @@ import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
 import { CommonModule} from '@angular/common';
 import { FormsModule} from '@angular/forms';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {CustomDirectivesModule} from "../core/directives/custom-directives.module";
 import {ProfileComponent} from "./profile/profile.component";
 import {MaterialShared} from "../shared/material-shared";
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
     imports: [
@@ -22,13 +17,7 @@ import {MaterialShared} from "../shared/material-shared";
         MaterialShared,
         MainRoutingModule,
         FlexLayoutModule,
-        LayoutModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatSidenavModule,
-        MatIconModule,
-        MatListModule,
-    ],
+        SharedModule    ],
     declarations: [
         MainComponent,
         ProfileComponent

@@ -26,11 +26,6 @@ const routes: Routes = [
                 canActivate: [AuthGuard],
             },
             {
-                path: 'help',
-                loadChildren: () => import('./help/help.module').then(m => m.HelpModule),
-                canActivate: [AuthGuard]
-            },
-            {
                 path: 'profile',
                 component: ProfileComponent
             },

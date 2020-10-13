@@ -2,7 +2,7 @@
 @import "account/account.module";
 @import "device/device.module";
 @import "driver/driver.module";
-@import "layout/administration.component";
+@import "administration.component";
 @mixin administration-module($theme) {
     @include account-module($theme);
     @include alert-profile($theme);

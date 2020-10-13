@@ -1,4 +1,4 @@
-@import '../../../../assets/variables';
+@import '../../../assets/variables';
 @mixin main-admin-component($theme) {
     .mat-sidenav {
         width: $side-nav-width;
