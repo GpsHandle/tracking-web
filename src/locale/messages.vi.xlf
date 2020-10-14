@@ -50,7 +50,7 @@
           <context context-type="linenumber">20</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
@@ -76,7 +76,7 @@
         <source>Enter your account Id</source>
         <target state="translated">Nhập tài khoản</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/forgot-password/forgot-password.component.html</context>
+          <context context-type="sourcefile">app/account/forgot-password/forgot-password.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
@@ -84,7 +84,7 @@
         <source>Submit</source>
         <target state="translated">Gửi</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/forgot-password/forgot-password.component.html</context>
+          <context context-type="sourcefile">app/account/forgot-password/forgot-password.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
@@ -92,11 +92,11 @@
         <source>Back to login</source>
         <target state="translated">Đăng nhập lại</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/forgot-password/forgot-password.component.html</context>
+          <context context-type="sourcefile">app/account/forgot-password/forgot-password.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
@@ -104,7 +104,7 @@
         <source>Account Id</source>
         <target state="translated">Tài khoản</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">6</context>
         </context-group>
         <context-group purpose="location">
@@ -140,7 +140,7 @@
         <source>Password</source>
         <target state="translated">Mật khẩu</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
         <context-group purpose="location">
@@ -164,7 +164,7 @@
         <source>Re Password</source>
         <target state="translated">Nhập lại mật khẩu</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
         <context-group purpose="location">
@@ -184,7 +184,7 @@
         <source>First Name</source>
         <target state="translated">Tên</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">20</context>
         </context-group>
         <context-group purpose="location">
@@ -224,7 +224,7 @@
         <source>Last Name</source>
         <target state="translated">Họ</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">23</context>
         </context-group>
         <context-group purpose="location">
@@ -264,7 +264,7 @@
         <source>Phone Number</source>
         <target state="translated">Số điện </target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
@@ -272,7 +272,7 @@
         <source>Email Address</source>
         <target state="translated">Địa chỉ email</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">31</context>
         </context-group>
         <context-group purpose="location">
@@ -304,7 +304,7 @@
         <source>Address</source>
         <target state="translated">Địa chỉ</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">34</context>
         </context-group>
         <context-group purpose="location">

@@ -9,9 +9,9 @@ import {PrivacyPolicyComponent} from "./privacy-policy/privacy-policy.component"
 import {HomeContentComponent} from "./content/home-content.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: 'pages/main', pathMatch: 'full' },
+  { path: '', redirectTo: 'p/main', pathMatch: 'full' },
   {
-    path: 'pages',
+    path: 'p',
     component: HomeComponent,
     children: [
       { path: 'main', component: HomeContentComponent, pathMatch: 'full'},
@@ -21,8 +21,8 @@ const routes: Routes = [
       { path: 'help', component: HelpComponent, pathMatch: 'full'},
     ]
   },
-  { path: '**', redirectTo: '/pages/main', pathMatch: 'full' }
-    ];
+  { path: '**', redirectTo: 'p/main', pathMatch: 'full' }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

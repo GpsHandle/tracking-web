@@ -1,6 +1,6 @@
 <div class="full-height flex-center">
     <form class="l-form mat-elevation-z2">
-        <span class="greetingLabel" i18n="@@greetingLabel">Tracking Made Simple</span>
+<!--        <span class="greetingLabel" i18n="@@greetingLabel">Tracking Made Simple</span>-->
         <mat-form-field appearance="outline" class="full-width">
             <mat-label i18n="@@yourUsername">Your Usermame</mat-label>
             <input matInput i18n-placeholder="@@yourUsername" placeholder="Your Usermame" [(ngModel)]="model.username" name="username">
@@ -21,7 +21,7 @@
             <div class="action">
                 <a *showIfDemo mat-button [routerLink]="['/demo']" i18n="@@demo">Demo</a>
                 <a mat-button [routerLink]="['/account/c/register']" i18n="@@register">Register</a>
-                <a mat-button [routerLink]="['/forgot-password']" i18n="@@forgotPassword">Forgot Password ?</a>
+                <a mat-button [routerLink]="['/account/c/forgot-password']" i18n="@@forgotPassword">Forgot Password ?</a>
             </div>
         </div>
         <div class="lang-switch">

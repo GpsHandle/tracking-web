@@ -10,8 +10,14 @@ import {EmailConfirmationGuard} from "./core/guards/email-confirmation.guard";
 
 const routes: Routes = [
     { path: '', redirectTo: 'web', pathMatch: 'full'},
-    { path: 'web', loadChildren: () => import('./webw/home.module').then(m => m.HomeModule) },
-    { path: 'account', loadChildren: () => import('./account/account.module').then(m => m.AccountModule) },
+    {
+        path: 'web',
+        loadChildren: () => import('./webw/home.module').then(m => m.HomeModule)
+    },
+    {
+        path: 'account',
+        loadChildren: () => import('./account/account.module').then(m => m.AccountModule)
+    },
     {
         path: 'main',
         loadChildren: () => import('./main/main.module').then(m => m.MainModule),
@@ -20,14 +26,14 @@ const routes: Routes = [
     },
     { path: 'error',            pathMatch: 'full', component: ErrorComponent },
     { path: 'not-found',        pathMatch: 'full', component: NotFoundComponent },
-    // { path: '**',               pathMatch: 'full', redirectTo: 'not-found' }
+    { path: '**',               pathMatch: 'full', redirectTo: 'not-found' }
 ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes, {
         preloadingStrategy: PreloadAllModules,
         initialNavigation: 'enabled',
-        enableTracing: true
+        enableTracing: false
     })],
     exports: [RouterModule]
 })

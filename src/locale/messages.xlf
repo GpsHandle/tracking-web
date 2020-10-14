@@ -44,7 +44,7 @@
           <context context-type="linenumber">21</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
@@ -67,32 +67,32 @@
       <trans-unit id="enterYourAccountId" datatype="html">
         <source>Enter your account Id</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/forgot-password/forgot-password.component.html</context>
+          <context context-type="sourcefile">app/account/forgot-password/forgot-password.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="submit" datatype="html">
         <source>Submit</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/forgot-password/forgot-password.component.html</context>
+          <context context-type="sourcefile">app/account/forgot-password/forgot-password.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="backToLogin" datatype="html">
         <source>Back to login</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/forgot-password/forgot-password.component.html</context>
+          <context context-type="sourcefile">app/account/forgot-password/forgot-password.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="accountId" datatype="html">
         <source>Account Id</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">6</context>
         </context-group>
         <context-group purpose="location">
@@ -127,7 +127,7 @@
       <trans-unit id="password" datatype="html">
         <source>Password</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
         <context-group purpose="location">
@@ -150,7 +150,7 @@
       <trans-unit id="rePassword" datatype="html">
         <source>Re Password</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
         <context-group purpose="location">
@@ -169,7 +169,7 @@
       <trans-unit id="firstName" datatype="html">
         <source>First Name</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">20</context>
         </context-group>
         <context-group purpose="location">
@@ -208,7 +208,7 @@
       <trans-unit id="lastName" datatype="html">
         <source>Last Name</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">23</context>
         </context-group>
         <context-group purpose="location">
@@ -247,14 +247,14 @@
       <trans-unit id="phoneName" datatype="html">
         <source>Phone Number</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
       <trans-unit id="emailAddress" datatype="html">
         <source>Email Address</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">31</context>
         </context-group>
         <context-group purpose="location">
@@ -285,7 +285,7 @@
       <trans-unit id="address" datatype="html">
         <source>Address</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">34</context>
         </context-group>
         <context-group purpose="location">

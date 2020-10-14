@@ -42,7 +42,7 @@
           <context context-type="linenumber">20</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
@@ -70,7 +70,7 @@
         <source>Enter your account Id</source>
         <target>Digite o ID da sua conta</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/forgot-password/forgot-password.component.html</context>
+          <context context-type="sourcefile">app/account/forgot-password/forgot-password.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
@@ -78,7 +78,7 @@
         <source>Submit</source>
         <target>Enviar</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/forgot-password/forgot-password.component.html</context>
+          <context context-type="sourcefile">app/account/forgot-password/forgot-password.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
@@ -86,11 +86,11 @@
         <source>Back to login</source>
         <target>Volte ao login</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/forgot-password/forgot-password.component.html</context>
+          <context context-type="sourcefile">app/account/forgot-password/forgot-password.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
@@ -98,7 +98,7 @@
         <source>Account Id</source>
         <target>ID da conta</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">6</context>
         </context-group>
         <context-group purpose="location">
@@ -134,7 +134,7 @@
         <source>Password</source>
         <target>Senha</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">11</context>
         </context-group>
         <context-group purpose="location">
@@ -158,7 +158,7 @@
         <source>Re Password</source>
         <target>Re senha</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
         <context-group purpose="location">
@@ -178,7 +178,7 @@
         <source>First Name</source>
         <target>Primeiro nome</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">20</context>
         </context-group>
         <context-group purpose="location">
@@ -218,7 +218,7 @@
         <source>Last Name</source>
         <target>Último nome</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">23</context>
         </context-group>
         <context-group purpose="location">
@@ -258,7 +258,7 @@
         <source>Phone Number</source>
         <target>Número de telefone</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
@@ -266,7 +266,7 @@
         <source>Email Address</source>
         <target>Endereço de e-mail</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">31</context>
         </context-group>
         <context-group purpose="location">
@@ -298,7 +298,7 @@
         <source>Address</source>
         <target>Endereço</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/register/register.component.html</context>
+          <context context-type="sourcefile">app/account/register/register.component.html</context>
           <context context-type="linenumber">34</context>
         </context-group>
         <context-group purpose="location">
