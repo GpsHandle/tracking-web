@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import {Dcs} from "../models/dcs";
+import {DriverRequest} from "../../models/request/driver.request";
+import {Driver} from "../../models/driver";
 import {AbstractService} from "./abstract.service";
-import {DcsRequest} from "../models/request/dcs.request";
 
-const API_DCS_PATH = '/api/dcs';
+const API_DRIVER_PATH = '/api/driver';
 
 @Injectable()
-export class DcsService extends AbstractService<DcsRequest, Dcs> {
-
+export class DriverService extends AbstractService<DriverRequest, Driver> {
     constructor(private http: HttpClient, private router: Router) {
-        super(http, router, API_DCS_PATH);
+        super(http, router, API_DRIVER_PATH);
     }
-
 }

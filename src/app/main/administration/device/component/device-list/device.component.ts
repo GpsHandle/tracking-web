@@ -13,7 +13,7 @@ import {DeleteEvent} from "../../../../../models/delete-event";
 import {UniversalStorage} from "../../../../../shared/universal-storage.service";
 import {OptionalColumnDeviceComponent} from "../optional-column-device/optional-column-device.component";
 import {Device} from "../../../../../models/device";
-import {DeviceService} from "../../../../../services/device.service";
+import {DeviceService} from "../../../../../core/services/device.service";
 import {DeleteDeviceComponent} from "../delete-device/delete-device.component";
 import {DeviceRequest} from "../../../../../models/request/device.request";
 import {ApplicationContext} from "../../../../../application-context";

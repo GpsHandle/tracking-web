@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {UniversalStorage} from "../shared/universal-storage.service";
-import {AuthResponse} from "../models/auth.response";
+import {UniversalStorage} from "../../shared/universal-storage.service";
+import {AuthResponse} from "../../models/auth.response";
 
 @Injectable()
 export class AuthService {

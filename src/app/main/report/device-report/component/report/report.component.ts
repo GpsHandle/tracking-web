@@ -8,9 +8,9 @@ import { ActivatedRoute } from '@angular/router';
 import {ApplicationContext} from '../../../../../application-context';
 import {DeviceReportCommService} from '../../service/device-report-comm.service';
 import {DeviceReportCustomTimeComponent} from '../custom-timerange-dialog/device-report-custom-time.component';
-import {DeviceReportService} from '../../../../../services/device-report.service';
-import {DeviceService} from '../../../../../services/device.service';
-import {EventService} from '../../../../../services/event.service';
+import {DeviceReportService} from '../../../../../core/services/device-report.service';
+import {DeviceService} from '../../../../../core/services/device.service';
+import {EventService} from '../../../../../core/services/event.service';
 import {EventData} from '../../../../../models/event-data';
 import { EventLineChartComponent } from '../../../../../shared/cutom-component/event-line-chart/event-line-chart.component';
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import {Privilege} from "../models/privilege";
+import {Privilege} from "../../models/privilege";
 import {BaseService} from "./base.service";
 export const PRIVILEGE_API_URL = '/api/privilege';
 

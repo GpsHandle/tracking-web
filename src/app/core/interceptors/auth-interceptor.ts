@@ -3,7 +3,6 @@ import {
     HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ApplicationContext} from "../../application-context";
-import {Router} from "@angular/router";
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -18,16 +17,23 @@ export class AuthInterceptor implements HttpInterceptor {
             return next.handle(changeReg);
         } else {
                 const token = this.applicationContext.getToken();
-                const changeReg = req.clone({
-                    headers: req.headers.set('Authorization', token)
-                });
-                return next.handle(changeReg)
+                const lang =this.applicationContext.getLang();
+                // const changeReg = req.clone({
+                //     headers: req.headers.set('Authorization', token)
+                // });
+            req = req.clone({
+                setHeaders: {
+                    'Authorization': token,
+                    'x-language': lang
+                }
+            });
+                return next.handle(req)
                     .pipe(
                         catchError(
                             (err: any, caught: Observable<HttpEvent<any>>) => {
                                 if (err.status === 401) {
                                     this.applicationContext.logout();
-                                    this.applicationContext.navigate(['/login']);
+                                    this.applicationContext.navigate(['/account/c/login']);
                                     return of(err);
                                 } else if (err.status === 500) {
                                     this.applicationContext.logout();

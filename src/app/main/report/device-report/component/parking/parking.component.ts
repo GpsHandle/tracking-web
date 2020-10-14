@@ -6,7 +6,7 @@ import { catchError, map, startWith, switchMap, takeUntil } from 'rxjs/operators
 
 import { formatDistance } from 'date-fns'
 import {ApplicationContext} from "../../../../../application-context";
-import {DeviceReportService} from "../../../../../services/device-report.service";
+import {DeviceReportService} from "../../../../../core/services/device-report.service";
 import {DeviceParkingReport} from "../../../../../models/device-parking.report";
 
 @Component({

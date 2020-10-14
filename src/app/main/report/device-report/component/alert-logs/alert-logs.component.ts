@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { merge, Observable, of as observableOf, ReplaySubject, Subject } from 'rxjs';
 import { catchError, map, startWith, switchMap, takeUntil } from 'rxjs/operators';
 import {AlertEventLog} from "../../../../../models/alert-event-log";
-import {DeviceReportService} from "../../../../../services/device-report.service";
+import {DeviceReportService} from "../../../../../core/services/device-report.service";
 import {PageableCommonResponse} from "../../../../../models/pageable-common.response";
 
 @Component({

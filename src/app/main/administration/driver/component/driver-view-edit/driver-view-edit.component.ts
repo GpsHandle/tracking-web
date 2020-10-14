@@ -3,7 +3,7 @@ import {Driver} from "../../../../../models/driver";
 import {switchMap} from "rxjs/operators";
 import {ApplicationContext} from "../../../../../application-context";
 import {ActivatedRoute} from "@angular/router";
-import {DriverService} from "../../../../../services/driver.service";
+import {DriverService} from "../../../../../core/services/driver.service";
 
 @Component({
   selector: 'app-driver-view-edit',

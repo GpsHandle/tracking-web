@@ -7,7 +7,7 @@ import { DeleteAlertProfileComponent } from './component/delete-alert-profile/de
 import { AlertProfileEditComponent } from './component/alert-profile-edit/alert-profile-edit.component';
 import { AlertProfileAddComponent } from './component/alert-profile-add/alert-profile-add.component';
 import { AssignToDeviceComponent } from './component/assign-to-device/assign-to-device.component';
-import {GeozoneService} from "../../../services/geozone.service";
+import {GeozoneService} from "../../../core/services/geozone.service";
 import {AlertProfileRoutingModule} from "./alert-profile-routing.module";
 import {CustomDirectivesModule} from "../../../core/directives/custom-directives.module";
 import {MaterialShared} from "../../../shared/material-shared";

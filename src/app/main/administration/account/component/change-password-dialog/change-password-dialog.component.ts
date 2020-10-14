@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {ApplicationContext} from '../../../../../application-context';
 import {Account} from "../../../../../models/account";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {AccountService} from '../../../../../services/account.service';
+import {AccountService} from '../../../../../core/services/account.service';
 import {ChangePasswdRequest} from '../../../../../models/change-passwd.request';
 
 @Component({

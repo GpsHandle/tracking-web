@@ -4,15 +4,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeleteDeviceComponent } from './component/delete-device/delete-device.component';
 import { DeviceAddComponent } from './component/device-add/device-add.component';
 import { DeviceViewEditComponent } from './component/device-view-edit/device-view-edit.component';
-import {CustomPipeModule} from "../../../pipes/custom-pipe.module";
+import {CustomPipeModule} from "../../../core/pipes/custom-pipe.module";
 import {DeviceRoutingModule} from "./device-routing.module";
 import {DeviceComponent} from "./component/device-list/device.component";
 import {AddEditDeviceComponent} from "./component/add-edit-device/add-edit-device.component";
 import {OptionalColumnDeviceComponent} from "./component/optional-column-device/optional-column-device.component";
 import {CustomDirectivesModule} from "../../../core/directives/custom-directives.module";
-import {DeviceService} from "../../../services/device.service";
+import {DeviceService} from "../../../core/services/device.service";
 import {MaterialShared} from "../../../shared/material-shared";
-import {AccountService} from "../../../services/account.service";
+import {AccountService} from "../../../core/services/account.service";
 
 @NgModule({
     imports: [

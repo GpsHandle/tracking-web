@@ -7,7 +7,7 @@ import 'leaflet-editable';
 
 import { LatLng } from 'leaflet';
 import {forEach, remove, toLower} from "lodash-es";
-import {GeozoneService} from "../../../services/geozone.service";
+import {GeozoneService} from "../../../core/services/geozone.service";
 import {Geozone} from "../../../models/geozone";
 import {ApplicationContext} from "../../../application-context";
 import {GeozoneRequest} from "../../../models/request/geozone.request";

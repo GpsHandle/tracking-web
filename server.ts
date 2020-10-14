@@ -8,18 +8,18 @@ import { createProxyMiddleware, Filter, Options, RequestHandler } from 'http-pro
 import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
+import {LOCALE_ID} from "@angular/core";
 
 // The Express app is exported so that it can be used by serverless Functions.
-export function app(): express.Express {
+export function app(lang: string): express.Express {
   const server = express();
-  const distFolder = join(process.cwd(), 'dist/browser');
+  const distFolder = existsSync(join(process.cwd(), `dist/browser/${lang}`)) ? join(process.cwd(), `dist/browser/${lang}`) : join(process.cwd(), 'dist/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
-  const supportedLocales = ['en', 'en-US', 'vi', 'pl', 'pt'];
-  const defaultLocale = existsSync(join(distFolder, 'en')) ? 'en' : '';
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
   server.engine('html', ngExpressEngine({
     bootstrap: AppServerModule,
+    providers: [{provide: LOCALE_ID, useValue: lang}]
   }));
 
   server.set('view engine', 'html');
@@ -42,13 +42,24 @@ export function app(): express.Express {
   }));
 
   server.get('*', (req, res) => {
-    // res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+    // const lang = req.get('x-language') ? req.get('x-language') :  'en';
+    // const xDistFolder =existsSync(join(distFolder, lang)) ? join(distFolder, lang) : distFolder;
+    // server.set('views', xDistFolder);
+    // server.get('*.*', express.static(xDistFolder, {
+    //   maxAge: '1y'
+    // }));
+    // console.log('Language', lang);
+    // console.log('dist folder', xDistFolder);
+    // res.setHeader('x-language', 'EN');
+    // const indexHtml = existsSync(join(xDistFolder, 'index.original.html')) ? 'index.original.html' : 'index';
+    res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
 
     //this is for i18n
-    const matches = req.query.hl ? req.query.hl : req.url.match(/^\/([a-z]{2}(?:-[A-Z]{2})?)\//);
-    const locale = (matches && supportedLocales.indexOf(matches[1]) !== -1) ? matches[1] : defaultLocale;
-    const xIndex = locale ? locale + '/' + indexHtml : indexHtml;
-    res.render(xIndex, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+    // const matches = req.query.hl ? req.query.hl : req.url.match(/^\/([a-z]{2}(?:-[A-Z]{2})?)\//);
+    // const locale = (matches && supportedLocales.indexOf(matches[1]) !== -1) ? matches[1] : defaultLocale;
+    // const xIndex = locale ? locale + '/' + indexHtml : indexHtml;
+    //
+    // res.render(xIndex, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
 
   });
 
@@ -57,9 +68,19 @@ export function app(): express.Express {
 
 function run(): void {
   const port = process.env.PORT || 4001;
+  const appVI = app('vi');
+  const appEN = app('en');
+  const appPL = app('pl');
+  const appPT = app('pt');
+  const server = express();
+  server.use('/en', appEN);
+  server.use('/vi', appVI);
+  server.use('/pt', appPT);
+  server.use('/pl', appPL);
+  server.use('', appEN);
 
   // Start up the Node server
-  const server = app();
+  //const server = app('en');
   server.listen(port, () => {
     console.log(`Node Express server listening on http://localhost:${port}`);
   });

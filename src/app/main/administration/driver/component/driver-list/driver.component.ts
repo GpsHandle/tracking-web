@@ -11,7 +11,7 @@ import {Driver} from "../../../../../models/driver";
 import {DriverRequest} from "../../../../../models/request/driver.request";
 import {AddEditDriverComponent} from "../add-edit-driver/add-edit-driver.component";
 import {ApplicationContext} from "../../../../../application-context";
-import {DriverService} from "../../../../../services/driver.service";
+import {DriverService} from "../../../../../core/services/driver.service";
 
 @Component({
     selector: 'app-driver',

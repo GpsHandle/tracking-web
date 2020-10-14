@@ -24,7 +24,7 @@ import {AccountRequest} from "../../../../../models/request/account.request";
 import {UniversalStorage} from "../../../../../shared/universal-storage.service";
 import {PageableCommonResponse} from "../../../../../models/pageable-common.response";
 import {DeleteAccountComponent} from "../delete-account/delete-account.component";
-import {AccountService} from "../../../../../services/account.service";
+import {AccountService} from "../../../../../core/services/account.service";
 import {AddEditAccountComponent} from "../add-edit-account/add-edit-account.component";
 
 @Component({

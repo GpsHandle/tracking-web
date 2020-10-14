@@ -10,7 +10,8 @@ import { ImageUploadComponent } from './image-upload/image-upload.component';
   declarations: [FileUploadComponent, ImageUploadComponent],
   exports: [
     FileUploadComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    MaterialShared
   ],
   imports: [
     CommonModule,

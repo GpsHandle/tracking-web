@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { UnknownDeviceComponent } from './unknown-device.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AddNewDeviceComponent} from "./add-new-device/add-new-device.component";
-import {DeviceService} from "../../../services/device.service";
-import {AlertProfileService} from "../../../services/alert-profile.service";
+import {DeviceService} from "../../../core/services/device.service";
+import {AlertProfileService} from "../../../core/services/alert-profile.service";
 import {MaterialShared} from "../../../shared/material-shared";
-import {AccountService} from "../../../services/account.service";
+import {AccountService} from "../../../core/services/account.service";
 import {UnknownDeviceRoutingModule} from "./unknown-device-routing.module";
 
 @NgModule({

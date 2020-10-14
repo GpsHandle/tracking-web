@@ -8,7 +8,7 @@ import {DeviceLittle} from "../../../../models/little/device.little";
 import {ApplicationContext} from "../../../../application-context";
 import {DeviceReportCommService} from "../service/device-report-comm.service";
 import {Device} from "../../../../models/device";
-import {DeviceService} from "../../../../services/device.service";
+import {DeviceService} from "../../../../core/services/device.service";
 import {DashboardService} from "../service/dashboard.service";
 
 @Component({

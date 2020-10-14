@@ -16,7 +16,7 @@ import { ChartConfiguration, Data, PrimitiveArray } from 'c3';
 import { AxisName } from 'c3';
 import {concat, forEach, head, isEmpty, last, uniqBy} from "lodash-es";
 import {EventData} from "../../../../models/event-data";
-import {EventService} from "../../../../services/event.service";
+import {EventService} from "../../../../core/services/event.service";
 
 @Component({
     selector: 'speed-chart',

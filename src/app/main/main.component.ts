@@ -64,7 +64,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
     logout() {
         this.app.logout();
-        this.router.navigate(['/login']);
+        this.router.navigate(['/account/c/login']);
     }
 
     openSideNavForTracking() {

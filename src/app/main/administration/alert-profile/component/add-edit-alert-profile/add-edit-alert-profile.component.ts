@@ -6,7 +6,7 @@ import {ApplicationContext} from "../../../../../application-context";
 import {AlertProfile} from "../../../../../models/alert-profile";
 import {DayTime} from "../../../../../shared/scheduler/daytime/day-time";
 import {AlertProfileRequest} from "../../../../../models/request/alert-profile.request";
-import {GeozoneService} from "../../../../../services/geozone.service";
+import {GeozoneService} from "../../../../../core/services/geozone.service";
 import {Geozone} from "../../../../../models/geozone";
 
 @Component({

@@ -4,7 +4,7 @@ import {switchMap} from "rxjs/operators";
 import {ApplicationContext} from "../../../../../application-context";
 import {ActivatedRoute} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
-import {AlertProfileService} from "../../../../../services/alert-profile.service";
+import {AlertProfileService} from "../../../../../core/services/alert-profile.service";
 import {Weekday} from "../../../../../shared/scheduler/weekday/weekday";
 import {DayTime} from "../../../../../shared/scheduler/daytime/day-time";
 import {AlertType} from "../../../../../models/enums/alert-type.enum";

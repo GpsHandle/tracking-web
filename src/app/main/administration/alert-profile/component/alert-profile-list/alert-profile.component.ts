@@ -7,13 +7,13 @@ import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import {AssignToDeviceComponent} from "../assign-to-device/assign-to-device.component";
-import {DeviceService} from "../../../../../services/device.service";
+import {DeviceService} from "../../../../../core/services/device.service";
 import {Device} from "../../../../../models/device";
 import {AddEditAlertProfileComponent} from "../add-edit-alert-profile/add-edit-alert-profile.component";
 import {ApplicationContext} from "../../../../../application-context";
 import {DeleteAlertProfileComponent} from "../delete-alert-profile/delete-alert-profile.component";
 import {PageableCommonResponse} from "../../../../../models/pageable-common.response";
-import {AlertProfileService} from "../../../../../services/alert-profile.service";
+import {AlertProfileService} from "../../../../../core/services/alert-profile.service";
 import {AlertProfileRequest} from "../../../../../models/request/alert-profile.request";
 import {AlertProfile} from "../../../../../models/alert-profile";
 

@@ -1,0 +1,4 @@
+@import "login/login.component";
+@mixin account-styles($theme) {
+  @include style-login($theme);
+}

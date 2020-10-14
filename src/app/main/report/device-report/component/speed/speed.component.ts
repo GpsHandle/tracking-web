@@ -14,7 +14,7 @@ import { merge, of as observableOf} from 'rxjs';
 import { catchError, map, startWith, switchMap} from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 import {ApplicationContext} from "../../../../../application-context";
-import {DeviceReportService} from "../../../../../services/device-report.service";
+import {DeviceReportService} from "../../../../../core/services/device-report.service";
 import {DeviceSpeeedReport} from "../../../../../models/device-speeed.report";
 
 @Component({

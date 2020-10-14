@@ -9,10 +9,22 @@
       "projectType": "application",
       "i18n": {
         "locales": {
-          "vi": "src/locale/messages.vi.xlf",
-          "en": "src/locale/messages.en.xlf",
-          "pt": "src/locale/messages.pt.xlf",
-          "pl": "src/locale/messages.pl.xlf"
+          "vi": {
+            "translation": "src/locale/messages.vi.xlf",
+            "baseHref": "vi/"
+          },
+          "en": {
+            "translation": "src/locale/messages.en.xlf",
+            "baseHref": "en/"
+          },
+          "pt": {
+            "translation": "src/locale/messages.pt.xlf",
+            "baseHref": "pt/"
+          },
+          "pl": {
+            "translation": "src/locale/messages.pl.xlf",
+            "baseHref": "pl/"
+          }
         }
       },
 

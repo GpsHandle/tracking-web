@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {GeozoneService} from "../../../services/geozone.service";
+import {GeozoneService} from "../../../core/services/geozone.service";
 import {MaterialShared} from "../../../shared/material-shared";
 import {GeozoneRoutingModule} from "./geozone-routing.module";
 import {GeozoneComponent} from "./geozone.component";

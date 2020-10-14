@@ -41,7 +41,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
             queryParams: { 'session_id': sessionId },
             fragment: 'anchor'
         }
-        this.router.navigate(['/login'], navigationExtras);
+        this.router.navigate(['/account/c/login'], navigationExtras);
         return false;
     }
 

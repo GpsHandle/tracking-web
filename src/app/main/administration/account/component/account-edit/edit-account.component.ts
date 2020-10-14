@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Observable} from "rxjs";
 import {map, startWith, switchMap} from "rxjs/operators";
-import {AccountService} from "../../../../../services/account.service";
+import {AccountService} from "../../../../../core/services/account.service";
 import {Account} from "../../../../../models/account";
 import {Privilege} from "../../../../../models/privilege";
 import {ApplicationContext} from "../../../../../application-context";

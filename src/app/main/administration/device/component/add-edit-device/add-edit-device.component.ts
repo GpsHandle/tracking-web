@@ -8,11 +8,11 @@ import {Account} from "../../../../../models/account";
 import {AlertProfileLittle} from "../../../../../models/little/alert-profile.little";
 import {AlertProfile} from "../../../../../models/alert-profile";
 import {Device} from "../../../../../models/device";
-import {DeviceService} from "../../../../../services/device.service";
+import {DeviceService} from "../../../../../core/services/device.service";
 import {AccountLittle} from "../../../../../models/little/account.little";
-import {AlertProfileService} from "../../../../../services/alert-profile.service";
+import {AlertProfileService} from "../../../../../core/services/alert-profile.service";
 import {DeviceRequest} from "../../../../../models/request/device.request";
-import {AccountService} from "../../../../../services/account.service";
+import {AccountService} from "../../../../../core/services/account.service";
 
 @Component({
   selector: 'app-add-edit-device',

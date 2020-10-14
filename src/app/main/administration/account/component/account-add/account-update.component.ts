@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ApplicationContext} from "../../../../../application-context";
 import {ActivatedRoute} from "@angular/router";
-import {AccountService} from "../../../../../services/account.service";
+import {AccountService} from "../../../../../core/services/account.service";
 import {Account} from "../../../../../models/account";
 import {Privilege} from "../../../../../models/privilege";
 import {FormControl} from "@angular/forms";

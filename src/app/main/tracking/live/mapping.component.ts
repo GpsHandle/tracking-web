@@ -18,16 +18,18 @@ import {BreakpointObserver} from "@angular/cdk/layout";
 import {MainFacade} from '../../../stores/root-store.facade';
 import {ApplicationContext} from "../../../application-context";
 import {Device} from "../../../models/device";
-import {DeviceService} from "../../../services/device.service";
+import {DeviceService} from "../../../core/services/device.service";
 import {StatusPieChart} from "../../../models/status-pie-chart";
-import {EventService} from "../../../services/event.service";
+import {EventService} from "../../../core/services/event.service";
 import {MappingUtils} from "./mapping-utils";
 import {PopupService} from "./popup/popup.service";
 import {CommandComponent} from "./command/command.component";
 import {isPlatformBrowser} from "@angular/common";
 
 const TILE_OSM = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
-const TILE_MAPBOX = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
+// const TILE_MAPBOX = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
+
+const TILE_MAPBOX = 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
 
 @Component({
     selector: 'app-mapping',
@@ -100,7 +102,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                 layers: [
                     L.tileLayer(TILE_MAPBOX, {
                         attribution: '&copy; <a href="https://gpshandle.com">gpshandle.com</a>',
-                        //id: 'mapbox.streets',
+                        // id: 'mapbox/streets-v11',
                         //accessToken: 'pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA'
                     })]
             });

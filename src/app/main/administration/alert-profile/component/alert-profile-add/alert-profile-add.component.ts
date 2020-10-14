@@ -6,9 +6,9 @@ import {DaySelected, Weekday} from "../../../../../shared/scheduler/weekday/week
 import {MyTime} from "../../../../../shared/scheduler/daytime/time-input";
 import {Router} from "@angular/router";
 import {DayTime} from "../../../../../shared/scheduler/daytime/day-time";
-import {GeozoneService} from "../../../../../services/geozone.service";
+import {GeozoneService} from "../../../../../core/services/geozone.service";
 import {ApplicationContext} from "../../../../../application-context";
-import {AlertProfileService} from "../../../../../services/alert-profile.service";
+import {AlertProfileService} from "../../../../../core/services/alert-profile.service";
 
 @Component({
     selector: 'app-alert-profile-add',

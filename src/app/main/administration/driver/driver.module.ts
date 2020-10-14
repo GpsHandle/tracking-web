@@ -7,11 +7,11 @@ import { DeleteDriverComponent } from './component/delete-driver/delete-driver.c
 import { OptionalColumnDriverComponent } from './component/optional-column-driver/optional-column-driver.component';
 import { DriverAddComponent } from './component/driver-add/driver-add.component';
 import { DriverViewEditComponent } from './component/driver-view-edit/driver-view-edit.component';
-import {CustomPipeModule} from "../../../pipes/custom-pipe.module";
+import {CustomPipeModule} from "../../../core/pipes/custom-pipe.module";
 import {MaterialShared} from "../../../shared/material-shared";
 import {CustomDirectivesModule} from "../../../core/directives/custom-directives.module";
 import {DriverRoutingModule} from "./driver-routing.module";
-import {DriverService} from "../../../services/driver.service";
+import {DriverService} from "../../../core/services/driver.service";
 
 
 @NgModule({

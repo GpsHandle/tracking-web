@@ -1,6 +1,6 @@
 @import '~@angular/material/theming';
 @import "../app/main/main.module";
-@import "../app/pages/login/login.component";
+@import "../app/account/account.module";
 @import "global";
 // Plus imports for other components in your app.
 
@@ -127,7 +127,7 @@ $my-theme: mat-light-theme($primary, $accent, $warn);
 @mixin load-component-style($theme) {
   @include main-module($theme);
   @include map-component($theme);
-  @include style-login($theme);
+  @include account_styles($theme);
   @include global-style($theme);
 }
 

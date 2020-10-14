@@ -8,7 +8,7 @@ import {
     OnInit, PLATFORM_ID
 } from '@angular/core';
 import {ComponentPortal, DomPortalHost, DomPortalOutlet} from "@angular/cdk/portal";
-import {SpinnerComponent} from "./pages/spinner/spinner.component";
+import {SpinnerComponent} from "./shared/spinner/spinner.component";
 import {Privilege} from "./models/privilege";
 import {MatSnackBar, MatSnackBarConfig} from "@angular/material/snack-bar";
 import {NavigationExtras, Router} from "@angular/router";

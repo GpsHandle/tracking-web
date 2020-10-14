@@ -2,8 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {LOCALE_ID, NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {CommonModule, registerLocaleData} from '@angular/common';
-import {LoginComponent} from './pages/login/login.component';
+import {CommonModule} from '@angular/common';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import {MaterialShared} from './shared/material-shared';
@@ -11,14 +10,11 @@ import {AuthInterceptor} from './core/interceptors/auth-interceptor';
 import {ApplicationContext} from './application-context';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
-import {AuthService} from './services/auth.service';
+import {AuthService} from './core/services/auth.service';
 import {AuthGuard} from './core/guards/auth.guard';
 import {NotFoundComponent} from './pages/not-found/not-found.component';
-import {SpinnerComponent} from './pages/spinner/spinner.component';
+import {SpinnerComponent} from './shared/spinner/spinner.component';
 import {ErrorComponent} from './layouts/error/error.component';
-import {ForgotPasswordComponent} from './pages/forgot-password/forgot-password.component';
-import {RegisterComponent} from './pages/register/register.component';
-import {LogoutComponent} from './pages/logout/logout.component';
 import {DemoComponent} from './pages/demo/demo.component';
 import {RootStoreModule} from './stores/root-store.module';
 import {StoreModule} from '@ngrx/store';
@@ -33,18 +29,15 @@ import {CustomDirectivesModule} from "./core/directives/custom-directives.module
 @NgModule({
     declarations: [
         AppComponent,
-        LoginComponent,
         NotFoundComponent,
         SpinnerComponent,
         ErrorComponent,
-        ForgotPasswordComponent,
-        RegisterComponent,
-        LogoutComponent,
         DemoComponent,
     ],
     imports: [
         BrowserModule.withServerTransition({appId: 'serverApp'}),
         BrowserAnimationsModule,
+        ReactiveFormsModule,
         CommonModule,
         FormsModule,
         HttpClientModule,
@@ -60,7 +53,6 @@ import {CustomDirectivesModule} from "./core/directives/custom-directives.module
         }),
         RootStoreModule,
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-        ReactiveFormsModule,
     ],
     providers: [
         AuthService,

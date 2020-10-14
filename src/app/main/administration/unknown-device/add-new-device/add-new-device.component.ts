@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import {UnknownDevice} from "../../../../models/unknown-device";
 import {AlertProfile} from "../../../../models/alert-profile";
-import {DeviceService} from "../../../../services/device.service";
-import {AlertProfileService} from "../../../../services/alert-profile.service";
+import {DeviceService} from "../../../../core/services/device.service";
+import {AlertProfileService} from "../../../../core/services/alert-profile.service";
 import {DeviceRequest} from "../../../../models/request/device.request";
-import {AccountService} from "../../../../services/account.service";
+import {AccountService} from "../../../../core/services/account.service";
 
 @Component({
   selector: 'app-add-new-device',

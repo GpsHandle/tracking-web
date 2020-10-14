@@ -6,7 +6,7 @@
         <source>Your Usermame</source>
         <target state="translated">Your Usermame</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/login/login.component.html</context>
+          <context context-type="sourcefile">app/account/login/login.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
@@ -14,7 +14,7 @@
         <source>Your Password</source>
         <target state="translated">Your Password</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/login/login.component.html</context>
+          <context context-type="sourcefile">app/account/login/login.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
@@ -22,7 +22,7 @@
         <source>Login</source>
         <target state="translated">Login</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/login/login.component.html</context>
+          <context context-type="sourcefile">app/account/login/login.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
@@ -30,7 +30,7 @@
         <source>Demo</source>
         <target state="translated">Demo</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/login/login.component.html</context>
+          <context context-type="sourcefile">app/account/login/login.component.html</context>
           <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
@@ -38,7 +38,7 @@
         <source>Register</source>
         <target state="translated">Register</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/login/login.component.html</context>
+          <context context-type="sourcefile">app/account/login/login.component.html</context>
           <context context-type="linenumber">20</context>
         </context-group>
         <context-group purpose="location">
@@ -50,7 +50,7 @@
         <source>Forgot Password ?</source>
         <target state="translated">Forgot Password ?</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/login/login.component.html</context>
+          <context context-type="sourcefile">app/account/login/login.component.html</context>
           <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>

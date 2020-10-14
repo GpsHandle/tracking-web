@@ -1,13 +1,11 @@
-import { Observable, of } from 'rxjs';
+import { Observable } from "rxjs";
 import { Router } from "@angular/router";
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import {PageableCommonResponse} from "../models/pageable-common.response";
+import {PageableCommonResponse} from "../../models/pageable-common.response";
 
-export class AbstractService<I, O> {
-
-    private readonly _url: string;
-
+export class BaseService<T> {
     private _http: HttpClient;
+    private _url: string;
     private _router: Router;
 
     constructor(http: HttpClient, router: Router, url: string) {
@@ -16,23 +14,22 @@ export class AbstractService<I, O> {
         this._http = http;
     }
 
-    searchAndSort(page: number, size: number, sort: string, order: string): Observable<PageableCommonResponse<O>> {
+    searchAndSort(page: number, size: number, sort: string, order: string): Observable<PageableCommonResponse<T>> {
         let params = new HttpParams();
-        params = params.append('page', String(page));
-        params = params.append('size', String(size));
-        sort = sort ? sort : '';
-        params = params.append('sort', sort + ',' + order);
-        return this._http.get<PageableCommonResponse<O>>(this._url, {params: params});
+        params.append('page', String(page));
+        params.append('size', String(size));
+        params.append('sort', sort + ',' + order);
+        return this._http.get<PageableCommonResponse<T>>(this._url, {params: params});
     }
 
-    getAll(): Observable<O[]> {
+    getAll(): Observable<T[]> {
         const url = this._url + '/all';
-        return this._http.get<O[]>(url);
+        return this._http.get<T[]>(url);
     }
 
-    getById(id: number): Observable<O> {
+    getById(id: number): Observable<T> {
         const url = this._url + '/' + id;
-        return this._http.get<O>(url);
+        return this._http.get<T>(url);
     }
 
     _delete(id: number): Observable<number> {
@@ -40,25 +37,25 @@ export class AbstractService<I, O> {
         return this._http.delete<any>(url);
     }
 
-    update(id: number, data: I): Observable<O> {
+    update(id: number, data: T): Observable<T> {
         const url = this._url + '/' + id;
-        return this._http.put<O>(url, data);
+        return this._http.put<T>(url, data);
     }
 
-    update2(id: number, data: I): Observable<O> {
+    update2(id: number, data: T): Observable<T> {
         const url = this._url + '/' + id;
-        return this._http.patch<O>(url, data);
+        return this._http.patch<T>(url, data);
     }
 
-    create(data: I): Observable<O> {
+    create(data: T): Observable<T> {
         const url = this._url;
-        return this._http.post<O>(url, data);
+        return this._http.post<T>(url, data);
     }
 
     error(error: HttpErrorResponse | any): Observable<any> {
         console.log("Error", error);
         if (error) {
-            this._router.navigate(['/login']);
+            this._router.navigate(['/account/c/login']);
         } else {
             let errMsg: string;
             if (error instanceof HttpErrorResponse) {
@@ -67,7 +64,7 @@ export class AbstractService<I, O> {
             } else {
                 errMsg = error.message ? error.message : error.toString();
             }
-            return of(errMsg);//Observable.throw(errMsg);
+            return Observable.throw(errMsg);
         }
     }
 }
