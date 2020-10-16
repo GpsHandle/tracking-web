@@ -20,7 +20,9 @@ import {isPlatformBrowser} from "@angular/common";
 export const redirectUrl = 'redirectUrl';
 const DEFAULT_REDIRECT_URL = '/main/tracking';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class ApplicationContext implements OnInit, OnDestroy {
 
     private readonly holderPortal: ComponentPortal<SpinnerComponent>;
@@ -190,7 +192,7 @@ export class ApplicationContext implements OnInit, OnDestroy {
     }
 
     getPrivileges(): Array<Privilege> {
-        const max = this.authorities[0]; //only 1 authority
+        const max = (this.authorities && this.authorities.length > 0) ? this.authorities[0] : 0; //only 1 authority
         let rtn: Array<Privilege> = [];
         for (let i = 0; i < this.all_privilege.length; i++) {
             if (this.all_privilege[i].name !== max) {

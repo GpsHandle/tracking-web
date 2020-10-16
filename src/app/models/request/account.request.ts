@@ -3,20 +3,20 @@ import {Role} from "../role";
 import {Account} from "../account";
 
 export class AccountRequest {
-    id: number;
-    accountId: string;
-    firstName: string;
-    lastName: string;
-    password: string;
-    status: string;
-    privilege: Role;
-    phoneNumber: string;
-    photoUrl: string;
-    emailAddress: string;
-    addressLine1: string;
-    addressLine2: string;
-    notes: string;
-    mailProperties: MailProperties;
+    id?: number;
+    accountId?: string;
+    firstName?: string;
+    lastName?: string;
+    password?: string;
+    status?: string;
+    privilege?: Role;
+    phoneNumber?: string;
+    photoUrl?: string;
+    emailAddress?: string;
+    addressLine1?: string;
+    addressLine2?: string;
+    notes?: string;
+    mailProperties?: MailProperties;
 
 
     constructor(account? : Account) {

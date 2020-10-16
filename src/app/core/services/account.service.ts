@@ -10,7 +10,9 @@ import {Account} from "../../models/account";
 
 export const ACCOUNT_API_URL = '/api/account';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class AccountService extends AbstractService<AccountRequest, Account> {
     constructor(private http: HttpClient, private router: Router) {
         super(http, router, ACCOUNT_API_URL);

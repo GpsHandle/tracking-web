@@ -51,7 +51,7 @@
                 <div fxFlex="50">
                     <mat-form-field appearance="outline" class="full-width">
                         <mat-label i18n="@@roles">Roles</mat-label>
-                        <mat-select matInput i18n-placeholder="@@roles" placeholder="Roles" [(ngModel)]="account.privilege">
+                        <mat-select matInput i18n-placeholder="@@roles" name="acc-roles" placeholder="Roles" [(ngModel)]="account.privilege">
                             <mat-option *ngFor="let pri of privilegeList" [value]="pri.id">{{pri.name}}</mat-option>
                         </mat-select>
                     </mat-form-field>

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeleteAccountComponent } from './delete-account.component';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
+import {MaterialShared} from "../../../../../shared/material-shared";
 
 describe('DeleteAccountComponent', () => {
   let component: DeleteAccountComponent;
@@ -8,7 +10,18 @@ describe('DeleteAccountComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeleteAccountComponent ]
+      declarations: [ DeleteAccountComponent ],
+      imports: [
+          MaterialShared
+      ],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {}},
+        {
+          provide: MatDialogRef,
+          useValue: {}
+        },
+
+      ]
     })
     .compileComponents();
   }));

@@ -26,6 +26,8 @@ import {UniversalInterceptor} from "./core/interceptors/universal-interceptor";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import {CustomDirectivesModule} from "./core/directives/custom-directives.module";
 
+import {QuillModule} from 'ngx-quill';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -53,6 +55,8 @@ import {CustomDirectivesModule} from "./core/directives/custom-directives.module
         }),
         RootStoreModule,
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+
+        QuillModule.forRoot()
     ],
     providers: [
         AuthService,

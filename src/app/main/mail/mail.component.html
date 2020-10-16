@@ -3,13 +3,27 @@
         <span i18n="@@mailList">Mail List</span>
     </div>
     <div fxFlex="70">
-        <quill-editor  [(ngModel)]="editorContent"
-                       [options]="editorConfig"
-                       (blur)="onEditorBlured($event)"
-                       (focus)="onEditorFocused($event)"
-                       (ready)="onEditorCreated($event)"
-                       (change)="onContentChanged($event)">
+        <quill-editor>
+            <div quill-editor-toolbar>
+                <span class="ql-formats">
+                  <button class="ql-bold" [title]="'Bold'"></button>
+                </span>
+                <span class="ql-formats">
+                  <select class="ql-align" [title]="'Aligment'">
+                    <option selected></option>
+                    <option value="center"></option>
+                    <option value="right"></option>
+                    <option value="justify"></option>
+                  </select>
+                  <select class="ql-align" [title]="'Aligment2'">
+                    <option selected></option>
+                    <option value="center"></option>
+                    <option value="right"></option>
+                    <option value="justify"></option>
+                  </select>
+                </span>
+            </div>
         </quill-editor>
-        <div class="ql-editor preview" [innerHTML]="editorContent"></div>
+
     </div>
 </div>

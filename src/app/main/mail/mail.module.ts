@@ -4,7 +4,7 @@ import { MailComponent } from './mail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MailRoutingModule} from "./mail-routing.module";
 import {MaterialShared} from "../../shared/material-shared";
-import {QuillEditorModule} from "../../shared/quill-editor";
+import {QuillModule} from "ngx-quill";
 
 @NgModule({
     imports: [
@@ -13,7 +13,7 @@ import {QuillEditorModule} from "../../shared/quill-editor";
         ReactiveFormsModule,
         MaterialShared,
         MailRoutingModule,
-        QuillEditorModule
+        QuillModule,
     ],
     declarations: [MailComponent]
 })

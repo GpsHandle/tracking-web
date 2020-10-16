@@ -56,7 +56,6 @@
               "node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css"
             ],
             "scripts": [
-              "node_modules/quill/dist/quill.js"
             ]
           },
           "configurations": {

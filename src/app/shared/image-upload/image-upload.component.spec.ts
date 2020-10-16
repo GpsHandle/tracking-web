@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ImageUploadComponent } from './image-upload.component';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {MaterialShared} from "../material-shared";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {RouterTestingModule} from "@angular/router/testing";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 describe('ImageUploadComponent', () => {
   let component: ImageUploadComponent;
@@ -8,6 +13,15 @@ describe('ImageUploadComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        MaterialShared,
+        BrowserAnimationsModule,
+        RouterTestingModule,
+        HttpClientTestingModule,
+        ReactiveFormsModule,
+        FormsModule
+
+      ],
       declarations: [ ImageUploadComponent ]
     })
     .compileComponents();

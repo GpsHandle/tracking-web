@@ -31,7 +31,6 @@ export function app(lang: string): express.Express {
   server.get('*.*', express.static(distFolder, {
     maxAge: '1y'
   }));
-
   // All regular routes use the Universal engine
   server.use('/api', createProxyMiddleware({
     target: 'https://dashboard.gpshandle.com', secure: false, changeOrigin: true
@@ -42,25 +41,7 @@ export function app(lang: string): express.Express {
   }));
 
   server.get('*', (req, res) => {
-    // const lang = req.get('x-language') ? req.get('x-language') :  'en';
-    // const xDistFolder =existsSync(join(distFolder, lang)) ? join(distFolder, lang) : distFolder;
-    // server.set('views', xDistFolder);
-    // server.get('*.*', express.static(xDistFolder, {
-    //   maxAge: '1y'
-    // }));
-    // console.log('Language', lang);
-    // console.log('dist folder', xDistFolder);
-    // res.setHeader('x-language', 'EN');
-    // const indexHtml = existsSync(join(xDistFolder, 'index.original.html')) ? 'index.original.html' : 'index';
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
-
-    //this is for i18n
-    // const matches = req.query.hl ? req.query.hl : req.url.match(/^\/([a-z]{2}(?:-[A-Z]{2})?)\//);
-    // const locale = (matches && supportedLocales.indexOf(matches[1]) !== -1) ? matches[1] : defaultLocale;
-    // const xIndex = locale ? locale + '/' + indexHtml : indexHtml;
-    //
-    // res.render(xIndex, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
-
   });
 
   return server;
@@ -68,6 +49,7 @@ export function app(lang: string): express.Express {
 
 function run(): void {
   const port = process.env.PORT || 4001;
+
   const appVI = app('vi');
   const appEN = app('en');
   const appPL = app('pl');
