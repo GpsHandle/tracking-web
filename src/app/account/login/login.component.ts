@@ -17,18 +17,18 @@ export class LoginComponent implements OnInit {
               private appCtx: ApplicationContext) {}
 
   ngOnInit() {
-    if (environment.production) {
-      if (this.appCtx.isLoggedIn()) {
-        const redirectUrl = this.appCtx.getRedirectURL();
-        this.appCtx.navigate([redirectUrl]);
-      } else {
-        this.lang = this.appCtx.getLang();
-        this.appCtx.navigate(['/account/c/login']);
-      }
-    } else if (this.appCtx.isLoggedIn()) {
-      const redirectUrl = this.appCtx.getRedirectURL();
-      this.appCtx.navigate([redirectUrl]);
-    }
+    // if (environment.production) {
+    //   if (this.appCtx.isLoggedIn()) {
+    //     const redirectUrl = this.appCtx.getRedirectURL();
+    //     this.appCtx.navigate([redirectUrl]);
+    //   } else {
+    //     this.lang = this.appCtx.getLang();
+    //     this.appCtx.navigate(['/account/c/login']);
+    //   }
+    // } else if (this.appCtx.isLoggedIn()) {
+    //   const redirectUrl = this.appCtx.getRedirectURL();
+    //   this.appCtx.navigate([redirectUrl]);
+    // }
   }
 
   login(): void {
