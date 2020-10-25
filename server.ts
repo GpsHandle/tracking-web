@@ -33,11 +33,11 @@ export function app(lang: string): express.Express {
   }));
   // All regular routes use the Universal engine
   server.use('/api', createProxyMiddleware({
-    target: 'https://dashboard.gpshandle.com', secure: false, changeOrigin: true
+    target: 'https://gpshandle.com', secure: false, changeOrigin: true
   }));
 
   server.use('/oauth', createProxyMiddleware({
-    target: 'https://dashboard.gpshandle.com', secure: false, changeOrigin: true
+    target: 'https://gpshandle.com', secure: false, changeOrigin: true
   }));
 
   server.get('*', (req, res) => {
