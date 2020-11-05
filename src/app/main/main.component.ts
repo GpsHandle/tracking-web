@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map, shareReplay} from 'rxjs/operators';
-import {MainFacade} from '../stores/root-store.facade';
+import {RootFacade} from '../stores/root.facade';
 import {ApplicationContext} from "../application-context";
 
 @Component({
@@ -24,7 +24,7 @@ export class MainComponent implements OnInit, OnDestroy {
     oldScreenWidth: number;
 
     constructor(private ngZone: NgZone,
-                private mainFacade: MainFacade,
+                private mainFacade: RootFacade,
                 private breakpointObserver: BreakpointObserver,
                 private app: ApplicationContext,
                 private router: Router) {

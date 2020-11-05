@@ -16,7 +16,7 @@ import {NotFoundComponent} from './pages/not-found/not-found.component';
 import {SpinnerComponent} from './shared/spinner/spinner.component';
 import {ErrorComponent} from './layouts/error/error.component';
 import {DemoComponent} from './pages/demo/demo.component';
-import {RootStoreModule} from './stores/root-store.module';
+import {RootModule} from './stores/root.module';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {environment} from '../environments/environment';
@@ -53,9 +53,8 @@ import {QuillModule} from 'ngx-quill';
         StoreDevtoolsModule.instrument({
             maxAge: 25 // Retains last 25 states
         }),
-        RootStoreModule,
+        RootModule,
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-
         QuillModule.forRoot()
     ],
     providers: [
@@ -72,7 +71,6 @@ import {QuillModule} from 'ngx-quill';
             useClass: UniversalInterceptor,
             multi: true
         },
-        // WINDOW_PROVIDERS
     ],
     entryComponents: [
         SpinnerComponent

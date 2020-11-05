@@ -3,7 +3,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { Observable } from 'rxjs';
 import {map, shareReplay, startWith, tap} from 'rxjs/operators';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
-import {MainFacade} from '../../../../stores/root-store.facade';
+import {RootFacade} from '../../../../stores/root.facade';
 import {DeviceLittle} from "../../../../models/little/device.little";
 import {ApplicationContext} from "../../../../application-context";
 import {DeviceReportCommService} from "../service/device-report-comm.service";
@@ -32,7 +32,7 @@ export class LayoutComponent implements OnInit {
     @ViewChild(MatDrawer, { static: true }) sideNav: MatDrawer;
     constructor( private breakpointObserver: BreakpointObserver,
         private deviceService: DeviceService,
-        private mainFacade: MainFacade,
+        private mainFacade: RootFacade,
         private dashboardService: DashboardService,
         private deviceReportCommService: DeviceReportCommService,
         private applicationContext: ApplicationContext) {

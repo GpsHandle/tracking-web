@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {Action} from '@ngrx/store';
 
 @Injectable()
-export class MainEffects {
+export class Effects {
 
     constructor(private actions$: Actions) {
     }

@@ -15,7 +15,7 @@ import {catchError, map} from 'rxjs/operators';
 import { ChartAPI } from 'c3';
 import { PrimitiveArray } from 'c3';
 import {BreakpointObserver} from "@angular/cdk/layout";
-import {MainFacade} from '../../../stores/root-store.facade';
+import {RootFacade} from '../../../stores/root.facade';
 import {ApplicationContext} from "../../../application-context";
 import {Device} from "../../../models/device";
 import {DeviceService} from "../../../core/services/device.service";
@@ -67,7 +67,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
 
     constructor(private breakpointObserver: BreakpointObserver, private deviceService: DeviceService,
                 private eventService: EventService,
-                private mainFacade: MainFacade,
+                private mainFacade: RootFacade,
                 private applicationContext: ApplicationContext,
                 private popupLink: PopupService,
                 private bottomSheet: MatBottomSheet,
