@@ -11,14 +11,14 @@ import {EventService} from "../../core/services/event.service";
 import {MaterialShared} from "../../shared/material-shared";
 import {SpeedChartComponent} from "./live/speed-chart/speed-chart.component";
 import {PopupService} from "./live/popup/popup.service";
-import {MappingRoutingModule} from "./mapping-routing.module";
+import {TrackingRoutingModule} from "./tracking-routing.module";
 import {PopupComponent} from "./live/popup/popup.component";
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        MappingRoutingModule,
+        TrackingRoutingModule,
         MaterialShared,
         CustomPipeModule
     ],
@@ -43,4 +43,4 @@ import {PopupComponent} from "./live/popup/popup.component";
         CommandComponent
     ]
 })
-export class MappingModule { }
+export class TrackingModule { }

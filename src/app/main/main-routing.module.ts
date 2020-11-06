@@ -12,7 +12,7 @@ const routes: Routes = [
         children: [
             {
                 path: 'tracking',
-                loadChildren: () => import('./tracking/mapping.module').then(m => m.MappingModule),
+                loadChildren: () => import('./tracking/tracking.module').then(m => m.TrackingModule),
                 canActivate: [AuthGuard]
             },
             {

@@ -1,6 +1,6 @@
 @import "main.component";
 @import "administration/administration.module";
-@import "tracking/mapping.module";
+@import "tracking/tracking.module";
 @mixin main-module($theme) {
     @include main-component($theme);
     @include administration-module($theme);
