@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {SideNavActions} from './main';
 import {selectNavMode, selectNavOpenned} from "./main/selectors";
+import {loadAllDevicesRequestAction} from "./main/tracking/actions";
+import {getTracking} from "./main/tracking/selectors";
 
 
 @Injectable({
@@ -10,6 +12,7 @@ import {selectNavMode, selectNavOpenned} from "./main/selectors";
 export class RootFacade {
     sidenavOpened$ = this.store.pipe(select(selectNavOpenned));
     sidenavMode$ = this.store.pipe(select(selectNavMode));
+    trackingState$ = this.store.pipe(select(getTracking));
 
     constructor(private store: Store<{}>) {
     }
@@ -24,6 +27,10 @@ export class RootFacade {
 
     openSideNav() {
         return this.store.dispatch(SideNavActions.toggleSidenav());
+    }
+
+    loadAllDevices() {
+        return this.store.dispatch(loadAllDevicesRequestAction())
     }
 
 }

@@ -3,15 +3,16 @@ import * as d3 from 'd3';
 import * as c3 from 'c3';
 import {Component, OnDestroy, OnInit, AfterViewInit, Inject, PLATFORM_ID} from '@angular/core';
 
-import * as L from 'leaflet';
+import {Icon, Map, LatLngBounds, Marker, DivIcon, Popup,
+    icon, markerClusterGroup, map as lmap,
+    latLng, control, tileLayer, marker, point,
+    divIcon, popup, circleMarker} from 'leaflet';
 import 'leaflet.markercluster';
-import { LatLngBounds, MarkerClusterGroup } from 'leaflet';
 
 import { formatDistanceToNow } from 'date-fns';
 import { CircleMarker } from 'leaflet';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import {Observable, of as observableOf, Subject} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 import { ChartAPI } from 'c3';
 import { PrimitiveArray } from 'c3';
 import {BreakpointObserver} from "@angular/cdk/layout";
@@ -27,8 +28,6 @@ import {CommandComponent} from "./command/command.component";
 import {isPlatformBrowser} from "@angular/common";
 
 const TILE_OSM = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
-// const TILE_MAPBOX = 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
-
 const TILE_MAPBOX = 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA';
 
 @Component({
@@ -37,12 +36,11 @@ const TILE_MAPBOX = 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{
     styleUrls: ['./mapping.component.scss']
 })
 export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
-    // liveEvents: EventData[];
-    customDefault: L.Icon;
-    map: L.Map;
+    customDefault: Icon;
+    map: Map;
 
     numberOfLoad: number = 0;
-    markersCluster: MarkerClusterGroup;
+    markersCluster: any;
     deviceFilterText: string;
     deviceList: Device[];
     allDeviceList: Device[];
@@ -59,48 +57,55 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
 
     selectedDevice: Device | any;
     selectedMarker: CircleMarker;
-    currentMarker: L.Marker;
+    currentMarker: Marker;
     sidenavOpened$: Observable<boolean>;
     sidenavMode$: Observable<string>;
 
     private interval: any;
 
+    trackingState$ = this.facade.trackingState$;
+
     constructor(private breakpointObserver: BreakpointObserver, private deviceService: DeviceService,
                 private eventService: EventService,
-                private mainFacade: RootFacade,
+                private facade: RootFacade,
                 private applicationContext: ApplicationContext,
                 private popupLink: PopupService,
                 private bottomSheet: MatBottomSheet,
                 @Inject(PLATFORM_ID) private platformId: any) {
-        this.sidenavMode$ = this.mainFacade.sidenavMode$;
-        this.sidenavOpened$ = this.mainFacade.sidenavOpened$;
+        this.sidenavMode$ = this.facade.sidenavMode$;
+        this.sidenavOpened$ = this.facade.sidenavOpened$;
+
     }
 
     ngOnInit() {
+        this.facade.loadAllDevices();
+
+
         this.numberOfLoad = 0;
 
-        this.loadLivesEvent();
-        this.interval = setInterval(() => this.loadLivesEvent(), 10000);
+        // this.loadLivesEvent();
+        // this.interval = setInterval(() => this.loadLivesEvent(), 10000);
+        this.trackingState$.subscribe(data => this.processData(data));
     }
 
     ngAfterViewInit(): void {
-        this.customDefault = L.icon({
+        this.customDefault = icon({
             iconRetinaUrl: '/assets/images/marker-icon-2x.png',
             iconUrl: '/assets/images/marker-icon.png',
             shadowUrl: '/assets/images/marker-shadow.png'
         });
 
-        this.markersCluster = L.markerClusterGroup();
+        this.markersCluster = markerClusterGroup();
         if (!this.map) {
-            this.map = L.map('map1', {
+            this.map = lmap('map1', {
                 zoomControl: false,
-                center: L.latLng(21.731253, 105.996139),
+                center: latLng(21.731253, 105.996139),
                 zoom: 12,
                 minZoom: 1,
                 maxZoom: 18,
 
                 layers: [
-                    L.tileLayer(TILE_MAPBOX, {
+                    tileLayer(TILE_MAPBOX, {
                         attribution: '&copy; <a href="https://gpshandle.com">gpshandle.com</a>',
                         // id: 'mapbox/streets-v11',
                         //accessToken: 'pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA'
@@ -108,8 +113,8 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
             });
         }
 
-        L.control.scale().addTo(this.map);
-        L.control.zoom().setPosition('bottomleft').addTo(this.map);
+        control.scale().addTo(this.map);
+        control.zoom().setPosition('bottomleft').addTo(this.map);
 
     }
 
@@ -117,94 +122,83 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
         clearInterval(this.interval);
     }
 
-    loadLivesEvent(): void {
-        if (this.numberOfLoad < 1) {
-            this.applicationContext.spin(true);
+    processData(dataState: any) {
+        if (!dataState || !dataState.deviceList) return;
+        console.log('Data', dataState.deviceList);
+
+        const data = dataState.deviceList;
+        // const data = Object.assign({selected: false}, dataState.deviceList);
+        this.stats = [];
+        this.liveDev.reset();
+        this.idleDev.reset();
+        this.stopDev.reset();
+        this.deadDev.reset();
+
+        if (this.markersCluster) {
+            this.markersCluster.clearLayers();
         }
+        this.allDeviceList = _map(data, (xdevice: Device) => {
+            const device = Object.assign({selected: false}, xdevice);
+            device.lastUpdateTimeInWords = formatDistanceToNow(device.lastEventTime) + ' ago';
+            device.stayedTimeInWords = formatDistanceToNow(device.stayedTime);
+            device.marker = this.buildMarker(device);
 
-        this.deviceService.getAllDevice().pipe(
-            map(data => {
-                this.stats = [];
-                this.liveDev.reset();
-                this.idleDev.reset();
-                this.stopDev.reset();
-                this.deadDev.reset();
+            const status = MappingUtils.getStatus(device.lastEventTime);
+            switch (status) {
+                case 'live':
+                    this.liveDev.increase();
+                    device.state = 2; //living
+                    break;
+                case 'idle':
+                    this.idleDev.increase();
+                    device.state = 1; //idle
+                    break;
+                case 'stop':
+                    this.stopDev.increase();
+                    device.state = 0; //stop
+                    break;
+                case 'dead':
+                    this.deadDev.increase();
+                    device.state = -1;
+                    break;
+            }
 
-                this.markersCluster.clearLayers();
-                this.allDeviceList = _map(data, (device: Device) => {
-                    device.lastUpdateTimeInWords = formatDistanceToNow(device.lastEventTime) + ' ago';
-                    device.stayedTimeInWords = formatDistanceToNow(device.stayedTime);
-                    device.marker = this.buildMarker(device);
+            return device;
+        });
+        this.totalDevice = this.allDeviceList.length;
+        this.stats.push(this.liveDev, this.idleDev, this.stopDev, this.deadDev);
 
-                    const status = MappingUtils.getStatus(device.lastEventTime);
-                    switch (status) {
-                        case 'live':
-                            this.liveDev.increase();
-                            device.state = 2; //living
-                            break;
-                        case 'idle':
-                            this.idleDev.increase();
-                            device.state = 1; //idle
-                            break;
-                        case 'stop':
-                            this.stopDev.increase();
-                            device.state = 0; //stop
-                            break;
-                        case 'dead':
-                            this.deadDev.increase();
-                            device.state = -1;
-                            break;
-                    }
+        this.deviceList = filter(this.allDeviceList, (dev: Device) => {
+            if (this.deviceFilterText) {
+                return (dev.name && includes(dev.name, this.deviceFilterText)) ||
+                    (dev.deviceId && includes(dev.deviceId, this.deviceFilterText)) ||
+                    (dev.lastAddress && includes(dev.lastAddress, this.deviceFilterText));
+            } else {
+                return true;
+            }
 
-                    return device;
-                });
-                this.numberOfLoad++;
-                this.totalDevice = this.allDeviceList.length;
-                this.stats.push(this.liveDev, this.idleDev, this.stopDev, this.deadDev);
-                return data;
-            }),
-            catchError(error => {
-                return observableOf([]);
-            }))
-            .subscribe(
-                (data: Device[]) => {
-                    if (this.numberOfLoad === 1) {
-                        this.applicationContext.spin(false);
-                    }
-
-                    this.deviceList = filter(this.allDeviceList, (dev: Device) => {
-                        if (this.deviceFilterText) {
-                            return (dev.name && includes(dev.name, this.deviceFilterText)) ||
-                                (dev.deviceId && includes(dev.deviceId, this.deviceFilterText)) ||
-                                (dev.lastAddress && includes(dev.lastAddress, this.deviceFilterText));
-                        } else {
-                            return true;
-                        }
-
-                    });
-                    this.updateMap();
-                    this.draw();
-                }
-        );
+        });
+        this.updateMap();
+        this.draw();
     }
 
-    buildMarker(dev: Device): L.Marker {
-        let ll = L.latLng(dev.lastLatitude, dev.lastLongitude);
+    buildMarker(dev: Device): Marker {
+        let ll = latLng(dev.lastLatitude, dev.lastLongitude);
         let icon = this.buildIcon(dev);
         let popup = this.buildPopup(dev);
         let devName = dev.name ? dev.name : dev.deviceId;
-        let m = L.marker(ll, {icon: icon})
+        let m = marker(ll, {icon: icon})
             .bindTooltip(devName, {
                 permanent: true,
                 direction: 'bottom',
-                offset: L.point(0, 6),
+                offset: point(0, 6),
                 opacity: 1,
                 className: 'marker-label'
             }).bindPopup(popup);
         return m;
     }
 
-    buildIcon(dev: Device): L.DivIcon {
+    buildIcon(dev: Device): DivIcon {
         let htmlIcon = '';
         htmlIcon = '<div style="background-color:' + MappingUtils.getColor(dev.lastEventTime) + '; width: 100%; height: 100%;"></div>';
         // html?: string | false;
@@ -213,17 +207,17 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
         // iconAnchor?: PointExpression;
         // popupAnchor?: PointExpression;
         // className?: string;
-        return L.divIcon({
+        return divIcon({
             html: htmlIcon
         });
     }
 
-    buildPopup(dev: Device): L.Popup {
+    buildPopup(dev: Device): Popup {
         if (isPlatformBrowser(this.platformId)) {
-            let popup = L.popup();
-            popup.setContent(document.createElement('div'));
-            popup.options.offset = L.point(0, 0);
-            return popup;
+            let xpopup = popup();
+            xpopup.setContent(document.createElement('div'));
+            xpopup.options.offset = point(0, 0);
+            return xpopup;
         }
     }
 
@@ -287,8 +281,8 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
         }
 
         if (this.selectedDevice) {
-            let center = L.latLng(this.selectedDevice.lastLatitude, this.selectedDevice.lastLongitude);
-            this.selectedMarker = L.circleMarker(center, {radius: 30}).addTo(this.map);
+            let center = latLng(this.selectedDevice.lastLatitude, this.selectedDevice.lastLongitude);
+            this.selectedMarker = circleMarker(center, {radius: 30}).addTo(this.map);
             let oldZoom = this.map.getZoom();
             this.map.setView(center, oldZoom);
         } else if (this.deviceList.length > 0 ) {

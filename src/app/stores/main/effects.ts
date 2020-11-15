@@ -8,7 +8,4 @@ export class Effects {
 
     constructor(private actions$: Actions) {
     }
-
-    @Effect()
-    loadRequestEffect$: Observable<Action> = this.actions$.pipe();
 }

@@ -45,17 +45,23 @@ import {QuillModule} from 'ngx-quill';
         HttpClientModule,
         MaterialShared,
         AppRoutingModule,
-        StoreModule.forRoot({}, {
-            metaReducers: !environment.production ? [storeFreeze] : []
-        }),
+        // StoreModule.forRoot({}, {
+        //     metaReducers: !environment.production ? [storeFreeze] : []
+        // }),
         EffectsModule.forRoot([]),
         CustomDirectivesModule,
-        StoreDevtoolsModule.instrument({
-            maxAge: 25 // Retains last 25 states
-        }),
-        RootModule,
+        // StoreDevtoolsModule.instrument({
+        //     maxAge: 25 // Retains last 25 states
+        // }),
+        // RootModule,
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-        QuillModule.forRoot()
+        QuillModule.forRoot(),
+
+        !environment.production ? StoreDevtoolsModule.instrument() : [],
+        StoreModule.forRoot({}),
+        EffectsModule.forRoot([]),
+        RootModule
+
     ],
     providers: [
         AuthService,

@@ -5,6 +5,8 @@ export enum ActionTypes {
     LOAD_ALL_DEVICES_REQUEST = '[Tracking] Load All Devices Request',
     LOAD_ALL_DEVICES_SUCCESS = '[Tracking] Load All Device Success',
     LOAD_ALL_DEVICES_FAILURE = '[Tracking] Load All Device Failure',
+
+    SET_SELECTED_DEVICE = '[Tracking] Set Device Selected',
 }
 
 export const loadAllDevicesRequestAction = createAction(
@@ -17,5 +19,11 @@ export const loadAllDevicesSuccessAction = createAction(
 );
 
 export const loadAllDevicesFailureAction = createAction(
-    ActionTypes.LOAD_ALL_DEVICES_FAILURE
+    ActionTypes.LOAD_ALL_DEVICES_FAILURE,
+    props<{error: string}>()
+);
+
+export const setSelectedDeviceAction = createAction(
+    ActionTypes.SET_SELECTED_DEVICE,
+    props<{selected: Device}>()
 );

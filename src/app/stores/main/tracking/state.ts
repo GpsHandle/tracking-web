@@ -4,7 +4,7 @@ export interface State {
     loading?: boolean,
     error?: string,
     selected?: Device | undefined, // selected device
-    allDevices: Device[] | undefined,
+    allDevices?: Device[] | undefined,
 }
 
 export const initialState: State = {
