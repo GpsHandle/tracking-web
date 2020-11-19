@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AssignToDeviceComponent } from './assign-to-device.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
@@ -13,7 +13,7 @@ describe('AssignToDeviceComponent', () => {
   let component: AssignToDeviceComponent;
   let fixture: ComponentFixture<AssignToDeviceComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         MaterialShared,

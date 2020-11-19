@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { EditAccountComponent } from './edit-account.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
@@ -17,7 +17,7 @@ describe('EditAccountComponent', () => {
   let component: EditAccountComponent;
   let fixture: ComponentFixture<EditAccountComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         MaterialShared,

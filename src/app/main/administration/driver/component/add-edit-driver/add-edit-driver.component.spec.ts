@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AddEditDriverComponent } from './add-edit-driver.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
@@ -13,7 +13,7 @@ describe('AddEditDriverComponent', () => {
   let component: AddEditDriverComponent;
   let fixture: ComponentFixture<AddEditDriverComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AddEditDriverComponent ],
       imports: [

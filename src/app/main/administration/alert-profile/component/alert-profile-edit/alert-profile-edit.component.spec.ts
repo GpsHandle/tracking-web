@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AlertProfileEditComponent } from './alert-profile-edit.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
@@ -12,7 +12,7 @@ describe('AlertProfileEditComponent', () => {
   let component: AlertProfileEditComponent;
   let fixture: ComponentFixture<AlertProfileEditComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         MaterialShared,

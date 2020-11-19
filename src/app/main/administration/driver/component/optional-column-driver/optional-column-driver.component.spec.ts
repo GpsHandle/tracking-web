@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { OptionalColumnDriverComponent } from './optional-column-driver.component';
 
@@ -6,7 +6,7 @@ describe('OptionalColumnDriverComponent', () => {
   let component: OptionalColumnDriverComponent;
   let fixture: ComponentFixture<OptionalColumnDriverComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ OptionalColumnDriverComponent ]
     })

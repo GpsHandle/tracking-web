@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DeviceViewEditComponent } from './device-view-edit.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
@@ -14,7 +14,7 @@ describe('DeviceViewEditComponent', () => {
   let component: DeviceViewEditComponent;
   let fixture: ComponentFixture<DeviceViewEditComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DeviceViewEditComponent ],
       imports: [

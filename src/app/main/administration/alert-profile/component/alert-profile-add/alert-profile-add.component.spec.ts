@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AlertProfileAddComponent } from './alert-profile-add.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -12,7 +12,7 @@ describe('AlertProfileAddComponent', () => {
   let component: AlertProfileAddComponent;
   let fixture: ComponentFixture<AlertProfileAddComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         MaterialShared,

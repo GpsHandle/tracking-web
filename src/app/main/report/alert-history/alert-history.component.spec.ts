@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AlertHistoryComponent } from './alert-history.component';
 
@@ -6,7 +6,7 @@ describe('AlertLogsComponent', () => {
   let component: AlertHistoryComponent;
   let fixture: ComponentFixture<AlertHistoryComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AlertHistoryComponent ]
     })

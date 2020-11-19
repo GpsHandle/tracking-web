@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DeleteAlertProfileComponent } from './delete-alert-profile.component';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
@@ -12,7 +12,7 @@ describe('DeleteAlertProfileComponent', () => {
   let component: DeleteAlertProfileComponent;
   let fixture: ComponentFixture<DeleteAlertProfileComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DeleteAlertProfileComponent ],
       imports: [

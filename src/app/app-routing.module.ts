@@ -31,10 +31,11 @@ const routes: Routes = [
 
 @NgModule({
     imports: [RouterModule.forRoot(routes, {
-        preloadingStrategy: PreloadAllModules,
-        initialNavigation: 'enabled',
-        enableTracing: false
-    })],
+    preloadingStrategy: PreloadAllModules,
+    initialNavigation: 'enabled',
+    enableTracing: false,
+    relativeLinkResolution: 'legacy'
+})],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }
