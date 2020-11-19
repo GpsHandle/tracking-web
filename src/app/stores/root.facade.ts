@@ -3,7 +3,7 @@ import {select, Store} from '@ngrx/store';
 import {SideNavActions} from './main';
 import {selectNavMode, selectNavOpenned} from "./main/selectors";
 import {loadAllDevicesRequestAction, setSelectedDeviceAction} from "./main/tracking/actions";
-import {getTracking} from "./main/tracking/selectors";
+import {getTracking, getTrackingDeviceList} from "./main/tracking/selectors";
 import {Device} from "../models/device";
 
 
@@ -13,7 +13,7 @@ import {Device} from "../models/device";
 export class RootFacade {
     sidenavOpened$ = this.store.pipe(select(selectNavOpenned));
     sidenavMode$ = this.store.pipe(select(selectNavMode));
-    trackingState$ = this.store.pipe(select(getTracking));
+    trackingDeviceList$ = this.store.pipe(select(getTrackingDeviceList));
 
     constructor(private store: Store<{}>) {
     }
@@ -34,8 +34,8 @@ export class RootFacade {
         return this.store.dispatch(loadAllDevicesRequestAction())
     }
 
-    selectDevice(device: Device) {
-        return this.store.dispatch(setSelectedDeviceAction({selected: device}));
+    selectDevice(xdevice: Device) {
+        return this.store.dispatch(setSelectedDeviceAction({device: xdevice}));
     }
 
 }

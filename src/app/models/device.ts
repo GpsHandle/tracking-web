@@ -1,25 +1,25 @@
 import {AccountLittle} from "./little/account.little";
 import {AlertProfileLittle} from "./little/alert-profile.little";
 
-export class Device {
-    public id: number;
+export interface Device {
+    id: number;
 
-    public name: string;
-    public description: string;
-    public deviceId: string;
-    public uniqueId: string;
-    public imei: string;
+    name: string;
+    description: string;
+    deviceId: string;
+    uniqueId: string;
+    imei: string;
 
-    public accounts: Array<AccountLittle | any>;
-    public alertProfiles: Array<AlertProfileLittle | any>
+    accounts: Array<AccountLittle | any>;
+    alertProfiles: Array<AlertProfileLittle | any>
 
-    public vehicleId: number;
-    public vehicleName: string;
+    vehicleId: number;
+    vehicleName: string;
 
-    public ipAddress: string;
-    public port: number;
+    ipAddress: string;
+    port: number;
 
-    public protocol: string;
+    protocol: string;
     timeZone: string;
     maxStoredDataTime: number;
 
@@ -27,12 +27,12 @@ export class Device {
     expiredOn: Date;
 
 
-    public serialNumber: string;
-    public modelName: string;
+    serialNumber: string;
+    modelName: string;
 
-    public manufacturerName: string;
-    public firmwareVersion: string;
-    public originalCountry: string;
+    manufacturerName: string;
+    firmwareVersion: string;
+    originalCountry: string;
 
     lastEventTime: number;
     lastSpeedKph: number;
@@ -43,15 +43,15 @@ export class Device {
 
     speedKph: number;
     //--
-    public createdBy: string;
-    public createdOn: Date;
-    public updatedBy: string;
-    public updatedOn: Date;
+    createdBy: string;
+    createdOn: Date;
+    updatedBy: string;
+    updatedOn: Date;
 
-    public lastUpdateTimeInWords: string;
-    public stayedTimeInWords: string;
-    public selected: boolean;
-    public state: number; //stopped, living, idle
+    lastUpdateTimeInWords: string;
+    stayedTimeInWords: string;
+    selected: boolean;
+    state: number; //stopped, living, idle
 
-    public marker: L.Marker;
+    marker: L.Marker;
 }

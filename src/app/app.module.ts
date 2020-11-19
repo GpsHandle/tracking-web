@@ -20,7 +20,6 @@ import {RootModule} from './stores/root.module';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {environment} from '../environments/environment';
-import {storeFreeze} from 'ngrx-store-freeze';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {UniversalInterceptor} from "./core/interceptors/universal-interceptor";
 import { ServiceWorkerModule } from '@angular/service-worker';

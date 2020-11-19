@@ -17,9 +17,8 @@ export const getTrackingDeviceList = createSelector(getTrackingState, getDevices
 export const getTracking = createSelector(
     getTrackingError,
     getTrackingLoading,
-    getTrackingSelected,
     getTrackingDeviceList,
-    (error: string, loading: boolean, selected: Device, deviceList: Device[]) => ({
-        error, loading, selected, deviceList
+    (error: string, loading: boolean, deviceList: Device[]) => ({
+        error, loading, deviceList
     })
 );

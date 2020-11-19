@@ -13,7 +13,7 @@ import {
 import { formatDistanceToNow } from 'date-fns';
 import { CircleMarker } from 'leaflet';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import { ChartAPI } from 'c3';
 import { PrimitiveArray } from 'c3';
 import {BreakpointObserver} from "@angular/cdk/layout";
@@ -60,10 +60,9 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     sidenavOpened$: Observable<boolean>;
     sidenavMode$: Observable<string>;
 
-    private interval: any;
+    subscription: Subscription;
 
-    trackingState$ = this.facade.trackingState$;
-
+    trackingDeviceList$ = this.facade.trackingDeviceList$;
     constructor(private breakpointObserver: BreakpointObserver, private deviceService: DeviceService,
                 private eventService: EventService,
                 private facade: RootFacade,
@@ -77,8 +76,8 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     ngOnInit() {
-        this.trackingState$.subscribe(data => this.processData(data));
         this.markersCluster  = <MarkerClusterGroup>markerClusterGroup();
+        this.subscription = this.trackingDeviceList$.subscribe(data => this.processData(data));
     }
 
     ngAfterViewInit(): void {
@@ -88,39 +87,20 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
             shadowUrl: '/assets/images/marker-shadow.png'
         });
 
-
-        if (!this.map) {
-            this.map = lmap('map1', {
-                zoomControl: false,
-                center: latLng(21.731253, 105.996139),
-                zoom: 12,
-                minZoom: 1,
-                maxZoom: 18,
-
-                layers: [
-                    tileLayer(TILE_MAPBOX, {
-                        attribution: '&copy; <a href="https://gpshandle.com">gpshandle.com</a>',
-                    })]
-            });
-        }
-
-        control.scale().addTo(this.map);
-        control.zoom().setPosition('bottomleft').addTo(this.map);
-
         // load
         this.facade.loadAllDevices();
     }
 
     ngOnDestroy(): void {
-        clearInterval(this.interval);
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
     }
 
     processData(dataState: any) {
         console.log('Data', dataState);
-
-        if (!dataState || !dataState.deviceList) return;
-        const data = dataState.deviceList;
-        // const data = Object.assign({selected: false}, dataState.deviceList);
+        if (!dataState) return;
+        const data = dataState;
         this.stats = [];
         this.liveDev.reset();
         this.idleDev.reset();
@@ -218,20 +198,20 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     //--
     selectThisDevice($event: any, device: Device | any): void {
         $event.stopPropagation();
-        //
-        // if (this.selectedDevice) {
-        //     this.selectedDevice.selected = false;
-        // }
-        // device.selected = !device.selected;
-        // this.selectedDevice = device;
-        // this.xUpdate();
-        // this.facade.selectDevice(device);
+
+        if (this.selectedDevice) {
+            this.selectedDevice.selected = false;
+        }
+        device.selected = !device.selected;
+        this.selectedDevice = device;
+        this.xUpdate();
+        //this.facade.selectDevice(device);
     }
 
     closePanelDetails() {
         this.selectedDevice = null;
         setTimeout(() => {
-            this.map.invalidateSize(true);
+            this.getMap().invalidateSize(true);
         }, 0);
     }
 
@@ -270,19 +250,19 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
 
     private xUpdate() {
         if (this.selectedMarker) {
-            this.selectedMarker.removeFrom(this.map);
+            this.selectedMarker.removeFrom(this.getMap());
         }
 
         if (this.selectedDevice) {
             let center = latLng(this.selectedDevice.lastLatitude, this.selectedDevice.lastLongitude);
-            this.selectedMarker = circleMarker(center, {radius: 30}).addTo(this.map);
-            let oldZoom = this.map.getZoom();
-            this.map.setView(center, oldZoom);
+            this.selectedMarker = circleMarker(center, {radius: 30}).addTo(this.getMap());
+            let oldZoom = this.getMap().getZoom();
+            this.getMap().setView(center, oldZoom);
         } else if (this.deviceList.length > 0 ) {
-            this.map.addLayer(this.markersCluster);
+            this.getMap().addLayer(this.markersCluster);
             let bounds: LatLngBounds = this.markersCluster.getBounds();
             if (bounds.isValid()) {
-                this.map.fitBounds(bounds);
+                this.getMap().fitBounds(bounds);
             }
 
         }
@@ -377,5 +357,27 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                 (dev.deviceId && includes(dev.deviceId, this.deviceFilterText)) ||
                 (dev.lastAddress && includes(dev.lastAddress, this.deviceFilterText));
         });
+    }
+
+    getMap(): Map {
+        if (!this.map) {
+            this.map = lmap('map1', {
+                zoomControl: false,
+                center: latLng(21.731253, 105.996139),
+                zoom: 12,
+                minZoom: 1,
+                maxZoom: 18,
+
+                layers: [
+                    tileLayer(TILE_MAPBOX, {
+                        attribution: '&copy; <a href="https://gpshandle.com">gpshandle.com</a>',
+                    })]
+            });
+
+            control.scale().addTo(this.map);
+            control.zoom().setPosition('bottomleft').addTo(this.map);
+        }
+
+        return this.map;
     }
 }

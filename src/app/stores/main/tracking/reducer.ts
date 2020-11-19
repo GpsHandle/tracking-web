@@ -14,7 +14,7 @@ export const trackingReducer = createReducer(
     on(loadAllDevicesRequestAction, (state, action) => ({...state, loading: true, error: null})),
     on(loadAllDevicesSuccessAction, (state, action) => ({...state, loading: false, error: null, allDevices: action.devices})),
     on(loadAllDevicesFailureAction, (state, action) => ({...state, loading: false, error: action.error})),
-    on(setSelectedDeviceAction, (state, action) => ({...state, selected: action.selected}))
+    on(setSelectedDeviceAction, (state, action) => ({...state, selected: action.device}))
 );
 
 export function reducer(state: State | undefined, action: Action) {

@@ -15,10 +15,10 @@ export class Effects {
 
     loadDeviceListRequest$ = createEffect(() => this.actions$.pipe(
         ofType(loadAllDevicesRequestAction),
-        switchMap((action) => interval(10000).pipe(
-            startWith(0),
-            mapTo(action)
-        )),
+        // switchMap((action) => interval(10000).pipe(
+        //     startWith(0),
+        //     mapTo(action)
+        // )),
         switchMap((action) => {
             return this.deviceService.getAllDevice();
 

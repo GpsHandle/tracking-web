@@ -25,5 +25,5 @@ export const loadAllDevicesFailureAction = createAction(
 
 export const setSelectedDeviceAction = createAction(
     ActionTypes.SET_SELECTED_DEVICE,
-    props<{selected: Device}>()
+    props<{device: Device}>()
 );
