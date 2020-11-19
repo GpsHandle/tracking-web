@@ -2,12 +2,13 @@ import {filter, forEach, includes, map as _map} from 'lodash-es';
 import * as d3 from 'd3';
 import * as c3 from 'c3';
 import {Component, OnDestroy, OnInit, AfterViewInit, Inject, PLATFORM_ID} from '@angular/core';
-
-import {Icon, Map, LatLngBounds, Marker, DivIcon, Popup,
+import 'leaflet.markercluster';
+import {
+    Icon, Map, LatLngBounds, Marker, DivIcon, Popup,
     icon, markerClusterGroup, map as lmap,
     latLng, control, tileLayer, marker, point,
-    divIcon, popup, circleMarker} from 'leaflet';
-import 'leaflet.markercluster';
+    divIcon, popup, circleMarker, MarkerClusterGroup
+} from 'leaflet';
 
 import { formatDistanceToNow } from 'date-fns';
 import { CircleMarker } from 'leaflet';
@@ -38,9 +39,7 @@ const TILE_MAPBOX = 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{
 export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     customDefault: Icon;
     map: Map;
-
-    numberOfLoad: number = 0;
-    markersCluster: any;
+    markersCluster: MarkerClusterGroup;
     deviceFilterText: string;
     deviceList: Device[];
     allDeviceList: Device[];
@@ -78,14 +77,8 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     ngOnInit() {
-        this.facade.loadAllDevices();
-
-
-        this.numberOfLoad = 0;
-
-        // this.loadLivesEvent();
-        // this.interval = setInterval(() => this.loadLivesEvent(), 10000);
         this.trackingState$.subscribe(data => this.processData(data));
+        this.markersCluster  = <MarkerClusterGroup>markerClusterGroup();
     }
 
     ngAfterViewInit(): void {
@@ -95,7 +88,7 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
             shadowUrl: '/assets/images/marker-shadow.png'
         });
 
-        this.markersCluster = markerClusterGroup();
+
         if (!this.map) {
             this.map = lmap('map1', {
                 zoomControl: false,
@@ -107,8 +100,6 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
                 layers: [
                     tileLayer(TILE_MAPBOX, {
                         attribution: '&copy; <a href="https://gpshandle.com">gpshandle.com</a>',
-                        // id: 'mapbox/streets-v11',
-                        //accessToken: 'pk.eyJ1IjoiaG9haXZ1YmsiLCJhIjoiY2oya3YzbHFuMDAwMTJxazN6Y3k0Y2syNyJ9.4avYQphrtbrrniI_CT0XSA'
                     })]
             });
         }
@@ -116,6 +107,8 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
         control.scale().addTo(this.map);
         control.zoom().setPosition('bottomleft').addTo(this.map);
 
+        // load
+        this.facade.loadAllDevices();
     }
 
     ngOnDestroy(): void {
@@ -123,9 +116,9 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     processData(dataState: any) {
-        if (!dataState || !dataState.deviceList) return;
-        console.log('Data', dataState.deviceList);
+        console.log('Data', dataState);
 
+        if (!dataState || !dataState.deviceList) return;
         const data = dataState.deviceList;
         // const data = Object.assign({selected: false}, dataState.deviceList);
         this.stats = [];
@@ -223,15 +216,16 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
 
 
     //--
-    selectThisDevice(event: any, device: Device | any): void {
-        event.stopPropagation();
-
-        if (this.selectedDevice) {
-            this.selectedDevice.selected = false;
-        }
-        device.selected = !device.selected;
-        this.selectedDevice = device;
-        this.xUpdate();
+    selectThisDevice($event: any, device: Device | any): void {
+        $event.stopPropagation();
+        //
+        // if (this.selectedDevice) {
+        //     this.selectedDevice.selected = false;
+        // }
+        // device.selected = !device.selected;
+        // this.selectedDevice = device;
+        // this.xUpdate();
+        // this.facade.selectDevice(device);
     }
 
     closePanelDetails() {
@@ -275,7 +269,6 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     private xUpdate() {
-        //circle around marker
         if (this.selectedMarker) {
             this.selectedMarker.removeFrom(this.map);
         }
@@ -287,13 +280,11 @@ export class MappingComponent implements OnInit, OnDestroy, AfterViewInit {
             this.map.setView(center, oldZoom);
         } else if (this.deviceList.length > 0 ) {
             this.map.addLayer(this.markersCluster);
-            if (this.numberOfLoad === 1) {
-                this.applicationContext.spin(false);
-                let bounds: LatLngBounds = this.markersCluster.getBounds();
-                if (bounds.isValid()) {
-                    this.map.fitBounds(bounds);
-                }
+            let bounds: LatLngBounds = this.markersCluster.getBounds();
+            if (bounds.isValid()) {
+                this.map.fitBounds(bounds);
             }
+
         }
     }
 

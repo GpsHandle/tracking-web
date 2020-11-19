@@ -28,35 +28,10 @@ export class MainComponent implements OnInit, OnDestroy {
                 private breakpointObserver: BreakpointObserver,
                 private app: ApplicationContext,
                 private router: Router) {
-        // window.onresize = (e) => {
-        //     ngZone.run(() => {
-        //         this.handleResizeWindow(window.innerWidth)
-        //     })
-        // }
     }
 
     ngOnInit() {
         this.accountName = this.app.accountName;
-        // this.oldScreenWidth = window.innerWidth;
-        // this.handleResizeWindow(window.innerWidth);
-    }
-
-    // private handleResizeWindow(screenWidth: number) {
-    //     console.log('change Size ...', this.oldScreenWidth, screenWidth)
-    //     if (!this.isMobile(screenWidth)) {
-    //         this.mainFacade.setSideNavForPc();
-    //         this.oldScreenWidth = screenWidth;
-    //     } else if (!this.isMobile(this.oldScreenWidth)) {
-    //         this.mainFacade.setSideNavForMobile();
-    //         this.oldScreenWidth = screenWidth;
-    //     }
-    //
-    //     // this.sidenavMode$ = this.mainFacade.sidenavMode$;
-    //     // this.sidenavOpened$ = this.mainFacade.sidenavOpened$;
-    // }
-
-    private isMobile(screenWidth: number): boolean {
-        return screenWidth < 800;
     }
 
     ngOnDestroy(): void {
@@ -65,12 +40,6 @@ export class MainComponent implements OnInit, OnDestroy {
     logout() {
         this.app.logout();
         this.router.navigate(['/account/c/login']);
-    }
-
-    openSideNavForTracking() {
-    }
-
-    openSideNavForReport() {
     }
 
     openSideNavOnMobile() {

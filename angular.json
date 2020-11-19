@@ -39,6 +39,12 @@
             "tsConfig": "tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "i18nMissingTranslation": "warning",
+            "allowedCommonJsDependencies": [
+              "c3",
+              "leaflet-polylinedecorator",
+              "leaflet-editable",
+              "file-saver"
+            ],
             "assets": [
               "src/assets",
               "src/favicon.ico",

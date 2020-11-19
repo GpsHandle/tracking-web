@@ -2,8 +2,9 @@ import {Injectable} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {SideNavActions} from './main';
 import {selectNavMode, selectNavOpenned} from "./main/selectors";
-import {loadAllDevicesRequestAction} from "./main/tracking/actions";
+import {loadAllDevicesRequestAction, setSelectedDeviceAction} from "./main/tracking/actions";
 import {getTracking} from "./main/tracking/selectors";
+import {Device} from "../models/device";
 
 
 @Injectable({
@@ -31,6 +32,10 @@ export class RootFacade {
 
     loadAllDevices() {
         return this.store.dispatch(loadAllDevicesRequestAction())
+    }
+
+    selectDevice(device: Device) {
+        return this.store.dispatch(setSelectedDeviceAction({selected: device}));
     }
 
 }

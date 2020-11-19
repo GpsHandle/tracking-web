@@ -40,6 +40,8 @@ export class Device {
     lastLongitude: number;
     lastAddress: string;
     stayedTime: number;
+
+    speedKph: number;
     //--
     public createdBy: string;
     public createdOn: Date;

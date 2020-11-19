@@ -27,6 +27,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import {CustomDirectivesModule} from "./core/directives/custom-directives.module";
 
 import {QuillModule} from 'ngx-quill';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
     declarations: [
@@ -45,23 +46,16 @@ import {QuillModule} from 'ngx-quill';
         HttpClientModule,
         MaterialShared,
         AppRoutingModule,
-        // StoreModule.forRoot({}, {
-        //     metaReducers: !environment.production ? [storeFreeze] : []
-        // }),
         EffectsModule.forRoot([]),
         CustomDirectivesModule,
-        // StoreDevtoolsModule.instrument({
-        //     maxAge: 25 // Retains last 25 states
-        // }),
-        // RootModule,
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
         QuillModule.forRoot(),
 
         !environment.production ? StoreDevtoolsModule.instrument() : [],
         StoreModule.forRoot({}),
         EffectsModule.forRoot([]),
-        RootModule
-
+        RootModule,
+        FlexLayoutModule.withConfig({ssrObserveBreakpoints: ['xs', 'lt-md']})
     ],
     providers: [
         AuthService,

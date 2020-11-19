@@ -20,7 +20,6 @@ export class Effects {
             mapTo(action)
         )),
         switchMap((action) => {
-            console.log('loading all devices ...');
             return this.deviceService.getAllDevice();
 
         }),

@@ -22,4 +22,4 @@ export const getTracking = createSelector(
     (error: string, loading: boolean, selected: Device, deviceList: Device[]) => ({
         error, loading, selected, deviceList
     })
-)
+);
